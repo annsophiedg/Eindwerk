@@ -12,7 +12,9 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\""
+    "lint": "tslint \"src/**/*.ts\"",
+    "dev": "nodemon api/index.php",
+    "debug": "nodemon --inspect=7000 api/index.php"
   },
   "dependencies": {
     "@angular/animations": "~7.2.0",
