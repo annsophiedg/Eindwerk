@@ -44,15 +44,24 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'log-in',
+        children: [
+          {
+            path: '',
+            loadChildren: '../log-in/log-in.module#LogInPageModule'
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/profile',
+        redirectTo: '/tabs/meals',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/profile',
+    redirectTo: '/tabs/meals',
     pathMatch: 'full'
   }
 ];
