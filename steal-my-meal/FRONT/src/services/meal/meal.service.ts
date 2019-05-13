@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Meal } from'../models/meal';
+import { Meal } from'../../models/meal';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class MealService {
 
-  todosUrl:string = 'https://REST api Ann-Sophie';
+  todosUrl:string = 'https://lacolhost:3000/steal-my-meal/_BACK_/api/meals';
 
   constructor(private http:HttpClient) { }
 
@@ -23,14 +23,22 @@ export class MealService {
     return this.http.get<Meal[]>(`${this.todosUrl}`);
   }
 
-  //Delete meals
-  deleteMeals(meal:Meal):Observable<Meal>{
-    const url = `${this.todosUrl}/${meal.id}`; //fix meal id
-    return this.http.delete<Meal>(url, httpOptions);
-  }
-
   //Add meal
   addMeal(meal:Meal):Observable<Meal>{
     return this.http.post<Meal>(this.todosUrl, meal, httpOptions);
   }
+
+  //Delete meal
+  deleteMeal(meal:Meal):Observable<Meal>{
+    const url = `${this.todosUrl}/${meal.id}`;
+    return this.http.delete<Meal>(url, httpOptions);
+  }
+
+  //Update meal
+  updateMeal(meal:Meal):Observable<Meal>{
+    const url = `${this.todosUrl}/${meal.id}`;
+    return this.http.put<Meal>(url, httpOptions);
+  }
+
+
 }
