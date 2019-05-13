@@ -67,7 +67,7 @@ class UserController {
   }
 
   // Delete user
-  function updateUser($id){
+  function deleteUser($id){
     $user = json_decode( file_get_contents("php://input") );
     
     $name = $user->naam;
