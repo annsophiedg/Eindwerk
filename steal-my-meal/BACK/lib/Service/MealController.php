@@ -15,7 +15,7 @@ class MealController {
   // Get overview of available meals
   function getMealOverview()
   {
-    $availableMeals = Array();
+    $meals = Array();
 
     //sql statement to get available meals
     $sqlAvailableMeals = "select * from meals";
@@ -24,10 +24,10 @@ class MealController {
     $result = $this->dbm->sqlExecute($sqlAvailableMeals, null, PDO::FETCH_OBJ);
     
     foreach ($result as $row) {
-      array_push($availableMeals,$row);
+      array_push($meals,$row);
     }
-    
-    return json_encode($availableMeals);
+    $jsonMeals = json_encode($meals);
+    return $jsonMeals;
   }
 
   /**
