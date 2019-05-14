@@ -6,7 +6,9 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'map', loadChildren: './map/map.module#MapPageModule' },
   { path: 'add-meal', loadChildren: './add-meal/add-meal.module#AddMealPageModule' },
-  { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule' }
+  { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule' },
+  { path: 'add-meal-page', loadChildren: './meals/add-meal-page/add-meal-page.module#AddMealPagePageModule' },
+  { path: 'add-meal', loadChildren: './meals/add-meal/add-meal.module#AddMealPageModule' }
 ];
 @NgModule({
   imports: [

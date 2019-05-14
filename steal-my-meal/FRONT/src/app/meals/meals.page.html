@@ -6,7 +6,8 @@
 
 <ion-content>
 
-  <p *ngFor="let meal of meals"><app-meal-item></app-meal-item></p>
+  <ion-button (click)="presentModal()">Open Model</ion-button>
 
+  <p *ngFor="let meal of meals"><app-meal-item></app-meal-item></p>
 
 </ion-content>

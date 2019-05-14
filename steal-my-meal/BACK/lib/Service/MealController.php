@@ -26,9 +26,9 @@ class MealController {
     
     foreach ($result as $row) {
       array_push($meals,$row);
-      $jsonMeals = json_encode($meals);
+      
     }
-    
+    $jsonMeals = json_encode($meals);
     return $jsonMeals;
   }
 
