@@ -27,16 +27,14 @@ export class MealsPage implements OnInit {
       console.log(meals);
       this.meals = meals;
     })
-<<<<<<< HEAD
 
     this.chefService.getChefs().subscribe(chefs=>{
       this.chefs = chefs;
       console.log(chefs);
     })
-    
-=======
->>>>>>> a720eb409b21180a648efa844ab5647dadb94169
   }
+
+  
 
   async presentModal() {
     const modal = await this.modal.create({
