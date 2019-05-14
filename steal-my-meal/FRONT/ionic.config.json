@@ -1,0 +1,7 @@
+{
+  "name": "steal-my-meal",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

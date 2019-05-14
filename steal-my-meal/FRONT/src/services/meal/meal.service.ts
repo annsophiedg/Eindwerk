@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class MealService {
 
-  todosUrl:string = 'http://localhost:3000/steal-my-meal/_BACK_/api/meals';
+  todosUrl:string = 'http://localhost:3000/steal-my-meal/BACK/api/meals';
 
   constructor(private http:HttpClient) { }
 
