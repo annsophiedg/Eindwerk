@@ -66,6 +66,7 @@ class UserController {
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }
 
+<<<<<<< HEAD
   // Delete user
   function deleteUser($id){
     $user = json_decode( file_get_contents("php://input") );
@@ -80,6 +81,8 @@ class UserController {
     return $message;
   }
 
+=======
+>>>>>>> 2ce40ed3b534b7879c5dee7fec5500abbaca754d
 }
 
 ?>

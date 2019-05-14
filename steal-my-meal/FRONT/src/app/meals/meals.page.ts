@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MealService } from '../../services/meal/meal.service';
 import { Meal } from '../../models/meal';
 
+
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.page.html',
@@ -17,6 +18,7 @@ export class MealsPage implements OnInit {
     this.mealService.getMeals().subscribe(meals=>{
       this.meals = meals;
     })
+    
   }
 
 

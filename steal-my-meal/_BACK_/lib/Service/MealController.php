@@ -26,9 +26,10 @@ class MealController {
     
     foreach ($result as $row) {
       array_push($meals,$row);
+      $jsonMeals = json_encode($meals);
     }
     
-    return $meals;
+    return $jsonMeals;
   }
 
   /**
@@ -44,8 +45,9 @@ class MealController {
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
     $meal = $result;
+    $jsonMeal = json_encode($meal);
 
-    return $meal;
+    return $jsonMeal;
   }
 
   /**
@@ -67,9 +69,10 @@ class MealController {
 
     foreach ($result as $row) {
       array_push($ingredients,$row);
+      $jsonIngredients = json_encode($ingredients);
     }
 
-    return $ingredients;
+    return $jsonIngredients;
   }
 
   // Add a single meal to DB

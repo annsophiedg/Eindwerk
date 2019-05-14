@@ -25,8 +25,6 @@ if ( count($parts) > 3 ) $api = $parts[3];
 if ( count($parts) > 4 ) $subject = $parts[4];
 if ( count($parts) > 5 ) $id = $parts[5];
 
-print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
-
 //use Service MealController if $subject == "meals"
 if ( $subject == "meals" )
 {
@@ -36,15 +34,15 @@ if ( $subject == "meals" )
         if (!$id) {
             //GET overview meals: sort on location
             $availableMeals = $mealController->getMealOverview();
-            var_dump($availableMeals);
+            echo $availableMeals;
         } else {
             //GET meal details from meals + type
             $mealDetails = $mealController->getMealDetails($id);
-            var_dump($mealDetails);
+            echo $mealDetails;
             print '<br>';
             //GET meal ingredients
             $ingredients = $mealController->getMealIngredients($id);
-            var_dump($ingredients);
+            echo $ingredients;
             print '<br>';
         }
     } else if ($method == "POST") {
