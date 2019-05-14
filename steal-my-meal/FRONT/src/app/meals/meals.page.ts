@@ -21,6 +21,7 @@ export class MealsPage implements OnInit {
   ngOnInit() {
 
     this.mealService.getMeals().subscribe(meals=>{
+      console.log(meals);
       this.meals = meals;
     })
 

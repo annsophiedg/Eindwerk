@@ -30,8 +30,6 @@ if ( count($parts) > 3 ) $api = $parts[3];
 if ( count($parts) > 4 ) $subject = $parts[4];
 if ( count($parts) > 5 ) $id = $parts[5];
 
-print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
-
 //use Service MealController if $subject == "meals"
 if ( $subject == "meals" )
 {
@@ -41,15 +39,15 @@ if ( $subject == "meals" )
         if (!$id) {
             //GET overview meals: sort on location
             $availableMeals = $mealController->getMealOverview();
-            var_dump($availableMeals);
+            echo $availableMeals;
         } else {
             //GET meal details from meals + type
             $mealDetails = $mealController->getMealDetails($id);
-            var_dump($mealDetails);
+            echo $mealDetails;
             print '<br>';
             //GET meal ingredients
             $ingredients = $mealController->getMealIngredients($id);
-            var_dump($ingredients);
+            echo $ingredients;
             print '<br>';
         }
     } else if ($method == "POST") {
@@ -65,22 +63,13 @@ if ( $subject == "chefs" )
     if ($method == "GET") {
         if (!$id) {
             //GET overview chefs: sort on location
-<<<<<<< HEAD
-            $chefs = $chefController->getChefOverview();
+            $chefs = $chefController->getActiveChefs();
             echo $chefs;
         } else {
             //GET chef details
             $chefDetails = $chefController->getChefDetails($id);
-            echo $chefDetails;
-=======
-            $chefs = $chefController->getActiveChefs();
-            var_dump($chefs);
-        } else {
-            //GET chef details
-            $chefDetails = $chefController->getChefDetails($id);
             //if chefDetails = null, user is not a chef!
-            var_dump($chefDetails);
->>>>>>> f06d0d41ca39e4cd403671f12146bf5c084fcded
+            echo $chefDetails;
         }
     }    
 }
@@ -94,11 +83,11 @@ if ( $subject == "users" )
         if (!$id) {
             //GET overview users: only as admin!!
             $users = $userController->getUserOverview();
-            var_dump($users);
+            echo $users;
         } else {
             //GET profile (user details)
             $userDetails = $userController->getUserDetails($id);
-            var_dump($userDetails);
+            echo $userDetails;
         }
     } else if ($method == "POST") {
         //add a user when making profile

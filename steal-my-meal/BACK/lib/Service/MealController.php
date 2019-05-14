@@ -17,12 +17,9 @@ class MealController {
   {
     $availableMeals = Array();
 
-<<<<<<< HEAD
-    // $sql = "select * from meals";
-=======
->>>>>>> f06d0d41ca39e4cd403671f12146bf5c084fcded
     //sql statement to get available meals
-    $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
+    $sqlAvailableMeals = "select * from meals";
+    // $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
 
     $result = $this->dbm->sqlExecute($sqlAvailableMeals, null, PDO::FETCH_OBJ);
     
@@ -30,7 +27,7 @@ class MealController {
       array_push($availableMeals,$row);
     }
     
-    return $availableMeals;
+    return json_encode($availableMeals);
   }
 
   /**
@@ -47,7 +44,7 @@ class MealController {
 
     $meal = $result;
 
-    return $meal;
+    return json_encode($meal);
   }
 
   /**
@@ -71,7 +68,7 @@ class MealController {
       array_push($ingredients,$row);
     }
 
-    return $ingredients;
+    return json_encode($ingredients);
   }
 
   // Add a single meal to DB
