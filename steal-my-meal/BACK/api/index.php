@@ -15,6 +15,8 @@ require __DIR__ . '/bootstrap.php';
 $container = new Container($configuration);
 $dbManager = $container->getDBManager();
 $pdo = $dbManager->getPDO();
+$subject = null;
+$id = null;
 
 $request = $_SERVER["REQUEST_URI"];
 $method = $_SERVER["REQUEST_METHOD"];
@@ -59,11 +61,11 @@ if ( $subject == "chefs" )
         if (!$id) {
             //GET overview chefs: sort on location
             $chefs = $chefController->getChefOverview();
-            var_dump($chefs);
+            echo $chefs;
         } else {
             //GET chef details
             $chefDetails = $chefController->getChefDetails($id);
-            var_dump($chefDetails);
+            echo $chefDetails;
         }
     }    
 }

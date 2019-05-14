@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../../models/meal';
+import { Chef } from 'src/models/chef';
 
 @Component({
   selector: 'app-meal-item',
@@ -11,6 +12,7 @@ import { Meal } from '../../../models/meal';
 
 export class MealItemComponent implements OnInit {
   @Input() meal: Meal;
+  @Input() chef: Chef;
 
   slideOpts = {
     initialSlide: 2,
@@ -19,7 +21,9 @@ export class MealItemComponent implements OnInit {
 
   constructor( ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.meal);
+  }
 
   
 

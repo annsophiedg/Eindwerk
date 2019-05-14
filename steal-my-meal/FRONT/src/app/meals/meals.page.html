@@ -6,7 +6,7 @@
 
 <ion-content>
 
-  <p *ngFor="let meal of meals"><app-meal-item></app-meal-item></p>
+  <p *ngFor="let meal of meals; let i = index"><app-meal-item [meal] = meal [chef] = chefs[meal.fk_usr_chef_id]></app-meal-item></p>
 
 
 </ion-content>

@@ -15,17 +15,16 @@ class ChefController {
   {
     $chefs = Array();
 
-    $sql = "select * from users";
+    // $sql = "select * from users";
     //sql statement to get available meals
-    // $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
+    $sqlAvailableChefs = "SELECT *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
 
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+    $result = $this->dbm->sqlExecute($sqlAvailableChefs, null, PDO::FETCH_OBJ);
     
     foreach ($result as $row) {
       array_push($chefs,$row);
     }
-    
-    return $chefs;
+    return json_encode($chefs);;
   }
 
   // Get a single meal
@@ -37,7 +36,7 @@ class ChefController {
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-    $meal = $result;
+    $meal = json_encode($result);
 
     return $meal;
   }
