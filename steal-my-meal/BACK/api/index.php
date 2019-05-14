@@ -21,9 +21,14 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 $parts = explode("/", $request);
 
+$subject = null;
+$id = null;
+
 if ( count($parts) > 3 ) $api = $parts[3];
 if ( count($parts) > 4 ) $subject = $parts[4];
 if ( count($parts) > 5 ) $id = $parts[5];
+
+print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
 
 //use Service MealController if $subject == "meals"
 if ( $subject == "meals" )
@@ -34,15 +39,15 @@ if ( $subject == "meals" )
         if (!$id) {
             //GET overview meals: sort on location
             $availableMeals = $mealController->getMealOverview();
-            echo $availableMeals;
+            var_dump($availableMeals);
         } else {
             //GET meal details from meals + type
             $mealDetails = $mealController->getMealDetails($id);
-            echo $mealDetails;
+            var_dump($mealDetails);
             print '<br>';
             //GET meal ingredients
             $ingredients = $mealController->getMealIngredients($id);
-            echo $ingredients;
+            var_dump($ingredients);
             print '<br>';
         }
     } else if ($method == "POST") {
@@ -58,11 +63,12 @@ if ( $subject == "chefs" )
     if ($method == "GET") {
         if (!$id) {
             //GET overview chefs: sort on location
-            $chefs = $chefController->getChefOverview();
+            $chefs = $chefController->getActiveChefs();
             var_dump($chefs);
         } else {
             //GET chef details
             $chefDetails = $chefController->getChefDetails($id);
+            //if chefDetails = null, user is not a chef!
             var_dump($chefDetails);
         }
     }    

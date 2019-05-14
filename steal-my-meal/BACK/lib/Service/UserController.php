@@ -66,6 +66,20 @@ class UserController {
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }
 
+  // Delete user
+  function deleteUser($id){
+    $user = json_decode( file_get_contents("php://input") );
+    
+    $name = $user->naam;
+
+    $sql = "DELETE from users WHERE usr_id=$id";
+    //insert data in db
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    
+    return $message;
+  }
+
 }
 
 ?>

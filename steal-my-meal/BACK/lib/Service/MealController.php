@@ -1,5 +1,4 @@
 <?php
-//require_once ('db_connection.php');
 
 class MealController {
   
@@ -16,20 +15,18 @@ class MealController {
   // Get overview of available meals
   function getMealOverview()
   {
-    $meals = Array();
+    $availableMeals = Array();
 
-    $sql = "select * from meals";
     //sql statement to get available meals
-    // $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
+    $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
 
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+    $result = $this->dbm->sqlExecute($sqlAvailableMeals, null, PDO::FETCH_OBJ);
     
     foreach ($result as $row) {
-      array_push($meals,$row);
-      $jsonMeals = json_encode($meals);
+      array_push($availableMeals,$row);
     }
     
-    return $jsonMeals;
+    return $availableMeals;
   }
 
   /**
@@ -45,9 +42,8 @@ class MealController {
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
     $meal = $result;
-    $jsonMeal = json_encode($meal);
 
-    return $jsonMeal;
+    return $meal;
   }
 
   /**
@@ -69,10 +65,9 @@ class MealController {
 
     foreach ($result as $row) {
       array_push($ingredients,$row);
-      $jsonIngredients = json_encode($ingredients);
     }
 
-    return $jsonIngredients;
+    return $ingredients;
   }
 
   // Add a single meal to DB
