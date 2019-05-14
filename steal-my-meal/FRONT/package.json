@@ -33,7 +33,11 @@
     "cordova-plugin-facebook4": "4.2.1",
     "cordova-plugin-nativestorage": "2.3.2",
     "core-js": "^2.5.4",
+<<<<<<< HEAD
     "http-server": "^0.11.1",
+=======
+    "ionic": "^4.12.0",
+>>>>>>> fb47be2798afb6bd8117cbb031af9080d1cb6d1c
     "ionic-angular": "^3.9.5",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
