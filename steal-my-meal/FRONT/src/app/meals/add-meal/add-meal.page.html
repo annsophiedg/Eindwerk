@@ -4,6 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-icon (click)="hideModal()" style="font-size: 2rem;" name="close"></ion-icon>
+
 <ion-content>
+
+<ion-item>
+  <ion-label position="floating">Meal Name</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label position="floating">Price</ion-label>
+    <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label position="floating">Meal Description</ion-label>
+    <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+</ion-item>
+
+<ion-button (click)="postMeal()">Post</ion-button>
 
 </ion-content>
