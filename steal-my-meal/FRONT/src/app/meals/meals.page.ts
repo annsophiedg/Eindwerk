@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MealService } from '../../services/meal/meal.service';
 import { Meal } from '../../models/meal';
 import { ModalController } from '@ionic/angular';
-import { AddMealPage } from '../add-meal/add-meal.page';
+import { AddMealPage } from '../meals/add-meal/add-meal.page';
 
 
 @Component({
