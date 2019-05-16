@@ -5,7 +5,7 @@ import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 
 import { ModalController } from '@ionic/angular';
-import { AddMealPage } from '../add-meal/add-meal.page';
+import { AddMealPage } from '../meals/add-meal/add-meal.page';
 
 
 @Component({
