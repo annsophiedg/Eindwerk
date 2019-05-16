@@ -26,9 +26,9 @@ $parts = explode("/", $request);
 $subject = null;
 $id = null;
 
-if ( count($parts) > 3 ) $api = $parts[3];
-if ( count($parts) > 4 ) $subject = $parts[4];
-if ( count($parts) > 5 ) $id = $parts[5];
+if ( count($parts) > 2 ) $api = $parts[2];
+if ( count($parts) > 3 ) $subject = $parts[3];
+if ( count($parts) > 4 ) $id = $parts[4];
 
 //use Service MealController if $subject == "meals"
 if ( $subject == "meals" )

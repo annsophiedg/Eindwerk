@@ -15,24 +15,25 @@ import { AddMealPage } from '../add-meal/add-meal.page';
 })
 
 export class MealsPage implements OnInit {
-  meals:Meal[];
-  chefs:Chef[];
+  meals = [];
+  chefs = {};
 
-  constructor(private mealService:MealService, private chefService:ChefService, public modal: ModalController) { }
-
-
-  ngOnInit() {
-
-    this.mealService.getMeals().subscribe(meals=>{
-      console.log(meals);
-      this.meals = meals;
+  constructor(private mealService:MealService, private chefService:ChefService, public modal: ModalController) {
+    //load chefs into a dictionary with their id as key
+    chefService.getChefs().subscribe(chefs=>{
+      chefs.forEach(chef => {
+        chef = JSON.parse(chef);
+        this.chefs[chef.usr_id] = chef;
+      });
+      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+      mealService.getMeals().subscribe(meals=>{
+        this.meals = meals;
+      })  
     })
+   }
 
-    this.chefService.getChefs().subscribe(chefs=>{
-      this.chefs = chefs;
-      console.log(chefs);
-    })
-  }
+
+  ngOnInit() {}
 
   
 

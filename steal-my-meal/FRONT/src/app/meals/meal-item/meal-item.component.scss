@@ -1,0 +1,93 @@
+*{
+    font-weight: bold;
+    color:  #FBF7F6;
+}
+
+* h2{
+    font-size: 2em;
+}
+
+* h3{
+    font-weight: 200;
+}
+ion-slide{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FBF7F6;
+    height: 6em;
+    justify-content: space-between;
+}
+
+ion-slide.meal{
+    background-color: #333;
+    
+}
+
+ion-slide .top{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ion-slide .bottom{
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+
+ion-slide.chef .top{
+    justify-content: flex-start;
+    
+}
+
+ion-slide .profilepic{
+    width: 25%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+ion-slide .profilepic img{
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    border: #FBF7F6 solid 5px;
+}
+
+ion-slide.chef .top h2, ion-slide.chef .top h3{
+    width: 70%;
+    padding: 0;
+    color: #FD665D;
+    margin: 0 0 0 30%;
+    text-align: start;
+}
+
+ion-slide.chef .bottom h2, ion-slide.chef .bottom h3{
+    width: 70%;
+    padding: 0;
+    margin: 0 0 0 30%;
+    text-align: start;
+}
+
+ion-slide.meal .top h2, ion-slide.meal .top h3{
+    width: 70%;
+    padding: 0;
+    margin:0 10px 0 0;
+    text-align: end;
+}
+
+
+ion-slide.meal .top{
+    justify-content: flex-end;
+}
+
+
+ion-slide.chef .bottom{
+    background-color: #FD665D;
+}
+
+ion-slide.meal .bottom{
+    background-color: #FECB46;
+    justify-content: flex-end;
+}
