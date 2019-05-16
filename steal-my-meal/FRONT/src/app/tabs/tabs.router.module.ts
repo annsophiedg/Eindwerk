@@ -16,43 +16,10 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'map',
-        children: [
-          {
-            path: '',
-            loadChildren: '../map/map.module#MapPageModule'
-          }
-        ]
-      },
-      {
-        path: 'add-meal',
-        children: [
-          {
-            path: '',
-            loadChildren: '../add-meal/add-meal.module#AddMealPageModule'
-          }
-        ]
-      },
-      {
-        path: 'profile',
-        children: [
-          {
-            path: '',
-            loadChildren: '../profile/profile.module#ProfilePageModule'
-          }
-        ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/profile',
-        pathMatch: 'full'
-      }
-    ]
-  },
+    ]},
   {
     path: '',
-    redirectTo: '/tabs/profile',
+    redirectTo: '/tabs/meals',
     pathMatch: 'full'
   }
 ];
