@@ -1,9 +1,67 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Mijn profiel</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="clicked()">Log-in</ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-icon name="create"></ion-icon>
+      <ion-card-title>Naam</ion-card-title>
+      <ion-card-subtitle>Address</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Allergieën</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      no allergies?
+      <ion-icon name="add"></ion-icon>
+      Add an allergy
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Favoriete koks</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      ...
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Waardering</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Show rating of chef
+      How many Cooked Meals?
+      How many followers?
+
+      # Ordered Meals? ->history?
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Maaltijden</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      History of Cooked Meals
+      History of Ordered Meals
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

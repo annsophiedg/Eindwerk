@@ -1,5 +1,7 @@
+<h1>Hallo</h1>
 <?php
 
+phpinfo();
 // URL
 // api/chefs
 // api/chefs/id
@@ -28,7 +30,7 @@ if ( count($parts) > 3 ) $api = $parts[3];
 if ( count($parts) > 4 ) $subject = $parts[4];
 if ( count($parts) > 5 ) $id = $parts[5];
 
-print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
+// print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
 
 //use Service MealController if $subject == "meals"
 if ( $subject == "meals" )

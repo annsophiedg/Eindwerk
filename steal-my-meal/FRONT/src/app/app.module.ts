@@ -9,7 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MealItemComponent} from 'src/app/meals/meal-item/meal-item.component';
 
 @NgModule({
   declarations: [AppComponent],

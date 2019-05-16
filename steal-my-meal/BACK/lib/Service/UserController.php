@@ -1,25 +1,24 @@
 <?php
-//require_once ('db_connection.php');
 
 class UserController {
   
-  private $dbManager;
+  private $dbm;
 
   public function __construct(DBManager $dbm )
   {
-      $this->dbManager = $dbm;
+    $this->dbm = $dbm;
   }
 
+  // Get overview of users
   /**
-   * @return array
+   * @return array|null
    */
-  // Get overview of available users
   function getUserOverview()
   {
     $users = Array();
 
     // sql statement to get available users
-    $sql = "select * from users";
+    $sql = "select * from users u inner join zipcodes z on u.fk_zip_id = z.zip_id";
     // execute sql statement
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
     
@@ -28,25 +27,49 @@ class UserController {
       array_push($users,$row);
     }
     
-    return $users;
+    return json_encode($users);
   }
 
-  /**
-   * @return array
-   */
   // Get a single user
-  function getUserDetails($id)
+  /**
+   * usr_id, usr_firstname, usr_lastname, ..., zip_zipcode, zip_city
+   * 
+   * @return array|null
+   */
+  function getUserDetails(int $id)
   {
     //sql statement to get requested user details
-    $sql = "SELECT * from users WHERE usr_id = ".$id;
+    $sql = "SELECT * from users u inner join zipcodes z on u.fk_zip_id = z.zip_id where usr_id = ".$id;
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
     $user = $result;
 
-    return $user;
+    return json_encode($user);
   }
+
+  //get a users allergies
+  /**
+   * all_name
+   * 
+   * @return array|null
+   */
+  function getUserAllergies($id){
+    $sqlUserAllergies = "select all_name from users u
+    inner join `users/allergies` `u/a` on u.usr_id = `u/a`.fk_usr_id
+    inner join allergies a on `u/a`.fk_all_id = a.all_id
+    where usr_id=".$id;
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sqlUserAllergies, null, PDO::FETCH_OBJ);
+
+    $allergies = $result;
+
+    return json_encode($allergies);
+  }
+
+  //UNDERNEATH STILL TO FIX SQL!! ----------------
 
   // Add a single user to DB
   function addUser(){
