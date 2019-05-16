@@ -8,6 +8,8 @@
 
 <ion-content>
 
+<form (submit)="onSubmit()">
+
 <ion-item>
   <ion-label position="floating">Meal Name</ion-label>
   <ion-input></ion-input>
@@ -19,10 +21,30 @@
 </ion-item>
 
 <ion-item>
-    <ion-label position="floating">Meal Description</ion-label>
-    <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+    <ion-label position="floating">Start of meal</ion-label>
+    <ion-input readonly [(ngModel)]="startDate" 
+               [liIonic4Datepicker]="datePickerObj" 
+               (ionchange)="myFunction()"
+               name="startdate">
+    </ion-input>
 </ion-item>
 
-<ion-button (click)="postMeal()">Post</ion-button>
+<ion-item>
+    <ion-label position="floating">End of meal</ion-label>
+    <ion-input readonly [(ngModel)]="endDate" 
+               [liIonic4Datepicker]="datePickerObj" 
+               (ionchange)="myFunction()"
+               name="enddate">
+    </ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label position="floating">Meal Description</ion-label>
+    <ion-textarea rows="6" cols="20"></ion-textarea>
+</ion-item>
+
+<ion-button type="submit" (click)="postMeal()">Post</ion-button>
+
+</form>
 
 </ion-content>

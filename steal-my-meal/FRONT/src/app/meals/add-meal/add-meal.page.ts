@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,9 +7,38 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./add-meal.page.scss'],
 })
 export class AddMealPage {
-  @Input() value: number;
 
-  constructor(navParams: NavParams, public modal: ModalController) { }
+  @Input() value: number;
+  mealName:string;
+  today = Date.now();
+  startDate;
+  endDate;
+  datePickerObj: any = {
+    inputDate: new Date(this.today), // default new Date()
+    fromDate: new Date(this.today), // default null
+    showTodayButton: true, // default true
+    closeOnSelect: true, // default false
+    mondayFirst: true, // default false
+    todayLabel: 'Today', // default 'Today'
+    closeLabel: 'Close', // default 'Close'
+    titleLabel: 'When does you meal start?', // default null
+    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+    dateFormat: 'YYYY-MM-DD', // default DD MMM YYYY
+    clearButton : true , // default true
+    yearInAscending: true, // Default false
+    btnCloseSetInReverse: false, // Default false
+    btnProperties: {
+      expand: 'block', // Default 'block'
+      fill: '', // Default 'solid'
+      size: '', // Default 'default'
+      disabled: '', // Default false
+      strong: '', // Default false
+      color: '' // Default ''
+    }
+  };
+
+  constructor(public modal: ModalController) { }
 
   ngOnInit() {
     
@@ -20,10 +48,21 @@ export class AddMealPage {
     this.modal.dismiss()
   }
 
-  postMeal(){
-    this.modal.dismiss({
-      //some values to pass for sending to database
-      // 'result': value
-    })
+
+  onKey(event){
+    this.mealName = event.target.value
+    console.log(this.mealName);
+
   }
+
+  myFunction(){
+    console.log(this.startDate);
+  }
+
+  // postMeal(){
+  //   this.modal.dismiss({
+  //     //some values to pass for sending to database
+  //     // 'result': value
+  //   })
+  // }
 }

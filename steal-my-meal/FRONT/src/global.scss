@@ -9,3 +9,16 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+// Datepicker default style
+.li-ionic4-datePicker {
+    .modal-wrapper {
+      height: 75%;
+      width: 310px;
+      border-radius: 0px;
+      @media (min-width: 768px) {
+         width: 350px;
+         height: 65%;
+      }
+    }
+  }
