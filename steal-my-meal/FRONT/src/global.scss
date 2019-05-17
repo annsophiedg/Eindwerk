@@ -9,6 +9,11 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import 'assets/css/reset.css';
+
+*{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 
 // Datepicker default style
 .li-ionic4-datePicker {

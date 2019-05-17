@@ -1,0 +1,42 @@
+@import "../../assets/css/variables.scss";
+ion-fab-button{
+    height: 3em;
+    width: 3em;
+    margin: .5em .5em;
+
+    &#up{
+        display: none;
+    }
+}
+ion-slides{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    ion-slide{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: flex-start;
+
+        content{
+            width: 100vw;
+
+            p{
+                width: 100vw;
+            }
+        }
+
+        &.mealComponents{
+            background: $baseColor_white;
+            margin-top: 3.5em;
+        }
+
+    }
+}
+
+.map {
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+}

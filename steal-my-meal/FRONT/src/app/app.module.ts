@@ -24,4 +24,5 @@ import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}

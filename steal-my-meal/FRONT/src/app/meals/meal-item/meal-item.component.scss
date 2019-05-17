@@ -1,0 +1,138 @@
+@import "../../../assets/css/variables.scss";
+
+*{
+    font-weight: bold;
+    color:  $baseColor_white;
+}
+
+* h2{
+    font-size: 2.6em;
+    text-transform: uppercase;
+}
+
+* h3{
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+ion-slide{
+    margin-top:.7em;
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    background-color: $baseColor_white;
+    height: 6.3em;
+    justify-content: space-between;
+
+    .top{
+        height: 65%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .bottom{
+        width: 100%;
+        height: 35%;
+        display: flex;
+        padding: .5em;
+    }
+
+    .profilepic{
+        width: 25%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+
+        img{
+            width: 85%;
+            height: 85%;
+            border-radius: 50%;
+            border: $baseColor_white solid 5px;
+        }
+    }    
+}
+
+ion-slide.meal{
+    //background-color: #000;
+
+    .top{
+        justify-content: flex-end;
+        background-image: url("../../../assets/img/bck_food.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+
+        h2{
+            min-width: 70%;
+            padding: 0;
+            margin:0 10px -.15em 0;
+            text-align: end;
+        }
+
+        h3{
+            min-width: 70%;
+            padding: 0;
+            margin:0 10px 0 0;
+            text-align: end;
+        }
+    }
+
+    .bottom{
+        background-color: $baseColor_yellow;
+        justify-content: flex-end;
+
+        .info{
+            width: 70%;
+            padding: 0;
+            text-align: end;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        h2{
+            font-size: 6vw;
+        }
+    }
+}
+
+.chef{
+    .top{
+        justify-content: flex-start;
+
+        .info{
+            width: 70%;
+            padding: 0;
+            margin: .3em 0 0 25%;
+            text-align: start;
+        }
+        h2{
+            color: $baseColor_red ;
+            padding: 0;
+        }
+
+        h3{
+            color: $baseColor_red ;
+            font-weight: 700;
+            
+        }
+    }
+
+    .bottom{
+        background-color: $baseColor_red ;
+        .info{
+            width: 70%;
+            padding: 0;
+            margin: 0 0 0 25%;
+            text-align: start;
+            display: flex;
+            justify-content: flex-start;
+        }
+        h2{
+            margin-right: 1em;
+            font-size: 6vw;
+            
+        }
+    }
+}

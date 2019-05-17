@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../../models/meal';
+import { Chef } from  'src/models/chef';
 
 @Component({
   selector: 'app-meal-item',
@@ -11,15 +12,21 @@ import { Meal } from '../../../models/meal';
 
 export class MealItemComponent implements OnInit {
   @Input() meal: Meal;
+  @Input() chef;
+  private profilePath = "../../../assets/img/profile_pic.jpg";
 
   slideOpts = {
-    initialSlide: 2,
+    initialSlide: 1,
     speed: 400
   };
 
-  constructor( ) { }
+  constructor( ) {
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+    
+  }
 
   
 

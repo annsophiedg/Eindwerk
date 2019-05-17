@@ -1,13 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>meals</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-fab vertical="bottom" horizontal="center">
+    <ion-fab-button #up id="up" (click)="upClicked()"><ion-icon name="arrow-up"></ion-icon></ion-fab-button>
+</ion-fab>
 
 <ion-content>
-
-  <ion-button (click)="presentModal()">Open Model</ion-button>
-
-  <p *ngFor="let meal of meals"><app-meal-item></app-meal-item></p>
-
+    <div #mapElement class="map"></div>
 </ion-content>
+
+<ion-fab vertical="top" horizontal="end">
+<ion-fab-button class="menu"><ion-icon name="menu"></ion-icon></ion-fab-button>
+<ion-fab-list side="start">
+  <ion-fab-button>
+    <ion-icon name="add" (click)="addMeal()"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-button>
+    <ion-icon name="person"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-button>
+    <ion-icon name="funnel"></ion-icon>
+  </ion-fab-button>
+</ion-fab-list>
+</ion-fab>
+
+<ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd) = "hideUp($event)" (ionSlideReachStart) = "showUp($event)">
+  <ion-slide class="slide firstSlider">
+  </ion-slide>
+  <ion-slide class="slide transparant">
+  </ion-slide>
+  <ion-slide class="slide mealComponents">
+    <content>
+        <p *ngFor="let meal of meals; let i = index"><app-meal-item [meal] = meal [chef] = chefs[meal.fk_usr_chef_id]></app-meal-item></p>
+    </content>
+  </ion-slide>
+</ion-slides>
