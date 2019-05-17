@@ -8,43 +8,44 @@
 
 <ion-content>
 
-<form (submit)="onSubmit()">
+  <form (submit)="onSubmit()">
 
-<ion-item>
-  <ion-label position="floating">Meal Name</ion-label>
-  <ion-input></ion-input>
-</ion-item>
+    <ion-item>
+        <ion-label position="floating">Meal Name</ion-label>
+        <ion-input></ion-input>
+    </ion-item>
 
-<ion-item>
-    <ion-label position="floating">Price</ion-label>
-    <ion-input></ion-input>
-</ion-item>
+    <ion-item>
+          <ion-label position="floating">Price</ion-label>
+          <ion-input></ion-input>
+    </ion-item>
 
-<ion-item>
-    <ion-label position="floating">Start of meal</ion-label>
-    <ion-input readonly [(ngModel)]="startDate" 
-               [liIonic4Datepicker]="datePickerObj" 
-               (ionchange)="myFunction()"
-               name="startdate">
-    </ion-input>
-</ion-item>
+    <ion-item>
+        <ion-label position="floating">When do you serve you meal?</ion-label>
+        <ion-input readonly [(ngModel)]="startDate"
+                  [liIonic4Datepicker]="datePickerObj" 
+                  (ionchange)="myFunction()"
+                  name="startdate">
+        </ion-input>
+    </ion-item>
 
-<ion-item>
-    <ion-label position="floating">End of meal</ion-label>
-    <ion-input readonly [(ngModel)]="endDate" 
-               [liIonic4Datepicker]="datePickerObj" 
-               (ionchange)="myFunction()"
-               name="enddate">
-    </ion-input>
-</ion-item>
+    <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45"></ion-datetime>
+    </ion-item>
 
-<ion-item>
-    <ion-label position="floating">Meal Description</ion-label>
-    <ion-textarea rows="6" cols="20"></ion-textarea>
-</ion-item>
+    <ion-item>
+        <ion-label>End Time</ion-label>
+        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45"></ion-datetime>
+    </ion-item>
 
-<ion-button type="submit" (click)="postMeal()">Post</ion-button>
+    <ion-item>
+        <ion-label position="floating">Meal Description</ion-label>
+        <ion-textarea rows="6" cols="20"></ion-textarea>
+    </ion-item>
 
-</form>
+    <ion-button type="submit">Post</ion-button>
+
+  </form>
 
 </ion-content>
