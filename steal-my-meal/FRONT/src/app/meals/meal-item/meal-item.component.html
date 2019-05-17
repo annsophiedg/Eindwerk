@@ -1,8 +1,23 @@
 <ion-slides [options]="slideOpts">
-  <ion-slide>
-    <h1>Slide 1</h1>
+  <ion-slide class="chef">
+      <div class="profilepic">
+        <img src="../../../assets/img/profile_pic.jpg" alt="profilepicture">
+      </div>
+    <div class="top"> 
+        <h3>Sous-chef</h3>
+        <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>
+    </div>
+    <div class="bottom">
+        <h2>2.4KM</h2>   <h2>13 MEALS</h2>
+    </div>
   </ion-slide>
-  <ion-slide>
-    <h1>Slide 2</h1>
+  <ion-slide class="meal">
+    <div class="top">
+        <h2>{{meal.mls_name}}</h2>
+        <h3>{{meal.mls_description}}</h3>
+    </div>
+    <div class="bottom">
+      
+    </div>
   </ion-slide>
 </ion-slides>

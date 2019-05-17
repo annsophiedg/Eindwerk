@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
+  providers: [UserService]
 })
 export class ProfilePage implements OnInit {
 

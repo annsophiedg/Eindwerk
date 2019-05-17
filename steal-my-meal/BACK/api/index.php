@@ -17,6 +17,8 @@ require __DIR__ . '/bootstrap.php';
 $container = new Container($configuration);
 $dbManager = $container->getDBManager();
 $pdo = $dbManager->getPDO();
+$subject = null;
+$id = null;
 
 $request = $_SERVER["REQUEST_URI"];
 $method = $_SERVER["REQUEST_METHOD"];
@@ -41,15 +43,15 @@ if ( $subject == "meals" )
         if (!$id) {
             //GET overview meals: sort on location
             $availableMeals = $mealController->getMealOverview();
-            var_dump($availableMeals);
+            echo $availableMeals;
         } else {
             //GET meal details from meals + type
             $mealDetails = $mealController->getMealDetails($id);
-            var_dump($mealDetails);
+            echo $mealDetails;
             print '<br>';
             //GET meal ingredients
             $ingredients = $mealController->getMealIngredients($id);
-            var_dump($ingredients);
+            echo $ingredients;
             print '<br>';
         }
     } else if ($method == "POST") {
@@ -66,12 +68,12 @@ if ( $subject == "chefs" )
         if (!$id) {
             //GET overview chefs: sort on location
             $chefs = $chefController->getActiveChefs();
-            var_dump($chefs);
+            echo $chefs;
         } else {
             //GET chef details
             $chefDetails = $chefController->getChefDetails($id);
             //if chefDetails = null, user is not a chef!
-            var_dump($chefDetails);
+            echo $chefDetails;
         }
     }    
 }
@@ -85,11 +87,11 @@ if ( $subject == "users" )
         if (!$id) {
             //GET overview users: only as admin!!
             $users = $userController->getUserOverview();
-            var_dump($users);
+            echo $users;
         } else {
             //GET profile (user details)
             $userDetails = $userController->getUserDetails($id);
-            var_dump($userDetails);
+            echo $userDetails;
         }
     } else if ($method == "POST") {
         //add a user when making profile
