@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,17 +16,25 @@ const httpOptions = {
 export class UserService {
 
   private id:number = 3;
-  private user;
+  private URL;
 
   constructor(private http:HttpClient) {
-    // console.log("GEGEVENS: ",this.user)
-    this.getUser(this.id);
+    //get id from login
+    this.URL = 'http://localhost:3000/BACK/api/users/' + this.id;
   }
 
-  private getUser(id) {
-    this.http.get('http://localhost:3000/steal-my-meal/BACK/api/users/'+this.id, httpOptions).subscribe((result)=>(
-      this.user = result,
-      console.log("GEGEVENS: ",this.user)
-    ));
+  public setUserId(id){
+    this.id = id
   }
+
+  public getUser():Observable<User[]> {
+    return this.http.get<User[]>(`${this.URL}`)
+  }
+
+  public setUser(user:User):Observable<User[]> {
+    console.log(user)
+    return this.http.post<User[]>(`${this.URL}`,httpOptions)
+    
+  }
+
 }

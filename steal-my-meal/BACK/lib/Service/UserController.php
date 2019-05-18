@@ -44,9 +44,9 @@ class UserController {
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-    $user = $result;
+    $userDetails = $result;
 
-    return json_encode($user);
+    return json_encode($userDetails);
   }
 
   //get a users allergies
