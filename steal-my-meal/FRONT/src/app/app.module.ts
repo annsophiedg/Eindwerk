@@ -20,6 +20,7 @@ import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
     AddMealPage
   ],
   entryComponents: [AddMealPage],
+<<<<<<< HEAD
   imports: [
     BrowserModule, 
     HttpClientModule, 
@@ -28,6 +29,9 @@ import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
     ReactiveFormsModule, 
     IonicModule.forRoot(), 
     Ionic4DatepickerModule], 
+=======
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, Ionic4DatepickerModule, FormsModule, ReactiveFormsModule],
+>>>>>>> d53bcfda2fb8b080ebf6f08a83a6dbf39604b53e
   providers: [
     StatusBar,
     SplashScreen,
