@@ -8,43 +8,44 @@
 
 <ion-content>
 
-  <form (submit)="onSubmit()">
+  <form [formGroup]="meal" (ngSubmit)="logForm()">
 
     <ion-item>
         <ion-label position="floating">Meal Name</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
 
     <ion-item>
           <ion-label position="floating">Price</ion-label>
-          <ion-input></ion-input>
+          <ion-input type="text" formControlName="price"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating">When do you serve you meal?</ion-label>
-        <ion-input readonly [(ngModel)]="startDate"
+        <ion-input readonly 
                   [liIonic4Datepicker]="datePickerObj" 
                   (ionchange)="myFunction()"
-                  name="startdate">
+                  name="startdate"
+                  type="date" formControlName="date">
         </ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label>Start Time</ion-label>
-        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45" type="text" formControlName="startTime"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <ion-label>End Time</ion-label>
-        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45" type="text" formControlName="endTime"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating">Meal Description</ion-label>
-        <ion-textarea rows="6" cols="20"></ion-textarea>
+        <ion-textarea rows="6" cols="20" type="text" formControlName="description"></ion-textarea>
     </ion-item>
 
-    <ion-button type="submit">Post</ion-button>
+    <ion-button type="submit" [disabled]="!meal.valid">Post</ion-button>
 
   </form>
 

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { MealService } from '../../../services/meal/meal.service';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-meal',
@@ -9,7 +11,9 @@ import { ModalController } from '@ionic/angular';
 export class AddMealPage {
 
   @Input() value: number;
-  mealName:string;
+
+  //add-meal modal
+  mealJson;
   today = Date.now();
   mealDate;
   datePickerObj: any = {
@@ -37,7 +41,25 @@ export class AddMealPage {
     }
   };
 
-  constructor(public modal: ModalController) { }
+  meal: FormGroup;
+
+  constructor(public modal: ModalController, private formBuilder: FormBuilder, private mealService:MealService) {
+    this.meal = this.formBuilder.group({
+      name: ['', Validators.required, ],
+      price: ['', Validators.required],
+      date: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
+
+  logForm(){
+    this.mealJson = JSON.stringify(this.meal.value);
+    console.log(this.mealJson);
+    this.mealService.addMeal(this.mealJson);
+  }
+
 
   ngOnInit() {
     
@@ -47,9 +69,6 @@ export class AddMealPage {
     this.modal.dismiss()
   }
 
-  onSubmit(){
-    
-  }
 
   // postMeal(){
   //   this.modal.dismiss({
