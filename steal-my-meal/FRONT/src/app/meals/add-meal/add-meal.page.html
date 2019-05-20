@@ -45,7 +45,7 @@
         <ion-textarea rows="6" cols="20" type="text" formControlName="description"></ion-textarea>
     </ion-item>
 
-    <ion-button type="submit" [disabled]="!meal.valid">Post</ion-button>
+    <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Post</ion-button>
 
   </form>
 

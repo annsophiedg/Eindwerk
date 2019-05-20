@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-meal',
@@ -43,7 +44,7 @@ export class AddMealPage {
 
   meal: FormGroup;
 
-  constructor(public modal: ModalController, private formBuilder: FormBuilder, private mealService:MealService) {
+  constructor(public modal: ModalController, private formBuilder: FormBuilder, private mealService:MealService, public loadingController: LoadingController) {
     this.meal = this.formBuilder.group({
       name: ['', Validators.required, ],
       price: ['', Validators.required],
@@ -54,26 +55,30 @@ export class AddMealPage {
     });
   }
 
+  ngOnInit() {
+    
+  }
+
   logForm(){
     this.mealJson = JSON.stringify(this.meal.value);
     console.log(this.mealJson);
     this.mealService.addMeal(this.mealJson);
+
   }
 
-
-  ngOnInit() {
-    
+  async presentLoading(){
+    const loading = await this.loadingController.create({
+      message: 'Posting new meal...',
+      duration: 2000,
+      spinner: "dots"
+    });
+    await loading.present();
+    await loading.onDidDismiss();
+    this.modal.dismiss();
   }
 
   hideModal(){
     this.modal.dismiss()
   }
 
-
-  // postMeal(){
-  //   this.modal.dismiss({
-  //     //some values to pass for sending to database
-  //     // 'result': value
-  //   })
-  // }
 }

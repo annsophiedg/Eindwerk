@@ -71,8 +71,13 @@ class MealController {
   }
 
   // Add a single meal to DB
-  function addMeal(){
+  function addMeal($content){
     
+    $decoded = json_decode($content, true);
+    $sql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end)
+            values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."')";
+            
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }
 }
 
