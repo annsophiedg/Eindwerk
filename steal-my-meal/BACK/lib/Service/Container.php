@@ -5,6 +5,7 @@ class Container {
     private $configuration;
     private $dbManager;
     private $mealController;
+    private $FbController;
 
     public function __construct(array $configuration)
     { 

@@ -1,4 +1,7 @@
 // Datepicker default style
+*{
+    z-index: 100;
+}
 .li-ionic4-datePicker {
     .modal-wrapper {
         height: 75%;

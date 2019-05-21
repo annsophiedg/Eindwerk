@@ -4,8 +4,10 @@ import { Meal } from '../../models/meal';
 import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 
+
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
+import { FacebookService } from 'src/services/facebook/facebook.service';
 
 declare var google;
 
@@ -34,8 +36,7 @@ export class MealsPage implements OnInit, AfterContentInit {
     spaceBetween: -300
   };
 
-  constructor(private mealService:MealService, private chefService:ChefService, public modal: ModalController) {
-
+  constructor(private mealService:MealService, private chefService:ChefService, private fbService:FacebookService, public modal: ModalController) {
     //load chefs into a dictionary with their id as key
     chefService.getChefs().subscribe(chefs=>{
       chefs.forEach(chef => {
@@ -64,7 +65,7 @@ export class MealsPage implements OnInit, AfterContentInit {
   }
 
   showUp(e){
-    if(e.target.classList.contains("swiper-container-vertical")){
+    if(e == 'hide' || e.target.classList.contains("swiper-container-vertical")){
       this.upBtn.el.style.display = "block";
       this.slider.el.style.zIndex = "-1";
     }
@@ -93,4 +94,7 @@ export class MealsPage implements OnInit, AfterContentInit {
     this.slider.slideTo(2,400);
   }
 
+  logIn(){
+    this.fbService.getToken();
+  }
 }

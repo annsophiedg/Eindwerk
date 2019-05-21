@@ -101,3 +101,13 @@ if ( $subject == "users" )
     
     
 }
+
+//use Service FbController if $subject == "oauth"
+if ( $subject == "facebook" )
+{
+    $fbController = new FbController($dbManager);
+    
+    if ($method == "POST") {
+        $fb = $fbController->getToken($id);
+    }    
+}

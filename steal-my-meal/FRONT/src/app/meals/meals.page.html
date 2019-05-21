@@ -9,11 +9,11 @@
 <ion-fab vertical="top" horizontal="end">
 <ion-fab-button class="menu"><ion-icon name="menu"></ion-icon></ion-fab-button>
 <ion-fab-list side="start">
-  <ion-fab-button>
-    <ion-icon name="add" (click)="addMeal()"></ion-icon>
+  <ion-fab-button (click)="addMeal()">
+    <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 
-  <ion-fab-button>
+  <ion-fab-button (click)="logIn()">
     <ion-icon name="person"></ion-icon>
   </ion-fab-button>
 
@@ -26,7 +26,7 @@
 <ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd) = "hideUp($event)" (ionSlideReachStart) = "showUp($event)">
   <ion-slide class="slide firstSlider">
   </ion-slide>
-  <ion-slide class="slide transparant">
+  <ion-slide class="slide transparant" (click) = "showUp('hide')">
   </ion-slide>
   <ion-slide class="slide mealComponents">
     <content>

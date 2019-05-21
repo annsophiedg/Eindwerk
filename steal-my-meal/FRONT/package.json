@@ -28,6 +28,7 @@
     "@ionic/pro": "2.0.4",
     "@logisticinfotech/ionic4-datepicker": "^1.3.0",
     "cordova": "^9.0.0",
+    "cordova-android": "8.0.0",
     "cordova-browser": "6.0.0",
     "cordova-plugin-datepicker": "0.9.3",
     "cordova-plugin-facebook4": "4.2.1",
@@ -75,7 +76,8 @@
   "description": "An Ionic project",
   "cordova": {
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ],
     "plugins": {
       "cordova-plugin-whitelist": {},
