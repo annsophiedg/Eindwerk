@@ -51,18 +51,46 @@ class UserController {
 
   //get a users allergies
   /**
-   * all_name
-   * 
+   * ing_id, ing_name
    * @return array|null
    */
   function getUserAllergies($id){
-    $sqlUserAllergies = "select all_name from users u
+    $sqlUserAllergies = "select ing_id, ing_name from users u
     inner join `users/allergies` `u/a` on u.usr_id = `u/a`.fk_usr_id
-    inner join allergies a on `u/a`.fk_all_id = a.all_id
+    inner join ingredients a on `u/a`.fk_ing_all_id = a.ing_id
     where usr_id=".$id;
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sqlUserAllergies, null, PDO::FETCH_OBJ);
+
+    $allergies = $result;
+
+    return json_encode($allergies);
+  }
+
+  //add an allergy to a user
+  /**
+   * all_id, all_name
+   * @return array|null
+   */
+  function setUserAllergy($usr_id, $all_id) {
+    $sqlInsertUserAllergy = "INSERT INTO `users/allergies` (fk_usr_id, fk_ing_all_id)
+    VALUES (".$usr_id.",".$all_id.")";
+
+    //insert data in db
+    $result = $this->dbm->sqlExecute($sqlInsertUserAllergy, null, PDO::FETCH_OBJ);
+  }
+
+  //get all allergies from DB
+  /**
+   * ing_id, ing_name
+   * @return array|null
+   */
+  function getAllAllergies(){
+    $sqlAllergies = "select * from allergies order by all_name";
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sqlAllergies, null, PDO::FETCH_OBJ);
 
     $allergies = $result;
 

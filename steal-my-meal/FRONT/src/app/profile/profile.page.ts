@@ -5,14 +5,18 @@ import { UserService } from '../user.service';
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
-  providers: [UserService]
 })
 export class ProfilePage implements OnInit {
+  public user;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService) {
+    this.user = userService.getUser().subscribe((result)=>(
+      this.user = result,
+      console.log("GEGEVENS: ",this.user)
+    ));
+  }
 
   ngOnInit() {
   }
-
 
 }

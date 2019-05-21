@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserComponent } from './user.component';
+import { FavoriteChefsPage } from './favorite-chefs.page';
 
-describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('FavoriteChefsPage', () => {
+  let component: FavoriteChefsPage;
+  let fixture: ComponentFixture<FavoriteChefsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserComponent ],
+      declarations: [ FavoriteChefsPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(FavoriteChefsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

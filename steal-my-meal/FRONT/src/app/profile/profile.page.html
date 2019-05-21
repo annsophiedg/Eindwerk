@@ -1,67 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Mijn profiel</ion-title>
+    <ion-title>My account</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-card class="userDetails">
+  <ion-avatar>
+    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    <a class="editUser" href="../edit-user">
+      <ion-icon name="create"></ion-icon>
+    </a>
+  </ion-avatar>
+  <ion-card-title>{{user[0].usr_firstname}} {{user[0].usr_lastname}}</ion-card-title>
+  <ion-card-subtitle>{{user[0].usr_street}} {{user[0].usr_housenumber}}, {{user[0].zip_zipcode}} {{user[0].zip_city}}
+  </ion-card-subtitle>
+</ion-card>
 <ion-content>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-avatar>
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-avatar>
-      <ion-icon name="create"></ion-icon>
-      <ion-card-title>Naam</ion-card-title>
-      <ion-card-subtitle>Address</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Allergieën</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      no allergies?
-      <ion-icon name="add"></ion-icon>
-      Add an allergy
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Favoriete koks</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      ...
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Waardering</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Show rating of chef
-      How many Cooked Meals?
-      How many followers?
-
-      # Ordered Meals? ->history?
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Maaltijden</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      History of Cooked Meals
-      History of Ordered Meals
-    </ion-card-content>
-  </ion-card>
+  <ion-nav>
+    <ul>
+      <!-- Indicated allergies -->
+      <li><a href="/allergies">
+          <ion-icon name="medkit"></ion-icon> My Allergies
+        </a></li>
+      <!-- Chefs that user follows -->
+      <li><a href="./favorite-chefs">
+          <ion-icon name="star"></ion-icon> My Favorite Chefs
+        </a></li>
+      <!-- Rating and delivered meals -->
+      <li><a href="./experience">
+          <ion-icon name="ribbon"></ion-icon> My Experience
+        </a></li>
+      <!-- History of Cooked Meals -->
+      <li><a href="./cooked-meals">
+          <ion-icon name="restaurant"></ion-icon> My Meals
+        </a></li>
+      <li><a href="./invite"><ion-icon name="people"></ion-icon> Invite Friends</a></li>
+      <li><a href="./settings"><ion-icon name="settings"></ion-icon> Settings</a></li>
+      <li><a href="./info"><ion-icon name="help-circle"></ion-icon> Info</a></li>
+    </ul>
+  </ion-nav>
 
 </ion-content>

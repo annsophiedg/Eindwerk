@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -46,6 +46,7 @@ export class EditUserPage implements OnInit {
   //inputwaarden opslaan
   public saveFirstname(x,y) { 
     this.user[0]["usr_firstname"] = x;
+    //pass name to function to make one function instead of more
     console.log(x);
     console.log(y);
   }
