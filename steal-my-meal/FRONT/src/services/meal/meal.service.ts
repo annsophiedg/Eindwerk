@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/x-www-form-urlencoded'
   })
 }
 
@@ -25,8 +25,8 @@ export class MealService {
   }
 
   //Add meal
-  addMeal(meal:Meal):Observable<Meal>{
-    return this.http.post<Meal>(this.mealsUrl, meal, httpOptions);
+  addMeal(meal){
+    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe();
   }
 
   //Delete meal

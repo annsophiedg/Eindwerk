@@ -17,6 +17,7 @@ $dbManager = $container->getDBManager();
 $pdo = $dbManager->getPDO();
 $subject = null;
 $id = null;
+$input = file_get_contents("php://input");
 
 $request = $_SERVER["REQUEST_URI"];
 $method = $_SERVER["REQUEST_METHOD"];
@@ -53,7 +54,7 @@ if ( $subject == "meals" )
             print '<br>';
         }
     } else if ($method == "POST") {
-
+        $mealController->addMeal($input);
     }
 }
 
