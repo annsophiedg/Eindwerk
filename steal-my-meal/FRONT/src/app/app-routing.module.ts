@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'allergies', loadChildren: './profile/allergies/allergies.module#AllergiesPageModule' },
   { path: 'favorite-chefs', loadChildren: './profile/favorite-chefs/favorite-chefs.module#FavoriteChefsPageModule' },
   { path: 'experience', loadChildren: './profile/experience/experience.module#ExperiencePageModule' },
-  { path: 'cooked-meals', loadChildren: './profile/cooked-meals/cooked-meals.module#CookedMealsPageModule' }
+  { path: 'cooked-meals', loadChildren: './profile/cooked-meals/cooked-meals.module#CookedMealsPageModule' },
+  { path: 'meal-detail', loadChildren: './meals/meal-detail/meal-detail.module#MealDetailPageModule' }
 ];
 
 @NgModule({

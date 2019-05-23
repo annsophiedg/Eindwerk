@@ -97,8 +97,17 @@ class MealController {
   function addMeal($content){
     
     $decoded = json_decode($content, true);
+
+    // Take time out of timestamp
+    $startTime = substr($decoded["startTime"], 11, -10);
+    $endTime = substr($decoded["startTime"], 11, -10);
+
+    // Create dateTime
+    $takeStart = $decoded["date"]." ".$startTime;
+    $takeEnd = $decoded["date"]." ".$endTime;
+
     $sql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end)
-            values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."')";
+            values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$takeStart."', '".$takeEnd."')";
             
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }

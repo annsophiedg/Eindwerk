@@ -12,14 +12,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
+import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
 
 
 @NgModule({
   declarations: [
     AppComponent, 
-    AddMealPage
+    AddMealPage,
+    MealDetailPage
   ],
-  entryComponents: [AddMealPage],
+  entryComponents: [AddMealPage, MealDetailPage],
   imports: [
     BrowserModule, 
     HttpClientModule, 

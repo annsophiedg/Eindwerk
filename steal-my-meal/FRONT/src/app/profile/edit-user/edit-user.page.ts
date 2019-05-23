@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../../user.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-edit-user',
