@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../../models/meal';
 import { Chef } from  'src/models/chef';
+import { testUserAgent } from '@ionic/core';
 
 @Component({
   selector: 'app-meal-item',
@@ -27,6 +28,7 @@ export class MealItemComponent implements OnInit {
   ngOnInit() {
     
   }
+
 
   
 

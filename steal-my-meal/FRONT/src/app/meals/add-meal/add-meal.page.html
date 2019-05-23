@@ -1,52 +1,81 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-meal</ion-title>
+    <ion-title>add meal</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-icon (click)="hideModal()" style="font-size: 2rem;" name="close"></ion-icon>
+<div class="close">
+<ion-icon (click)="hideModal()" name="close-circle" color="primary"></ion-icon>
+</div>
 
 <ion-content>
 
   <form [formGroup]="meal" (ngSubmit)="logForm()">
 
-    <ion-item>
-        <ion-label position="floating">Meal Name</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
-    </ion-item>
+    <ul>
 
-    <ion-item>
-          <ion-label position="floating">Price</ion-label>
-          <ion-input type="text" formControlName="price"></ion-input>
-    </ion-item>
+      <li>
 
-    <ion-item>
-        <ion-label position="floating">When do you serve you meal?</ion-label>
-        <ion-input readonly 
-                  [liIonic4Datepicker]="datePickerObj" 
-                  (ionchange)="myFunction()"
-                  name="startdate"
-                  type="date" formControlName="date">
-        </ion-input>
-    </ion-item>
+        <ion-item>
+            <ion-label position="floating">Meal Name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
 
-    <ion-item>
-        <ion-label>Start Time</ion-label>
-        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45" type="text" formControlName="startTime"></ion-datetime>
-    </ion-item>
+      </li>
 
-    <ion-item>
-        <ion-label>End Time</ion-label>
-        <ion-datetime displayFormat="HH:mm " minuteValues="00,15,30,45" type="text" formControlName="endTime"></ion-datetime>
-    </ion-item>
+      <li>
+    
+        <ion-item>
+              <ion-label position="floating">Price</ion-label>
+              <ion-input type="text" formControlName="price"></ion-input>
+        </ion-item>
 
-    <ion-item>
-        <ion-label position="floating">Meal Description</ion-label>
-        <ion-textarea rows="6" cols="20" type="text" formControlName="description"></ion-textarea>
-    </ion-item>
+      </li>
 
-    <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Post</ion-button>
+      <li>
+    
+        <ion-item>
+            <ion-label position="floating" class="dateLabel"><ion-icon name="calendar"></ion-icon>Day to serve</ion-label>
+            <ion-input readonly
+                      [liIonic4Datepicker]="datePickerObj"
+                      formControlName="date">
+            </ion-input>
+        </ion-item>
 
+      </li>
+
+      <li>
+    
+        <ion-item>
+            <ion-label>Start Time</ion-label>
+            <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="startTime"></ion-datetime>
+        </ion-item>
+
+      </li>
+
+      <li>
+    
+        <ion-item>
+            <ion-label>End Time</ion-label>
+            <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="endTime"></ion-datetime>
+        </ion-item>
+
+      </li>
+
+      <li>
+    
+        <ion-item>
+            <ion-label position="floating">Meal Description</ion-label>
+            <ion-textarea rows="6" cols="20" type="text" formControlName="description"></ion-textarea>
+        </ion-item>
+
+      </li>
+    
+        <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Add Your Meal</ion-button>
+
+    </ul>
+
+  
   </form>
 
 </ion-content>

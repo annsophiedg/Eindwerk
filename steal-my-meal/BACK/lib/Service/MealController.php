@@ -30,9 +30,9 @@ class MealController {
   }
 
   /**
+   * Get details of a single meal
    * @return array
    */
-  // Get details of a single meal
   function getMealDetails($id)
   {
     //sql statement to get requested meal details joined with type
@@ -47,13 +47,36 @@ class MealController {
   }
 
   /**
+   * Get ALL ingredients from DB sorted on alphabet
    * @return array
    */
-  // Get ingredients of a single meal
+  function getDBIngredients()
+  {
+    //empty array to save ingredients
+    $allIngredients = Array();
+
+    //sql statement to get requested meal details
+    $sql = "select * from ingredients order by ing_name";
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    foreach ($result as $row) {
+      array_push($allIngredients,$row);
+    }
+
+    return json_encode($allIngredients);
+  }
+
+  /**
+   * Get ingredients of a single meal
+   * ing_name
+   * @return array
+   */
   function getMealIngredients($id)
   {
     //empty array to save ingredients
-    $ingredients = Array();
+    $mealIngredients = Array();
 
     //sql statement to get requested meal details
     $sql = "select ing_name from `meals/ingredients` mi
@@ -64,10 +87,10 @@ class MealController {
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
     foreach ($result as $row) {
-      array_push($ingredients,$row);
+      array_push($mealIngredients,$row);
     }
 
-    return json_encode($ingredients);
+    return json_encode($mealIngredients);
   }
 
   // Add a single meal to DB

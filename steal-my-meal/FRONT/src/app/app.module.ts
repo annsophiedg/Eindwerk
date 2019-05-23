@@ -15,15 +15,29 @@ import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
 
 
 @NgModule({
-  declarations: [AppComponent, AddMealPage],
+  declarations: [
+    AppComponent, 
+    AddMealPage
+  ],
   entryComponents: [AddMealPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, Ionic4DatepickerModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule, 
+    HttpClientModule, 
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    IonicModule.forRoot(), 
+    Ionic4DatepickerModule], 
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 
 export class AppModule {}

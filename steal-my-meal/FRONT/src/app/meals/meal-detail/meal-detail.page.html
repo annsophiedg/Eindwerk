@@ -1,0 +1,33 @@
+<ion-card class="headCard">
+  <ion-toolbar>
+
+      <ion-avatar slot="start">
+          <img [src]="profilePath">
+        </ion-avatar>
+    
+        <div >{{chef.chef_firstname}} {{chef.chef_lastname}}</div>
+        <div class="mealName">{{meal.mls_name}}</div>
+  </ion-toolbar>
+</ion-card>
+
+<ion-content>
+  <ion-card>
+      <ion-item>
+        <ion-label>Description: {{meal.mls_description}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Starts at: {{meal.mls_take_start}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ends at: {{meal.mls_take_end}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price: {{meal.mls_price| currency:"EUR" }}</ion-label>
+      </ion-item>
+
+  </ion-card>
+
+  <ion-button>Get this meal!</ion-button>
+
+
+</ion-content>

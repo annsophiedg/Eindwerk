@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-meal',
@@ -16,7 +17,7 @@ export class AddMealPage {
   //add-meal modal
   mealJson;
   today = Date.now();
-  mealDate;
+  mealDate:string = "";
   datePickerObj: any = {
     inputDate: new Date(this.today), // default new Date()
     fromDate: new Date(this.today), // default null
@@ -44,9 +45,16 @@ export class AddMealPage {
 
   meal: FormGroup;
 
-  constructor(public modal: ModalController, private formBuilder: FormBuilder, private mealService:MealService, public loadingController: LoadingController) {
+  startTime;
+
+  constructor(public  modal: ModalController,
+              private formBuilder: FormBuilder,
+              private mealService:MealService,
+              public  loadingController: LoadingController,
+              public  toastController: ToastController) {
+
     this.meal = this.formBuilder.group({
-      name: ['', Validators.required, ],
+      name: ['', Validators.required,],
       price: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
@@ -68,13 +76,28 @@ export class AddMealPage {
 
   async presentLoading(){
     const loading = await this.loadingController.create({
-      message: 'Posting new meal...',
+      message: 'Loading...',
       duration: 2000,
       spinner: "dots"
+    });
+    const toast = await this.toastController.create({
+      position: 'top',
+      duration: 2000,
+      buttons: [
+        {
+          side: 'start',
+          icon: 'restaurant',
+          text: 'New meal was created succefully!',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }
+      ]
     });
     await loading.present();
     await loading.onDidDismiss();
     this.modal.dismiss();
+    toast.present();
   }
 
   hideModal(){
