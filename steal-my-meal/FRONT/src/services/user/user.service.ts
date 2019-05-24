@@ -19,6 +19,7 @@ export class UserService {
   private id:number = 3;
   private userURL; 
   private allergyURL;
+  private deleteAllergyURL;
 
   constructor(private http:HttpClient) {
     //get id from login
@@ -54,5 +55,9 @@ export class UserService {
     this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
   }
 
+  public deleteUserAllergy(allergy) {
+    this.deleteAllergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.id + ',' + allergy["ing_id"];
+    this.http.delete(this.deleteAllergyURL, allergy).subscribe()
+  }
   
 }

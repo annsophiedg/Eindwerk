@@ -84,6 +84,21 @@ class UserController {
     $result = $this->dbm->sqlExecute($sqlInsertUserAllergy, null, PDO::FETCH_OBJ);
   }
 
+
+  //delete allergy from a user
+  /**
+   * all_id, all_name
+   * @return array|null
+   */
+  function deleteUserAllergy($usr_id, $all_id) {
+    $sqlDeleteAll = "delete from `users/allergies` where fk_usr_id = ".$usr_id." and fk_ing_all_id = ".$all_id;
+
+    //execute sql
+    $result = $this->dbm->sqlExecute($sqlDeleteAll, null, PDO::FETCH_OBJ);
+
+    return $result;
+  }
+
   //get all allergies from DB
   /**
    * ing_id, ing_name
@@ -102,36 +117,18 @@ class UserController {
 
   //UNDERNEATH STILL TO FIX SQL!! ----------------
 
-  // Add a single user to DB
-  function addUser(){
-    $sql = "INSERT INTO users SET ...";
-    //insert data in db
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
-  }
-
-  // Update user information
-  function updateUser($id){
-    $user = json_decode( file_get_contents("php://input") );
-    
-    $name = $user->naam;
-
-    $sql = "UPDATE users SET usr_name='$name' WHERE usr_id=$id";
-    //insert data in db
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
-  }
-
   // Delete user
   function deleteUser($id){
     $user = json_decode( file_get_contents("php://input") );
-    
+
     $name = $user->naam;
 
     $sql = "DELETE from users WHERE usr_id=$id";
     //insert data in db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-    
-    return $message;
+
+    return json_encode($message);
   }
 
 }

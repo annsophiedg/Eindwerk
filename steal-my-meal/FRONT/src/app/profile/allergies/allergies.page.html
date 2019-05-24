@@ -6,8 +6,9 @@
 
 <ion-content>
   <div class="paddingBox">
-    <ion-chip *ngFor="let a of userAllergies">
+    <ion-chip *ngFor="let a of userAllergies" (click)=deleteAllergy(a) [hidden]=false>
       <ion-label>{{a.ing_name}}</ion-label>
+      <ion-icon name="close"></ion-icon>
     </ion-chip>
 
     <p *ngIf="!hasAllergies">You didn't add any allergies to your profile</p>

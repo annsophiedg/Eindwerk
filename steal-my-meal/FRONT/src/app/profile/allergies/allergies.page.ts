@@ -15,13 +15,14 @@ export class AllergiesPage implements OnInit {
   public dbIngredients;
   public dbAllergies;
   public inputValues = [];
-  public userAllergies;
+  public userAllergies = [];
   public hasAllergies;
 
-  newAllergy:object;
+  newAllergy:string;
   all_id;
   allergyForm:FormGroup;
   all_name:AbstractControl;
+  hidden;
 
   constructor(public modal:ModalController, 
     private formBuilder:FormBuilder, 
@@ -69,7 +70,7 @@ export class AllergiesPage implements OnInit {
         this.inputValues.push(ingredient)
       }
     });
-    console.log("input: ",this.inputValues);
+    // console.log("input: ",this.inputValues);
   }
 
   private showAllergy(newAllergy) {
@@ -77,33 +78,50 @@ export class AllergiesPage implements OnInit {
     console.log(this.userAllergies);
   }
 
+  private hideAllergy(allergy) {
+    let array = this.userAllergies;
+    for (let i=0; i<array.length; i++) {
+      if (array[i] === allergy) {
+        array.splice(i,i);
+      }
+    }
+  }
+
   private sendAllergy(newAllergy) {
-    this.mealService.addIngredient(newAllergy).subscribe(res => {
+    console.log('sss',newAllergy);
+    this.mealService.addIngredient({"ing_name":newAllergy}).subscribe(res => {
       //get id of added ingredient
       this.all_id = JSON.parse(JSON.stringify(res))[0]['id'];
       console.log("allergyID:",this.all_id);
       //add id as a foreign key (userAllergy)
       this.userService.addAllergy({"all_id":this.all_id});
-      return 'hallo';
+      //show new allergy as label on page
+      this.showAllergy(
+        {"ing_id":this.all_id,"ing_name":newAllergy}
+        );
     })
   }
 
   //when clicked on list item
-  public addAllergy(newAllergy) {
-    console.log('value:', newAllergy);
-    this.showAllergy(newAllergy);
-    this.sendAllergy(newAllergy);
+  public addAllergy(newAllergyObject) {
+    this.newAllergy = newAllergyObject["ing_name"];
+    this.sendAllergy(this.newAllergy);
   }
 
   //when entered in input
   public postAllergy() {
     //get value of new allergy
-    this.newAllergy = {"ing_name":event.target[0].value};
-    console.log("newAllergy:", this.newAllergy);
+    this.newAllergy = event.target[0].value;
     //send new allergy to service
     this.sendAllergy(this.newAllergy);
-    //show new allergy as label on page
-    this.showAllergy(this.newAllergy);
+  }
+
+  public deleteAllergy(allergy) {
+    console.log("to delete:",allergy);
+    //delete in back
+    this.userService.deleteUserAllergy(allergy);
+    //delete in front
+    this.hideAllergy(allergy);
   }
 
   ngOnInit() {

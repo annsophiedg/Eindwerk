@@ -112,6 +112,12 @@ if ( $subject == "allergies" )
         }
     } else if ($method == "POST") {
         $userController->addUserAllergy($id,$input);
+    } else if ($method == "DELETE") {
+      $usr_all = explode(",", $id);
+      $usr_id = $usr_all[0];
+      $all_id = $usr_all[1];
+
+        $userController->deleteUserAllergy($usr_id,$all_id);
     }
         
 }
@@ -131,11 +137,6 @@ if ( $subject == "users" )
             $userDetails = $userController->getUserDetails($id);
             echo $userDetails;
         }
-        
-    } else if ($method == "POST") {
-        //add a user when making profile
-        $userController->addUser();
-        print "post";
     } else if ($method == "PUT") {
         //update user information
         $userController->updateUser($id);
