@@ -43,4 +43,16 @@ export class UserService {
     return this.http.post<User[]>(`${this.userURL}`,httpOptions)
   }
 
+  /**
+   * addAllergy
+   */
+  public addAllergy(allergy) {
+    return this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
+  }
+
+  public setAllergyOfUser(allergy) {
+    this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
+  }
+
+  
 }

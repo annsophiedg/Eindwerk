@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { UserService } from '../../user.service';
+import { MealService } from '../../../services/meal/meal.service';
 import { GeneralService } from 'src/services/general/general.service';
 
 @Component({
@@ -15,13 +18,28 @@ export class AllergiesPage implements OnInit {
   public userAllergies;
   public hasAllergies;
 
-  constructor(private userService:UserService, private generalService:GeneralService) { 
+  newAllergy:string;
+  all_id;
+  allergyForm:FormGroup;
+  all_name:AbstractControl;
+
+  constructor(public modal:ModalController, 
+    private formBuilder:FormBuilder, 
+    private userService:UserService, 
+    private mealService:MealService, 
+    private generalService:GeneralService) { 
+    this.allergyForm = this.formBuilder.group({
+      all_name: ['', Validators.required]
+    });
+
+    this.all_name = this.allergyForm.controls['all_name'];
+
     userService.getUserAllergies().subscribe((result)=>(
       //save user allergies in array
       this.userAllergies = result,
       console.log("User Allergies: ",this.userAllergies),
       // check if user has allergies
-      this.checkAllergies(this.userAllergies)
+      this.userHasAllergies(this.userAllergies)
     ));
     generalService.getIngredients().subscribe((result)=>(
       //save DB ingredients in array
@@ -30,7 +48,8 @@ export class AllergiesPage implements OnInit {
     ));
   }
 
-  private checkAllergies(allergies) {
+  //check if user has any allergies (return true/false)
+  private userHasAllergies(allergies) {
     if (allergies.length == 0) {
       this.hasAllergies = false
     } else {
@@ -38,7 +57,8 @@ export class AllergiesPage implements OnInit {
     }
   }
 
-  public addInputValues(x) {
+  // fill list of possible input values
+  public showInputValues(x) {
     //start with empty array
     this.inputValues = [];
     //check all ingredients from db
@@ -49,8 +69,7 @@ export class AllergiesPage implements OnInit {
         this.inputValues.push(ingredient)
       }
     });
-    console.log("input: ",this.inputValues);
-    
+    // console.log("input: ",this.inputValues);
   }
 
   public addAllergy(newAllergy) {
@@ -61,9 +80,25 @@ export class AllergiesPage implements OnInit {
 
     //add new allergy as label on top
     this.userAllergies.push(newAllergy)
-    //clear input
     //add ing_id in DB as fk_ing_all_id 
     console.log("new Allergy id: ",newAllergy["ing_id"])
+
+    //clear input
+  }
+
+
+  postAllergy() {
+    this.newAllergy = event.target[0].value;
+    console.log("newAllergy:", this.newAllergy);
+    //send new allergy
+    this.mealService.addIngredient({"ing_name":this.newAllergy}).subscribe(res => {
+      //save added ingredient_id as all_id
+      this.all_id = JSON.stringify(res);
+      this.all_id = JSON.parse(this.all_id)[0]['id'];
+      console.log("allergyID:",this.all_id);
+      //add userAllergy
+      // this.userService.addAllergy({"all_id":this.all_id});
+    })
   }
 
   ngOnInit() {

@@ -44,9 +44,9 @@ export class AddMealPage {
 
   meal: FormGroup;
 
-  constructor(public modal: ModalController, private formBuilder: FormBuilder, private mealService:MealService, public loadingController: LoadingController) {
+  constructor(public modal:ModalController, private formBuilder:FormBuilder, private mealService:MealService, public loadingController: LoadingController) {
     this.meal = this.formBuilder.group({
-      name: ['', Validators.required, ],
+      name: ['', Validators.required],
       price: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],

@@ -94,13 +94,27 @@ class MealController {
   }
 
   // Add a single meal to DB
-  function addMeal($content){
-    
-    $decoded = json_decode($content, true);
+  function addMeal($input){
+    $decoded = json_decode($input, true);
     $sql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end)
             values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."')";
             
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+
+  }
+
+  // Add an ingredient to DB & return the ing_id
+  function addIngredient($input){
+    $decoded = json_decode($input, true);
+    $ing_name = $decoded["ing_name"];
+
+    $sql = "SELECT getAddedIngredientId('".$ing_name."') as id";
+
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    //var_dump($result);
+    echo json_encode($result);
   }
 }
 

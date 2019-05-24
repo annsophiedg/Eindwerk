@@ -12,14 +12,14 @@
 
     <p *ngIf="!hasAllergies">You didn't add any allergies to your profile</p>
 
-    <form class="allergyform">
+    <form class="allergyForm" FormGroup="allergyForm" (ngSubmit)="postAllergy()">
       <ion-item>
         <ion-label position="floating">Add an allergy here</ion-label>
-        <ion-input list="allergyList" name="allergy" value="" (input)="addInputValues($event.target.value)">
+        <ion-input list="allergyList" FormControlName="all_name" name="all_name" (input)="showInputValues($event.target.value)">
         </ion-input>
       </ion-item>
       <ul class="inputList">
-        <li *ngFor="let value of inputValues" (click)="addAllergy(value)">{{value.ing_name}}</li>
+        <li *ngFor="let value of inputValues" (click)="addAllergy(value)" value="{{value.ing_id}}">{{value.ing_name}}</li>
       </ul>
       <p>Please add ingredients that you are allergic to so we can check it with the ingredients of the meal.</p>
     </form>

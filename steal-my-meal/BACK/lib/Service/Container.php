@@ -4,7 +4,6 @@ class Container {
 
     private $configuration;
     private $dbManager;
-    private $mealController;
 
     public function __construct(array $configuration)
     { 
