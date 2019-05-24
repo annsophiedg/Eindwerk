@@ -9,6 +9,7 @@ import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
+import { ProfilePage } from '../profile/profile.page';
 
 declare var google;
 
@@ -106,9 +107,16 @@ export class MealsPage implements OnInit, AfterContentInit {
 
   // Modals to create
 
-  async addMeal() {
+  async goToAddMeal() {
     const modal = await this.modal.create({
       component: AddMealPage
+    });
+    return await modal.present();
+  }
+
+  async goToProfile() {
+    const modal = await this.modal.create({
+      component: ProfilePage
     });
     return await modal.present();
   }

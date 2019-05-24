@@ -45,13 +45,8 @@ export class MealService {
 
   //Add ingredient
   addIngredient(ingredient){
-    console.log('test1');
     return this.http.post(this.ingredientURL, ingredient, httpOptions);
   }
-
-  // getIngredientId(ingredient){
-  //   return this.http.post(this.ingredientURL, ingredient, httpOptions).subscribe();
-  // }
 
 
 }

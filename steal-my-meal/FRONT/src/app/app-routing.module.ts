@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule' },
   { path: 'add-meal', loadChildren: './meals/add-meal/add-meal.module#AddMealPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'profile', loadChildren: './profile/profile.page.html' },
   { path: 'edit-user', loadChildren: './profile/edit-user/edit-user.module#EditUserPageModule' },
   { path: 'allergies', loadChildren: './profile/allergies/allergies.module#AllergiesPageModule' },
   { path: 'favorite-chefs', loadChildren: './profile/favorite-chefs/favorite-chefs.module#FavoriteChefsPageModule' },

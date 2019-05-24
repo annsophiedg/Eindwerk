@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
+import { ProfilePage } from '../app/profile/profile.page';
+import { AllergiesPage } from '../app/profile/allergies/allergies.page';
 import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -20,9 +22,13 @@ import { IonicStorageModule } from '@ionic/storage';
   declarations: [
     AppComponent, 
     AddMealPage,
-    MealDetailPage
+    MealDetailPage,
+    ProfilePage
   ],
-  entryComponents: [AddMealPage, MealDetailPage],
+  entryComponents: [
+    AddMealPage, 
+    MealDetailPage,
+    ProfilePage],
   imports: [
     BrowserModule, 
     HttpClientModule, 

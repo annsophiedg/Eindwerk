@@ -18,7 +18,7 @@ export class AllergiesPage implements OnInit {
   public userAllergies;
   public hasAllergies;
 
-  newAllergy:string;
+  newAllergy:object;
   all_id;
   allergyForm:FormGroup;
   all_name:AbstractControl;
@@ -69,36 +69,41 @@ export class AllergiesPage implements OnInit {
         this.inputValues.push(ingredient)
       }
     });
-    // console.log("input: ",this.inputValues);
+    console.log("input: ",this.inputValues);
   }
 
-  public addAllergy(newAllergy) {
-    console.log("new Allergy: ",newAllergy)
-    
-    //check if not already allergy
-    console.log("allergies: ",this.userAllergies)
-
-    //add new allergy as label on top
-    this.userAllergies.push(newAllergy)
-    //add ing_id in DB as fk_ing_all_id 
-    console.log("new Allergy id: ",newAllergy["ing_id"])
-
-    //clear input
+  private showAllergy(newAllergy) {
+    this.userAllergies.push(newAllergy);
+    console.log(this.userAllergies);
   }
 
-
-  postAllergy() {
-    this.newAllergy = event.target[0].value;
-    console.log("newAllergy:", this.newAllergy);
-    //send new allergy
-    this.mealService.addIngredient({"ing_name":this.newAllergy}).subscribe(res => {
-      //save added ingredient_id as all_id
-      this.all_id = JSON.stringify(res);
-      this.all_id = JSON.parse(this.all_id)[0]['id'];
+  private sendAllergy(newAllergy) {
+    this.mealService.addIngredient(newAllergy).subscribe(res => {
+      //get id of added ingredient
+      this.all_id = JSON.parse(JSON.stringify(res))[0]['id'];
       console.log("allergyID:",this.all_id);
-      //add userAllergy
-      // this.userService.addAllergy({"all_id":this.all_id});
+      //add id as a foreign key (userAllergy)
+      this.userService.addAllergy({"all_id":this.all_id});
+      return 'hallo';
     })
+  }
+
+  //when clicked on list item
+  public addAllergy(newAllergy) {
+    console.log('value:', newAllergy);
+    this.showAllergy(newAllergy);
+    this.sendAllergy(newAllergy);
+  }
+
+  //when entered in input
+  public postAllergy() {
+    //get value of new allergy
+    this.newAllergy = {"ing_name":event.target[0].value};
+    console.log("newAllergy:", this.newAllergy);
+    //send new allergy to service
+    this.sendAllergy(this.newAllergy);
+    //show new allergy as label on page
+    this.showAllergy(this.newAllergy);
   }
 
   ngOnInit() {
