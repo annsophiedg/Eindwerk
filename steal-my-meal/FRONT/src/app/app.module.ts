@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
 import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
     FormsModule,
     ReactiveFormsModule, 
     IonicModule.forRoot(), 
+    IonicStorageModule.forRoot(),
     Ionic4DatepickerModule], 
   providers: [
     StatusBar,

@@ -4,7 +4,6 @@ import { Meal } from '../../models/meal';
 import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 
-
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
@@ -20,8 +19,10 @@ declare var google;
 })
 
 export class MealsPage implements OnInit, AfterContentInit {
-  map;
-  isContentLoaded:boolean = false;
+  private map;
+  private userID = "";
+  private loggedIn:boolean = false;
+  private isContentLoaded:boolean = false;
   @ViewChild('mapElement') mapElement;
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
@@ -38,7 +39,11 @@ export class MealsPage implements OnInit, AfterContentInit {
     spaceBetween: -300
   };
 
-  constructor(private mealService:MealService, private chefService:ChefService, private fbService:FacebookService, public modal: ModalController, private route:ActivatedRoute) {
+  constructor(private mealService:MealService,
+              private chefService:ChefService, 
+              private fbService:FacebookService, 
+              public modal: ModalController, 
+              private route:ActivatedRoute) {
     //load chefs into a dictionary with their id as key
     chefService.getChefs().subscribe(chefs=>{
       chefs.forEach(chef => {
@@ -51,7 +56,12 @@ export class MealsPage implements OnInit, AfterContentInit {
       })  
     })
 
-
+    fbService.getLogin().then(val => {
+      this.userID = val;
+      if(val != "")
+        this.loggedIn = true;
+    });
+    
    }
 
    ngAfterContentInit(): void {

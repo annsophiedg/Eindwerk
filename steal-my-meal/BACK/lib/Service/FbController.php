@@ -28,9 +28,9 @@ function getToken($code)
     if(curl_errno($curl)){
       echo 'Curl error: ' . curl_error($curl);
     }
+
     curl_close($curl);
-    // var_dump($result);
-    $this->inspectToken($result);
+    echo json_encode($this->inspectToken($result));
 }
 
 function inspectToken($result){
@@ -47,7 +47,7 @@ function inspectToken($result){
     if(curl_errno($curl)){
       echo 'Curl error: ' . curl_error($curl);
     }
-    $this->getUserData($data,$token);
+    return $this->getUserData($data,$token);
   }
 
 function getUserData($data,$token){
@@ -64,7 +64,7 @@ function getUserData($data,$token){
   if(curl_errno($curl)){
     echo 'Curl error: ' . curl_error($curl);
   }
-  $this->updateUserData($result);
+  return $this->updateUserData($result);
 }
 
 function updateUserData($result){
@@ -77,6 +77,7 @@ function updateUserData($result){
   $sql = "SELECT CreateUser('$id','$firstName','$lastName','$pic') as 'Login'";
   
   $result = $this->dbm->sqlExecute($sql);
+  return $id;
 }
   
 }

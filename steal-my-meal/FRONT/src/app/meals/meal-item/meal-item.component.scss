@@ -6,7 +6,7 @@
 }
 
 * h2{
-    font-size: 2.6em;
+    font-size: 2.4em;
     text-transform: uppercase;
 }
 
@@ -44,13 +44,10 @@ ion-slide{
         position: absolute;
         display: flex;
         justify-content: center;
-
-        img{
-            width: 85%;
-            height: 85%;
-            border-radius: 50%;
-            border: $baseColor_white solid 5px;
-        }
+        border: $baseColor_white solid 5px;
+        height: 25vw;
+        width: auto;
+        margin-left:3px;
     }    
 }
 
@@ -65,10 +62,11 @@ ion-slide.meal{
         background-position-y: center;
 
         h2{
-            min-width: 70%;
+            min-width: 65%;
             padding: 0;
             margin:0 10px -.15em 0;
             text-align: end;
+            
         }
 
         h3{
@@ -103,10 +101,11 @@ ion-slide.meal{
         justify-content: flex-start;
 
         .info{
-            width: 70%;
+            width: 65%;
             padding: 0;
-            margin: .3em 0 0 25%;
+            margin: .3em 0 0 27vw;
             text-align: start;
+            font-size: 4vw;
         }
         h2{
             color: $baseColor_red ;
@@ -122,10 +121,11 @@ ion-slide.meal{
 
     .bottom{
         background-color: $baseColor_red ;
+        justify-content: flex-start;
         .info{
-            width: 70%;
+            width: 65%;
             padding: 0;
-            margin: 0 0 0 25%;
+            margin: 0 0 0 27vw;
             text-align: start;
             display: flex;
             justify-content: flex-start;
