@@ -73,7 +73,10 @@ class UserController {
    * all_id, all_name
    * @return array|null
    */
-  function setUserAllergy($usr_id, $all_id) {
+  function addUserAllergy($usr_id, $input) {
+    var_dump($input);
+    
+    $decoded = json_decode($input, true);
     $sqlInsertUserAllergy = "INSERT INTO `users/allergies` (fk_usr_id, fk_ing_all_id)
     VALUES (".$usr_id.",".$all_id.")";
 

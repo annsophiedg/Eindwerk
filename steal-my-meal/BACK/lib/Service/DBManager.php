@@ -46,9 +46,9 @@ class DBManager
         else
         {
             $result = $statement->fetchAll($mode);
+            return $result;
         }
 
-        return $result;
     }
 
 }
