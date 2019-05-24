@@ -108,6 +108,11 @@ if ( $subject == "facebook" )
     $fbController = new FbController($dbManager);
     
     if ($method == "POST") {
-        $fb = $fbController->getToken($id);
+        // $code = $_SERVER['QUERY_STRING'];
+        $url = $_SERVER["HTTP_REFERER"];
+        $code = parse_url($url, PHP_URL_QUERY);
+        $code = explode('&',$code)[0];
+        $code = str_replace("code=","",$code);
+        $fb = $fbController->getToken($code);
     }    
 }

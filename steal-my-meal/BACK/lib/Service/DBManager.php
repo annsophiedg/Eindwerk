@@ -37,6 +37,7 @@ class DBManager
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($params);
+        $result = "";
 
         if ( $statement->errorCode() > 0 )
         {

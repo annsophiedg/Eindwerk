@@ -13,7 +13,6 @@ import { Chef } from  'src/models/chef';
 export class MealItemComponent implements OnInit {
   @Input() meal: Meal;
   @Input() chef;
-  private profilePath = "../../../assets/img/profile_pic.jpg";
 
   slideOpts = {
     initialSlide: 1,

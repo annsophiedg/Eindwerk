@@ -1,125 +1,83 @@
 <?php
-//require_once ('db_connection.php');
-
-$code = $_GET['code'];
-this.getToken($code);
-// $fbController = new FbController();
-
-// class FbController {
   
-$clientID = '281257842778510';
-$clientSecret = '1067161d2ef86e5482d6a4766c3ba15d';
-
-// function getToken($code)
-// {
-//     $requestToken = $code;
-//     $options = [
-//         "hostname" => `facebook.com`,
-//         //port: 443,
-//         "path" => `/login/oauth/access_token?client_id=.$clientID.&client_secret=.$clientSecret.&code=.$requestToken.`,
-//         "method" => 'GET',
-//         "headers" => [
-//           //    accept: 'application/json' ?
-//           'Content-Type' => 'application/json',
-//         ]
-//     ];
-//     $r = new HttpRequest('http://example.com/feed.rss', HttpRequest::METH_GET);
-// $r->setOptions(array('lastmodified' => filemtime('local.rss')));
-// $r->addQueryData(array('category' => 3));
-// try {
-//     $r->send();
-//     if ($r->getResponseCode() == 200) {
-//         file_put_contents('local.rss', $r->getResponseBody());
-//     }
-// } catch (HttpException $ex) {
-//     echo $ex;
-// }
-
-//     $http = HTTP.request(options, (resp) => {
-//         console.log(`statusCode: ${resp.statusCode}`);
-//         resp.on('data', (response) => {
-//           process.stdout.write(response);
-//           // redirect the user to the welcome page, along with the access token
-//           res.redirect(`/success.html?${response}&origin=gh`);
-//         });
-//       });
-//       http.on('error', (error) => {
-//         console.error(error);
-//       });
-//       http.end();
-//     })
-// }
-
-
-
-
-
-//   APP.get('/oauth/redirect', (req, res) => {
-    
-    // const requestToken = req.query.code;
-    //   let options = {
-    //     hostname: `github.com`,
-    //     //port: 443,
-    //     path: `/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
-    //     method: 'GET',
-    //     headers: {
-    //       //    accept: 'application/json' ?
-    //       'Content-Type': 'application/json',
-    //     }
-    //   };
-    //   let http = HTTP.request(options, (resp) => {
-    //     console.log(`statusCode: ${resp.statusCode}`);
-    //     resp.on('data', (response) => {
-    //       process.stdout.write(response);
-    //       // redirect the user to the welcome page, along with the access token
-    //       res.redirect(`/success.html?${response}&origin=gh`);
-    //     });
-    //   });
-    //   http.on('error', (error) => {
-    //     console.error(error);
-    //   });
-    //   http.end();
-    // })
-?>
-
-
-
-
-
-
-
-
-
-
-<!-- const X = require('express');
-const APP = X();
-const HTTP = require('https');
-const PORT = 2105;
-
-
-
-APP.get('/oauth/redirect', (req, res) => {
-const requestToken = req.query.code;
-  let options = {
-    hostname: `github.com`,
-    //port: 443,
-    path: `/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
-    method: 'GET',
-    headers: {
-      //    accept: 'application/json' ?
-      'Content-Type': 'application/json',
+  class FbController {
+  
+    private $dbm;
+    private $appID = '281257842778510';
+    private $appSecret = '1067161d2ef86e5482d6a4766c3ba15d';
+    private $cert = __DIR__ . '/../../cert/cacert.pem';
+  
+    public function __construct(DBManager $dbm )
+    {
+        $this->dbm = $dbm;
     }
-  };
-  let http = HTTP.request(options, (resp) => {
-    console.log(`statusCode: ${resp.statusCode}`);
-    resp.on('data', (response) => {
-      process.stdout.write(response);
-      // redirect the user to the welcome page, along with the access token
-      res.redirect(`/success.html?${response}&origin=gh`);
-    });
-  });
-  http.on('error', (error) => {
-    console.error(error);
-  });
-  http.end();
-}); -->
+
+function getToken($code)
+{
+    $curl = curl_init();
+    $url = "https://graph.facebook.com/v3.3/oauth/access_token?client_id={$this->appID}&redirect_uri=http://localhost:8100/tabs/meals&client_secret={$this->appSecret}&code={$code}";
+    curl_setopt_array($curl, [
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_URL => $url,
+      CURLOPT_CAINFO => $this->cert,
+      CURLOPT_CAPATH => $this->cert
+    ]);
+
+
+    $result = curl_exec($curl);
+    if(curl_errno($curl)){
+      echo 'Curl error: ' . curl_error($curl);
+    }
+    curl_close($curl);
+    // var_dump($result);
+    $this->inspectToken($result);
+}
+
+function inspectToken($result){
+    $curl = curl_init();
+    $token = json_decode($result,true)['access_token'];
+    $url = "https://graph.facebook.com/debug_token?input_token={$token}&access_token={$this->appID}|{$this->appSecret}";
+    curl_setopt_array($curl, [
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_URL => $url,
+      CURLOPT_CAINFO => $this->cert,
+      CURLOPT_CAPATH => $this->cert
+    ]);
+    $data = curl_exec($curl);
+    if(curl_errno($curl)){
+      echo 'Curl error: ' . curl_error($curl);
+    }
+    $this->getUserData($data,$token);
+  }
+
+function getUserData($data,$token){
+  $curl = curl_init();
+  $userID = json_decode($data,true)['data']['user_id'];
+  $url = "https://graph.facebook.com/v3.3/{$userID}?fields=first_name,last_name,picture.width(400).height(400)&access_token={$token}";
+  curl_setopt_array($curl, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_URL => $url,
+    CURLOPT_CAINFO => $this->cert,
+    CURLOPT_CAPATH => $this->cert
+  ]);
+  $result = curl_exec($curl);
+  if(curl_errno($curl)){
+    echo 'Curl error: ' . curl_error($curl);
+  }
+  $this->updateUserData($result);
+}
+
+function updateUserData($result){
+  $data = json_decode($result,true);
+  $id = $data['id'];
+  $firstName = $data['first_name'];
+  $lastName = $data['last_name'];
+  $pic = $data['picture']['data']['url'];
+  
+  $sql = "SELECT CreateUser('$id','$firstName','$lastName','$pic') as 'Login'";
+  
+  $result = $this->dbm->sqlExecute($sql);
+}
+  
+}
+?>
