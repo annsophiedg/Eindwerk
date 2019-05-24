@@ -59,6 +59,7 @@ export class AddMealPage {
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
+      portions: ['', Validators.required],
       description: ['', Validators.required]
     });
   }

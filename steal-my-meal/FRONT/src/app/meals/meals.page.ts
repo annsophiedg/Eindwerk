@@ -3,6 +3,8 @@ import { MealService } from '../../services/meal/meal.service';
 import { Meal } from '../../models/meal';
 import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
+import { myEnterAnimation } from '../animations/enter';
+import { myLeaveAnimation } from '../animations/leave';
 
 
 import { ModalController, IonSlides } from '@ionic/angular';
@@ -59,8 +61,9 @@ export class MealsPage implements OnInit, AfterContentInit {
     this.map = new google.maps.Map(
         this.mapElement.nativeElement,
         {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+          center: {lat: -34.1, lng: 150.644},
+          zoom: 12,
+          disableDefaultUI: true
         });
   }
 
@@ -97,7 +100,9 @@ export class MealsPage implements OnInit, AfterContentInit {
 
   async addMeal() {
     const modal = await this.modal.create({
-      component: AddMealPage
+      component: AddMealPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation
     });
     return await modal.present();
   }
@@ -105,6 +110,8 @@ export class MealsPage implements OnInit, AfterContentInit {
   async mealDetail(meal, chef){
     const modal = await this.modal.create({
       component: MealDetailPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
       componentProps: {
         'meal': meal,
         'chef': chef

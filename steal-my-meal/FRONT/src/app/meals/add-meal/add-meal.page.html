@@ -1,12 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon (click)="hideModal()" class="close" name="arrow-back" color="primary"></ion-icon>
     <ion-title>add meal</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<div class="close">
-<ion-icon (click)="hideModal()" name="close-circle" color="primary"></ion-icon>
-</div>
 
 <ion-content>
 
@@ -31,6 +28,15 @@
         </ion-item>
 
       </li>
+
+      <li>
+    
+          <ion-item>
+                <ion-label position="floating">Portions</ion-label>
+                <ion-input type="text" formControlName="portions"></ion-input>
+          </ion-item>
+  
+        </li>
 
       <li>
     
