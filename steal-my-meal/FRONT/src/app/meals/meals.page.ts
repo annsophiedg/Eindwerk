@@ -59,8 +59,9 @@ export class MealsPage implements OnInit, AfterContentInit {
     this.map = new google.maps.Map(
         this.mapElement.nativeElement,
         {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+          center: {lat: -34.1, lng: 150.644},
+          zoom: 12,
+          disableDefaultUI: true
         });
   }
 
