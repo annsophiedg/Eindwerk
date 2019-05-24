@@ -1,0 +1,20 @@
+@import "../../../assets/css/variables.scss";
+
+ion-card.headCard{
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    ion-toolbar{
+        position: absolute;
+        left: 10%;
+        ion-avatar{
+            margin-right: 20px;
+            height: 120px;
+            width: 120px;
+            }
+        .mealName{
+            font-size: 1.7rem;
+            margin-top: 5px;
+            }
+    }
+}

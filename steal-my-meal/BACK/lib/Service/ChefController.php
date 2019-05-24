@@ -1,5 +1,4 @@
 <?php
-//require_once ('db_connection.php');
 
 class ChefController {
   
@@ -57,7 +56,7 @@ class ChefController {
     return json_encode($chefDetails);
   }
 
-  // Get a chef rating and delivered meals
+  // Get a chef rating and amount of delivered meals
   /**
    * chef_id, avg_score, delivered_meals
    * 

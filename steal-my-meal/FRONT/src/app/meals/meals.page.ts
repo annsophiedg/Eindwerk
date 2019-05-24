@@ -9,6 +9,7 @@ import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
+import { MealDetailPage } from './meal-detail/meal-detail.page';
 
 declare var google;
 
@@ -61,7 +62,6 @@ export class MealsPage implements OnInit, AfterContentInit {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
         });
-
   }
 
   ngOnInit() {
@@ -88,16 +88,28 @@ export class MealsPage implements OnInit, AfterContentInit {
     }
   }
 
+  upClicked(){
+    this.hideUp('hide');
+    this.slider.slideTo(2,400);
+  }
+
+  // Modals to create
+
   async addMeal() {
     const modal = await this.modal.create({
-      component: AddMealPage,
-      componentProps: { value: 123 }
+      component: AddMealPage
     });
     return await modal.present();
   }
 
-  upClicked(){
-    this.hideUp('hide');
-    this.slider.slideTo(2,400);
+  async mealDetail(meal, chef){
+    const modal = await this.modal.create({
+      component: MealDetailPage,
+      componentProps: {
+        'meal': meal,
+        'chef': chef
+      }
+    });
+    return await modal.present();
   }
 }

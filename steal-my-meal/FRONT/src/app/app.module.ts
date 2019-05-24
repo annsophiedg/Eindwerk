@@ -10,19 +10,36 @@ import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
+import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
 
 
 @NgModule({
-  declarations: [AppComponent, AddMealPage],
-  entryComponents: [AddMealPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, Ionic4DatepickerModule],
+  declarations: [
+    AppComponent, 
+    AddMealPage,
+    MealDetailPage
+  ],
+  entryComponents: [AddMealPage, MealDetailPage],
+  imports: [
+    BrowserModule, 
+    HttpClientModule, 
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    IonicModule.forRoot(), 
+    Ionic4DatepickerModule], 
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 
 export class AppModule {}
