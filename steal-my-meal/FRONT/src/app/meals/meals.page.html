@@ -9,36 +9,39 @@
 </ion-content>
 
 <ion-fab vertical="top" horizontal="end">
-<ion-fab-button class="menu"><ion-icon name="menu"></ion-icon></ion-fab-button>
-<ion-fab-list side="start">
-  <ion-fab-button (click)="addMeal()">
-    <ion-icon name="add"></ion-icon>
+  <ion-fab-button class="menu">
+    <ion-icon name="menu"></ion-icon>
   </ion-fab-button>
-  
-  <ion-fab-button>
-    <a href="../profile">
+  <ion-fab-list side="start">
+
+    <ion-fab-button (click)="goToAddMeal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-button (click)="goToProfile()">
       <ion-icon name="person"></ion-icon>
+    </ion-fab-button>
+
+    <a
+      href="https://www.facebook.com/v3.3/dialog/oauth?client_id=281257842778510&redirect_uri=http://localhost:8100/tabs/meals&state={}">
+      <ion-fab-button>
+        <ion-icon name="funnel"></ion-icon>
+      </ion-fab-button>
     </a>
-  </ion-fab-button>
-  
-  <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=281257842778510&redirect_uri=http://localhost:8100/tabs/meals&state={}">
-  <ion-fab-button>
-    <ion-icon name="funnel"></ion-icon>
-  </ion-fab-button>
-  </a>
-</ion-fab-list>
+  </ion-fab-list>
 </ion-fab>
 
 <ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd)="hideUp($event)"
   (ionSlideReachStart)="showUp($event)">
   <ion-slide class="slide firstSlider">
   </ion-slide>
-  <ion-slide class="slide transparant" (click) = "showUp('hide')">
+  <ion-slide class="slide transparant" (click)="showUp('hide')">
   </ion-slide>
   <ion-slide class="slide mealComponents">
     <content>
       <p *ngFor="let meal of meals; let i = index">
-        <app-meal-item [meal]=meal [chef]=chefs[meal.fk_usr_chef_id] (click)="mealDetail(meal, chefs[meal.fk_usr_chef_id])"></app-meal-item>
+        <app-meal-item [meal]=meal [chef]=chefs[meal.fk_usr_chef_id]
+          (click)="mealDetail(meal, chefs[meal.fk_usr_chef_id])"></app-meal-item>
       </p>
     </content>
   </ion-slide>

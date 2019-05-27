@@ -17,6 +17,7 @@ $dbManager = $container->getDBManager();
 $pdo = $dbManager->getPDO();
 $subject = null;
 $id = null;
+
 $input = file_get_contents("php://input");
 
 $request = $_SERVER["REQUEST_URI"];
@@ -58,20 +59,6 @@ if ( $subject == "meals" )
     }
 }
 
-if ( $subject == "ingredients" )
-{
-    $mealController = new MealController($dbManager);
-    
-    if ($method == "GET") {
-        if (!$id) {
-            //GET all ingredients from DB
-            $allIngredients = $mealController->getDBIngredients();
-            echo $allIngredients;
-        } 
-
-    }
-}
-
 //use Service ChefController if $subject == "chefs"
 if ( $subject == "chefs" )
 {
@@ -91,38 +78,65 @@ if ( $subject == "chefs" )
     }    
 }
 
-//use Service UserController if $subject is "users" or "allergies"
-if ( $subject == "users" || $subject == "allergies" )
+//use Service MealController if $subject == "ingredients"
+if ( $subject == "ingredients" )
+{
+    $mealController = new MealController($dbManager);
+    
+    if ($method == "GET") {
+        if (!$id) {
+            //GET all ingredients from DB
+            $allIngredients = $mealController->getDBIngredients();
+            echo $allIngredients;
+        } 
+
+    } else if ($method == "POST") {
+        $mealController->addIngredient($input);
+    }
+}
+
+//use Service UserController if $subject is "allergies"
+if ( $subject == "allergies" )
 {
     $userController = new UserController($dbManager);
     
     if ($method == "GET") {
-        if ($subject == "users") {
-            if (!$id) {
-                //GET overview users: only as admin!!
-                $users = $userController->getUserOverview();
-                echo $users;
-            } else {
-                //GET profile (user details)
-                $userDetails = $userController->getUserDetails($id);
-                echo $userDetails;
-            }
-        } else if ($subject == "allergies") {
-            if (!$id) {
-                //GET all allergies
-                $allergies = $userController->getAllAllergies();
-                echo $allergies;
-            } else if ($id) {
-                //GET user allergies
-                $userAllergies = $userController->getUserAllergies($id);
-                echo $userAllergies;
-            }
-        } 
-        
+        if (!$id) {
+            //GET all allergies
+            $allergies = $userController->getAllAllergies();
+            echo $allergies;
+        } else if ($id) {
+            //GET user allergies
+            $userAllergies = $userController->getUserAllergies($id);
+            echo $userAllergies;
+        }
     } else if ($method == "POST") {
-        //add a user when making profile
-        $userController->addUser();
-        print "post";
+        $userController->addUserAllergy($id,$input);
+    } else if ($method == "DELETE") {
+      $usr_all = explode(",", $id);
+      $usr_id = $usr_all[0];
+      $all_id = $usr_all[1];
+
+        $userController->deleteUserAllergy($usr_id,$all_id);
+    }
+        
+}
+
+//use Service UserController if $subject is "users"
+if ( $subject == "users" )
+{
+    $userController = new UserController($dbManager);
+    
+    if ($method == "GET") {
+        if (!$id) {
+            //GET overview users: only as admin!!
+            $users = $userController->getUserOverview();
+            echo $users;
+        } else {
+            //GET profile (user details)
+            $userDetails = $userController->getUserDetails($id);
+            echo $userDetails;
+        }
     } else if ($method == "PUT") {
         //update user information
         $userController->updateUser($id);

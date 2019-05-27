@@ -7,6 +7,10 @@
 ion-chip {
     background: $baseColor_red;
     color: $baseColor_white;
+
+    ion-icon {
+        color: $baseColor_white;
+    }
 }
 
 .allergyform {

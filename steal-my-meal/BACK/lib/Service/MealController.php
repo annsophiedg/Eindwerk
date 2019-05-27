@@ -106,6 +106,21 @@ class MealController {
             values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["portions"]."')";
             
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+
+  }
+
+  // Add an ingredient to DB & return the ing_id
+  function addIngredient($input){
+    $decoded = json_decode($input, true);
+    $ing_name = $decoded["ing_name"];
+
+    $sql = "SELECT getAddedIngredientId('".$ing_name."') as id";
+
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    //var_dump($result);
+    echo json_encode($result);
   }
 }
 

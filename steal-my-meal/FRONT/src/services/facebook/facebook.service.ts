@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+// import {Promise} from '@angular/core';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,16 +16,21 @@ const httpOptions = {
 export class FacebookService {
 
   todosUrl:string = 'http://localhost:3000/BACK/api/facebook';
+  userID = "";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private storage: Storage) {   
+  }
 
 
-  getToken(code:string){
+  getToken(code:string):string{
     this.http.post(`${this.todosUrl}`,code, httpOptions).subscribe(res => {
-       let token = res;
-      console.log(res);
-      return token;
+      this.storage.set('id', res);
+      return res;
     });
     return "";
+  }
+
+  getLogin():Promise<any>{
+    return this.storage.get('id');
   }
 }
