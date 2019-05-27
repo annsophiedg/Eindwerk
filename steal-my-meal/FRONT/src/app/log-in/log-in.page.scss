@@ -1,20 +1,43 @@
-ion-content{
+.container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     width: 100vw;
-    height: 100vh;
 }
 
-ion-slides{
-    width: 100%;
+ion-card{
+    width: 80%;
+    height: auto;
+    margin: 2em 0 4em;
+}
+
+
+ion-card-header{
+  padding-bottom:0;
+}
+
+ion-card-content{
+  font-size: 5vw;
+}
+
+ion-card-title{
+  font-size: 10vw;
+  margin: 0;
+}
+
+ion-card-subtitle{
+  font-size: 5vw;
+  margin-bottom: 0;
+}
+
+.bold{
+  font-weight: bold;
 }
 
 .facebookButton {
     box-sizing: border-box;
     position: relative;
-    margin: 0.2em;
+
     padding: 7px 20px 7px 46px;
     border: none;
     text-align: left;

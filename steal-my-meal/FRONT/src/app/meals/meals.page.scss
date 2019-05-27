@@ -9,6 +9,7 @@ ion-fab-button{
     }
 }
 ion-slides{
+    pointer-events: none; 
     position: fixed;
     top: 0;
     height: 100vh;
@@ -30,12 +31,16 @@ ion-slides{
         &.mealComponents{
             background: #EEE;
             margin-top: 3.5em;
+            pointer-events: initial; 
         }
+
     }
 }
 
-.map {
+app-map{
     z-index: 0;
     height: 100vh;
     width: 100vw;
 }
+
+

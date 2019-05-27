@@ -1,14 +1,10 @@
-
-
 <ion-fab vertical="bottom" horizontal="center">
   <ion-fab-button #up id="up" (click)="upClicked()">
     <ion-icon name="arrow-up"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
-<ion-content>
-  <div #mapElement class="map"></div>
-</ion-content>
+<app-map></app-map>
 
 <ion-fab vertical="top" horizontal="end">
   <ion-fab-button class="menu">
@@ -24,7 +20,6 @@
       <ion-icon name="person"></ion-icon>
     </ion-fab-button>
 
-    
     <ion-fab-button>
       <ion-icon name="funnel"></ion-icon>
     </ion-fab-button>
@@ -32,12 +27,12 @@
 </ion-fab>
 
 <ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd)="hideUp($event)"
-  (ionSlideReachStart)="showUp($event)">
+  (ionSlideReachStart)="showUp($event)" (mouseup) = dragUp()>
   <ion-slide class="slide firstSlider">
   </ion-slide>
-  <ion-slide class="slide transparant" (click)="showUp('hide')">
+  <ion-slide class="slide transparant">
   </ion-slide>
-  <ion-slide class="slide mealComponents">
+  <ion-slide class="slide mealComponents" (mousedown) = dragDown() (mouseup) = dragUp()>
     <content>
       <p *ngFor="let meal of meals; let i = index">
         <app-meal-item [meal]=meal [chef]=chefs[meal.fk_usr_chef_id]

@@ -15,7 +15,6 @@ import { ProfilePage } from '../profile/profile.page';
 import { ModalService } from 'src/services/modal/modal.service';
 import {Storage} from '@ionic/storage';
 
-declare var google;
 
 @Component({
   selector: 'app-meals',
@@ -23,12 +22,12 @@ declare var google;
   styleUrls: ['./meals.page.scss'],
 })
 
-export class MealsPage implements OnInit, AfterContentInit {
+export class MealsPage implements OnInit {
   private map;
   private userID = "";
   private loggedIn:boolean = false;
   private isContentLoaded:boolean = false;
-  @ViewChild('mapElement') mapElement;
+
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
 
@@ -65,17 +64,7 @@ export class MealsPage implements OnInit, AfterContentInit {
     
    }
 
-   ngAfterContentInit(): void {
-    this.isContentLoaded = true;
-    this.map = new google.maps.Map(
-        this.mapElement.nativeElement,
-        {
-          center: {lat: -34.1, lng: 150.644},
-          zoom: 12,
-          disableDefaultUI: true
-        });
-  }
-
+ 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
 
@@ -94,13 +83,7 @@ export class MealsPage implements OnInit, AfterContentInit {
         }
           
       });
-    }
-    
-
-    
-    
-    
-    
+    }    
   }
 
   showUp(e){
@@ -125,6 +108,15 @@ export class MealsPage implements OnInit, AfterContentInit {
     this.slider.slideTo(2,400);
   }
 
+  dragUp(){
+    console.log('not dragging');
+    this.slider.el.style.pointerEvents = 'none';
+  }
+
+  dragDown(){
+    console.log('dragging');
+    this.slider.el.style.pointerEvents = 'auto';
+  }
   // Modals to create
 
   async goToAddMeal() {
