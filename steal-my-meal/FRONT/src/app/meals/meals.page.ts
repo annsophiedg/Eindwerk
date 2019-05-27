@@ -78,15 +78,29 @@ export class MealsPage implements OnInit, AfterContentInit {
 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
-    if(code != null){
-      this.fbService.getToken(code).subscribe(res => {
-        this.storage.set('id', res);
-        this.userID = res;
-    });
+
+    if(!this.userID || this.userID == ""){
+      this.storage.get('id').then(val => {
+        this.userID = val;
+        if(!val){
+          if(code != null){
+            this.fbService.getToken(code).subscribe(res => {
+              this.storage.set('id', res);
+              console.log(res);
+              this.userID = res;
+          });
+          }else
+            this.ms.openLogIn(); 
+        }
+          
+      });
     }
-    if(!this.userID){
-      this.storage.get('id').then(val => this.userID = val);
-    }
+    
+
+    
+    
+    
+    
   }
 
   showUp(e){

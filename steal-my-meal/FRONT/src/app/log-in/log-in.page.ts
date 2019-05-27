@@ -9,6 +9,13 @@ export class LogInPage implements OnInit {
 
   constructor() { }
 
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    clickable: false,
+    type: 'progressbar'
+  };
+
   ngOnInit() {
   }
 

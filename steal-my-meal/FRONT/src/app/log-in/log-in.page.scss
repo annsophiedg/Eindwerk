@@ -1,0 +1,52 @@
+ion-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+ion-slides{
+    width: 100%;
+}
+
+.facebookButton {
+    box-sizing: border-box;
+    position: relative;
+    margin: 0.2em;
+    padding: 7px 20px 7px 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    border-radius: 24px;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #4267B2;
+    background-image: linear-gradient(#4C69BA, #4267B2);
+    font-family: "Helvetica neue", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 -1px 0 #354C8C;
+  }
+  .facebookButton:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: auto;
+    left: 5px;
+    width: 34px;
+    height: 100%;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+  }
+  .facebookButton:hover{
+    background-color: #4267B2;
+    background-image: linear-gradient(#5B7BD5, #4267B2);
+  }
+  .facebookButton:focus {
+    outline: none;
+    background-color: #4267B2;
+    background-image: linear-gradient(#5B7BD5, #4267B2);
+  }
+  .facebookButton:active {
+    box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+  }
