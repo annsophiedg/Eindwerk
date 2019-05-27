@@ -5,6 +5,7 @@ import { AllergiesPage } from '../../app/profile/allergies/allergies.page';
 import { FavoriteChefsPage } from '../../app/profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../../app/profile/meal-history/meal-history.page';
+import { MealDetailPage } from '../../app/meals/meal-detail/meal-detail.page';
 import { myEnterAnimation } from '../../app/animations/enter';
 import { myLeaveAnimation } from '../../app/animations/leave';
 
@@ -52,6 +53,19 @@ export class ModalService {
       component: page,
       enterAnimation: myEnterAnimation,
       leaveAnimation: myLeaveAnimation,
+    });
+    return await modal.present();
+  }
+
+  private async mealDetail(meal, chef){
+    const modal = await this.modal.create({
+      component: MealDetailPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'meal': meal,
+        'chef': chef
+      }
     });
     return await modal.present();
   }

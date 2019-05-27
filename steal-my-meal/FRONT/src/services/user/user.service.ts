@@ -31,8 +31,8 @@ export class UserService {
     this.id = id
   }
 
-  public getUser():Observable<User[]> {
-    return this.http.get<User[]>(`${this.userURL}`)
+  public getUser():Observable<User> {
+    return this.http.get<User>(`${this.userURL}`)
   }
 
   public getUserAllergies() {

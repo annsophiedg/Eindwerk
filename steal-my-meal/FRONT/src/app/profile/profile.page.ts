@@ -8,10 +8,10 @@ import { ModalService } from '../../services/modal/modal.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  public user;
+  public user:any;
 
   constructor(private userService:UserService, private ms:ModalService) {
-    this.user = userService.getUser().subscribe((result)=>(
+    userService.getUser().subscribe((result)=>(
       this.user = result,
       console.log("GEGEVENS: ",this.user)
     ));

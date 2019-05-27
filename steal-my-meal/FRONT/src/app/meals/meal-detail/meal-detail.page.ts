@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ObjectUnsubscribedError } from 'rxjs';
 
 @Component({
   selector: 'app-meal-detail',

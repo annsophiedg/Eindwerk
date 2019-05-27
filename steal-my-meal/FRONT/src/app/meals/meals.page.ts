@@ -12,6 +12,7 @@ import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
+import {Storage} from '@ionic/storage';
 
 declare var google;
 
@@ -46,7 +47,8 @@ export class MealsPage implements OnInit, AfterContentInit {
               private chefService:ChefService, 
               private fbService:FacebookService, 
               public modal: ModalController, 
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              private storage:Storage) {
     //load chefs into a dictionary with their id as key
     chefService.getChefs().subscribe(chefs=>{
       chefs.forEach(chef => {
@@ -58,12 +60,6 @@ export class MealsPage implements OnInit, AfterContentInit {
         this.meals = meals;
       })  
     })
-
-    fbService.getLogin().then(val => {
-      this.userID = val;
-      if(val != "")
-        this.loggedIn = true;
-    });
     
    }
 
@@ -81,7 +77,13 @@ export class MealsPage implements OnInit, AfterContentInit {
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
     if(code != null){
-      this.fbService.getToken(code);
+      this.fbService.getToken(code).subscribe(res => {
+        this.storage.set('id', res);
+        this.userID = res;
+    });
+    }
+    if(!this.userID){
+      this.storage.get('id').then(val => this.userID = val);
     }
   }
 
@@ -113,7 +115,10 @@ export class MealsPage implements OnInit, AfterContentInit {
     const modal = await this.modal.create({
       component: AddMealPage,
       enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'usrId': this.userID
+      }
     });
     return await modal.present();
   }
@@ -125,7 +130,7 @@ export class MealsPage implements OnInit, AfterContentInit {
     return await modal.present();
   }
 
-  async mealDetail(meal, chef){
+  async goToMealDetail(meal, chef){
     const modal = await this.modal.create({
       component: MealDetailPage,
       enterAnimation: myEnterAnimation,
