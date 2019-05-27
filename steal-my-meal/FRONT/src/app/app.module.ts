@@ -12,23 +12,35 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
+import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page';
 import { ProfilePage } from '../app/profile/profile.page';
+import { EditUserPage } from '../app/profile/edit-user/edit-user.page';
 import { AllergiesPage } from '../app/profile/allergies/allergies.page';
-import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page'
+import { FavoriteChefsPage } from '../app/profile/favorite-chefs/favorite-chefs.page';
+import { ExperiencePage } from '../app/profile/experience/experience.page';
+import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
+  //all modal components in declarations & entrycomponents
   declarations: [
     AppComponent, 
     AddMealPage,
     MealDetailPage,
-    ProfilePage
+    ProfilePage,
+    EditUserPage,
+    AllergiesPage,
+    FavoriteChefsPage
   ],
   entryComponents: [
     AddMealPage, 
     MealDetailPage,
-    ProfilePage],
+    ProfilePage,
+    EditUserPage,
+    AllergiesPage,
+    FavoriteChefsPage
+  ],
   imports: [
     BrowserModule, 
     HttpClientModule, 

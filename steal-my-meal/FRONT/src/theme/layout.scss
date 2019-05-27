@@ -1,0 +1,11 @@
+ion-toolbar {
+    position: relative;
+
+    .arrow-back {
+        color: #333;
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        font-size: 1rem;
+    }
+}
