@@ -44,7 +44,7 @@ class UserController {
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-    $userDetails = $result;
+    $userDetails = $result[0];
 
     return json_encode($userDetails);
   }

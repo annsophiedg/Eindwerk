@@ -12,8 +12,8 @@
       <ion-icon name="create"></ion-icon>
     </a>
   </ion-avatar>
-  <ion-card-title *ngFor="let u in user">{{u.usr_firstname}} {{u.usr_lastname}}</ion-card-title>
-  <ion-card-subtitle *ngIf="user">{{user[0].usr_street}} {{user[0].usr_housenumber}}, {{user[0].zip_zipcode}} {{user[0].zip_city}}
+  <ion-card-title>{{user?.usr_firstname}} {{user?.usr_lastname}}</ion-card-title>
+  <ion-card-subtitle>{{user?.usr_street}} {{user?.usr_housenumber}}, {{user?.zip_zipcode}} {{user?.zip_city}}
   </ion-card-subtitle>
 </ion-card>
 
