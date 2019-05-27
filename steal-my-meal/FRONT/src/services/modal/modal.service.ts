@@ -5,6 +5,8 @@ import { AllergiesPage } from '../../app/profile/allergies/allergies.page';
 import { FavoriteChefsPage } from '../../app/profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../../app/profile/meal-history/meal-history.page';
+import { myEnterAnimation } from '../../app/animations/enter';
+import { myLeaveAnimation } from '../../app/animations/leave';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +49,9 @@ export class ModalService {
 
   private async openModal(page) {
     const modal =  await this.modal.create({
-      component: page
+      component: page,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
     });
     return await modal.present();
   }
