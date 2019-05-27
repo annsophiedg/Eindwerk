@@ -10,6 +10,7 @@ import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
+import { ModalService } from 'src/services/modal/modal.service';
 
 declare var google;
 
@@ -43,6 +44,7 @@ export class MealsPage implements OnInit, AfterContentInit {
   constructor(private mealService:MealService,
               private chefService:ChefService, 
               private fbService:FacebookService, 
+              private ms:ModalService,
               public modal: ModalController, 
               private route:ActivatedRoute) {
     //load chefs into a dictionary with their id as key
@@ -59,8 +61,14 @@ export class MealsPage implements OnInit, AfterContentInit {
 
     fbService.getLogin().then(val => {
       this.userID = val;
-      if(val != "")
+      if(val != null){
+        console.log("log = " + val);
         this.loggedIn = true;
+      }
+      else{
+        console.log("log in!");
+        ms.openLogIn();
+      }
     });
     
    }

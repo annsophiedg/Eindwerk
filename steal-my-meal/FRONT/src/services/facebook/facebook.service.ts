@@ -31,6 +31,7 @@ export class FacebookService {
   }
 
   getLogin():Promise<any>{
+    this.storage.get('id').then(val=>console.log(val));
     return this.storage.get('id');
   }
 }

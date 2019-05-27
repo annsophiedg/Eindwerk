@@ -20,6 +20,7 @@ import { FavoriteChefsPage } from '../app/profile/favorite-chefs/favorite-chefs.
 import { ExperiencePage } from '../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { IonicStorageModule } from '@ionic/storage';
+import { LogInPage } from './log-in/log-in.page';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfilePage,
     EditUserPage,
     AllergiesPage,
-    FavoriteChefsPage
+    FavoriteChefsPage,
+    LogInPage
   ],
   entryComponents: [
     AddMealPage, 
@@ -39,7 +41,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfilePage,
     EditUserPage,
     AllergiesPage,
-    FavoriteChefsPage
+    FavoriteChefsPage,
+    LogInPage
   ],
   imports: [
     BrowserModule, 

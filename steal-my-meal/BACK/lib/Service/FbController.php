@@ -23,6 +23,7 @@ function getToken($code)
       CURLOPT_CAPATH => $this->cert
     ]);
 
+
     $result = curl_exec($curl);
     if(curl_errno($curl)){
       echo 'Curl error: ' . curl_error($curl);
@@ -73,9 +74,9 @@ function updateUserData($result){
   $lastName = $data['last_name'];
   $pic = $data['picture']['data']['url'];
   
-  $sql = "SELECT CreateUser('$id','$firstName','$lastName','$pic') as 'Login'";
+  // $sql = "SELECT 
   
-  $result = $this->dbm->sqlExecute($sql);
+  // $result = $this->dbm->sqlExecute($sql);
   return $id;
 }
   
