@@ -1,6 +1,6 @@
 @import "../../assets/css/variables.scss";
 
-.userDetails { 
+.userDetails {
     width: 100vw;
     margin: 0;
     padding: 1rem;
@@ -31,8 +31,9 @@
             bottom: 7px;
         }
     }
-    
-    ion-card-title, ion-card-subtitle {
+
+    ion-card-title,
+    ion-card-subtitle {
         color: $baseColor_white;
     }
 }
@@ -43,24 +44,24 @@ ion-nav {
     margin-bottom: 1rem;
 
     ul {
-        li {
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-            a {
-                width: 90%;
-                // text-align: center;
-                text-decoration: none;
-                color: #333;
-                padding: 1rem;
-                border-bottom: 1px solid #ccc;
-                display: flex;
-                align-items: flex-end;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
-                ion-icon {
-                    margin-right: 1rem;
-                }
+        li {
+            width: 80%;
+            margin-top: 1rem;
+            text-decoration: none;
+            // color: #333;
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: flex-end;
+
+            ion-icon {
+                margin-right: 1rem;
             }
+
         }
     }
 }

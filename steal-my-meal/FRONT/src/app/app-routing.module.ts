@@ -11,7 +11,9 @@ const routes: Routes = [
   { path: 'favorite-chefs', loadChildren: './profile/favorite-chefs/favorite-chefs.module#FavoriteChefsPageModule' },
   { path: 'experience', loadChildren: './profile/experience/experience.module#ExperiencePageModule' },
   { path: 'cooked-meals', loadChildren: './profile/cooked-meals/cooked-meals.module#CookedMealsPageModule' },
-  { path: 'meal-detail', loadChildren: './meals/meal-detail/meal-detail.module#MealDetailPageModule' }
+  { path: 'meal-detail', loadChildren: './meals/meal-detail/meal-detail.module#MealDetailPageModule' },
+  { path: 'meal-history', loadChildren: './profile/meal-history/meal-history/meal-history.module#MealHistoryPageModule' },
+  { path: 'meal-history', loadChildren: './profile/meal-history/meal-history.module#MealHistoryPageModule' }
 ];
 
 @NgModule({

@@ -29,24 +29,28 @@ export class AllergiesPage implements OnInit {
     private userService:UserService, 
     private mealService:MealService, 
     private generalService:GeneralService) { 
-    this.allergyForm = this.formBuilder.group({
-      all_name: ['', Validators.required]
-    });
+      this.allergyForm = this.formBuilder.group({
+        all_name: ['', Validators.required]
+      });
 
-    this.all_name = this.allergyForm.controls['all_name'];
+      this.all_name = this.allergyForm.controls['all_name'];
 
-    userService.getUserAllergies().subscribe((result)=>(
-      //save user allergies in array
-      this.userAllergies = result,
-      console.log("User Allergies: ",this.userAllergies),
-      // check if user has allergies
-      this.userHasAllergies(this.userAllergies)
-    ));
-    generalService.getIngredients().subscribe((result)=>(
-      //save DB ingredients in array
-      this.dbIngredients = result,
-      console.log("All Ingredients from DB: ",this.dbIngredients)
-    ));
+      userService.getUserAllergies().subscribe((result)=>(
+        //save user allergies in array
+        this.userAllergies = result,
+        console.log("User Allergies: ",this.userAllergies),
+        // check if user has allergies
+        this.userHasAllergies(this.userAllergies)
+      ));
+      generalService.getIngredients().subscribe((result)=>(
+        //save DB ingredients in array
+        this.dbIngredients = result,
+        console.log("All Ingredients from DB: ",this.dbIngredients)
+      ));
+  }
+
+  hideModal(){
+    this.modal.dismiss()
   }
 
   //check if user has any allergies (return true/false)
