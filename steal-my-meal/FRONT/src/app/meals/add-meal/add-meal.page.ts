@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
-import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
@@ -12,10 +12,11 @@ import { ToastController } from '@ionic/angular';
 })
 export class AddMealPage {
 
-  @Input() value: number;
+  @Input() usrId;
 
   //add-meal modal
   mealJson;
+  order;
   today = Date.now();
   mealDate:string = "";
   datePickerObj: any = {
@@ -59,19 +60,20 @@ export class AddMealPage {
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
+      portions: ['', Validators.required],
       description: ['', Validators.required]
     });
   }
 
   ngOnInit() {
-    
+    console.log(this.usrId);
   }
 
   logForm(){
+    console.log(this.meal.value.usrId = this.usrId);
     this.mealJson = JSON.stringify(this.meal.value);
     console.log(this.mealJson);
     this.mealService.addMeal(this.mealJson);
-
   }
 
   async presentLoading(){

@@ -3,6 +3,8 @@ import { MealService } from '../../services/meal/meal.service';
 import { Meal } from '../../models/meal';
 import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
+import { myEnterAnimation } from '../animations/enter';
+import { myLeaveAnimation } from '../animations/leave';
 
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
@@ -11,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
 import { ModalService } from 'src/services/modal/modal.service';
+import {Storage} from '@ionic/storage';
 
 declare var google;
 
@@ -46,7 +49,8 @@ export class MealsPage implements OnInit, AfterContentInit {
               private fbService:FacebookService, 
               private ms:ModalService,
               public modal: ModalController, 
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              private storage:Storage) {
     //load chefs into a dictionary with their id as key
     chefService.getChefs().subscribe(chefs=>{
       chefs.forEach(chef => {
@@ -58,18 +62,6 @@ export class MealsPage implements OnInit, AfterContentInit {
         this.meals = meals;
       })  
     })
-
-    fbService.getLogin().then(val => {
-      this.userID = val;
-      if(val != null){
-        console.log("log = " + val);
-        this.loggedIn = true;
-      }
-      else{
-        console.log("log in!");
-        ms.openLogIn();
-      }
-    });
     
    }
 
@@ -87,7 +79,13 @@ export class MealsPage implements OnInit, AfterContentInit {
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
     if(code != null){
-      this.fbService.getToken(code);
+      this.fbService.getToken(code).subscribe(res => {
+        this.storage.set('id', res);
+        this.userID = res;
+    });
+    }
+    if(!this.userID){
+      this.storage.get('id').then(val => this.userID = val);
     }
   }
 
@@ -117,7 +115,12 @@ export class MealsPage implements OnInit, AfterContentInit {
 
   async goToAddMeal() {
     const modal = await this.modal.create({
-      component: AddMealPage
+      component: AddMealPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'usrId': this.userID
+      }
     });
     return await modal.present();
   }
@@ -129,9 +132,11 @@ export class MealsPage implements OnInit, AfterContentInit {
     return await modal.present();
   }
 
-  async mealDetail(meal, chef){
+  async goToMealDetail(meal, chef){
     const modal = await this.modal.create({
       component: MealDetailPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
       componentProps: {
         'meal': meal,
         'chef': chef

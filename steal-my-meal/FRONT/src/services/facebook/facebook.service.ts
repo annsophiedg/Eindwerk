@@ -22,12 +22,8 @@ export class FacebookService {
   }
 
 
-  getToken(code:string):string{
-    this.http.post(`${this.todosUrl}`,code, httpOptions).subscribe(res => {
-      this.storage.set('id', res);
-      return res;
-    });
-    return "";
+  getToken(code:string):Observable<any>{
+    return this.http.post(`${this.todosUrl}`,code, httpOptions);
   }
 
   getLogin():Promise<any>{

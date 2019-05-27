@@ -6,6 +6,9 @@ import { FavoriteChefsPage } from '../../app/profile/favorite-chefs/favorite-che
 import { ExperiencePage } from '../../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../../app/profile/meal-history/meal-history.page';
 import { LogInPage } from '../../app/log-in/log-in.page';
+import { MealDetailPage } from '../../app/meals/meal-detail/meal-detail.page';
+import { myEnterAnimation } from '../../app/animations/enter';
+import { myLeaveAnimation } from '../../app/animations/leave';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +56,22 @@ export class ModalService {
   private async openModal(page) {
 
     const modal =  await this.modal.create({
-      component: page
+      component: page,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+    });
+    return await modal.present();
+  }
+
+  private async mealDetail(meal, chef){
+    const modal = await this.modal.create({
+      component: MealDetailPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'meal': meal,
+        'chef': chef
+      }
     });
     return await modal.present();
   }

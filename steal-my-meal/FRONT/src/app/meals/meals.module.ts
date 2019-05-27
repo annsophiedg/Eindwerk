@@ -23,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)    
   ],
-  declarations: [MealsPage, MealItemComponent]
+  declarations: [MealsPage, MealItemComponent],
+  providers:[Storage]
 })
 export class MealsPageModule {}
