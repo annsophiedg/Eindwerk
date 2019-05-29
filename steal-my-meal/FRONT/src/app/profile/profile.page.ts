@@ -10,13 +10,17 @@ import { ModalService } from '../../services/modal/modal.service';
 export class ProfilePage implements OnInit {
   public user:any;
 
-  constructor(private userService:UserService, private ms:ModalService) {
-    userService.getUser().subscribe((result)=>(
+  constructor(
+    private userService:UserService, 
+    public ms:ModalService
+  ) {
+    this.userService.getUserObservable().subscribe((result)=>(
       this.user = result,
-      console.log("GEGEVENS: ",this.user)
+      console.log("GEGEVENS: ",this.user),
+      //set user in userService
+      this.userService.setUser(this.user)
     ));
   }
-
 
   ngOnInit() {
   }

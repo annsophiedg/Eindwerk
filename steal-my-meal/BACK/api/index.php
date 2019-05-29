@@ -139,7 +139,7 @@ if ( $subject == "users" )
         }
     } else if ($method == "PUT") {
         //update user information
-        $userController->updateUser($id);
+        $userController->updateUser($id,$input);
     } else if ($method == "DELETE") {
         $userController->deleteUser($id);
     }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
+// import { ModalService } from '../../../services/modal/modal.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-user',
@@ -8,36 +10,28 @@ import { UserService } from '../../../services/user/user.service';
   styleUrls: ['./edit-user.page.scss'],
 })
 export class EditUserPage implements OnInit {
-  public userForm
-  // public userForm = new FormGroup({
-  //   fullName: new FormGroup({
-  //     firstname: new FormControl(''),
-  //     lastname: new FormControl('')
-  //   }),
-  //   address: new FormGroup({
-  //     street: new FormControl(''),
-  //     housenumber: new FormControl(''),
-  //     zipcode: new FormControl(''),
-  //     city: new FormControl('')
-  //   }),
-  //   email: new FormControl(''),
-  //   telephone: new FormControl(''),
-  // });
-
-  public user;
   
-  constructor(private userService:UserService,  private formBuilder: FormBuilder) {
-    this.user = userService.getUser().subscribe((result)=>(
-      this.user = result,
-      console.log("GEGEVENS: ",this.user)
-    ));
+  public userForm;
+  public user:any;
+  
+  constructor(
+    private userService:UserService,
+    private formBuilder: FormBuilder,
+    private modal: ModalController,
+    // public ms:ModalService
+    ) {
+    this.user = this.userService.getUser();
+    console.log("get user:", this.user);
+
     this.userForm = formBuilder.group({
-      firstname: ['', Validators.required, ],
-      lastname: ['', Validators.required],
-      street: ['', Validators.required],
-      housenumber: ['', Validators.required],
-      zipcode: ['', Validators.required],
-      city: ['', Validators.required],
+      fullName: formBuilder.group({
+        firstname: ['', Validators.required, ],
+        lastname: ['', Validators.required]
+      }),
+      address: formBuilder.group({
+        street: ['', Validators.required],housenumber: ['', Validators.required],
+        zipcode: ['', Validators.required],city: ['', Validators.required]
+      }),
       email: ['', Validators.required],
       telephone: ['', Validators.required]
     });
@@ -45,41 +39,47 @@ export class EditUserPage implements OnInit {
 
   //inputwaarden opslaan
   public saveFirstname(x,y) { 
-    this.user[0]["usr_firstname"] = x;
+    this.user["usr_firstname"] = x;
     //pass name to function to make one function instead of more
-    console.log(x);
-    console.log(y);
+    // console.log(x);
+    // console.log(y.id);
   }
+
   public saveLastname(x) { 
-    this.user[0]["usr_lastname"] = x;
+    this.user["usr_lastname"] = x;
   }
   public saveStreet(x) { 
-    this.user[0]["usr_street"] = x;
+    this.user["usr_street"] = x;
   }
   public saveHousenumber(x) { 
-    this.user[0]["usr_housenumber"] = x;
+    this.user["usr_housenumber"] = x;
   }
   public saveZip(x) { 
-    this.user[0]["zip_zipcode"] = x;
+    this.user["zip_zipcode"] = x;
   }
   public saveCity(x) { 
-    this.user[0]["zip_city"] = x;
+    this.user["zip_city"] = x;
   }
   public saveEmail(x) { 
-    this.user[0]["usr_email"] = x;
+    this.user["usr_email"] = x;
   }
   public saveTelephone(x) { 
-    this.user[0]["usr_telephone"] = x;
+    this.user["usr_telephone"] = x;
   }
   public savePassword(x) { 
-    this.user[0]["usr_password"] = x;
+    this.user["usr_password"] = x;
   }
 
   public onSubmit() {
-    this.userService.setUser(this.user)
+    this.userService.setUserObservable(this.user).subscribe();
   }
 
   ngOnInit() {
+  }
+
+  public hideModal(){
+    console.log('hideModel in EditUser :(');
+    this.modal.dismiss()
   }
 
 }

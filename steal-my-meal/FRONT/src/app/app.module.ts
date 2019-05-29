@@ -11,12 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddMealPage } from '../app/meals/add-meal/add-meal.page';
-import { MealDetailPage } from '../app/meals/meal-detail/meal-detail.page';
-import { ProfilePage } from '../app/profile/profile.page';
-import { EditUserPage } from '../app/profile/edit-user/edit-user.page';
-import { AllergiesPage } from '../app/profile/allergies/allergies.page';
-import { FavoriteChefsPage } from '../app/profile/favorite-chefs/favorite-chefs.page';
+import { AddMealPage } from './meals/add-meal/add-meal.page';
+import { MealDetailPage } from './meals/meal-detail/meal-detail.page';
+import { ProfilePage } from './profile/profile.page';
+import { EditUserPage } from './profile/edit-user/edit-user.page';
+import { AllergiesPage } from './profile/allergies/allergies.page';
+import { FavoriteChefsPage } from './profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { IonicStorageModule } from '@ionic/storage';
@@ -31,7 +31,9 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfilePage,
     EditUserPage,
     AllergiesPage,
-    FavoriteChefsPage
+    FavoriteChefsPage,
+    ExperiencePage,
+    MealHistoryPage
   ],
   entryComponents: [
     AddMealPage, 
@@ -39,7 +41,9 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfilePage,
     EditUserPage,
     AllergiesPage,
-    FavoriteChefsPage
+    FavoriteChefsPage,
+    ExperiencePage,
+    MealHistoryPage
   ],
   imports: [
     BrowserModule, 

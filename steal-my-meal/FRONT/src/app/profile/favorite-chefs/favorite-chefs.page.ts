@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favorite-chefs',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteChefsPage implements OnInit {
 
-  constructor() { }
+  constructor(private modal: ModalController) { }
 
   ngOnInit() {
+  }
+
+  public hideModal(){
+    console.log(this);
+    this.modal.dismiss()
   }
 
 }

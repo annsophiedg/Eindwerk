@@ -49,6 +49,40 @@ class UserController {
     return json_encode($userDetails);
   }
 
+  //Update User Details
+    function updateUser($id,$content) {
+      $decoded = json_decode($content,true);
+
+      $firstname = $decoded["usr_firstname"];
+      $lastname = $decoded["usr_lastname"];
+      $street = $decoded["usr_street"];
+      $housenumber = $decoded["usr_housenumber"];
+
+      $zip_id = $decoded["fk_zip_id"];
+      $zipcode = $decoded["zip_zipcode"];
+      $city = $decoded["zip_city"];
+
+      $new_zip = $this->getZipId($zip_id,$zipcode,$city);
+      $new_zip_id = json_decode($new_zip)[0]->id;
+
+      $email = $decoded["usr_email"];
+      $telephone = $decoded["usr_telephone"];
+
+      $sql = "UPDATE users SET usr_firstname = '".$firstname."', usr_lastname = '".$lastname."', usr_street = '".$street."', usr_housenumber = '".$housenumber."', usr_email = '".$email."', usr_telephone = '".$telephone."', fk_zip_id = '".$new_zip_id."' WHERE usr_id = ".$id;
+
+      $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+      return $result;
+    }
+
+    function getZipId($id,$zip,$city) {
+      $sql = "select getZipId(".$id.", ".$zip.", '".$city."') as id";
+      $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+      return json_encode($result);
+    }
+
+  // USER ALLERGIES --------------------------------------------
+
   //get a users allergies
   /**
    * ing_id, ing_name

@@ -3,6 +3,7 @@ import { MealService } from '../../services/meal/meal.service';
 import { Meal } from '../../models/meal';
 import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
+import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
@@ -40,11 +41,14 @@ export class MealsPage implements OnInit, AfterContentInit {
     spaceBetween: -300
   };
 
-  constructor(private mealService:MealService,
-              private chefService:ChefService, 
-              private fbService:FacebookService, 
-              public modal: ModalController, 
-              private route:ActivatedRoute) {
+  constructor(
+    private mealService:MealService,
+    private chefService:ChefService,
+    private fbService:FacebookService, 
+    public modal: ModalController, 
+    private route:ActivatedRoute,
+    public ms:ModalService
+    ) {
     //load chefs into a dictionary with their id as key
     chefService.getChefs().subscribe(chefs=>{
       chefs.forEach(chef => {
