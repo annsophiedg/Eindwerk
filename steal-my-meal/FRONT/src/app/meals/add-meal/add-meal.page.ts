@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
+import { TypeService } from '../../../services/type/type.service';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -14,9 +15,12 @@ export class AddMealPage {
 
   @Input() usrId;
 
-  //add-meal modal
-  mealJson;
-  order;
+  
+  types = [];
+  mealFormObj;
+  setMeal;
+
+  //datepicker modal
   today = Date.now();
   mealDate:string = "";
   datePickerObj: any = {
@@ -51,10 +55,16 @@ export class AddMealPage {
   constructor(public  modal: ModalController,
               private formBuilder: FormBuilder,
               private mealService:MealService,
+              private typeService:TypeService,
               public  loadingController: LoadingController,
               public  toastController: ToastController) {
 
+
+    this.typeService.getTypes().subscribe(types => {
+      this.types = types});
+
     this.meal = this.formBuilder.group({
+      type: ['', Validators.required,],
       name: ['', Validators.required,],
       price: ['', Validators.required],
       date: ['', Validators.required],
@@ -70,10 +80,11 @@ export class AddMealPage {
   }
 
   logForm(){
-    console.log(this.meal.value.usrId = this.usrId);
-    this.mealJson = JSON.stringify(this.meal.value);
-    console.log(this.mealJson);
-    this.mealService.addMeal(this.mealJson);
+    this.mealFormObj = this.meal.value;
+    this.mealFormObj.usrId = this.usrId;
+    this.setMeal = JSON.stringify(this.mealFormObj);
+    console.log(this.mealFormObj);
+    this.mealService.addMeal(this.mealFormObj);
   }
 
   async presentLoading(){

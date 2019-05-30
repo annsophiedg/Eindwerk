@@ -93,6 +93,22 @@ class MealController {
     return json_encode($mealIngredients);
   }
 
+  function getTypes(){
+
+    $types = Array();
+
+    $sql = "select * from types";
+
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    foreach ($result as $row) {
+      array_push($types,$row);
+    }
+
+    return json_encode($types);
+
+  }
+
   // Add a single meal to DB
   function addMeal($content){
     
@@ -102,11 +118,14 @@ class MealController {
     $startTime = substr($decoded["startTime"], 11, -10);
     $endTime = substr($decoded["startTime"], 11, -10);
 
-    $sql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, mls_portions)
-            values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["portions"]."')";
+    $mealSql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, mls_portions, fk_typ_id)
+                values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["portions"]."', '".$decoded["type"]."')";
             
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+    $mealResult = $this->dbm->sqlExecute($mealSql, null, PDO::FETCH_OBJ);
 
+    $orderSql = "insert into orders (fk_usr_chef_id) values ('".$decoded["usrId"]."')";
+
+    $orderResult = $this->dbm->sqlExecute($orderSql, null, PDO::FETCH_OBJ);
 
   }
 
