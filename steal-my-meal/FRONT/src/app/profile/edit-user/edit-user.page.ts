@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
 // import { ModalService } from '../../../services/modal/modal.service';
 import { ModalController } from '@ionic/angular';
@@ -23,12 +23,12 @@ export class EditUserPage implements OnInit {
     this.user = this.userService.getUser();
     console.log("get user:", this.user);
 
-    this.userForm = formBuilder.group({
-      fullName: formBuilder.group({
+    this.userForm = this.formBuilder.group({
+      fullName: this.formBuilder.group({
         firstname: ['', Validators.required, ],
         lastname: ['', Validators.required]
       }),
-      address: formBuilder.group({
+      address: this.formBuilder.group({
         street: ['', Validators.required],housenumber: ['', Validators.required],
         zipcode: ['', Validators.required],city: ['', Validators.required]
       }),
@@ -38,7 +38,7 @@ export class EditUserPage implements OnInit {
   }
 
   //inputwaarden opslaan
-  public saveFirstname(x,y) { 
+  public saveFirstname(x) { 
     this.user["usr_firstname"] = x;
     //pass name to function to make one function instead of more
     // console.log(x);

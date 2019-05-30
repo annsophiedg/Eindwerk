@@ -30,11 +30,11 @@
         <ion-icon name="star"></ion-icon> My Favorite Chefs
       </li>
       <!-- Rating and delivered meals -->
-      <li (click)="ms.openExperience()">
+      <li *ngIf="isChef" (click)="ms.openExperience()">
         <ion-icon name="ribbon"></ion-icon> My Experience
       </li>
       <!-- History of Cooked Meals -->
-      <li (click)="ms.openMealHistory()">
+      <li *ngIf="isChef" (click)="ms.openMealHistory()">
         <ion-icon name="restaurant"></ion-icon> My Meals
       </li>
       <!-- <li (click)="ms.openInvite()">

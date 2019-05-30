@@ -78,6 +78,20 @@ if ( $subject == "chefs" )
     }    
 }
 
+//use Service ChefController if $subject == "chefMeals"
+if ( $subject == "chefMeals" )
+{
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $chefs = $chefController->getChefMeals($id);
+            echo $chefs;
+        }
+    }
+}
+
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )
 {
@@ -147,7 +161,7 @@ if ( $subject == "users" )
     
 }
 
-//use Service FbController if $subject == "oauth"
+//use Service FbController if $subject == "facebook"
 if ( $subject == "facebook" )
 {
     $fbController = new FbController($dbManager);
