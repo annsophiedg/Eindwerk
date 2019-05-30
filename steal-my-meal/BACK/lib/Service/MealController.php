@@ -118,14 +118,18 @@ class MealController {
     $startTime = substr($decoded["startTime"], 11, -10);
     $endTime = substr($decoded["startTime"], 11, -10);
 
-    $mealSql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, mls_portions, fk_typ_id)
-                values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["portions"]."', '".$decoded["type"]."')";
+    $mealSql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
+                values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["type"]."')";
             
     $mealResult = $this->dbm->sqlExecute($mealSql, null, PDO::FETCH_OBJ);
 
-    $orderSql = "insert into orders (fk_usr_chef_id) values ('".$decoded["usrId"]."')";
+    $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
 
-    $orderResult = $this->dbm->sqlExecute($orderSql, null, PDO::FETCH_OBJ);
+    for($x=0; $x<$portions; $x++){
+      $orderSql = "insert into orders (fk_usr_chef_id) values ('".$decoded["usrId"]."')";
+
+      $orderResult = $this->dbm->sqlExecute($orderSql, null, PDO::FETCH_OBJ);
+    };
 
   }
 

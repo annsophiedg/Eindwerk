@@ -13,13 +13,6 @@ import { ToastController } from '@ionic/angular';
 })
 export class AddMealPage {
 
-  @Input() usrId;
-
-  
-  types = [];
-  mealFormObj;
-  setMeal;
-
   //datepicker modal
   today = Date.now();
   mealDate:string = "";
@@ -47,10 +40,14 @@ export class AddMealPage {
       color: '' // Default ''
     }
   };
+  // end of datepicker modal
 
+  @Input() usrId;
+  
+  types = [];
+  mealFormObj;
+  setMeal;
   meal: FormGroup;
-
-  startTime;
 
   constructor(public  modal: ModalController,
               private formBuilder: FormBuilder,
@@ -59,31 +56,29 @@ export class AddMealPage {
               public  loadingController: LoadingController,
               public  toastController: ToastController) {
 
-
     this.typeService.getTypes().subscribe(types => {
       this.types = types});
+  }
 
+  ngOnInit() {
     this.meal = this.formBuilder.group({
       type: ['', Validators.required,],
-      name: ['', Validators.required,],
-      price: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      price: ['', [Validators.required, Validators.maxLength(2), Validators.pattern("^[0-9]*$")]],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      portions: ['', Validators.required],
+      portions: ['', [Validators.required, Validators.maxLength(2), Validators.pattern("^[0-9]*$")]],
       description: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-    console.log(this.usrId);
-  }
-
   logForm(){
+
     this.mealFormObj = this.meal.value;
     this.mealFormObj.usrId = this.usrId;
     this.setMeal = JSON.stringify(this.mealFormObj);
-    console.log(this.mealFormObj);
+    console.log(this.setMeal);
     this.mealService.addMeal(this.mealFormObj);
   }
 
