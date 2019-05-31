@@ -10,12 +10,11 @@ import { ModalService } from '../../services/modal/modal.service';
 })
 export class ProfilePage implements OnInit {
   public user:any;
-  private chefMeals:Array<any>;
   public isChef:boolean = false;
 
   constructor(
     private userService:UserService,
-    private chefService:ChefService, 
+    public chefService:ChefService, 
     public ms:ModalService
   ) {
     this.userService.getUserObservable().subscribe((result)=>{
@@ -26,9 +25,8 @@ export class ProfilePage implements OnInit {
       this.userService.setUser(this.user)
     });
     this.chefService.getChefMealsObservable().subscribe((result)=>{
-      //save chef meals
-      this.chefMeals = result
-      console.log("CHEF MEALS: ",this.chefMeals)
+      //save chef meals in service
+      chefService.setChefMeals(result);
       //is user a chef?
       if (result.length > 0) {
         this.isChef = true;

@@ -16,9 +16,8 @@ const httpOptions = {
 export class ChefService {
 
   private userId:number;
-  // public isChef:boolean = false;
-  private chefMeals:Array;
-
+  private chefMeals:Array<any>;
+  public isChef:boolean = false;
   
   chefsURL:string = 'http://localhost:3000/BACK/api/chefs';
   chefMealsURL:string;
@@ -29,28 +28,22 @@ export class ChefService {
   ) {
     this.userId = this.userService.getUserId();
     this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
-    // this.setChefMeals();
   }
 
   //Get all meals of chef
   getChefMealsObservable():Observable<any>{
     return this.http.get<any>(`${this.chefMealsURL}`)
   }
-  
-  //Get all meals of chef
-  setChefMeals(){
-    this.http.get<any>(`${this.chefMealsURL}`).subscribe((result)=>{
-      this.chefMeals = result
-      console.log("CHEF MEALS: ",this.chefMeals)
-      this.isChef()
-    });
+
+  //Save meals in chefMeals
+  setChefMeals(meals){
+    //save chef meals
+    this.chefMeals = meals
+    console.log("CHEF MEALS SAVED: ",this.chefMeals)
   }
 
-  isChef(){
-    if (this.chefMeals.length > 0) {
-      return true;
-    }
-    return false
+  getChefMeals() {
+    return this.chefMeals
   }
 
   //Get chefs

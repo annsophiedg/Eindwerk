@@ -1,0 +1,23 @@
+@import '../../../assets/css/variables.scss';
+// @import "../../../theme/layout.scss";
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem;
+    background: $baseColor_red;
+    color: $baseColor_white;
+}
+
+// .important {
+//     background: $baseColor_red;
+//     color: $baseColor_white;
+//     margin: 2rem 0;
+
+//     h2 {
+//         border-bottom: 2px solid $baseColor_white;
+//     }
+//     .tablehead {
+//         border-bottom: 1px solid $baseColor_white;
+//     }
+// }

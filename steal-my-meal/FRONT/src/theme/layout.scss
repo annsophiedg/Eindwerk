@@ -1,3 +1,5 @@
+@import '../assets/css/variables.scss';
+
 ion-header {
     ion-toolbar {
         position: relative;
@@ -17,8 +19,25 @@ ion-header {
         ion-title {
             margin: 1rem 2rem;
         }
-        
 
+    }
+}
 
+ion-content {
+    padding: 1rem 0;
+
+    .paddingBox {
+        padding: 0 1rem;
+    }
+}
+
+ion-grid {
+    padding: 0;
+
+    ion-row {
+        padding: .5rem 0;
+        &.tablehead {
+            border-bottom: 1px solid $baseColor_red;
+        }
     }
 }

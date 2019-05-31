@@ -1,8 +1,5 @@
 @import "../../../assets/css/variables.scss";
-
-.paddingBox {
-    padding: 1rem;
-}
+@import "../../../theme/layout.scss";
 
 ion-chip {
     background: $baseColor_red;

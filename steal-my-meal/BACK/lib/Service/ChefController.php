@@ -85,7 +85,7 @@ class ChefController {
   function getChefMeals(int $id)
   {
     //sql statement to get requested chef meals
-    $sqlChefDetails = "SELECT mls_id, mls_name, mls_price, mls_take_start, mls_take_end, count(mls_name) as mls_aantal from meals m inner join orders o on m.mls_id = o.fk_mls_id where o.fk_usr_chef_id = ".$id." group by mls_name";
+    $sqlChefDetails = "SELECT mls_id, mls_name, mls_price, mls_date, DATE_FORMAT(STR_TO_DATE(mls_date,'%Y-%m-%d'), '%d-%m-%Y') as mls_datum, mls_take_start, mls_take_end, count(mls_name) as mls_amount from meals m inner join orders o on m.mls_id = o.fk_mls_id where o.fk_usr_chef_id = ".$id." group by mls_name order by mls_date";
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
