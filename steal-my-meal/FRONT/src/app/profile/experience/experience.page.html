@@ -1,10 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>experience</ion-title>
+    <ion-title>My Experience</ion-title>
     <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Cooking Experience
+      </ion-col>
+      <ion-col>
+        <ion-icon name="restaurant"></ion-icon> {{cookedMeals}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Order Experience
+      </ion-col>
+      <ion-col>
+        <ion-icon name="basket"></ion-icon> {{finishedOrders}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Rating Experience
+      </ion-col>
+      <ion-col>
+        <ion-icon name="star"></ion-icon> {{avgRating}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

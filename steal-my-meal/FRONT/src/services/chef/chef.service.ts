@@ -21,6 +21,7 @@ export class ChefService {
   
   chefsURL:string = 'http://localhost:3000/BACK/api/chefs';
   chefMealsURL:string;
+  experienceURL:string;
 
   constructor(
     private http:HttpClient,
@@ -28,6 +29,7 @@ export class ChefService {
   ) {
     this.userId = this.userService.getUserId();
     this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
+    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
   }
 
   //Get all meals of chef
@@ -46,6 +48,11 @@ export class ChefService {
     return this.chefMeals
   }
 
+  //Get Experience
+  getExperience():Observable<any>{
+    return this.http.get<any>(`${this.experienceURL}`);
+  }
+  
   //Get chefs
   getChefs():Observable<any>{
     return this.http.get<any>(`${this.chefsURL}`);

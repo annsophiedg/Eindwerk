@@ -56,17 +56,19 @@ class ChefController {
     return json_encode($chefDetails);
   }
 
-  // Get a chef rating and amount of delivered meals
   /**
-   * chef_id, avg_score, delivered_meals
+   * Get a chef experience
+   *
+   * mls_cooked: amount of (different cooked meals)
+   * ord_finished: orders that were picked up
+   * avg_rating: average of all order ratings
    * 
    * @return array|null
    */
   function getChefExperience(int $id)
   {
     //sql statement to get requested chef experience
-    $sqlChefDetails = "SELECT fk_usr_chef_id, sum(rat_weight)/count(rat_weight) as avg_score, count(fk_mls_id) as delivered_meals from orders o left join ratings r on o.fk_rat_id = r.rat_id where fk_usr_chef_id = ".$id."
-    group by fk_usr_chef_id";
+    $sqlChefDetails = "SELECT count(DISTINCT fk_mls_id) as mls_cooked, count(*) as ord_finished, sum(rat_weight)/count(rat_weight) as avg_rating FROM orders o left join ratings r on o.fk_rat_id = r.rat_id WHERE fk_usr_cons_id IS NOT null AND fk_usr_chef_id = ".$id;
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
@@ -76,9 +78,16 @@ class ChefController {
     return json_encode($chefExperience);
   }
 
-  // Get all meals of one chef
   /**
-   * mls_id, mls_price, mls_take_start, mls_take_end, mls_aantal
+   * Get all meals of one chef (MEAL HISTORY)
+   *
+   * mls_id
+   * mls_name
+   * mls_price
+   * mls_date & formatted mls_datum
+   * mls_take_start
+   * mls_take_end
+   * mls_amount
    * 
    * @return array|null
    */

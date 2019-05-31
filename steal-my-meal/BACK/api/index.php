@@ -78,6 +78,19 @@ if ( $subject == "chefs" )
     }    
 }
 
+//use Service ChefController if $subject == "experience"
+if ( $subject == "experience" )
+{
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            $chefExperience = $chefController->getChefExperience($id);
+            echo $chefExperience;
+        }
+    }
+}
+
 //use Service ChefController if $subject == "chefMeals"
 if ( $subject == "chefMeals" )
 {
