@@ -77,6 +77,45 @@ if ( $subject == "chefs" )
     }    
 }
 
+//use Service ChefController if $subject == "chefMeals"
+if ( $subject == "chefMeals" )
+{
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $chefMeals = $chefController->getChefMeals($id);
+            echo $chefMeals;
+        }
+    }
+}
+
+//use Service UserController if $subject == "favChefs"
+if ( $subject == "favChefs" )
+{
+    $userController = new UserController($dbManager);
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $favChefIds = $userController->getFavoriteChefs($id);
+            $favChefDetails = Array();
+
+            foreach (json_decode($favChefIds) as $id) {
+                //echo gettype($id) .", ". $id."<br>";
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                array_push($favChefDetails,$chefDetails);
+            }
+
+            echo json_encode($favChefDetails);
+        }
+    }
+}
+
+
+
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )
 {
@@ -139,7 +178,7 @@ if ( $subject == "users" )
         }
     } else if ($method == "PUT") {
         //update user information
-        $userController->updateUser($id);
+        $userController->updateUser($id,$input);
     } else if ($method == "DELETE") {
         $userController->deleteUser($id);
     }
@@ -147,7 +186,7 @@ if ( $subject == "users" )
     
 }
 
-//use Service FbController if $subject == "oauth"
+//use Service FbController if $subject == "facebook"
 if ( $subject == "facebook" )
 {
     $fbController = new FbController($dbManager);

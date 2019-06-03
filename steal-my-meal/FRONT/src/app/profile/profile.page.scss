@@ -1,4 +1,4 @@
-@import "../../assets/css/variables.scss";
+@import "../../style/variables";
 
 .userDetails {
     width: 100vw;
@@ -32,36 +32,37 @@
         }
     }
 
-    ion-card-title,
-    ion-card-subtitle {
-        color: $baseColor_white;
+    .subtitle {
+        // font-weight: 400;
+        letter-spacing: 1px;
     }
 }
 
-ion-nav {
+.nav-vertical {
     width: 100%;
     overflow: scroll;
     margin-bottom: 1rem;
+}
 
-    ul {
+.list-vertical {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > li {
+        width: 80%;
+        margin-top: 1rem;
+        // color: #333;
+        padding: 1rem;
+        border-bottom: 1px solid #ccc;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
 
-        li {
-            width: 80%;
-            margin-top: 1rem;
-            text-decoration: none;
-            // color: #333;
-            padding: 1rem;
-            border-bottom: 1px solid #ccc;
-            display: flex;
-            align-items: flex-end;
+        // text-decoration: none;
+        align-items: flex-end;
 
-            ion-icon {
-                margin-right: 1rem;
-            }
-
+        ion-icon {
+            margin-right: 1rem;
         }
+
     }
 }

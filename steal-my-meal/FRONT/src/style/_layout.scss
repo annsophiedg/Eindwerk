@@ -1,0 +1,40 @@
+// LAYOUT RULES
+// Divide the page into sections
+// Hold one or more modules together
+
+ion-header {
+    ion-toolbar {
+        position: relative;
+    
+        ion-icon {
+            //ion-icon with class="arrow-back"
+            &.arrow-back {
+                position: absolute;
+                left: 1rem;
+                font-size: 20px;
+                z-index: 1;
+            }
+        }
+
+        ion-title {
+            // margin: 1rem 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.box {
+    padding: 1rem;
+}
+
+.box-title {
+    padding: 1rem;
+    background: $baseColor_red;
+    color: $baseColor_white;
+}
+
+//FONT CLASSES
+.thin {
+    font-weight: 300;
+}
+

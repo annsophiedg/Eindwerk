@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ChefService } from '../../../services/chef/chef.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-meal-history',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MealHistoryPage implements OnInit {
 
-  constructor() { }
+  public myMeals:Array<any>;
+  public now = moment(new Date()).format('YYYY-MM-DD');
+
+  constructor(
+    private modal: ModalController,
+    private chefService:ChefService
+  ) { 
+    this.myMeals = this.chefService.getChefMeals();
+    console.log('now:',this.now)
+  }
 
   ngOnInit() {
+  }
+
+  public hideModal(){
+    console.log("hide modal in meal history :(")
+    this.modal.dismiss()
   }
 
 }

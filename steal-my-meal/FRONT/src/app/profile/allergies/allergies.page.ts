@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
 import { MealService } from '../../../services/meal/meal.service';
-import { GeneralService } from 'src/services/general/general.service';
+import { GeneralService } from '../../../services/general/general.service';
+// import { ModalService } from '../../../services/modal/modal.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-allergies',
@@ -24,33 +25,33 @@ export class AllergiesPage implements OnInit {
   all_name:AbstractControl;
   hidden;
 
-  constructor(public modal:ModalController, 
+  constructor(
     private formBuilder:FormBuilder, 
     private userService:UserService, 
     private mealService:MealService, 
-    private generalService:GeneralService) { 
+    private generalService:GeneralService,
+    // public ms:ModalService,
+    private modal: ModalController
+    ) { 
       this.allergyForm = this.formBuilder.group({
         all_name: ['', Validators.required]
       });
 
       this.all_name = this.allergyForm.controls['all_name'];
 
-      userService.getUserAllergies().subscribe((result)=>(
+      this.userService.getUserAllergies().subscribe((result)=>(
         //save user allergies in array
         this.userAllergies = result,
         console.log("User Allergies: ",this.userAllergies),
         // check if user has allergies
         this.userHasAllergies(this.userAllergies)
       ));
-      generalService.getIngredients().subscribe((result)=>(
+
+      this.generalService.getIngredients().subscribe((result)=>(
         //save DB ingredients in array
         this.dbIngredients = result,
         console.log("All Ingredients from DB: ",this.dbIngredients)
       ));
-  }
-
-  hideModal(){
-    this.modal.dismiss()
   }
 
   //check if user has any allergies (return true/false)
@@ -126,6 +127,10 @@ export class AllergiesPage implements OnInit {
     this.userService.deleteUserAllergy(allergy);
     //delete in front
     this.hideAllergy(allergy);
+  }
+
+  public hideModal(){
+    this.modal.dismiss()
   }
 
   ngOnInit() {

@@ -1,13 +1,13 @@
 <ion-header>
 
   <ion-toolbar>
+    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
     <ion-title>My Allergies</ion-title>
-    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back">x</ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="paddingBox">
+  <div class="box">
     <ion-chip *ngFor="let a of userAllergies" (click)=deleteAllergy(a) [hidden]=false>
       <ion-label>{{a.ing_name}}</ion-label>
       <ion-icon name="close"></ion-icon>
@@ -17,7 +17,7 @@
 
     <form class="allergyForm" FormGroup="allergyForm" (ngSubmit)="postAllergy()">
       <ion-item>
-        <ion-label position="floating">Add an allergy here</ion-label>
+        <ion-label class="thin" position="floating">Add an allergy here</ion-label>
         <ion-input list="allergyList" FormControlName="all_name" name="all_name"
           (input)="showInputValues($event.target.value)">
         </ion-input>
@@ -26,14 +26,14 @@
         <li *ngFor="let value of inputValues" (click)="addAllergy(value)" value="{{value.ing_id}}">{{value.ing_name}}
         </li>
       </ul>
-      <p>Please add ingredients that you are allergic to so we can check it with the ingredients of the meal.</p>
+      <p class="thin">Please add ingredients that you are allergic to so we can check it with the ingredients of the meal.</p>
     </form>
 
   </div>
 
 </ion-content>
 
-<ion-footer class="paddingBox">
+<ion-footer class="box">
   <p>Important!</p>
   <p>We don't take any responsibility for the incompleteness of the ingredients list of the served meal. Take notice
     that the served meals are cooked in a private kitchen and there might always be a fraction of any ingredient in your

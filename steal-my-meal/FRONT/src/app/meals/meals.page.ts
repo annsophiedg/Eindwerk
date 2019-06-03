@@ -5,6 +5,7 @@ import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';
+import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
@@ -12,7 +13,6 @@ import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
-import { ModalService } from 'src/services/modal/modal.service';
 import {Storage} from '@ionic/storage';
 
 

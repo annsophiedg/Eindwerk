@@ -107,7 +107,6 @@ class MealController {
             
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-
   }
 
   // Add an ingredient to DB & return the ing_id

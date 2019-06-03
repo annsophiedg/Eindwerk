@@ -48,12 +48,12 @@ export class AddMealPage {
 
   startTime;
 
-  constructor(public  modal: ModalController,
-              private formBuilder: FormBuilder,
-              private mealService:MealService,
-              public  loadingController: LoadingController,
-              public  toastController: ToastController) {
-
+  constructor(
+    public  modal: ModalController,
+    private formBuilder: FormBuilder,
+    private mealService:MealService,
+    public  loadingController: LoadingController,
+    public  toastController: ToastController) {
     this.meal = this.formBuilder.group({
       name: ['', Validators.required,],
       price: ['', Validators.required],
