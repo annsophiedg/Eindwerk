@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Edit Your Profile</ion-title>
     <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-title>Edit Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <fieldset formGroupName="fullName">
       <legend>Full Name</legend>
       <!-- Change profile pic -->
@@ -65,7 +65,7 @@
           (input)="saveTelephone($event.target.value)"></ion-input>
       </ion-item>
     </fieldset>
-    
+
     <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
   </form>
 

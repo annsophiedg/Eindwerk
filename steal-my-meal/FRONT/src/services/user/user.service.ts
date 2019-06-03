@@ -16,9 +16,10 @@ const httpOptions = {
 
 export class UserService {
 
-  private userId:number = 3;
+  private userId = "10217728406738088";
   private userURL; 
   private allergyURL;
+  private favChefsURL;
   private deleteAllergyURL;
   private user;
 
@@ -26,6 +27,7 @@ export class UserService {
     //get id from login
     this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
     this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
+    this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
 
     // this.user = this.getUser();
   }
@@ -58,6 +60,10 @@ export class UserService {
 
   public getUserAllergies() {
     return this.http.get<User[]>(`${this.allergyURL}`)
+  }
+
+  public getUserFavChefs() {
+    return this.http.get<User[]>(`${this.favChefsURL}`)
   }
 
   // USER ALLERGIES

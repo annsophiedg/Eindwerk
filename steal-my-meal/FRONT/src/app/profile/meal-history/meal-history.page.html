@@ -1,13 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>My Cooked Meals</ion-title>
     <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-title>My Cooked Meals</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2 class="paddingBox">Current meal(s)</h2>
-  <div class="paddingBox">
+  <div class="box-title">
+    <h2>Current meal(s)</h2>
+  </div>
+  <div class="box">
     <ion-grid>
       <ion-row class="tablehead">
         <ion-col size="3">
@@ -21,7 +23,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-grid *ngFor="let m of myMeals">
+    <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="m.mls_date>now">
         <ion-col size="3">
           {{m.mls_datum}}
@@ -36,8 +38,11 @@
     </ion-grid>
   </div>
 
-  <h2 class="paddingBox">Delivered meal(s)</h2>
-  <div class="paddingBox">
+
+  <div class="box-title">
+    <h2>Delivered meal(s)</h2>
+  </div>
+  <div class="box">
     <ion-grid>
       <ion-row class="tablehead">
         <ion-col size="3">
@@ -51,7 +56,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-grid *ngFor="let m of myMeals">
+    <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="now>m.mls_date">
         <ion-col size="3">
           {{m.mls_datum}}

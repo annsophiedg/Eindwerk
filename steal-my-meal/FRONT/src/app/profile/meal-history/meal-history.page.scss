@@ -1,10 +1,23 @@
-@import '../../../assets/css/variables.scss';
-// @import "../../../theme/layout.scss";
+@import "../../../style/variables.scss";
 
 h2 {
+    font-size: 1.8rem;
+    margin: 0;
     text-align: center;
     text-transform: uppercase;
-    padding: 1rem;
-    background: $baseColor_red;
-    color: $baseColor_white;
+}
+
+ion-grid {
+    padding: 0;
+
+    &.grid-data:last-of-type {
+        margin-bottom: 1rem;
+    }
+
+    ion-row {
+        padding: .5rem 0;
+        &.tablehead {
+            border-bottom: 1px solid $baseColor_red;
+        }
+    }
 }

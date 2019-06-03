@@ -118,7 +118,6 @@ class UserController {
     $result = $this->dbm->sqlExecute($sqlInsertUserAllergy, null, PDO::FETCH_OBJ);
   }
 
-
   //delete allergy from a user
   /**
    * all_id, all_name
@@ -133,21 +132,27 @@ class UserController {
     return $result;
   }
 
-  //get all allergies from DB
-  /**
-   * ing_id, ing_name
-   * @return array|null
-   */
-  function getAllAllergies(){
-    $sqlAllergies = "select * from allergies order by all_name";
+    // USER Favorite Chefs --------------------------------------------
+    /**
+     * ing_id, ing_name
+     * @return array|null
+     */
+    function getFavoriteChefs($id){
+        $sqlFavoriteChefIDs = "select usr_id as chef_id from users u inner join followers f on u.usr_id = f.fk_usr_chef_id where f.fk_usr_id = ".$id;
 
-    //fetch data from db
-    $result = $this->dbm->sqlExecute($sqlAllergies, null, PDO::FETCH_OBJ);
+        //fetch data from db
+        $result = $this->dbm->sqlExecute($sqlFavoriteChefIDs, null, PDO::FETCH_OBJ);
 
-    $allergies = $result;
+        $favChefIds = Array();
 
-    return json_encode($allergies);
-  }
+        foreach ($result as $i) {
+            array_push($favChefIds,$i->chef_id);
+        }
+
+        return json_encode($favChefIds);
+    }
+
+
 
   //UNDERNEATH STILL TO FIX SQL!! ----------------
 

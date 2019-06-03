@@ -78,19 +78,6 @@ if ( $subject == "chefs" )
     }    
 }
 
-//use Service ChefController if $subject == "experience"
-if ( $subject == "experience" )
-{
-    $chefController = new ChefController($dbManager);
-
-    if ($method == "GET") {
-        if ($id) {
-            $chefExperience = $chefController->getChefExperience($id);
-            echo $chefExperience;
-        }
-    }
-}
-
 //use Service ChefController if $subject == "chefMeals"
 if ( $subject == "chefMeals" )
 {
@@ -99,11 +86,36 @@ if ( $subject == "chefMeals" )
     if ($method == "GET") {
         if ($id) {
             //GET all meals of one chef
-            $chefs = $chefController->getChefMeals($id);
-            echo $chefs;
+            $chefMeals = $chefController->getChefMeals($id);
+            echo $chefMeals;
         }
     }
 }
+
+//use Service UserController if $subject == "favChefs"
+if ( $subject == "favChefs" )
+{
+    $userController = new UserController($dbManager);
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $favChefIds = $userController->getFavoriteChefs($id);
+            $favChefDetails = Array();
+
+            foreach (json_decode($favChefIds) as $id) {
+                //echo gettype($id) .", ". $id."<br>";
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                array_push($favChefDetails,$chefDetails);
+            }
+
+            echo json_encode($favChefDetails);
+        }
+    }
+}
+
+
 
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )
