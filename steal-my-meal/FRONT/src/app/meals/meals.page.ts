@@ -137,7 +137,8 @@ export class MealsPage implements OnInit, AfterContentInit {
       leaveAnimation: myLeaveAnimation,
       componentProps: {
         'meal': meal,
-        'chef': chef
+        'chef': chef,
+        'usrId': this.userID
       }
     });
     return await modal.present();

@@ -49,13 +49,11 @@ if ( $subject == "meals" )
             $mealDetails = $mealController->getMealDetails($id);
             echo $mealDetails;
             print '<br>';
-            //GET meal ingredients
-            $ingredients = $mealController->getMealIngredients($id);
-            echo $ingredients;
-            print '<br>';
         }
     } else if ($method == "POST") {
         $mealController->addMeal($input);
+    } else if($method =="PUT"){
+        $mealController->subscribe($input);
     }
 }
 
@@ -88,7 +86,11 @@ if ( $subject == "ingredients" )
             //GET all ingredients from DB
             $allIngredients = $mealController->getDBIngredients();
             echo $allIngredients;
-        } 
+        }else{
+            //GET meal ingredients
+            $ingredients = $mealController->getMealIngredients($id);
+            echo $ingredients;
+        }
 
     } else if ($method == "POST") {
         $mealController->addIngredient($input);

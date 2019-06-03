@@ -73,24 +73,23 @@ class MealController {
    * ing_name
    * @return array
    */
-  function getMealIngredients($id)
+  function getMealIngredients($mealId)
   {
-    //empty array to save ingredients
-    $mealIngredients = Array();
+    $ingredients = [];
 
     //sql statement to get requested meal details
     $sql = "select ing_name from `meals/ingredients` mi
     inner join ingredients i on mi.fk_ing_id = i.ing_id
-    where fk_mls_id = ".$id;
+    where fk_mls_id = ".$mealId;
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
     foreach ($result as $row) {
-      array_push($mealIngredients,$row);
+      array_push($ingredients,$row);
     }
 
-    return json_encode($mealIngredients);
+    return json_encode($ingredients);
   }
 
   function getTypes(){
@@ -120,31 +119,25 @@ class MealController {
 
     //Function to create multiple rows in order table for each portion
     function createOrders($portions, $usrId){
-      $string;
+      $values;
       for($x=1; $x<=$portions; $x++){
         if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
         else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
       };
-      return $string;
+      return $values;
     };
 
     //get number from string portions
     $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
 
-    //Use MySql transaction for inserting meals_id to order table, all with same meals_id
+    //Use MySql transaction for inserting new meal and orders at same time. The quantity of orders is the same as the number of portions.
     $orderSqlCommand = "BEGIN;
                         INSERT INTO meals (mls_id, mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
                         VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["type"]."');
-                        INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES".createOrders($portions, $decoded["usrId"])."COMMIT;";
+                        INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES".createOrders($portions, $decoded["usrId"]).
+                        "COMMIT;";
 
     $orderMealResult = $this->dbm->sqlExecute($orderSqlCommand, null, PDO::FETCH_OBJ);
-
-    // //loop through sql for every portion
-    // for($x=0; $x<$portions; $x++){
-    //   $orderSql = "insert into orders (fk_usr_chef_id) values ('".$decoded["usrId"]."')";
-
-    //   $orderResult = $this->dbm->sqlExecute($orderSql, null, PDO::FETCH_OBJ);
-    // };
 
   }
 
@@ -159,6 +152,14 @@ class MealController {
 
     //var_dump($result);
     echo json_encode($result);
+  }
+
+  function subscribe($input){
+    $decoded = json_decode($input, true);
+
+    $sql = "UPDATE orders SET fk_usr_cons_id=" .$decoded["usrId"]." WHERE fk_mls_id=". $decoded["mealId"]." AND fk_usr_cons_id IS NULL LIMIT 1;";
+
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }
 }
 

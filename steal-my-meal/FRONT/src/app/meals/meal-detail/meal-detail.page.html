@@ -45,13 +45,10 @@
       <ion-item>
           <ion-label>Adress: {{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</ion-label>
       </ion-item>
-      <ion-item>
-          <ion-label>  </ion-label>
-      </ion-item>
   </ion-card>
 
   <div class="btns">
       <ion-button (click)="hideModal()">Close</ion-button>
-      <ion-button (click)="presentLoading()">Get this meal!</ion-button>
+      <ion-button (click)="presentLoading()" (click)="getMeal()">Get this meal!</ion-button>
   </div>
 </ion-content>
