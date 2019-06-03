@@ -53,16 +53,15 @@ class UserController {
     function updateUser($id,$content) {
       $decoded = json_decode($content,true);
 
-      $firstname = $decoded["usr_firstname"];
-      $lastname = $decoded["usr_lastname"];
-      $street = $decoded["usr_street"];
-      $housenumber = $decoded["usr_housenumber"];
+      $firstname = $decoded["fullName"]["usr_firstname"];
+      $lastname = $decoded["fullName"]["usr_lastname"];
+      $street = $decoded["address"]["usr_street"];
+      $housenumber = $decoded["address"]["usr_housenumber"];
 
-      $zip_id = $decoded["fk_zip_id"];
-      $zipcode = $decoded["zip_zipcode"];
-      $city = $decoded["zip_city"];
+      $zipcode = $decoded["address"]["zip_zipcode"];
+      $city = $decoded["address"]["zip_city"];
 
-      $new_zip = $this->getZipId($zip_id,$zipcode,$city);
+      $new_zip = $this->getZipId($zipcode,$city);
       $new_zip_id = json_decode($new_zip)[0]->id;
 
       $email = $decoded["usr_email"];
@@ -75,8 +74,8 @@ class UserController {
       return $result;
     }
 
-    function getZipId($id,$zip,$city) {
-      $sql = "select getZipId(".$id.", ".$zip.", '".$city."') as id";
+    function getZipId($zip,$city) {
+      $sql = "select getZipId(".$zip.", '".$city."') as id";
       $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
       return json_encode($result);
     }

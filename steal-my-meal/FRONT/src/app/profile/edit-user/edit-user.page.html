@@ -13,13 +13,13 @@
       <!-- Change profile pic -->
       <ion-item>
         <!-- Firstname -->
-        <ion-input type="text" id="firstname" formControlName="firstname" required [value]="user?.usr_firstname"
-          (input)="saveFirstname($event.target.value)"></ion-input>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" id="firstname" formControlName="usr_firstname"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Lastname -->
-        <ion-input type="text" id="lastname" formControlName="lastname" required [value]="user?.usr_lastname"
-          (input)="saveLastname($event.target.value)"></ion-input>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" id="lastname" formControlName="usr_lastname"></ion-input>
       </ion-item>
     </fieldset>
 
@@ -27,23 +27,23 @@
       <legend>Address</legend>
       <ion-item>
         <!-- Street -->
-        <ion-input type="text" id="street" formControlName="street" required [value]="user?.usr_street"
-          (input)="saveStreet($event.target.value)"></ion-input>
+        <ion-label position="floating">Street</ion-label>
+        <ion-input type="text" id="street" formControlName="usr_street"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Nr -->
-        <ion-input type="text" id="housenumber" formControlName="housenumber" required [value]="user?.usr_housenumber"
-          (input)="saveHousenumber($event.target.value)"></ion-input>
+        <ion-label position="floating">Housenumber</ion-label>
+        <ion-input type="text" id="housenumber" formControlName="usr_housenumber"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Zipcode -->
-        <ion-input type="text" id="zipcode" formControlName="zipcode" required [value]="user?.zip_zipcode"
-          (input)="saveZip($event.target.value)"></ion-input>
+        <ion-label position="floating">Zipcode</ion-label>
+        <ion-input type="text" id="zipcode" formControlName="zip_zipcode"></ion-input>
       </ion-item>
       <ion-item>
         <!-- City -->
-        <ion-input type="text" id="city" formControlName="city" required [value]="user?.zip_city"
-          (input)="saveCity($event.target.value)">
+        <ion-label position="floating">City</ion-label>
+        <ion-input type="text" id="city" formControlName="zip_city">
         </ion-input>
       </ion-item>
     </fieldset>
@@ -52,8 +52,8 @@
       <legend>Email Address</legend>
       <ion-item>
         <!-- Email -->
-        <ion-input type="email" id="email" formControlName="email" required [value]="user?.usr_email"
-          (input)="saveEmail($event.target.value)"></ion-input>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" id="email" formControlName="usr_email"></ion-input>
       </ion-item>
     </fieldset>
 
@@ -61,8 +61,8 @@
       <legend>Telephone Number</legend>
       <ion-item>
         <!-- Telephone -->
-        <ion-input type="tel" id="telephone" formControlName="telephone" required [value]="user?.usr_telephone"
-          (input)="saveTelephone($event.target.value)"></ion-input>
+        <ion-label position="floating">Telephone Number</ion-label>
+        <ion-input type="tel" id="telephone" formControlName="usr_telephone"></ion-input>
       </ion-item>
     </fieldset>
 

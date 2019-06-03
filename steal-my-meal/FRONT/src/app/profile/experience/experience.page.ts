@@ -18,6 +18,7 @@ export class ExperiencePage implements OnInit {
     private chefService:ChefService
   ) { 
     this.chefService.getExperience().subscribe((result)=>{
+      console.log('result experience: ', result)
       this.cookedMeals = result[0].mls_cooked
       this.finishedOrders = result[0].ord_finished
       this.avgRating = result[0].avg_rating
@@ -29,7 +30,6 @@ export class ExperiencePage implements OnInit {
   }
 
   public hideModal(){
-    console.log(this);
     this.modal.dismiss()
   }
 

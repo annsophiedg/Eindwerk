@@ -15,13 +15,13 @@ const httpOptions = {
 })
 export class ChefService {
 
-  private userId:number;
+  private userId;
   private chefMeals:Array<any>;
   public isChef:boolean = false;
   
   chefsURL:string = 'http://localhost:3000/BACK/api/chefs';
   chefMealsURL:string;
-  experienceURL:string;
+  chefDetailsURL:string;
 
   constructor(
     private http:HttpClient,
@@ -29,7 +29,7 @@ export class ChefService {
   ) {
     this.userId = this.userService.getUserId();
     this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
-    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+    this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
   //Get all meals of chef

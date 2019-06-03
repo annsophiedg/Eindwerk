@@ -25,53 +25,24 @@ export class EditUserPage implements OnInit {
 
     this.userForm = this.formBuilder.group({
       fullName: this.formBuilder.group({
-        firstname: ['', Validators.required, ],
-        lastname: ['', Validators.required]
+        usr_firstname: [this.user['usr_firstname'], Validators.required, ],
+        usr_lastname: [this.user['usr_lastname'], Validators.required]
       }),
       address: this.formBuilder.group({
-        street: ['', Validators.required],housenumber: ['', Validators.required],
-        zipcode: ['', Validators.required],city: ['', Validators.required]
+        usr_street: [this.user['usr_street'], Validators.required],
+        usr_housenumber: [this.user['usr_housenumber'], Validators.required],
+        zip_zipcode: [this.user['zip_zipcode'], Validators.required],
+        zip_city: [this.user['zip_city'], Validators.required]
       }),
-      email: ['', Validators.required],
-      telephone: ['', Validators.required]
+      usr_email: [this.user['usr_email'], Validators.required],
+      usr_telephone: [this.user['usr_telephone']]
     });
-  }
 
-  //inputwaarden opslaan
-  public saveFirstname(x) { 
-    this.user["usr_firstname"] = x;
-    //pass name to function to make one function instead of more
-    // console.log(x);
-    // console.log(y.id);
-  }
-
-  public saveLastname(x) { 
-    this.user["usr_lastname"] = x;
-  }
-  public saveStreet(x) { 
-    this.user["usr_street"] = x;
-  }
-  public saveHousenumber(x) { 
-    this.user["usr_housenumber"] = x;
-  }
-  public saveZip(x) { 
-    this.user["zip_zipcode"] = x;
-  }
-  public saveCity(x) { 
-    this.user["zip_city"] = x;
-  }
-  public saveEmail(x) { 
-    this.user["usr_email"] = x;
-  }
-  public saveTelephone(x) { 
-    this.user["usr_telephone"] = x;
-  }
-  public savePassword(x) { 
-    this.user["usr_password"] = x;
   }
 
   public onSubmit() {
-    this.userService.setUserObservable(this.user).subscribe();
+    console.log(this.userForm.value)
+    this.userService.setUserObservable(this.userForm.value).subscribe();
   }
 
   ngOnInit() {
