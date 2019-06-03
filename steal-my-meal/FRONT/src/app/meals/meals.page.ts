@@ -27,6 +27,7 @@ export class MealsPage implements OnInit {
   private userID = "";
   private loggedIn:boolean = false;
   private isContentLoaded:boolean = false;
+  public chefIds:string[] = [];
 
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
@@ -68,17 +69,19 @@ export class MealsPage implements OnInit {
           }else
             this.ms.openLogIn(); 
         }
-
         this.chefService.getChefs(this.userID).subscribe(chefs=>{
-          
+          if (chefs == null)
+            chefs = [];
           //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
           this.mealService.getMeals().subscribe(meals=>{
             meals.forEach(meal =>{
               this.meals[meal.usr_id] = meal;
             });
             chefs.forEach(chef => {
+              
               chef = JSON.parse(chef);
               this.chefs.push(chef);
+              this.chefIds = [...this.chefIds,chef.usr_id];
             });
           })  
         });

@@ -74,9 +74,9 @@ function updateUserData($result){
   $lastName = $data['last_name'];
   $pic = $data['picture']['data']['url'];
   
-  // $sql = "SELECT 
+  $sql = "SELECT CreateUser('$id','$firstName','$lastName','$pic') as 'Login'";
   
-  // $result = $this->dbm->sqlExecute($sql);
+  $result = $this->dbm->sqlExecute($sql);
   return $id;
 }
   

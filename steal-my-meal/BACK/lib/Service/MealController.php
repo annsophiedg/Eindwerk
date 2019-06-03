@@ -19,7 +19,7 @@ class MealController {
 
     //sql statement to get available meals
     // $sqlAvailableMeals = "select * from meals";
-    $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where fk_usr_cons_id is null group by fk_mls_id";
+    $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id where (fk_usr_cons_id is null or fk_usr_cons_id = '') group by fk_mls_id";
 
     $result = $this->dbm->sqlExecute($sqlAvailableMeals, null, PDO::FETCH_OBJ);
     foreach ($result as $row) {

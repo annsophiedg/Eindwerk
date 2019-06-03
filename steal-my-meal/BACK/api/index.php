@@ -66,13 +66,13 @@ if ( $subject == "chefs" )
     if ($method == "GET") {
         if (!$id) {
             //GET overview chefs: sort on location
-            // $chefs = $chefController->getActiveChefs();
+            $chefs = $chefController->getActiveChefs();
             // echo $chefs;
         } else {
             //GET chef details
             $chefDetails = $chefController->getActiveChefs($id);
-            //if chefDetails = null, user is not a chef!
             echo $chefDetails;
+            //if chefDetails = null, user is not a chef!
         }
     }    
 }
