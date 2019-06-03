@@ -36,7 +36,7 @@ class UserController {
    * 
    * @return array|null
    */
-  function getUserDetails(int $id)
+  function getUserDetails(string $id)
   {
     //sql statement to get requested user details
     $sql = "SELECT * from users u inner join zipcodes z on u.fk_zip_id = z.zip_id where usr_id = ".$id;

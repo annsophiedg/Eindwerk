@@ -19,9 +19,9 @@ export class ChefService {
 
   constructor(private http:HttpClient) { }
 
-  //Get chefs
-  getChefs():Observable<any>{
-    return this.http.get<any>(`${this.todosUrl}`);
+  //Get chefs in the same zipcode as the user
+  getChefs(userID):Observable<any>{
+    return this.http.get<any>(`${this.todosUrl}`+ '/' + userID);
   }
 
   //Add chef

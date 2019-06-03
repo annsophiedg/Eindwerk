@@ -32,8 +32,8 @@ export class MealsPage implements OnInit {
   @ViewChild('up') upBtn;
 
 
-  meals = [];
-  chefs = {};
+  meals = {};
+  chefs = [];
 
   slideOpts = {
     initialSlide: 1,
@@ -50,21 +50,9 @@ export class MealsPage implements OnInit {
               public modal: ModalController, 
               private route:ActivatedRoute,
               private storage:Storage) {
-    //load chefs into a dictionary with their id as key
-    chefService.getChefs().subscribe(chefs=>{
-      chefs.forEach(chef => {
-        chef = JSON.parse(chef);
-        this.chefs[chef.usr_id] = chef;
-      });
-      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
-      mealService.getMeals().subscribe(meals=>{
-        this.meals = meals;
-      })  
-    })
-    
+
    }
 
- 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
 
@@ -75,15 +63,29 @@ export class MealsPage implements OnInit {
           if(code != null){
             this.fbService.getToken(code).subscribe(res => {
               this.storage.set('id', res);
-              console.log(res);
               this.userID = res;
           });
           }else
             this.ms.openLogIn(); 
         }
+
+        this.chefService.getChefs(this.userID).subscribe(chefs=>{
           
+          //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+          this.mealService.getMeals().subscribe(meals=>{
+            meals.forEach(meal =>{
+              this.meals[meal.usr_id] = meal;
+            });
+            chefs.forEach(chef => {
+              chef = JSON.parse(chef);
+              this.chefs.push(chef);
+            });
+          })  
+        });
       });
-    }    
+    }
+    //load chefs into a dictionary with their id as key
+    
   }
 
   showUp(e){

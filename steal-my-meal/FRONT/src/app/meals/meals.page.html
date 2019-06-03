@@ -4,7 +4,7 @@
   </ion-fab-button>
 </ion-fab>
 
-<app-map></app-map>
+<app-map [userID] = 'userID' [meals] = 'meals'></app-map>
 
 <ion-fab vertical="top" horizontal="end">
   <ion-fab-button class="menu">
@@ -34,9 +34,9 @@
   </ion-slide>
   <ion-slide class="slide mealComponents" (mousedown) = dragDown() (mouseup) = dragUp()>
     <content>
-      <p *ngFor="let meal of meals; let i = index">
-        <app-meal-item [meal]=meal [chef]=chefs[meal.fk_usr_chef_id]
-          (click)="goToMealDetail(meal, chefs[meal.fk_usr_chef_id])"></app-meal-item>
+      <p *ngFor="let chef of chefs; let i = index">
+        <app-meal-item [meal]=meals[chef.usr_id] [chef]=chef
+          (click)="goToMealDetail(meals[chef.usr_id], chef)"></app-meal-item>
       </p>
     </content>
   </ion-slide>

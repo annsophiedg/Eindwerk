@@ -22,8 +22,8 @@ export class MealService {
   constructor(private http:HttpClient) { }
 
   //Get meals
-  getMeals():Observable<Meal[]>{
-    return this.http.get<Meal[]>(`${this.mealsUrl}`);
+  getMeals():Observable<any>{
+    return this.http.get<any>(`${this.mealsUrl}`);
   }
 
   //Add meal

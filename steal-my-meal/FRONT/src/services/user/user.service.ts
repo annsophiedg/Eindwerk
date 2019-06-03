@@ -16,14 +16,16 @@ const httpOptions = {
 
 export class UserService {
 
-  private id:number = 3;
+  private id:string;
   private userURL; 
+  private url; 
   private allergyURL;
   private deleteAllergyURL;
 
   constructor(private http:HttpClient) {
     //get id from login
     this.userURL = 'http://localhost:3000/BACK/api/users/' + this.id;
+    this.url = 'http://localhost:3000/BACK/api/users';
     this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.id;
   }
 
@@ -35,12 +37,17 @@ export class UserService {
     return this.http.get<User>(`${this.userURL}`)
   }
 
+
+  public getUserInfo(id):Observable<any> {
+    const url = `${this.url}` + '/' + id;
+    return this.http.get(`${url}`);
+  }
+
   public getUserAllergies() {
     return this.http.get<User[]>(`${this.allergyURL}`)
   }
 
   public setUser(user:User):Observable<User[]> {
-    console.log(user)
     return this.http.post<User[]>(`${this.userURL}`,httpOptions)
   }
 
