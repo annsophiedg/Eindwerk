@@ -200,3 +200,18 @@ if ( $subject == "facebook" )
         $fb = $fbController->getToken($code);
     }    
 }
+
+if ( $subject == "types" )
+{
+    $typeController = new TypeController($dbManager);
+    
+    if ($method == "GET") {
+        if (!$id) {
+            //GET overview types
+            $types = $typeController->getTypes();
+            echo $types;
+        } 
+    } else if ($method == "POST") {//post new Type (for dashboard maybe)}
+        }
+
+}

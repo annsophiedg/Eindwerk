@@ -93,6 +93,22 @@ class MealController {
     return json_encode($mealIngredients);
   }
 
+  function getTypes(){
+
+    $types = Array();
+
+    $sql = "select * from types";
+
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    foreach ($result as $row) {
+      array_push($types,$row);
+    }
+
+    return json_encode($types);
+
+  }
+
   // Add a single meal to DB
   function addMeal($content){
     
@@ -102,10 +118,33 @@ class MealController {
     $startTime = substr($decoded["startTime"], 11, -10);
     $endTime = substr($decoded["startTime"], 11, -10);
 
-    $sql = "insert into meals (mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, mls_portions)
-            values ('".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["portions"]."')";
-            
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+    //Function to create multiple rows in order table for each portion
+    function createOrders($portions, $usrId){
+      $string;
+      for($x=1; $x<=$portions; $x++){
+        if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
+        else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
+      };
+      return $string;
+    };
+
+    //get number from string portions
+    $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
+
+    //Use MySql transaction for inserting meals_id to order table, all with same meals_id
+    $orderSqlCommand = "BEGIN;
+                        INSERT INTO meals (mls_id, mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
+                        VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES".createOrders($portions, $decoded["usrId"])."COMMIT;";
+
+    $orderMealResult = $this->dbm->sqlExecute($orderSqlCommand, null, PDO::FETCH_OBJ);
+
+    // //loop through sql for every portion
+    // for($x=0; $x<$portions; $x++){
+    //   $orderSql = "insert into orders (fk_usr_chef_id) values ('".$decoded["usrId"]."')";
+
+    //   $orderResult = $this->dbm->sqlExecute($orderSql, null, PDO::FETCH_OBJ);
+    // };
 
   }
 

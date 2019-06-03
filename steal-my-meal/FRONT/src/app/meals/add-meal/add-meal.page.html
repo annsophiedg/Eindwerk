@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon (click)="hideModal()" class="close" name="arrow-back" color="primary"></ion-icon>
-    <ion-title>add meal</ion-title>
+    <ion-title>add new meal</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,34 +12,36 @@
     <ul>
 
       <li>
+          <ion-item>
+              <ion-label>Food type</ion-label>
+              <ion-select formControlName="type" cancelText="cancel" okText="Okay!">
+                <ion-select-option *ngFor="let type of types" value="{{ type.typ_id }}">{{ type.typ_name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+      </li>
 
+      <li>
         <ion-item>
             <ion-label position="floating">Meal Name</ion-label>
             <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
-
       </li>
 
       <li>
-    
         <ion-item>
               <ion-label position="floating">Price</ion-label>
               <ion-input type="text" formControlName="price"></ion-input>
         </ion-item>
-
       </li>
 
       <li>
-    
           <ion-item>
                 <ion-label position="floating">Portions</ion-label>
                 <ion-input type="text" formControlName="portions"></ion-input>
           </ion-item>
-  
         </li>
 
       <li>
-    
         <ion-item>
             <ion-label position="floating" class="dateLabel"><ion-icon name="calendar"></ion-icon>Day to serve</ion-label>
             <ion-input readonly
@@ -47,41 +49,37 @@
                       formControlName="date">
             </ion-input>
         </ion-item>
-
       </li>
 
       <li>
-    
-        <ion-item>
-            <ion-label>Start Time</ion-label>
-            <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="startTime"></ion-datetime>
-        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label>Start</ion-label>
+                <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="startTime"></ion-datetime>
+              </ion-item>
+          </ion-col>
 
+            <ion-col size="6">
+              <ion-item>
+                  <ion-label>End</ion-label>
+                  <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="endTime"></ion-datetime>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       </li>
 
       <li>
-    
-        <ion-item>
-            <ion-label>End Time</ion-label>
-            <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="endTime"></ion-datetime>
-        </ion-item>
-
-      </li>
-
-      <li>
-    
         <ion-item>
             <ion-label position="floating">Meal Description</ion-label>
-            <ion-textarea rows="6" cols="20" type="text" formControlName="description"></ion-textarea>
+            <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>
         </ion-item>
-
       </li>
     
         <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Add Your Meal</ion-button>
 
     </ul>
-
-  
   </form>
-
 </ion-content>

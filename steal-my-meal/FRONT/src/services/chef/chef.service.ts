@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ChefService {
 
-  private userId:number;
+  private userId:string;
   private chefMeals:Array<any>;
   public isChef:boolean = false;
   
