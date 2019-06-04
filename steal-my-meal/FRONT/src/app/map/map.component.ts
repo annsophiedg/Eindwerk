@@ -19,11 +19,13 @@ export class MapComponent implements OnInit, AfterContentInit {
   private markers = [];
   private userAdress:Adress;
   private mealAdresses = [];
+  private _userID = "";
   @Input() private meals;
 
   @Input()
   set userID(id){
     if(id){
+      this._userID = id;
       this.userService.getUserInfo(id).subscribe(res =>{
         this.userAdress = new Adress(res.usr_street, res.usr_housenumber,res.zip_zipcode);
         this.setMarker(this.userAdress, 'home');
@@ -34,10 +36,13 @@ export class MapComponent implements OnInit, AfterContentInit {
   @Input()
   set chefIds(chefIds:string[]){
     chefIds.forEach(id => {
-        let adress = new Adress(this.meals[id].usr_street, this.meals[id].usr_housenumber,this.meals[id].zip_zipcode);
-        this.mealAdresses.push(adress);
-        this.setMarker(adress, 'food');
+        if (id!=this._userID){
+          let adress = new Adress(this.meals[id].usr_street, this.meals[id].usr_housenumber,this.meals[id].zip_zipcode);
+          this.mealAdresses.push(adress);
+          this.setMarker(adress, 'food');
+        }
     });
+    this.calcDistance();
   };
      
 
@@ -76,6 +81,18 @@ export class MapComponent implements OnInit, AfterContentInit {
       var marker = new google.maps.Marker({position: adress.location, map: this.map, icon:icon, });
       this.markers.push(marker);
     });
+  }
+
+  calcDistance(){
+    // let origin = this.userAdress.location;
+    let dest = "";
+    this.mealAdresses.forEach(a => {
+      dest += a.adress + "|";
+    }); 
+    dest = dest.substr(0,dest.length - 1);
+
+    // console.log(origin);
+    console.log(dest);
   }
 
 
