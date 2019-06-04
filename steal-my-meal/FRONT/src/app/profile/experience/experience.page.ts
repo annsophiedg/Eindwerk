@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ChefService } from '../../../services/chef/chef.service';
+import { UserService } from '../../../services/user/user.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -15,14 +15,11 @@ export class ExperiencePage implements OnInit {
 
   constructor(
     private modal:ModalController,
-    private chefService:ChefService
+    public userService:UserService
   ) { 
-    this.chefService.getExperience().subscribe((result)=>{
-      console.log('result experience: ', result)
-      this.cookedMeals = result[0].mls_cooked
-      this.finishedOrders = result[0].ord_finished
-      this.avgRating = result[0].avg_rating
-    })
+    this.cookedMeals = this.userService.getUser().mls_cooked
+    this.finishedOrders = this.userService.getUser().ord_finished
+    this.avgRating = this.userService.getUser().avg_rating
 
   }
 

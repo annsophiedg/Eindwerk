@@ -1,20 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
-    <ion-title>favoriteChefs</ion-title>
+    <ion-title>My Favorite Chefs</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card class="chef" *ngFor="let chef of favChefs">
     <ion-avatar class="profilepic">
-      <img [src]=chef[0].chef_picture alt="profilepicture">
+      <img [src]=chef[0].usr_profile_url alt="profilepicture">
     </ion-avatar>
     <div class="top">
       <div class="info">
         <h3 *ngIf="chef[0].avg_rating<8">Sous-chef</h3>
         <h3 *ngIf="chef[0].avg_rating>8">Chef de cuisine</h3>
-        <h2>{{chef[0].chef_firstname}} {{chef[0].chef_lastname}}</h2>
+        <h2>{{chef[0].usr_firstname}} {{chef[0].usr_lastname}}</h2>
       </div>
     </div>
     <div class="bottom">

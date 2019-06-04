@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user';
 import { Observable } from 'rxjs';
+// import { url } from 'inspector';
 
 // enkel nodig bij post
 const httpOptions = {
@@ -17,8 +18,8 @@ const httpOptions = {
 export class UserService {
 
   private userId = "10217728406738088";
+  private url;
   private userURL; 
-  private url; 
   private allergyURL;
   private favChefsURL;
   private deleteAllergyURL;
@@ -26,8 +27,8 @@ export class UserService {
 
   constructor(private http:HttpClient) {
     //get id from login
-    this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
     this.url = 'http://localhost:3000/BACK/api/users';
+    this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
     this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
     this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
 
@@ -43,18 +44,19 @@ export class UserService {
   }
 
   public getUserObservable():Observable<User> {
+    console.log(this.userURL)
     return this.http.get<User>(`${this.userURL}`)
-  }
-
-
-  public getUserInfo(id):Observable<any> {
-    const url = `${this.url}` + '/' + id;
-    return this.http.get(`${url}`);
   }
   
   public setUserObservable(user:User):Observable<User> {
     console.log('change user details: ',user)
     return this.http.put<User>(this.userURL,user,httpOptions)
+  }
+
+  //use getUser instead
+  public getUserInfo(id):Observable<any> {
+    const url = `${this.url}` + '/' + id;
+    return this.http.get(`${url}`);
   }
 
   public setUser(u) {
@@ -70,6 +72,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.allergyURL}`)
   }
 
+  // FAVORITE CHEFS
   public getUserFavChefs() {
     return this.http.get<User[]>(`${this.favChefsURL}`)
   }
@@ -88,6 +91,6 @@ export class UserService {
     this.http.delete(this.deleteAllergyURL, allergy).subscribe()
   }
 
-  // CHEF MEALS
+  // ORDERED MEALS
   
 }

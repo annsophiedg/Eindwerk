@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ChefService {
 
-  private userId;
+  private userId:string;
   private chefMeals:Array<any>;
   public isChef:boolean = false;
   
@@ -48,11 +48,6 @@ export class ChefService {
   
   getChefMeals() {
     return this.chefMeals
-  }
-
-  //Get Experience
-  getExperience():Observable<any>{
-    return this.http.get<any>(`${this.experienceURL}`);
   }
   
   //Get chefs

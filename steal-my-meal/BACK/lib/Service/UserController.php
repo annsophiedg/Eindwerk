@@ -39,7 +39,7 @@ class UserController {
   function getUserDetails(string $id)
   {
     //sql statement to get requested user details
-    $sql = "SELECT * from users u inner join zipcodes z on u.fk_zip_id = z.zip_id where usr_id = ".$id;
+    $sql = "call getUserDetails (".$id.")";
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);

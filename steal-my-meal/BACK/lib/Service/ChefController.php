@@ -21,8 +21,6 @@ class ChefController {
     $activeChefs = Array();
     //sql statement to get active chefs
     $sqlActiveChefs = "SELECT u.usr_id, u.usr_firstname as chef_firstname, u.usr_lastname as chef_lastname, u.usr_email as chef_email, u.usr_street as chef_street, u.usr_housenumber as chef_nr, z.zip_zipcode as chef_zip, z.zip_city as chef_city, u.usr_telephone as chef_telephone, u.usr_profile_url as chef_picture from orders o inner join users u on o.fk_usr_chef_id = u.usr_id inner join zipcodes z on u.fk_zip_id = z.zip_id where (o.fk_usr_cons_id is null OR o.fk_usr_cons_id = '') and z.zip_zipcode = (select zip_zipcode from zipcodes inner join users u on zipcodes.zip_id = u.fk_zip_id where u.usr_id = '$id') group by usr_firstname, usr_lastname";
-   
-
 
     $result = $this->dbm->sqlExecute($sqlActiveChefs, null, PDO::FETCH_OBJ);
 
@@ -38,47 +36,33 @@ class ChefController {
   /**
    * Get details of one single chef
    *
-   * chef_firstname
-   * chef_lastname
-   * chef_email
-   * chef_street
-   * chef_nr
-   * chef_zip
-   * chef_city
-   * chef_telephone
+   * usr_id
+   * usr_firstname
+   * usr_lastname
+   * usr_email
+   * usr_street
+   * usr_housenumber
+   * usr_telephone
+   * usr_profile_url
+   * zip_zipcode
+   * zip_city
+   * fk_usr_chef_id
    * mls_cooked: amount of (different cooked meals)
    * ord_finished: orders that were picked up
    * avg_rating: average of all order ratings
    * 
    * @return array|null
    */
-  function getChefDetails(string $id)
+  function getUserDetails(string $id)
   {
     //sql statement to get personal details of a chef
-    $sqlChefDetails = "SELECT u.usr_firstname as chef_firstname, u.usr_lastname as chef_lastname, u.usr_email as chef_email, u.usr_street as chef_street, u.usr_housenumber as chef_nr, z.zip_zipcode as chef_zip, z.zip_city as chef_city, u.usr_telephone as chef_telephone from orders o inner join users u on o.fk_usr_chef_id = u.usr_id inner join zipcodes z on u.fk_zip_id = z.zip_id where o.fk_usr_chef_id = ".$id." group by usr_firstname, usr_lastname";
+    $sqlChefDetails = "call getUserDetails (".$id.")";
 
     $result = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
     
     //if chefDetails = null, user is not a chef!
     $chefDetails = $result;
     
-    return json_encode($chefDetails);
-  }
-
-  // Get a chef rating and amount of delivered meals
-  /**
-   * chef_id, avg_score, delivered_meals
-   * 
-   * @return array|null
-   */
-  function getChefExperience(string $id)
-  {
-    //sql statement to get requested chef experience
-    $sqlChefDetails = "call getChefDetails (".$id.")";
-
-    //fetch data from db
-      $chefDetails = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
-
     return json_encode($chefDetails);
   }
 

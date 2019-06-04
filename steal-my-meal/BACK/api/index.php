@@ -105,7 +105,7 @@ if ( $subject == "favChefs" )
 
             foreach (json_decode($favChefIds) as $id) {
                 //echo gettype($id) .", ". $id."<br>";
-                $chefDetails = json_decode($chefController->getChefDetails($id));
+                $chefDetails = json_decode($chefController->getUserDetails($id));
                 array_push($favChefDetails,$chefDetails);
             }
 
@@ -199,4 +199,19 @@ if ( $subject == "facebook" )
         $code = str_replace("code=","",$code);
         $fb = $fbController->getToken($code);
     }    
+}
+
+if ( $subject == "types" )
+{
+    $typeController = new TypeController($dbManager);
+    
+    if ($method == "GET") {
+        if (!$id) {
+            //GET overview types
+            $types = $typeController->getTypes();
+            echo $types;
+        } 
+    } else if ($method == "POST") {//post new Type (for dashboard maybe)}
+        }
+
 }

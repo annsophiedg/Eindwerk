@@ -20,20 +20,26 @@ export class ProfilePage implements OnInit {
     this.userService.getUserObservable().subscribe((result)=>{
       //save user
       this.user = result,
-      console.log("PROFIEL GEGEVENS: ",this.user),
+      console.log("PROFIEL GEGEVENS: ",this.user);
+      if (this.user["fk_usr_chef_id"]) {
+        this.isChef = true;
+        //if user is chef, get user meals
+        this.getCookedMeals();
+      };
       //set user in userService
       this.userService.setUser(this.user)
     });
+    
+    
+  }
+
+  getCookedMeals() {
     this.chefService.getChefMealsObservable().subscribe((result)=>{
       //save chef meals in service
-      chefService.setChefMeals(result);
-      //is user a chef?
-      if (result.length > 0) {
-        this.isChef = true;
-      }
-      console.log('profile isChef',this.isChef)
+      this.chefService.setChefMeals(result);
+      console.log('profile isChef',this.isChef);
+      console.log('USER MEALS:',result)
     });
-    
   }
 
   ngOnInit() {
