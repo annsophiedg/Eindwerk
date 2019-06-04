@@ -12,7 +12,14 @@ class ChefController {
 
   // Get active chefs
   /**
-   * chef_firstname, chef_lastname, chef_email, chef_street, chef_nr, chef_zip, chef_city, chef_telephone
+   * chef_firstname
+   * chef_lastname
+   * chef_email
+   * chef_street
+   * chef_nr
+   * chef_zip
+   * chef_city
+   * chef_telephone
    * 
    * @return array|null
    */
