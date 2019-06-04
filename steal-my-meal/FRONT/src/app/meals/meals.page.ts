@@ -78,10 +78,9 @@ export class MealsPage implements OnInit {
               this.meals[meal.usr_id] = meal;
             });
             chefs.forEach(chef => {
-              
               chef = JSON.parse(chef);
               this.chefs.push(chef);
-              this.chefIds = [...this.chefIds,chef.usr_id];
+              this.chefIds = [...this.chefIds,chef.chef_id];
             });
           })  
         });

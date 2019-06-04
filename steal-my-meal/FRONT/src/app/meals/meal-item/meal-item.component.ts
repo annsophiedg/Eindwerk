@@ -12,7 +12,7 @@ import { testUserAgent } from '@ionic/core';
 
 
 export class MealItemComponent implements OnInit {
-  @Input() meal: Meal;
+  @Input() meal;
   @Input() chef;
 
   slideOpts = {
@@ -25,7 +25,7 @@ export class MealItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
 

@@ -20,7 +20,7 @@ class ChefController {
   {
     $activeChefs = Array();
     //sql statement to get active chefs
-    $sqlActiveChefs = "SELECT u.usr_id, u.usr_firstname as chef_firstname, u.usr_lastname as chef_lastname, u.usr_email as chef_email, u.usr_street as chef_street, u.usr_housenumber as chef_nr, z.zip_zipcode as chef_zip, z.zip_city as chef_city, u.usr_telephone as chef_telephone, u.usr_profile_url as chef_picture from orders o inner join users u on o.fk_usr_chef_id = u.usr_id inner join zipcodes z on u.fk_zip_id = z.zip_id where (o.fk_usr_cons_id is null OR o.fk_usr_cons_id = '') and z.zip_zipcode = (select zip_zipcode from zipcodes inner join users u on zipcodes.zip_id = u.fk_zip_id where u.usr_id = '$id') group by usr_firstname, usr_lastname";
+    $sqlActiveChefs = "CALL getActiveChefs(".$id.")";
 
     $result = $this->dbm->sqlExecute($sqlActiveChefs, null, PDO::FETCH_OBJ);
 
