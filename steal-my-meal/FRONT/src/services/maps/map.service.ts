@@ -28,7 +28,7 @@ export class MapService {
   }
 
   calcDistance(origin,dest):Observable<any>{
-    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+origin+";&destinations="+dest+"&key=AIzaSyBZJFDnYQk3hD_4UFNaf1MLNAdZ7kJH4vs";
+    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+";&destinations="+dest+"&key=AIzaSyBZJFDnYQk3hD_4UFNaf1MLNAdZ7kJH4vs";
     return this.http.get(`${url}`);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterContentInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/services/user/user.service';
 import { Adress } from 'src/models/adress';
 import { MapService } from 'src/services/maps/map.service';
@@ -20,6 +20,8 @@ export class MapComponent implements OnInit, AfterContentInit {
   private userAdress:Adress;
   private mealAdresses = [];
   private _userID = "";
+  @Output() distanceChange = new EventEmitter();
+  public distances = [];
   @Input() private meals;
 
   @Input()
@@ -42,7 +44,8 @@ export class MapComponent implements OnInit, AfterContentInit {
           this.setMarker(adress, 'food');
         }
     });
-    this.calcDistance();
+    if(this.userAdress)
+      this.calcDistance();
   };
      
 
@@ -69,6 +72,7 @@ export class MapComponent implements OnInit, AfterContentInit {
           zoom: 16,
           disableDefaultUI: true
         });
+        
   }
 
   setMarker(adress:Adress, icon_url){
@@ -84,15 +88,31 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
   calcDistance(){
-    // let origin = this.userAdress.location;
-    let dest = "";
+    let origin =  this.userAdress.adress.replace(/ /g, "+");
+    let dest = [];
     this.mealAdresses.forEach(a => {
-      dest += a.adress + "|";
+      dest.push(a.adress);
     }); 
-    dest = dest.substr(0,dest.length - 1);
+    
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: dest,
+        travelMode: 'WALKING'
+      }, this.callback);
+    
+  }
 
-    // console.log(origin);
-    console.log(dest);
+  callback = (response, status) => {
+    if(status == 'OK'){
+      let dist = [];
+      response.rows[0].elements.forEach(el => {
+        dist.push(el.distance.text);
+      });
+      this.distances = dist;
+      this.distanceChange.emit(this.distances);
+  }
   }
 
 
