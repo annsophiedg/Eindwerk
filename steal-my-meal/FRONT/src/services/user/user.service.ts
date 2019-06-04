@@ -18,21 +18,21 @@ const httpOptions = {
 export class UserService {
 
   private userId = "10217728406738088";
-  private url;
   private userURL; 
+  private orderURL;
   private allergyURL;
   private favChefsURL;
   private deleteAllergyURL;
   private user;
+  private orders;
 
   constructor(private http:HttpClient) {
     //get id from login
-    this.url = 'http://localhost:3000/BACK/api/users';
     this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
+    this.orderURL = 'http://localhost:3000/BACK/api/orders/' + this.userId;
     this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
     this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
 
-    // this.user = this.getUser();
   }
 
   public setUserId(id){
@@ -55,8 +55,7 @@ export class UserService {
 
   //use getUser instead
   public getUserInfo(id):Observable<any> {
-    const url = `${this.url}` + '/' + id;
-    return this.http.get(`${url}`);
+    return this.http.get(`${this.userURL}`);
   }
 
   public setUser(u) {
@@ -68,16 +67,29 @@ export class UserService {
     return this.user;
   }
 
-  public getUserAllergies() {
-    return this.http.get<User[]>(`${this.allergyURL}`)
-  }
-
   // FAVORITE CHEFS
   public getUserFavChefs() {
     return this.http.get<User[]>(`${this.favChefsURL}`)
   }
 
+  // ORDERED MEALS
+  public getCurrentOrdersObservable() {
+    return this.http.get<User[]>(`${this.orderURL}`)
+  }
+
+  public setCurrentOrders(res) {
+    this.orders = res;
+  }
+
+  public getCurrentOrders(res) {
+    return this.orders;
+  }
+
   // USER ALLERGIES
+  public getUserAllergies() {
+    return this.http.get<User[]>(`${this.allergyURL}`)
+  }
+
   public addAllergy(allergy) {
     return this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
   }
@@ -90,7 +102,5 @@ export class UserService {
     this.deleteAllergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId + ',' + allergy["ing_id"];
     this.http.delete(this.deleteAllergyURL, allergy).subscribe()
   }
-
-  // ORDERED MEALS
   
 }

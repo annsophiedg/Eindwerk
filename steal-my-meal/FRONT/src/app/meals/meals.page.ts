@@ -28,6 +28,8 @@ export class MealsPage implements OnInit {
   private loggedIn:boolean = false;
   private isContentLoaded:boolean = false;
   public chefIds:string[] = [];
+  public distances= [];
+  
 
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
@@ -79,8 +81,10 @@ export class MealsPage implements OnInit {
             });
             chefs.forEach(chef => {
               chef = JSON.parse(chef);
+              chef.distance = "";
               this.chefs.push(chef);
               this.chefIds = [...this.chefIds,chef.chef_id];
+              this.distances = [...this.distances,""];
             });
           })  
         });
@@ -153,5 +157,14 @@ export class MealsPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  distanceChange(e){   
+    for(var i = 0; i < e.length; i++){
+      this.chefs[i].distance = e[i];
+    }
+    this.distances = e.sort();
+    this.chefs = this.chefs.sort((a, b) => {
+      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
   }
 }
