@@ -11,6 +11,7 @@ import { ModalService } from '../../services/modal/modal.service';
 export class ProfilePage implements OnInit {
   public user:any;
   public isChef:boolean = false;
+  public ord_amount = 0;
 
   constructor(
     private userService:UserService,
@@ -29,6 +30,16 @@ export class ProfilePage implements OnInit {
       //set user in userService
       this.userService.setUser(this.user)
     });
+    //subscribe to get current orders
+    this.userService.getCurrentOrdersObservable().subscribe((result)=>{
+      //save result
+      this.userService.setCurrentOrders(result),
+      console.log("ORDERED MEALS to pick up:",result, result.length)
+      //count amount of all orders
+      for (let o=0; o<result.length; o++) {
+        this.ord_amount += parseInt(result[o]['ord_amount'],10)
+      }
+    })
     
     
   }
