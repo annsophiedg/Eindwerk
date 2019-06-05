@@ -40,8 +40,6 @@ export class ProfilePage implements OnInit {
         this.ord_amount += parseInt(result[o]['ord_amount'],10)
       }
     })
-    
-    
   }
 
   getCookedMeals() {
