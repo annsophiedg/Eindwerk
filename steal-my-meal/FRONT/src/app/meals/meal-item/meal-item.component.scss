@@ -1,18 +1,7 @@
-@import "../../../assets/css/variables.scss";
+@import "../../../style/variables.scss";
 
 *{
     font-weight: bold;
-    color:  $baseColor_white;
-}
-
-* h2{
-    font-size: 2.4em;
-    text-transform: uppercase;
-}
-
-* h3{
-    font-size: 1.4em;
-    font-weight: 300;
 }
 
 ion-slide{
@@ -63,15 +52,12 @@ ion-slide.meal{
 
         h2{
             min-width: 65%;
-            padding: 0;
             margin:0 10px -.15em 0;
-            text-align: end;
-            
+            text-align: end;   
         }
 
         h3{
             min-width: 70%;
-            padding: 0;
             margin:0 10px 0 0;
             text-align: end;
         }

@@ -21,11 +21,11 @@ export class MealService {
   constructor(private http:HttpClient) { }
 
   //Get meals
-  getMeals():Observable<Meal[]>{
-    return this.http.get<Meal[]>(`${this.mealsUrl}`);
+  getMeals():Observable<any>{
+    return this.http.get<any>(`${this.mealsUrl}`);
   }
 
-  //Get ingredients from a meal
+  //Get ingredients from one meal
   getMealIngredients($mealId){
     return this.http.get(`${this.ingredientURL}/${$mealId}`);
   }
@@ -41,10 +41,10 @@ export class MealService {
   }
 
   //Delete meal
-  deleteMeal(meal:Meal):Observable<Meal>{
-    const url = `${this.mealsUrl}/${meal.id}`;
-    return this.http.delete<Meal>(url, httpOptions);
-  }
+  // deleteMeal(meal:Meal):Observable<Meal>{
+  //   const url = `${this.mealsUrl}/${meal.id}`;
+  //   return this.http.delete<Meal>(url, httpOptions);
+  // }
 
   //Update meal
   // updateMeal(meal:Meal):Observable<Meal>{

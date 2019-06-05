@@ -23,6 +23,7 @@ function getToken($code)
       CURLOPT_CAPATH => $this->cert
     ]);
 
+
     $result = curl_exec($curl);
     if(curl_errno($curl)){
       echo 'Curl error: ' . curl_error($curl);

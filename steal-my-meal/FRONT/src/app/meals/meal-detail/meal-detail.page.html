@@ -13,7 +13,6 @@
 <ion-content>
 
   <div class="subtitle">
-    <label>About Meal</label>
   </div>
   <ion-card>
       <ion-grid>
@@ -31,19 +30,12 @@
           <ion-label>Description: {{meal.mls_description}}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>Price: {{meal.mls_price| currency:"EUR" }}</ion-label>
+          <ion-label>Price: {{meal.mls_price| currency:"EUR" }}</ion-label>
       </ion-item>
       <ion-item>
-          <ion-label>portions: {{meal.mls_portions }}</ion-label>
-      </ion-item>
-  </ion-card>
-
-  <div class="subtitle">
-    <label>About Chef</label>
-  </div>  
-  <ion-card>
-      <ion-item>
-          <ion-label>Adress: {{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</ion-label>
+        <ion-chip *ngFor="let ingredient of ingredients">
+          <ion-label>{{ ingredient.ing_name }}</ion-label>
+        </ion-chip>
       </ion-item>
   </ion-card>
 

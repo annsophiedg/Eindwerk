@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AACA,AAAA,CAAC,CAAA;EACG,OAAO,EAAE,GAAG;CACf;;AACD,AACI,qBADiB,CACjB,cAAc,CAAC;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;EACjB,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,GAAG;CAerB;;AAJG,MAAM,EAAE,SAAS,EAAE,KAAK;EAhBhC,AACI,qBADiB,CACjB,cAAc,CAAC;IAgBP,KAAK,EAAE,KAAK;IACZ,MAAM,EAAE,GAAG;GAElB",
-    "sources": [
-        "add-meal.page.scss"
-    ],
-    "names": [],
-    "file": "add-meal.page.css"
-}

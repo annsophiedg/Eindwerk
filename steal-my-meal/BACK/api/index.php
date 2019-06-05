@@ -61,20 +61,58 @@ if ( $subject == "meals" )
 if ( $subject == "chefs" )
 {
     $chefController = new ChefController($dbManager);
-    
     if ($method == "GET") {
         if (!$id) {
             //GET overview chefs: sort on location
             $chefs = $chefController->getActiveChefs();
-            echo $chefs;
+            // echo $chefs;
         } else {
             //GET chef details
-            $chefDetails = $chefController->getChefDetails($id);
-            //if chefDetails = null, user is not a chef!
+            $chefDetails = $chefController->getActiveChefs($id);
             echo $chefDetails;
+            //if chefDetails = null, user is not a chef!
         }
     }    
 }
+
+//use Service ChefController if $subject == "chefMeals"
+if ( $subject == "chefMeals" )
+{
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $chefMeals = $chefController->getChefMeals($id);
+            echo $chefMeals;
+        }
+    }
+}
+
+//use Service UserController if $subject == "favChefs"
+if ( $subject == "favChefs" )
+{
+    $userController = new UserController($dbManager);
+    $chefController = new ChefController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $favChefIds = $userController->getFavoriteChefs($id);
+            $favChefDetails = Array();
+
+            foreach (json_decode($favChefIds) as $id) {
+                //echo gettype($id) .", ". $id."<br>";
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                array_push($favChefDetails,$chefDetails);
+            }
+
+            echo json_encode($favChefDetails);
+        }
+    }
+}
+
+
 
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )
@@ -127,6 +165,7 @@ if ( $subject == "allergies" )
 //use Service UserController if $subject is "users"
 if ( $subject == "users" )
 {
+    
     $userController = new UserController($dbManager);
     
     if ($method == "GET") {
@@ -141,7 +180,7 @@ if ( $subject == "users" )
         }
     } else if ($method == "PUT") {
         //update user information
-        $userController->updateUser($id);
+        $userController->updateUser($id,$input);
     } else if ($method == "DELETE") {
         $userController->deleteUser($id);
     }
@@ -149,7 +188,7 @@ if ( $subject == "users" )
     
 }
 
-//use Service FbController if $subject == "oauth"
+//use Service FbController if $subject == "facebook"
 if ( $subject == "facebook" )
 {
     $fbController = new FbController($dbManager);

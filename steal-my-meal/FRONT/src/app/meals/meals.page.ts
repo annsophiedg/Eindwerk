@@ -5,6 +5,7 @@ import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';
+import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
 import { AddMealPage } from '../meals/add-meal/add-meal.page';
@@ -14,7 +15,6 @@ import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 
-declare var google;
 
 @Component({
   selector: 'app-meals',
@@ -22,18 +22,19 @@ declare var google;
   styleUrls: ['./meals.page.scss'],
 })
 
-export class MealsPage implements OnInit, AfterContentInit {
+export class MealsPage implements OnInit {
   private map;
   private userID = "";
   private loggedIn:boolean = false;
   private isContentLoaded:boolean = false;
-  @ViewChild('mapElement') mapElement;
+  public chefIds:string[] = [];
+
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
 
 
-  meals = [];
-  chefs = {};
+  meals = {};
+  chefs = [];
 
   slideOpts = {
     initialSlide: 1,
@@ -46,45 +47,48 @@ export class MealsPage implements OnInit, AfterContentInit {
   constructor(private mealService:MealService,
               private chefService:ChefService, 
               private fbService:FacebookService, 
+              private ms:ModalService,
               public modal: ModalController, 
               private route:ActivatedRoute,
               private storage:Storage) {
-    //load chefs into a dictionary with their id as key
-    chefService.getChefs().subscribe(chefs=>{
-      chefs.forEach(chef => {
-        chef = JSON.parse(chef);
-        this.chefs[chef.usr_id] = chef;
-      });
-      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
-      mealService.getMeals().subscribe(meals=>{
-        this.meals = meals;
-      })  
-    })
-    
-   }
 
-   ngAfterContentInit(): void {
-    this.isContentLoaded = true;
-    this.map = new google.maps.Map(
-        this.mapElement.nativeElement,
-        {
-          center: {lat: -34.1, lng: 150.644},
-          zoom: 12,
-          disableDefaultUI: true
-        });
-  }
+   }
 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
-    if(code != null){
-      this.fbService.getToken(code).subscribe(res => {
-        this.storage.set('id', res);
-        this.userID = res;
-    });
+
+    if(!this.userID || this.userID == ""){
+      this.storage.get('id').then(val => {
+        this.userID = val;
+        if(!val){
+          if(code != null){
+            this.fbService.getToken(code).subscribe(res => {
+              this.storage.set('id', res);
+              this.userID = res;
+          });
+          }else
+            this.ms.openLogIn(); 
+        }
+        this.chefService.getChefs(this.userID).subscribe(chefs=>{
+          if (chefs == null)
+            chefs = [];
+          //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+          this.mealService.getMeals().subscribe(meals=>{
+            meals.forEach(meal =>{
+              this.meals[meal.usr_id] = meal;
+            });
+            chefs.forEach(chef => {
+              
+              chef = JSON.parse(chef);
+              this.chefs.push(chef);
+              this.chefIds = [...this.chefIds,chef.usr_id];
+            });
+          })  
+        });
+      });
     }
-    if(!this.userID){
-      this.storage.get('id').then(val => this.userID = val);
-    }
+    //load chefs into a dictionary with their id as key
+    
   }
 
   showUp(e){
@@ -109,6 +113,15 @@ export class MealsPage implements OnInit, AfterContentInit {
     this.slider.slideTo(2,400);
   }
 
+  dragUp(){
+    console.log('not dragging');
+    this.slider.el.style.pointerEvents = 'none';
+  }
+
+  dragDown(){
+    console.log('dragging');
+    this.slider.el.style.pointerEvents = 'auto';
+  }
   // Modals to create
 
   async goToAddMeal() {

@@ -1,23 +1,24 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
     <ion-title>Edit Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <fieldset formGroupName="fullName">
       <legend>Full Name</legend>
       <!-- Change profile pic -->
       <ion-item>
         <!-- Firstname -->
-        <ion-input type="text" id="firstname" formControlName="firstname" required [value]="user[0].usr_firstname"
-          (input)="saveFirstname($event.target.name, $event.target.value)"></ion-input>
+        <ion-input type="text" id="firstname" formControlName="firstname" required [value]="user?.usr_firstname"
+          (input)="saveFirstname($event.target.value)"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Lastname -->
-        <ion-input type="text" id="lastname" formControlName="lastname" required [value]="user[0].usr_lastname"
+        <ion-input type="text" id="lastname" formControlName="lastname" required [value]="user?.usr_lastname"
           (input)="saveLastname($event.target.value)"></ion-input>
       </ion-item>
     </fieldset>
@@ -26,22 +27,22 @@
       <legend>Address</legend>
       <ion-item>
         <!-- Street -->
-        <ion-input type="text" id="street" formControlName="street" required [value]="user[0].usr_street"
+        <ion-input type="text" id="street" formControlName="street" required [value]="user?.usr_street"
           (input)="saveStreet($event.target.value)"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Nr -->
-        <ion-input type="text" id="housenumber" formControlName="housenumber" required [value]="user[0].usr_housenumber"
+        <ion-input type="text" id="housenumber" formControlName="housenumber" required [value]="user?.usr_housenumber"
           (input)="saveHousenumber($event.target.value)"></ion-input>
       </ion-item>
       <ion-item>
         <!-- Zipcode -->
-        <ion-input type="text" id="zipcode" formControlName="zipcode" required [value]="user[0].zip_zipcode"
-          (input)="saveZipcode($event.target.value)"></ion-input>
+        <ion-input type="text" id="zipcode" formControlName="zipcode" required [value]="user?.zip_zipcode"
+          (input)="saveZip($event.target.value)"></ion-input>
       </ion-item>
       <ion-item>
         <!-- City -->
-        <ion-input type="text" id="city" formControlName="city" required [value]="user[0].zip_city"
+        <ion-input type="text" id="city" formControlName="city" required [value]="user?.zip_city"
           (input)="saveCity($event.target.value)">
         </ion-input>
       </ion-item>
@@ -51,7 +52,7 @@
       <legend>Email Address</legend>
       <ion-item>
         <!-- Email -->
-        <ion-input type="email" id="email" formControlName="email" required [value]="user[0].usr_email"
+        <ion-input type="email" id="email" formControlName="email" required [value]="user?.usr_email"
           (input)="saveEmail($event.target.value)"></ion-input>
       </ion-item>
     </fieldset>
@@ -60,27 +61,30 @@
       <legend>Telephone Number</legend>
       <ion-item>
         <!-- Telephone -->
-        <ion-input type="tel" id="telephone" formControlName="telephone" required [value]="user[0].usr_telephone"
+        <ion-input type="tel" id="telephone" formControlName="telephone" required [value]="user?.usr_telephone"
           (input)="saveTelephone($event.target.value)"></ion-input>
       </ion-item>
     </fieldset>
 
-    <fieldset>
+    <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
+  </form>
+
+  <!-- <ion-button>Change your password</ion-button>
+  <fieldset>
       <legend>Change Password</legend>
       <ion-item>
         <ion-label position="floating">Current Password</ion-label>
-        <ion-input type="password" id="password" name="password" required [value]=""></ion-input>
+        <ion-input type="password" id="password" name="password" [value]=""></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">New Password</ion-label>
-        <ion-input type="password" id="password" name="password" required [value]=""></ion-input>
+        <ion-input type="password" id="password" name="password" [value]=""></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">New Password</ion-label>
-        <ion-input type="password" id="password" name="password" required [value]=""
+        <ion-input type="password" id="password" name="password" [value]=""
           (input)="savePassword($event.target.value)"></ion-input>
       </ion-item>
-    </fieldset>
-    <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
-  </form>
+    </fieldset> -->
+
 </ion-content>
