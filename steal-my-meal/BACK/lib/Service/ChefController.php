@@ -60,7 +60,7 @@ class ChefController {
    * 
    * @return array|null
    */
-  function getUserDetails(string $id)
+  function getChefDetails(string $id)
   {
     //sql statement to get personal details of a chef
     $sqlChefDetails = "call getChefDetailsAndExperience (".$id.")";

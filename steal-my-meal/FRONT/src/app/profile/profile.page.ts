@@ -18,6 +18,12 @@ export class ProfilePage implements OnInit {
     public chefService:ChefService, 
     public ms:ModalService
   ) {
+    this.getUserData();
+    this.getCurrentOrders();
+  }
+
+  getUserData() {
+    // get user information and save data
     this.userService.getUserObservable().subscribe((result)=>{
       //save user
       this.user = result,
@@ -30,7 +36,10 @@ export class ProfilePage implements OnInit {
       //set user in userService
       this.userService.setUser(this.user)
     });
-    //subscribe to get current orders
+  }
+
+  getCurrentOrders() {
+    //get current orders of the user and save in userService
     this.userService.getCurrentOrdersObservable().subscribe((result)=>{
       //save result
       this.userService.setCurrentOrders(result),

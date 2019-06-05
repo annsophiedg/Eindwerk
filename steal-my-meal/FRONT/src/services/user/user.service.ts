@@ -44,7 +44,10 @@ export class UserService {
   }
 
   public setUserId(id){
-    this.userId = id
+    this.userId = id;
+    this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
+    this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
+    this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
   }
 
   public getUserId() {

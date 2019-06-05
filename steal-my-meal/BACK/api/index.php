@@ -119,7 +119,7 @@ if ( $subject == "favChefs" )
 
             foreach (json_decode($favChefIds) as $id) {
                 //echo gettype($id) .", ". $id."<br>";
-                $chefDetails = json_decode($chefController->getUserDetails($id));
+                $chefDetails = json_decode($chefController->getChefDetails($id));
                 array_push($favChefDetails,$chefDetails);
             }
 
