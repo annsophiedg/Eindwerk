@@ -8,6 +8,7 @@ import { from } from 'rxjs';
   templateUrl: './experience.page.html',
   styleUrls: ['./experience.page.scss'],
 })
+
 export class ExperiencePage implements OnInit {
   cookedMeals:number;
   finishedOrders:number;
@@ -17,9 +18,13 @@ export class ExperiencePage implements OnInit {
     private modal:ModalController,
     public userService:UserService
   ) { 
-    this.cookedMeals = this.userService.getUser().mls_cooked
-    this.finishedOrders = this.userService.getUser().ord_finished
-    this.avgRating = this.userService.getUser().avg_rating
+    this.userService.getExperienceObservable().subscribe(result=>{
+      console.log('EXPERIENCE IN PAGE:', result)
+      this.cookedMeals = result.mls_cooked
+      this.finishedOrders =   result.ord_finished
+      this.avgRating = result.avg_rating
+    })
+    
 
   }
 

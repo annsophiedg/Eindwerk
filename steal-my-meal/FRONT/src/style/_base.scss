@@ -4,7 +4,7 @@
 @import 'assets/css/reset.css';
 
 *{
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif !important;
 }
 
 h2, .title {
@@ -22,4 +22,14 @@ h3, .subtitle {
     font-size: 1.4em;
     font-weight: 300;
     letter-spacing: 1px;
+}
+
+//ICON & TEXT VERTICALLY CENTERED
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+.text { 
+    display: inline-block;
+    vertical-align: middle;
 }

@@ -63,7 +63,7 @@ class ChefController {
   function getUserDetails(string $id)
   {
     //sql statement to get personal details of a chef
-    $sqlChefDetails = "call getUserDetails (".$id.")";
+    $sqlChefDetails = "call getChefDetailsAndExperience (".$id.")";
 
     $result = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
     

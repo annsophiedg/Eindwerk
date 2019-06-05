@@ -11,7 +11,7 @@ class UserController {
 
   // Get overview of users
   /**
-   * @return array|null
+   * @return string|null
    */
   function getUserOverview()
   {
@@ -30,11 +30,21 @@ class UserController {
     return json_encode($users);
   }
 
-  // Get a single user
   /**
-   * usr_id, usr_firstname, usr_lastname, ..., zip_zipcode, zip_city
-   * 
-   * @return array|null
+   * GET USER INFORMATION
+   * usr_id
+   * usr_firstname
+   * usr_lastname
+   * usr_email
+   * usr_street
+   * usr_housenumber
+   * usr_telephone
+   * usr_profile_url
+   * zip_zipcode
+   * zip_city
+   * fk_usr_chef_id
+   *
+   * @return string|null
    */
   function getUserDetails(string $id)
   {
@@ -47,6 +57,27 @@ class UserController {
     $userDetails = $result[0];
 
     return json_encode($userDetails);
+  }
+
+  /**
+   * GET USER EXPERIENCE WHEN USER IS A CHEF
+   * mls_cooked: amount of (different cooked meals)
+   * ord_finished: orders that were picked up
+   * avg_rating: average of all order ratings
+   *
+   * @return string|null
+   */
+  function getUserExperience(string $id)
+  {
+    //sql statement to get requested user details
+    $sql = "call getUserExperience (".$id.")";
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    $userExperience = $result[0];
+
+    return json_encode($userExperience);
   }
 
   //Update User Details
@@ -85,7 +116,7 @@ class UserController {
   //get a users allergies
   /**
    * ing_id, ing_name
-   * @return array|null
+   * @return string|null
    */
   function getUserAllergies($id){
     $sqlUserAllergies = "select ing_id, ing_name from users u
@@ -135,7 +166,7 @@ class UserController {
     /**
      * ing_id
      *
-     * @return array|null
+     * @return string|null
      */
     function getFavoriteChefs($id){
         $sqlFavoriteChefIDs = "select usr_id as chef_id from users u inner join followers f on u.usr_id = f.fk_usr_chef_id where f.fk_usr_id = ".$id;
@@ -164,7 +195,7 @@ class UserController {
      * fk_typ_id
      * ord_amount
      *
-     * @return array|null
+     * @return string|null
      */
     function getUserOrders($id){
         $sqlUserOrders = "SELECT m.*, COUNT(*) as ord_amount FROM orders o INNER JOIN meals m ON o.fk_mls_id = m.mls_id WHERE mls_date>now() AND fk_usr_cons_id = ".$id." GROUP BY mls_id ORDER BY mls_date";

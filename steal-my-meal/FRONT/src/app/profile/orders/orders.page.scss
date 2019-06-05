@@ -1,54 +1,69 @@
 @import "../../../style/variables.scss";
 
-.meal{
+.voucher-note {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.meal {
     margin-top: .7rem;
-  
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-  
-    background-color: $baseColor_white;
+    // justify-content: space-between;
 
-    .top{
+    .top {
         height: 65%;
         width: 100%;
-        
+        position: relative;
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-end;
         justify-content: flex-end;
-        
+        align-items: center;
+
+        // background-color: $baseColor_yellow;
         background-image: url("../../../assets/img/bck_food.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
 
-        h2{
-            min-width: 65%;
-            margin:0 10px -.15em 0;
-            text-align: end;   
+        h2 {
+            // min-width: 65%;
+            margin: 0 10px -.15em 0;
+
+            text-align: center;
         }
 
-        h3{
+        h3 {
             min-width: 70%;
-            margin:0 10px 0 0;
+            margin: 0 10px 0 0;
             text-align: end;
         }
     }
 
-    .info{
-        width: 70%;
+    .info {
+        width: 100%;
 
-        color: #333;
-
-        p{
-            // font-size: 6vw;
-            color: #333;
-
+        .info-important {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
         }
+
+        p,
+        h2 {
+            color: #333;
+        }
+
+        .date {
+            font-weight: bold;
+        }
+
+
     }
 
-    .bottom{
+    .bottom {
         width: 100%;
         height: 35%;
         padding: .5em;
@@ -56,8 +71,57 @@
         display: flex;
         justify-content: flex-end;
 
-        background-color: $baseColor_white;
+        background-color: $baseColor_yellow;
 
-        
+        .swiper {
+            height: 2rem;
+            margin: 1rem;
+
+            // background: $baseColor_white;
+            border-radius: 1rem;
+
+            .swipe-start {
+                height: 2rem;
+                display: flex;
+                align-items: center;
+
+                border-radius: 1rem;
+
+                color: $baseColor_yellow;
+
+                .swipe-item {
+                    width: 1.7rem;
+                    height: 1.7rem;
+                    // margin-right: 1rem;
+
+                    background: $baseColor_yellow;
+                    border-radius: 1rem;
+
+                    font-size: .2rem;
+                }
+
+                #swipe-title {
+                    color: $baseColor_yellow;
+                    font-size: 2rem;
+                }
+
+
+            }
+
+            .swiper-finish {
+                width: 100%;
+
+                .voucher-validated {
+                    width: 100%;
+                    background: $baseColor_yellow;
+                    color: $baseColor_white;
+                }
+            }
+
+
+        }
+
+
+
     }
 }

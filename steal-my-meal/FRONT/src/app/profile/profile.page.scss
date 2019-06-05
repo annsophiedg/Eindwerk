@@ -43,17 +43,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 1rem;
 
-    > li {
+    > ion-item {
         width: 80%;
-        margin-top: 1rem;
-        // color: #333;
-        padding: 1rem;
-        border-bottom: 1px solid #ccc;
         display: flex;
 
-        // text-decoration: none;
-        align-items: flex-end;
+        &:last-child { border-bottom: none;}
 
         ion-icon {
             margin-right: 1rem;

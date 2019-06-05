@@ -105,8 +105,6 @@ if ( $subject == "orders" )
     }
 }
 
-
-
 //use Service UserController if $subject == "favChefs"
 if ( $subject == "favChefs" )
 {
@@ -115,7 +113,7 @@ if ( $subject == "favChefs" )
 
     if ($method == "GET") {
         if ($id) {
-            //GET all meals of one chef
+            //GET your favorite chefs (chefs you follow)
             $favChefIds = $userController->getFavoriteChefs($id);
             $favChefDetails = Array();
 
@@ -129,6 +127,23 @@ if ( $subject == "favChefs" )
         }
     }
 }
+
+//use Service UserController if $subject == "experience"
+if ( $subject == "experience" )
+{
+    $userController = new UserController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET user experience
+            $userExperience = $userController->getUserExperience($id);
+
+            echo $userExperience;
+        }
+    }
+}
+
+
 
 
 

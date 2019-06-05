@@ -20,6 +20,7 @@ export class UserService {
   private userId = "10217728406738088";
   private userURL; 
   private orderURL;
+  private experienceURL;
   private allergyURL;
   private favChefsURL;
   private deleteAllergyURL;
@@ -28,9 +29,16 @@ export class UserService {
 
   constructor(private http:HttpClient) {
     //get id from login
+
+    // get user information
     this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
+    // get current orders of user
     this.orderURL = 'http://localhost:3000/BACK/api/orders/' + this.userId;
+    //get user experience (when chef)
+    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+    // get user allergies
     this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
+    // get favorite chefs
     this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
 
   }
@@ -44,7 +52,6 @@ export class UserService {
   }
 
   public getUserObservable():Observable<User> {
-    console.log(this.userURL)
     return this.http.get<User>(`${this.userURL}`)
   }
   
@@ -67,27 +74,32 @@ export class UserService {
     return this.user;
   }
 
+  // USER (CHEF) EXPERIENCE
+  public getExperienceObservable():Observable<any> {
+    return this.http.get(`${this.experienceURL}`)
+  }
+
   // FAVORITE CHEFS
-  public getUserFavChefs() {
-    return this.http.get<User[]>(`${this.favChefsURL}`)
+  public getUserFavChefs():Observable<any> {
+    return this.http.get(`${this.favChefsURL}`)
   }
 
   // ORDERED MEALS
-  public getCurrentOrdersObservable() {
-    return this.http.get<User[]>(`${this.orderURL}`)
+  public getCurrentOrdersObservable():Observable<any> {
+    return this.http.get(`${this.orderURL}`)
   }
 
   public setCurrentOrders(res) {
     this.orders = res;
   }
 
-  public getCurrentOrders(res) {
+  public getCurrentOrders() {
     return this.orders;
   }
 
   // USER ALLERGIES
-  public getUserAllergies() {
-    return this.http.get<User[]>(`${this.allergyURL}`)
+  public getUserAllergies():Observable<any> {
+    return this.http.get(`${this.allergyURL}`)
   }
 
   public addAllergy(allergy) {

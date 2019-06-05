@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="showOff">
+  <div class="grid showOff">
     <ion-grid>
       <ion-row>
         <ion-col size="8">
@@ -42,6 +42,30 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+  </div>
+
+  <ion-card>
+    <ion-item>
+      <ion-label>Completed Meals</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="restaurant"></ion-icon>
+        <span class="text"> {{cookedMeals}}</span>
+      </ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label>Completed Orders</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="basket"></ion-icon>
+        <span class="text"> {{finishedOrders}}</span>
+      </ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rating</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="star"></ion-icon>
+        <span class="text"> {{avgRating}}</span>
+      </ion-badge>
+    </ion-item>
   </ion-card>
 
 </ion-content>

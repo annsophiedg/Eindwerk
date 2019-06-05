@@ -21,37 +21,44 @@
 <ion-content>
 
   <ion-nav class="nav-vertical">
-    <ul class="list-vertical">
+    <ion-list class="list-vertical">
       <!-- Indicated allergies -->
-      <li (click)="ms.openAllergies()">
-        <ion-icon name="medkit"></ion-icon> My Allergies
-      </li>
+      <ion-item (click)="ms.openAllergies()">
+        <ion-icon class="icon" name="medkit"></ion-icon>
+        <ion-label class="text"> My Allergies</ion-label>
+      </ion-item>
       <!-- Chefs that user follows -->
-      <li (click)="ms.openFavoriteChefs()">
-        <ion-icon name="star"></ion-icon> My Favorite Chefs
-      </li>
+      <ion-item (click)="ms.openFavoriteChefs()">
+        <ion-icon class="icon" name="star"></ion-icon>
+        <ion-label class="text"> My Favorite Chefs</ion-label>
+      </ion-item>
       <!-- Rating and delivered meals -->
-      <li *ngIf="isChef" (click)="ms.openExperience()">
-        <ion-icon name="ribbon"></ion-icon> My Experience
-      </li>
+      <ion-item *ngIf="isChef" (click)="ms.openExperience()">
+        <ion-icon class="icon" name="ribbon"></ion-icon>
+        <ion-label class="text"> My Experience</ion-label>
+      </ion-item>
       <!-- History of Cooked Meals -->
-      <li *ngIf="isChef" (click)="ms.openMealHistory()">
-        <ion-icon name="restaurant"></ion-icon> My Meals
-      </li>
-      <!-- <li (click)="ms.openInvite()">
-        <ion-icon name="people"></ion-icon> Invite Friends
-      </li>
-      <li (click)="ms.openSettings()">
-        <ion-icon name="settings"></ion-icon> Settings
-      </li>
-      <li (click)="ms.openInfo">
-        <ion-icon name="help-circle"></ion-icon> Info
-      </li> -->
-    </ul>
+      <ion-item *ngIf="isChef" (click)="ms.openMealHistory()">
+        <ion-icon class="icon" name="restaurant"></ion-icon>
+        <ion-label class="text"> My Meals</ion-label>
+      </ion-item>
+      <!-- <ion-item (click)="ms.openInvite()">
+        <ion-icon class="icon" name="people"></ion-icon>
+        <ion-label class="text"> Invite Friends</ion-label>
+      </ion-item>
+      <ion-item (click)="ms.openSettings()">
+        <ion-icon class="icon" name="settings"></ion-icon>
+        <ion-label class="text"> Settings</ion-label>
+      </ion-item>
+      <ion-item (click)="ms.openInfo">
+        <ion-icon class="icon" name="help-circle"></ion-icon>
+        <ion-label class="text"> Info</ion-label>
+      </ion-item> -->
+    </ion-list>
   </ion-nav>
 </ion-content>
 <ion-footer class="box showOff" (click)=ms.openOrders()>
-  <ion-icon name="basket"></ion-icon>
+  <ion-icon class="icon" name="basket"></ion-icon>
    {{ord_amount}}
    Your Order Coupon(s)
 </ion-footer>
