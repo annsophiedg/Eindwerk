@@ -26,4 +26,9 @@ export class MapService {
     let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+adstr+'&key=AIzaSyBZJFDnYQk3hD_4UFNaf1MLNAdZ7kJH4vs'
     return this.http.get(`${url}`);
   }
+
+  calcDistance(origin,dest):Observable<any>{
+    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+";&destinations="+dest+"&key=AIzaSyBZJFDnYQk3hD_4UFNaf1MLNAdZ7kJH4vs";
+    return this.http.get(`${url}`);
+  }
 }
