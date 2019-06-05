@@ -32,6 +32,12 @@ export class ChefService {
     this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
   }
 
+  setUserId(id){
+    this.userId = id;
+    this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
+    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+  }
+
   //Get all meals of chef
   getChefMealsObservable():Observable<any>{
     return this.http.get<any>(`${this.chefMealsURL}`)
@@ -44,7 +50,7 @@ export class ChefService {
     console.log("CHEF MEALS SAVED: ",this.chefMeals)
   }
 
-  //Get chefs in the same zipcode as the user
+  
   
   getChefMeals() {
     return this.chefMeals
@@ -57,7 +63,7 @@ export class ChefService {
   
   //Get chefs
   getChefs(userID = undefined):Observable<any>{
-    if(userID)
+    if(userID) //Get chefs in the same zipcode as the user
       return this.http.get<any>(`${this.chefsURL}`+ '/' + userID);
     else
       return this.http.get<any>(`${this.chefsURL}`);

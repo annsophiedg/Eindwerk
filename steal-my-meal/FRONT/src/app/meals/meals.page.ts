@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
+import { UserService } from 'src/services/user/user.service';
 
 
 @Component({
@@ -52,7 +53,8 @@ export class MealsPage implements OnInit {
               private ms:ModalService,
               public modal: ModalController, 
               private route:ActivatedRoute,
-              private storage:Storage) {
+              private storage:Storage,
+              private userService: UserService) {
 
    }
 
@@ -71,6 +73,8 @@ export class MealsPage implements OnInit {
           }else
             this.ms.openLogIn(); 
         }
+        this.chefService.setUserId(this.userID);
+        this.userService.setUserId(this.userID);
         this.chefService.getChefs(this.userID).subscribe(chefs=>{
           if (chefs == null)
             chefs = [];
@@ -82,7 +86,7 @@ export class MealsPage implements OnInit {
             chefs.forEach(chef => {
               chef = JSON.parse(chef);
               chef.distance = "";
-              this.chefs.push(chef);
+              this.chefs = [...this.chefs,chef];
               this.chefIds = [...this.chefIds,chef.chef_id];
               this.distances = [...this.distances,""];
             });

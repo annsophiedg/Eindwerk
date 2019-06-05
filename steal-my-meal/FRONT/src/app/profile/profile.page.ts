@@ -17,6 +17,14 @@ export class ProfilePage implements OnInit {
     public chefService:ChefService, 
     public ms:ModalService
   ) {
+    this.initProfilePage();
+  }
+
+  ngOnInit() {
+    
+  }
+
+  initProfilePage(){
     this.userService.getUserObservable().subscribe((result)=>{
       //save user
       this.user = result,
@@ -24,19 +32,16 @@ export class ProfilePage implements OnInit {
       //set user in userService
       this.userService.setUser(this.user)
     });
+
     this.chefService.getChefMealsObservable().subscribe((result)=>{
       //save chef meals in service
-      chefService.setChefMeals(result);
+      this.chefService.setChefMeals(result);
       //is user a chef?
       if (result.length > 0) {
         this.isChef = true;
       }
       console.log('profile isChef',this.isChef)
     });
-    
-  }
-
-  ngOnInit() {
   }
 
 }
