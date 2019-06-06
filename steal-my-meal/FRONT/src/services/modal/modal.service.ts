@@ -21,42 +21,34 @@ export class ModalService {
   constructor(private modal: ModalController) { }
 
   public openProfile() {
-    console.log('openModal in Service!');
     this.openModal(ProfilePage);
   }
 
   public openAddMeal() {
-    console.log('openModal in Service!');
     this.openModal(AddMealPage);
   }
 
   public openEditUser() {
-    console.log('openModal in Service!');
     this.openModal(EditUserPage);
   }
 
   public openOrders() {
-    console.log('openModal in Service!');
     this.openModal(OrdersPage);
   }
 
   public openAllergies() {
-    console.log('openModal in Service!');
     this.openModal(AllergiesPage);
   }
 
   public openFavoriteChefs() {
-    console.log('openModal in Service!');
     this.openModal(FavoriteChefsPage);
   }
 
   public openExperience() {
-    console.log('openModal in Service!');
     this.openModal(ExperiencePage);
   }
 
   public openMealHistory() {
-    console.log('openModal in Service!');
     this.openModal(MealHistoryPage);
   }
 

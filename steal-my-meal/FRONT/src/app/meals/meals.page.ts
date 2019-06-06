@@ -75,7 +75,6 @@ export class MealsPage implements OnInit {
               this.userService.getUserObservable().subscribe(res =>{
                   this.user = res;
                   this.userService.setUser(res);
-                  console.log(res.usr_firstname);
                   if (!res.zip_zipcode){
                     this.ms.openLogIn({'pageName':'Adress','parent':this});
                   }
@@ -93,7 +92,7 @@ export class MealsPage implements OnInit {
     
   }
 
-  public getChefs(){
+  public getChefs(param = ""){
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
@@ -139,12 +138,10 @@ export class MealsPage implements OnInit {
   }
 
   dragUp(){
-    console.log('not dragging');
     this.slider.el.style.pointerEvents = 'none';
   }
 
   dragDown(){
-    console.log('dragging');
     this.slider.el.style.pointerEvents = 'auto';
   }
   // Modals to create
@@ -185,10 +182,8 @@ export class MealsPage implements OnInit {
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    console.log(this.chefs);
     this.distances = e.sort();
     this.chefs = this.chefs.sort((a, b) => {
       return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
-      console.log(this.chefs);
   }
 }

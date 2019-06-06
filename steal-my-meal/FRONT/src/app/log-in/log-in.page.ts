@@ -66,7 +66,7 @@ export class LogInPage implements OnInit {
   public onSubmit() {
     this.userService.setUserObservable(this.userForm.value).subscribe();
     this.hideModal();
-    this.parent.getChefs();
+    this.parent.getChefs('test');
   }
 
   public hideModal(){
