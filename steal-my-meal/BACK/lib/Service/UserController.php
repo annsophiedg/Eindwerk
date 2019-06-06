@@ -49,6 +49,22 @@ class UserController {
     return json_encode($userDetails);
   }
 
+  // Add User for dashboard
+
+  function addUser($user){
+
+    $name_values = Array();
+
+    foreach($user as $field => $value){
+      $name_values[] = "$field = '" . $value . "'" ;
+    }
+
+    // $sql = "insert into users SET usr_id='".$user["usr_id"]."'";
+    $sql = "insert into users SET " . implode(", ", $name_values).";";
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+  }
+
   //Update User Details
     function updateUser($id,$content) {
       $decoded = json_decode($content,true);

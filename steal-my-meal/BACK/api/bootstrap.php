@@ -14,5 +14,6 @@ require __DIR__ . '/../lib/Service/ChefController.php';
 require __DIR__ . '/../lib/Service/UserController.php';
 require __DIR__ . '/../lib/Service/FbController.php';
 require __DIR__ . '/../lib/Service/TypeController.php';
+require __DIR__ . '/../lib/Service/AdminController.php';
 
 ?>

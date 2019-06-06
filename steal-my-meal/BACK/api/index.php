@@ -131,7 +131,7 @@ if ( $subject == "ingredients" )
         }
 
     } else if ($method == "POST") {
-        $mealController->addIngredient($input);
+        $mealController->addIngredient($_POST);
     }
 }
 
@@ -182,10 +182,12 @@ if ( $subject == "users" )
         //update user information
         $userController->updateUser($id,$input);
     } else if ($method == "DELETE") {
+        //delete user
         $userController->deleteUser($id);
+    }else if ($method == "POST") {
+        //add user via dashboard
+        $userController->addUser($_POST);
     }
-    
-    
 }
 
 //use Service FbController if $subject == "facebook"
@@ -216,4 +218,20 @@ if ( $subject == "types" )
     } else if ($method == "POST") {//post new Type (for dashboard maybe)}
         }
 
+}
+
+if ( $subject == "admin" )
+{
+    $admincontroller = new AdminController($dbManager);
+
+    if ($method == "GET"){
+        if (!$id) {
+            //GET overview admin
+            $admin = $admincontroller->getAdminOverview();
+            echo $admin;
+        }
+    }else if ( $method == "POST" ) {
+        // add admin via dashboard
+        $admincontroller->addAdmin($_POST);
+    }
 }
