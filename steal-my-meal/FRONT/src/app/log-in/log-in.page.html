@@ -1,10 +1,11 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="pageName == 'Facebook'">
   <div class="container">
   <ion-slides [options]=slideOpts>
     <ion-slide>
@@ -68,3 +69,35 @@
   </a>
 </div>
 </ion-content>
+
+<ion-content *ngIf="pageName == 'Adress'">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <fieldset formGroupName="address">
+      <legend>Address</legend>
+      <ion-item>
+        <!-- Street -->
+        <ion-label position="floating">Street</ion-label>
+        <ion-input type="text" id="street" formControlName="usr_street"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- Nr -->
+        <ion-label position="floating">Housenumber</ion-label>
+        <ion-input type="text" id="housenumber" formControlName="usr_housenumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- Zipcode -->
+        <ion-label position="floating">Zipcode</ion-label>
+        <ion-input type="text" id="zipcode" formControlName="zip_zipcode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- City -->
+        <ion-label position="floating">City</ion-label>
+        <ion-input type="text" id="city" formControlName="zip_city">
+        </ion-input>
+      </ion-item>
+    </fieldset>
+    <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
+  </form>
+</ion-content>
+
+

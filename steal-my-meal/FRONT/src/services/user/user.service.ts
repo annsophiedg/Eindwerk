@@ -55,6 +55,7 @@ export class UserService {
   }
 
   public getUserObservable():Observable<User> {
+    console.log(this.userURL);
     return this.http.get<User>(`${this.userURL}`)
   }
   

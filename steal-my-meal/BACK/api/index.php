@@ -64,15 +64,11 @@ if ( $subject == "chefs" )
 {
     $chefController = new ChefController($dbManager);
     if ($method == "GET") {
-        if (!$id) {
+        if ($id) {
             //GET overview chefs: sort on location
-            $chefs = $chefController->getActiveChefs();
-            // echo $chefs;
-        } else {
-            //GET chef details
             $chefDetails = $chefController->getActiveChefs($id);
             echo $chefDetails;
-            //if chefDetails = null, user is not a chef!
+            // echo $chefs;
         }
     }    
 }

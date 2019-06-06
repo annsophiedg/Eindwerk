@@ -38,7 +38,9 @@ export class MapComponent implements OnInit, AfterContentInit {
       this._userID = id;
       this.userService.getUserInfo(id).subscribe(res =>{
         this.userAdress = new Adress(res.usr_street, res.usr_housenumber,res.zip_zipcode);
-        this.setMarker(this.userAdress, 'home', undefined , null);
+        if(this.userAdress)
+          if(this.userAdress.zip)
+            this.setMarker(this.userAdress, 'home', undefined , null);
       });
     }
   };
@@ -50,7 +52,9 @@ export class MapComponent implements OnInit, AfterContentInit {
         if (id!=this._userID){
           let adress = new Adress(this.meals[id].usr_street, this.meals[id].usr_housenumber,this.meals[id].zip_zipcode);
           this.mealAdresses.push(adress);
-          this.setMarker(adress, 'food', this.meals[id], id);
+          if(adress)
+            if(adress.zip)
+              this.setMarker(adress, 'food', this.meals[id], id);
         }
     });
     if(this.userAdress)

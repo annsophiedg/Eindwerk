@@ -30,6 +30,7 @@ export class MealsPage implements OnInit {
   private isContentLoaded:boolean = false;
   public chefIds:string[] = [];
   public distances= [];
+  private user;
   
 
   @ViewChild('slider') slider;
@@ -69,33 +70,50 @@ export class MealsPage implements OnInit {
             this.fbService.getToken(code).subscribe(res => {
               this.storage.set('id', res);
               this.userID = res;
+              this.userService.setUserId(this.userID);
+              this.chefService.setUserId(this.userID);
+              this.userService.getUserObservable().subscribe(res =>{
+                  this.user = res;
+                  this.userService.setUser(res);
+                  console.log(res.usr_firstname);
+                  if (!res.zip_zipcode){
+                    this.ms.openLogIn({'pageName':'Adress','parent':this});
+                  }
+              });
+            this.getChefs();  
+
           });
           }else
-            this.ms.openLogIn(); 
+            this.ms.openLogIn({'pageName':'Facebook','parent':this}); 
         }
-        this.chefService.setUserId(this.userID);
-        this.userService.setUserId(this.userID);
-        this.chefService.getChefs(this.userID).subscribe(chefs=>{
-          if (chefs == null)
-            chefs = [];
-          //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
-          this.mealService.getMeals().subscribe(meals=>{
-            meals.forEach(meal =>{
-              this.meals[meal.usr_id] = meal;
-            });
-            chefs.forEach(chef => {
-              chef = JSON.parse(chef);
-              chef.distance = "";
-              this.chefs = [...this.chefs,chef];
-              this.chefIds = [...this.chefIds,chef.chef_id];
-              this.distances = [...this.distances,""];
-            });
-          })  
-        });
+        
+        this.getChefs();
       });
     }
-    //load chefs into a dictionary with their id as key
     
+  }
+
+  public getChefs(){
+    this.chefService.setUserId(this.userID);
+    this.userService.setUserId(this.userID);
+    this.userService.setUser(this.user);
+    this.chefService.getChefs(this.userID).subscribe(chefs=>{
+      if (chefs == null)
+        chefs = [];
+      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+      this.mealService.getMeals().subscribe(meals=>{
+        meals.forEach(meal =>{
+          this.meals[meal.usr_id] = meal;
+        });
+        chefs.forEach(chef => {
+          chef = JSON.parse(chef);
+          chef.distance = "";
+          this.chefs = [...this.chefs,chef];
+          this.chefIds = [...this.chefIds,chef.chef_id];
+          this.distances = [...this.distances,""];
+        });
+      })  
+    });
   }
 
   showUp(e){

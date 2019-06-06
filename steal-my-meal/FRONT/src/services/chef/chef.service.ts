@@ -35,7 +35,7 @@ export class ChefService {
   setUserId(id){
     this.userId = id;
     this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
-    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+    this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
   //Get all meals of chef
@@ -57,11 +57,11 @@ export class ChefService {
   }
   
   //Get chefs
-  getChefs(userID = undefined):Observable<any>{
-    if(userID) //Get chefs in the same zipcode as the user
+  getChefs(userID = this.userId):Observable<any>{
+      //Get chefs in the same zipcode as the user
+      console.log(userID);
       return this.http.get<any>(`${this.chefsURL}`+ '/' + userID);
-    else
-      return this.http.get<any>(`${this.chefsURL}`);
+
   }
   //Add chef
   addChef(chef:Chef):Observable<Chef>{

@@ -49,7 +49,7 @@ class UserController {
   function getUserDetails(string $id)
   {
     //sql statement to get requested user details
-    $sql = "call getUserDetails (".$id.")";
+    $sql = "call getUserDetails ('".$id."')";
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);

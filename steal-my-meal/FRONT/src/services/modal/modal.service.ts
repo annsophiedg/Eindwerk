@@ -72,16 +72,19 @@ export class ModalService {
   //   this.openModal(MealHistoryPage);
   // }
 
-  public openLogIn(){
-    this.openModal(LogInPage);
+  public openLogIn(window){
+    this.openModal(LogInPage, window);
   }
 
-  private async openModal(page) {
+  private async openModal(page,params = null) {
 
     const modal =  await this.modal.create({
       component: page,
       enterAnimation: myEnterAnimation,
       leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'params': params
+      }
     });
     return await modal.present();
   }
