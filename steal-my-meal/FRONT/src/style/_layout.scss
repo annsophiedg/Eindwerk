@@ -23,14 +23,13 @@ ion-header {
     }
 }
 
-.box {
-    padding: 1rem;
+ion-card {
+    border-radius: 0 !important;
+    // width: 100%;
 }
 
-.box-title {
+.box {
     padding: 1rem;
-    background: $baseColor_red;
-    color: $baseColor_white;
 }
 
 //FONT CLASSES
@@ -38,3 +37,12 @@ ion-header {
     font-weight: 300;
 }
 
+//highlight with color
+.highlight {
+    color: $baseColor_yellow;
+}
+
+.showOff {
+    background: $baseColor_red;
+    color: $baseColor_white;
+}

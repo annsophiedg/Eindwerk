@@ -6,31 +6,66 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        Cooking Experience
-      </ion-col>
-      <ion-col>
-        <ion-icon name="restaurant"></ion-icon> {{cookedMeals}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        Order Experience
-      </ion-col>
-      <ion-col>
-        <ion-icon name="basket"></ion-icon> {{finishedOrders}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        Rating Experience
-      </ion-col>
-      <ion-col>
-        <ion-icon name="star"></ion-icon> {{avgRating}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="grid showOff">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          Cooking Experience
+        </ion-col>
+        <ion-col>
+          <ion-icon name="restaurant"></ion-icon>
+        </ion-col>
+        <ion-col>
+          {{cookedMeals}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          Order Experience
+        </ion-col>
+        <ion-col>
+          <ion-icon name="basket"></ion-icon>
+        </ion-col>
+        <ion-col>
+          {{finishedOrders}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          Rating Experience
+        </ion-col>
+        <ion-col>
+          <ion-icon name="star"></ion-icon>
+        </ion-col>
+        <ion-col>
+          {{avgRating}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card>
+    <ion-item>
+      <ion-label>Completed Meals</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="restaurant"></ion-icon>
+        <span class="text"> {{cookedMeals}}</span>
+      </ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label>Completed Orders</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="basket"></ion-icon>
+        <span class="text"> {{finishedOrders}}</span>
+      </ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rating</ion-label>
+      <ion-badge class="showOff" slot="end">
+        <ion-icon class="icon" name="star"></ion-icon>
+        <span class="text"> {{avgRating}}</span>
+      </ion-badge>
+    </ion-item>
+  </ion-card>
 
 </ion-content>

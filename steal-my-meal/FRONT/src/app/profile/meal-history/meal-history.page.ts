@@ -19,6 +19,7 @@ export class MealHistoryPage implements OnInit {
   ) { 
     this.myMeals = this.chefService.getChefMeals();
     console.log('now:',this.now)
+    console.log('meals:',this.myMeals)
   }
 
   ngOnInit() {

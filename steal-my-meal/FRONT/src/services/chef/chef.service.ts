@@ -21,7 +21,7 @@ export class ChefService {
   
   chefsURL:string = 'http://localhost:3000/BACK/api/chefs';
   chefMealsURL:string;
-  experienceURL:string;
+  chefDetailsURL:string;
 
   constructor(
     private http:HttpClient,
@@ -29,7 +29,13 @@ export class ChefService {
   ) {
     this.userId = this.userService.getUserId();
     this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
-    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+    this.chefDetailsURL = this.chefsURL + '/' + this.userId;
+  }
+
+  setUserId(id){
+    this.userId = id;
+    this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
+    this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
   //Get all meals of chef
@@ -44,23 +50,18 @@ export class ChefService {
     console.log("CHEF MEALS SAVED: ",this.chefMeals)
   }
 
-  //Get chefs in the same zipcode as the user
+  
   
   getChefMeals() {
     return this.chefMeals
   }
-
-  //Get Experience
-  getExperience():Observable<any>{
-    return this.http.get<any>(`${this.experienceURL}`);
-  }
   
   //Get chefs
-  getChefs(userID = undefined):Observable<any>{
-    if(userID)
+  getChefs(userID = this.userId):Observable<any>{
+      //Get chefs in the same zipcode as the user
+      console.log(userID);
       return this.http.get<any>(`${this.chefsURL}`+ '/' + userID);
-    else
-      return this.http.get<any>(`${this.chefsURL}`);
+
   }
   //Add chef
   addChef(chef:Chef):Observable<Chef>{

@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { ProfilePage } from '../../app/profile/profile.page';
 import { AddMealPage } from '../../app/meals/add-meal/add-meal.page';
 import { EditUserPage } from '../../app/profile/edit-user/edit-user.page';
+import { OrdersPage } from '../../app/profile/orders/orders.page';
 import { AllergiesPage } from '../../app/profile/allergies/allergies.page';
 import { FavoriteChefsPage } from '../../app/profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../../app/profile/experience/experience.page';
@@ -20,37 +21,34 @@ export class ModalService {
   constructor(private modal: ModalController) { }
 
   public openProfile() {
-    console.log('openModal in Service!');
     this.openModal(ProfilePage);
   }
 
   public openAddMeal() {
-    console.log('openModal in Service!');
     this.openModal(AddMealPage);
   }
 
   public openEditUser() {
-    console.log('openModal in Service!');
     this.openModal(EditUserPage);
   }
 
+  public openOrders() {
+    this.openModal(OrdersPage);
+  }
+
   public openAllergies() {
-    console.log('openModal in Service!');
     this.openModal(AllergiesPage);
   }
 
   public openFavoriteChefs() {
-    console.log('openModal in Service!');
     this.openModal(FavoriteChefsPage);
   }
 
   public openExperience() {
-    console.log('openModal in Service!');
     this.openModal(ExperiencePage);
   }
 
   public openMealHistory() {
-    console.log('openModal in Service!');
     this.openModal(MealHistoryPage);
   }
 
@@ -66,16 +64,19 @@ export class ModalService {
   //   this.openModal(MealHistoryPage);
   // }
 
-  public openLogIn(){
-    this.openModal(LogInPage);
+  public openLogIn(window){
+    this.openModal(LogInPage, window);
   }
 
-  private async openModal(page) {
+  private async openModal(page,params = null) {
 
     const modal =  await this.modal.create({
       component: page,
       enterAnimation: myEnterAnimation,
       leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        'params': params
+      }
     });
     return await modal.present();
   }

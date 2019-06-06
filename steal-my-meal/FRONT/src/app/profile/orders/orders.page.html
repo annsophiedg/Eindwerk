@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-title>My Order(s)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="meal">
+    <div class="box top">
+      <h2 class="title">{{orders[0].mls_name}}</h2>
+    </div>
+    <div class="box center info">
+      <div class="info-important">
+        <p>
+          <span>Pick up time:</span><br>
+          <span class="date">{{orders[0].mls_date | date:"MM/dd/yy"}}</span>
+          <br>
+          <span>{{orders[0].mls_take_start}} -
+            {{orders[0].mls_take_end}}</span>
+        </p>
+        <h2 class="highlight">
+          <span class="text">{{orders[0].ord_amount}} </span>
+          <ion-icon class="icon" name="basket"></ion-icon>
+        </h2>
+        <h2>€ {{orders[0].mls_price}}</h2>
+      </div>
+
+
+      <p>{{orders[0].mls_description}}</p>
+
+    </div>
+    <div class="box bottom">
+      <ion-item-sliding class="swiper">
+        <ion-item class="swipe-start" href="#">
+          <ion-label class="swipe-item">
+          </ion-label>
+          <h2 id="swipe-title">Swap Voucher</h2>
+        </ion-item>
+
+        <!-- ionSwipe	EVENT -->
+        <ion-item-options class="swiper-finish" side="start">
+          <ion-item-option expandable class="voucher-validated">
+            <h2>Enjoy!</h2>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </ion-card>
+  <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>
+
+</ion-content>

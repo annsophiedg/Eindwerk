@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ChefService } from '../../../services/chef/chef.service';
+import { UserService } from '../../../services/user/user.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -8,6 +8,7 @@ import { from } from 'rxjs';
   templateUrl: './experience.page.html',
   styleUrls: ['./experience.page.scss'],
 })
+
 export class ExperiencePage implements OnInit {
   cookedMeals:number;
   finishedOrders:number;
@@ -15,13 +16,15 @@ export class ExperiencePage implements OnInit {
 
   constructor(
     private modal:ModalController,
-    private chefService:ChefService
+    public userService:UserService
   ) { 
-    this.chefService.getExperience().subscribe((result)=>{
-      this.cookedMeals = result[0].mls_cooked
-      this.finishedOrders = result[0].ord_finished
-      this.avgRating = result[0].avg_rating
+    this.userService.getExperienceObservable().subscribe(result=>{
+      console.log('EXPERIENCE IN PAGE:', result)
+      this.cookedMeals = result.mls_cooked
+      this.finishedOrders =   result.ord_finished
+      this.avgRating = result.avg_rating
     })
+    
 
   }
 
@@ -29,7 +32,6 @@ export class ExperiencePage implements OnInit {
   }
 
   public hideModal(){
-    console.log(this);
     this.modal.dismiss()
   }
 

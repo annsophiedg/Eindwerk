@@ -6,7 +6,7 @@ import { UserService } from '../../../services/user/user.service';
 @Component({
   selector: 'app-favorite-chefs',
   templateUrl: './favorite-chefs.page.html',
-  // styleUrls: ['./favorite-chefs.page.scss'],
+  styleUrls: ['./favorite-chefs.page.scss'],
 })
 export class FavoriteChefsPage implements OnInit {
 

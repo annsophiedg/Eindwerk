@@ -62,15 +62,11 @@ if ( $subject == "chefs" )
 {
     $chefController = new ChefController($dbManager);
     if ($method == "GET") {
-        if (!$id) {
+        if ($id) {
             //GET overview chefs: sort on location
-            $chefs = $chefController->getActiveChefs();
-            // echo $chefs;
-        } else {
-            //GET chef details
             $chefDetails = $chefController->getActiveChefs($id);
             echo $chefDetails;
-            //if chefDetails = null, user is not a chef!
+            // echo $chefs;
         }
     }    
 }
@@ -89,6 +85,20 @@ if ( $subject == "chefMeals" )
     }
 }
 
+//use Service UserController if $subject == "orders"
+if ( $subject == "orders" )
+{
+    $userController = new UserController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET all meals of one chef
+            $userOrders = $userController->getUserOrders($id);
+            echo $userOrders;
+        }
+    }
+}
+
 //use Service UserController if $subject == "favChefs"
 if ( $subject == "favChefs" )
 {
@@ -97,7 +107,7 @@ if ( $subject == "favChefs" )
 
     if ($method == "GET") {
         if ($id) {
-            //GET all meals of one chef
+            //GET your favorite chefs (chefs you follow)
             $favChefIds = $userController->getFavoriteChefs($id);
             $favChefDetails = Array();
 
@@ -111,6 +121,23 @@ if ( $subject == "favChefs" )
         }
     }
 }
+
+//use Service UserController if $subject == "experience"
+if ( $subject == "experience" )
+{
+    $userController = new UserController($dbManager);
+
+    if ($method == "GET") {
+        if ($id) {
+            //GET user experience
+            $userExperience = $userController->getUserExperience($id);
+
+            echo $userExperience;
+        }
+    }
+}
+
+
 
 
 

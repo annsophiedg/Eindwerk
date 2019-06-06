@@ -15,6 +15,7 @@ import { AddMealPage } from './meals/add-meal/add-meal.page';
 import { MealDetailPage } from './meals/meal-detail/meal-detail.page';
 import { ProfilePage } from './profile/profile.page';
 import { EditUserPage } from './profile/edit-user/edit-user.page';
+import { OrdersPage } from './profile/orders/orders.page';
 import { AllergiesPage } from './profile/allergies/allergies.page';
 import { FavoriteChefsPage } from './profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../app/profile/experience/experience.page';
@@ -31,6 +32,7 @@ import { LogInPage } from './log-in/log-in.page';
     MealDetailPage,
     ProfilePage,
     EditUserPage,
+    OrdersPage,
     AllergiesPage,
     FavoriteChefsPage,
     LogInPage,
@@ -42,6 +44,7 @@ import { LogInPage } from './log-in/log-in.page';
     MealDetailPage,
     ProfilePage,
     EditUserPage,
+    OrdersPage,
     AllergiesPage,
     FavoriteChefsPage,
     LogInPage,

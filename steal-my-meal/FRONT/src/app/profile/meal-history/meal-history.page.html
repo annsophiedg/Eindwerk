@@ -6,16 +6,16 @@
 </ion-header>
 
 <ion-content>
-  <div class="box-title">
+  <div class="box showOff">
     <h2>Current meal(s)</h2>
   </div>
   <div class="box">
     <ion-grid>
       <ion-row class="tablehead">
-        <ion-col size="3">
+        <ion-col size="4">
           Date
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="6">
           Meal
         </ion-col>
         <ion-col>
@@ -25,10 +25,10 @@
     </ion-grid>
     <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="m.mls_date>now">
-        <ion-col size="3">
+        <ion-col size="4">
           {{m.mls_datum}}
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="6">
           {{m.mls_name}}
         </ion-col>
         <ion-col>
@@ -39,16 +39,16 @@
   </div>
 
 
-  <div class="box-title">
+  <div class="box showOff">
     <h2>Delivered meal(s)</h2>
   </div>
   <div class="box">
     <ion-grid>
       <ion-row class="tablehead">
-        <ion-col size="3">
+        <ion-col size="4">
           Date
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="6">
           Meal
         </ion-col>
         <ion-col>
@@ -58,10 +58,10 @@
     </ion-grid>
     <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="now>m.mls_date">
-        <ion-col size="3">
+        <ion-col size="4">
           {{m.mls_datum}}
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="6">
           {{m.mls_name}}
         </ion-col>
         <ion-col>

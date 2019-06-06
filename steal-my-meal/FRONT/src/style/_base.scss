@@ -4,7 +4,7 @@
 @import 'assets/css/reset.css';
 
 *{
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif !important;
 }
 
 h2, .title {
@@ -23,3 +23,47 @@ h3, .subtitle {
     font-weight: 300;
     letter-spacing: 1px;
 }
+
+//ICON & TEXT VERTICALLY CENTERED
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+.text { 
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.mapsInfo{   
+    display: flex;
+    padding: .5em 0;
+    width: 50vw;
+    justify-content: space-between;
+
+    .text{
+        box-sizing: border-box;
+        width: 80%;
+        h2.info{font-size: 1.5em; color: #222;}
+        h3.info{font-size: 1.2em; color: #222;}
+    }
+
+    .button{
+        box-sizing: border-box;
+        width: 20%;
+        height: auto;
+        padding: 0;
+    }
+    ion-icon{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        color: $baseColor_red;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+
+
+

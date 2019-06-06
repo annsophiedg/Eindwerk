@@ -11,7 +11,7 @@ class UserController {
 
   // Get overview of users
   /**
-   * @return array|null
+   * @return string|null
    */
   function getUserOverview()
   {
@@ -30,16 +30,26 @@ class UserController {
     return json_encode($users);
   }
 
-  // Get a single user
   /**
-   * usr_id, usr_firstname, usr_lastname, ..., zip_zipcode, zip_city
-   * 
-   * @return array|null
+   * GET USER INFORMATION
+   * usr_id
+   * usr_firstname
+   * usr_lastname
+   * usr_email
+   * usr_street
+   * usr_housenumber
+   * usr_telephone
+   * usr_profile_url
+   * zip_zipcode
+   * zip_city
+   * fk_usr_chef_id
+   *
+   * @return string|null
    */
   function getUserDetails(string $id)
   {
     //sql statement to get requested user details
-    $sql = "SELECT * from users u inner join zipcodes z on u.fk_zip_id = z.zip_id where usr_id = ".$id;
+    $sql = "call getUserDetails ('".$id."')";
 
     //fetch data from db
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
@@ -65,20 +75,40 @@ class UserController {
 
   }
 
+  /**
+   * GET USER EXPERIENCE WHEN USER IS A CHEF
+   * mls_cooked: amount of (different cooked meals)
+   * ord_finished: orders that were picked up
+   * avg_rating: average of all order ratings
+   *
+   * @return string|null
+   */
+  function getUserExperience(string $id)
+  {
+    //sql statement to get requested user details
+    $sql = "call getUserExperience (".$id.")";
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    $userExperience = $result[0];
+
+    return json_encode($userExperience);
+  }
+
   //Update User Details
     function updateUser($id,$content) {
       $decoded = json_decode($content,true);
 
-      $firstname = $decoded["usr_firstname"];
-      $lastname = $decoded["usr_lastname"];
-      $street = $decoded["usr_street"];
-      $housenumber = $decoded["usr_housenumber"];
+      $firstname = $decoded["fullName"]["usr_firstname"];
+      $lastname = $decoded["fullName"]["usr_lastname"];
+      $street = $decoded["address"]["usr_street"];
+      $housenumber = $decoded["address"]["usr_housenumber"];
 
-      $zip_id = $decoded["fk_zip_id"];
-      $zipcode = $decoded["zip_zipcode"];
-      $city = $decoded["zip_city"];
+      $zipcode = $decoded["address"]["zip_zipcode"];
+      $city = $decoded["address"]["zip_city"];
 
-      $new_zip = $this->getZipId($zip_id,$zipcode,$city);
+      $new_zip = $this->getZipId($zipcode,$city);
       $new_zip_id = json_decode($new_zip)[0]->id;
 
       $email = $decoded["usr_email"];
@@ -91,8 +121,8 @@ class UserController {
       return $result;
     }
 
-    function getZipId($id,$zip,$city) {
-      $sql = "select getZipId(".$id.", ".$zip.", '".$city."') as id";
+    function getZipId($zip,$city) {
+      $sql = "select getZipId(".$zip.", '".$city."') as id";
       $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
       return json_encode($result);
     }
@@ -102,7 +132,7 @@ class UserController {
   //get a users allergies
   /**
    * ing_id, ing_name
-   * @return array|null
+   * @return string|null
    */
   function getUserAllergies($id){
     $sqlUserAllergies = "select ing_id, ing_name from users u
@@ -150,8 +180,9 @@ class UserController {
 
     // USER Favorite Chefs --------------------------------------------
     /**
-     * ing_id, ing_name
-     * @return array|null
+     * ing_id
+     *
+     * @return string|null
      */
     function getFavoriteChefs($id){
         $sqlFavoriteChefIDs = "select usr_id as chef_id from users u inner join followers f on u.usr_id = f.fk_usr_chef_id where f.fk_usr_id = ".$id;
@@ -168,7 +199,34 @@ class UserController {
         return json_encode($favChefIds);
     }
 
+    // USER ORDERS --------------------------------------------
+    /**
+     * mls_id
+     * mls_name
+     * mls_description
+     * mls_price
+     * mls_take_start
+     * mls_take_end
+     * mls_date
+     * fk_typ_id
+     * ord_amount
+     *
+     * @return string|null
+     */
+    function getUserOrders($id){
+        $sqlUserOrders = "SELECT m.*, COUNT(*) as ord_amount FROM orders o INNER JOIN meals m ON o.fk_mls_id = m.mls_id WHERE mls_date>now() AND fk_usr_cons_id = ".$id." GROUP BY mls_id ORDER BY mls_date";
 
+        //fetch data from db
+        $result = $this->dbm->sqlExecute($sqlUserOrders, null, PDO::FETCH_OBJ);
+
+        $userOrders = Array();
+
+        foreach ($result as $i) {
+            array_push($userOrders,$i);
+        }
+
+        return json_encode($userOrders);
+    }
 
   //UNDERNEATH STILL TO FIX SQL!! ----------------
 
