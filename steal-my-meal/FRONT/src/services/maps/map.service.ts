@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { Adress } from 'src/models/adress';
 // import {Promise} from '@angular/core';
+import { environment } from '../../environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +19,7 @@ const httpOptions = {
 })
 export class MapService {
 
-  todosUrl:string = 'http://localhost:3000/BACK/api/maps';
+  todosUrl:string = APIEndpoint + 'maps';
 
   constructor(private http:HttpClient, private storage: Storage) {   
   }

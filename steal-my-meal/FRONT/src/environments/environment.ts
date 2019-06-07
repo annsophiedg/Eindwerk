@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APIEndpoint: 'http://localhost:3000/BACK/api/'
+  // APIEndpoint: 'https://wdev.be/bartvdb/BACK/api/'
 };
 
 /*

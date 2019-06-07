@@ -92,7 +92,7 @@ export class MealsPage implements OnInit {
     
   }
 
-  public getChefs(param = ""){
+  public getChefs(){
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
@@ -104,6 +104,7 @@ export class MealsPage implements OnInit {
         meals.forEach(meal =>{
           this.meals[meal.usr_id] = meal;
         });
+        this.meals = this.meals;
         chefs.forEach(chef => {
           chef = JSON.parse(chef);
           chef.distance = "";
@@ -111,7 +112,7 @@ export class MealsPage implements OnInit {
           this.chefIds = [...this.chefIds,chef.chef_id];
           this.distances = [...this.distances,""];
         });
-      })  
+      })
     });
   }
 

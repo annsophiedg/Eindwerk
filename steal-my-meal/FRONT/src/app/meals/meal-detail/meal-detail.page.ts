@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ObjectUnsubscribedError } from 'rxjs';
+import { formatDate, DatePipe } from "@angular/common";
 
 @Component({
   selector: 'app-meal-detail',
@@ -13,13 +14,15 @@ export class MealDetailPage implements OnInit {
 
   @Input() meal;
   @Input() chef;
+  public date;
   private profilePath = "../../../assets/img/profile_pic.jpg";
 
   constructor(public  modal: ModalController, public  loadingController: LoadingController, public  toastController: ToastController) { }
 
   ngOnInit() {
-    console.log(this.chef);
-    console.log(this.meal);
+    var pipe = new DatePipe('be');
+    this.date = this.meal.mls_date;
+    this.date = pipe.transform(this.date, 'shortDate');
   }
 
   hideModal(){

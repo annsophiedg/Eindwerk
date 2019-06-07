@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { ChefService } from '../../services/chef/chef.service';
-import { ModalService } from '../../services/modal/modal.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +11,16 @@ export class ProfilePage implements OnInit {
   public user:any;
   public isChef:boolean = false;
   public ord_amount = 0;
+  private ms;
+
+  @Input() 
+  set params(params){
+    this.ms = params;
+  };
 
   constructor(
     private userService:UserService,
-    public chefService:ChefService, 
-    public ms:ModalService
+    public chefService:ChefService
   ) {
     this.getUserData();
     this.getCurrentOrders();

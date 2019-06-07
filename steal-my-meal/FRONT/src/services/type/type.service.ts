@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Type } from '../../models/type';
 import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 
 @Injectable({
   providedIn: 'root'
 })
 export class TypeService {
 
-  typesUrl:string = 'http://localhost:3000/BACK/api/types';
+  typesUrl:string = APIEndpoint + 'types';
 
   constructor(private http:HttpClient ) { }
 
