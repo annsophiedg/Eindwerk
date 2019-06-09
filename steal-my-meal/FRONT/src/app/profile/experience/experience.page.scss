@@ -1,4 +1,18 @@
 @import "../../../style/variables.scss";
 
-*{ font-size: 1.2rem; }
-.grid { margin: 3rem; }
+* {
+    font-size: 1.2rem;
+}
+
+.grid {
+    margin: 3rem;
+}
+
+ion-badge {
+    background: $baseColor_white;
+
+    .text,
+    .icon {
+        color: $baseColor_red;
+    }
+}

@@ -23,14 +23,33 @@ ion-header {
     }
 }
 
+.chef {
+    position: relative;
+
+    .follow {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        color: $baseColor_yellow;
+        font-size: 2rem;
+    }
+}
+
 ion-card {
     border-radius: 0 !important;
     // width: 100%;
 }
 
+ion-button .button-native {
+    background: $baseColor_red !important;
+    // color: $baseColor_white;
+}
+
 .box {
     padding: 1rem;
 }
+
+//FORM LAYOUT
 
 //FONT CLASSES
 .thin {

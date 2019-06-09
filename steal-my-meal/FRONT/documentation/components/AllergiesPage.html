@@ -1,0 +1,1515 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>steal-my-meal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">steal-my-meal documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AllergiesPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/profile/allergies/allergies.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-allergies</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./allergies.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./allergies.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#all_id">all_id</a>
+                            </li>
+                            <li>
+                                <a href="#all_name">all_name</a>
+                            </li>
+                            <li>
+                                <a href="#allergyForm">allergyForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dbAllergies">dbAllergies</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dbIngredients">dbIngredients</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasAllergies">hasAllergies</a>
+                            </li>
+                            <li>
+                                <a href="#hidden">hidden</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#inputValues">inputValues</a>
+                            </li>
+                            <li>
+                                <a href="#newAllergy">newAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userAllergies">userAllergies</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addAllergy">addAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#deleteAllergy">deleteAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hideAllergy">hideAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hideModal">hideModal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#postAllergy">postAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sendAllergy">sendAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showAllergy">showAllergy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#showInputValues">showInputValues</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#userHasAllergies">userHasAllergies</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, userService: <a href="../injectables/UserService.html">UserService</a>, mealService: <a href="../injectables/MealService.html">MealService</a>, modal: ModalController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mealService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MealService.html" target="_self" >MealService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modal</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            addAllergy
+                        </b>
+                        <a href="#addAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addAllergy(newAllergyObject)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>newAllergyObject</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            deleteAllergy
+                        </b>
+                        <a href="#deleteAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteAllergy(allergy)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>allergy</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            hideAllergy
+                        </b>
+                        <a href="#hideAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hideAllergy(allergy)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>allergy</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideModal"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            hideModal
+                        </b>
+                        <a href="#hideModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hideModal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:130</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="postAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            postAllergy
+                        </b>
+                        <a href="#postAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>postAllergy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            sendAllergy
+                        </b>
+                        <a href="#sendAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sendAllergy(newAllergy)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>newAllergy</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showAllergy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            showAllergy
+                        </b>
+                        <a href="#showAllergy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showAllergy(newAllergy)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>newAllergy</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showInputValues"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            showInputValues
+                        </b>
+                        <a href="#showInputValues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showInputValues(x)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>x</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userHasAllergies"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            userHasAllergies
+                        </b>
+                        <a href="#userHasAllergies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>userHasAllergies(allergies)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/profile/allergies/allergies.page.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>allergies</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="all_id"></a>
+                        <span class="name">
+                            <b>
+                            all_id</b>
+                            <a href="#all_id"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="all_name"></a>
+                        <span class="name">
+                            <b>
+                            all_name</b>
+                            <a href="#all_name"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allergyForm"></a>
+                        <span class="name">
+                            <b>
+                            allergyForm</b>
+                            <a href="#allergyForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dbAllergies"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dbAllergies</b>
+                            <a href="#dbAllergies"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dbIngredients"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dbIngredients</b>
+                            <a href="#dbIngredients"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasAllergies"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            hasAllergies</b>
+                            <a href="#hasAllergies"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hidden"></a>
+                        <span class="name">
+                            <b>
+                            hidden</b>
+                            <a href="#hidden"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputValues"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            inputValues</b>
+                            <a href="#inputValues"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="newAllergy"></a>
+                        <span class="name">
+                            <b>
+                            newAllergy</b>
+                            <a href="#newAllergy"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userAllergies"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            userAllergies</b>
+                            <a href="#userAllergies"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/profile/allergies/allergies.page.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {Validators, FormBuilder, FormGroup, AbstractControl } from &#x27;@angular/forms&#x27;;
+import { UserService } from &#x27;../../../services/user/user.service&#x27;;
+import { MealService } from &#x27;../../../services/meal/meal.service&#x27;;
+// import { ModalService } from &#x27;../../../services/modal/modal.service&#x27;;
+import { ModalController } from &#x27;@ionic/angular&#x27;;
+
+@Component({
+  selector: &#x27;app-allergies&#x27;,
+  templateUrl: &#x27;./allergies.page.html&#x27;,
+  styleUrls: [&#x27;./allergies.page.scss&#x27;],
+})
+export class AllergiesPage implements OnInit {
+
+  public dbIngredients;
+  public dbAllergies;
+  public inputValues &#x3D; [];
+  public userAllergies &#x3D; [];
+  public hasAllergies;
+
+  newAllergy:string;
+  all_id;
+  allergyForm:FormGroup;
+  all_name:AbstractControl;
+  hidden;
+
+  constructor(
+    private formBuilder:FormBuilder, 
+    private userService:UserService, 
+    private mealService:MealService, 
+    // public ms:ModalService,
+    private modal: ModalController
+    ) { 
+      this.allergyForm &#x3D; this.formBuilder.group({
+        all_name: [&#x27;&#x27;, Validators.required]
+      });
+
+      this.all_name &#x3D; this.allergyForm.controls[&#x27;all_name&#x27;];
+
+      this.userService.getUserAllergies().subscribe((result)&#x3D;&gt;(
+        //save user allergies in array
+        this.userAllergies &#x3D; result,
+        console.log(&quot;User Allergies: &quot;,this.userAllergies),
+        // check if user has allergies
+        this.userHasAllergies(this.userAllergies)
+      ));
+
+      this.mealService.getIngredients().subscribe((result)&#x3D;&gt;(
+        //save DB ingredients in array
+        this.dbIngredients &#x3D; result,
+        console.log(&quot;All Ingredients from DB: &quot;,this.dbIngredients)
+      ));
+  }
+
+  //check if user has any allergies (return true/false)
+  private userHasAllergies(allergies) {
+    if (allergies.length &#x3D;&#x3D; 0) {
+      this.hasAllergies &#x3D; false
+    } else {
+      this.hasAllergies &#x3D; true;
+    }
+  }
+
+  // fill list of possible input values
+  public showInputValues(x) {
+    //start with empty array
+    this.inputValues &#x3D; [];
+    //check all ingredients from db
+    this.dbIngredients.forEach(ingredient &#x3D;&gt; {
+      //for each ingredient check if it includes input value
+      if (ingredient[&quot;ing_name&quot;].includes(x)) {
+        //when true, add to array inputValues (to show on screen)
+        this.inputValues.push(ingredient)
+      }
+    });
+    // console.log(&quot;input: &quot;,this.inputValues);
+  }
+
+  private showAllergy(newAllergy) {
+    this.userAllergies.push(newAllergy);
+    console.log(this.userAllergies);
+  }
+
+  private hideAllergy(allergy) {
+    let array &#x3D; this.userAllergies;
+    for (let i&#x3D;0; i&lt;array.length; i++) {
+      if (array[i] &#x3D;&#x3D;&#x3D; allergy) {
+        array.splice(i,i);
+      }
+    }
+  }
+
+  private sendAllergy(newAllergy) {
+    console.log(&#x27;sss&#x27;,newAllergy);
+    this.mealService.addIngredient({&quot;ing_name&quot;:newAllergy}).subscribe(res &#x3D;&gt; {
+      //get id of added ingredient
+      this.all_id &#x3D; JSON.parse(JSON.stringify(res))[0][&#x27;id&#x27;];
+      console.log(&quot;allergyID:&quot;,this.all_id);
+      //add id as a foreign key (userAllergy)
+      this.userService.addAllergy({&quot;all_id&quot;:this.all_id});
+      //show new allergy as label on page
+      this.showAllergy(
+        {&quot;ing_id&quot;:this.all_id,&quot;ing_name&quot;:newAllergy}
+        );
+    })
+  }
+
+  //when clicked on list item
+  public addAllergy(newAllergyObject) {
+    this.newAllergy &#x3D; newAllergyObject[&quot;ing_name&quot;];
+    this.sendAllergy(this.newAllergy);
+  }
+
+  //when entered in input
+  public postAllergy() {
+    //get value of new allergy
+    this.newAllergy &#x3D; event.target[0].value;
+    //send new allergy to service
+    this.sendAllergy(this.newAllergy);
+  }
+
+  public deleteAllergy(allergy) {
+    console.log(&quot;to delete:&quot;,allergy);
+    //delete in back
+    this.userService.deleteUserAllergy(allergy);
+    //delete in front
+    this.hideAllergy(allergy);
+  }
+
+  public hideModal(){
+    this.modal.dismiss()
+  }
+
+  ngOnInit() {
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-icon class&#x3D;&quot;arrow-back&quot; (click)&#x3D;&quot;hideModal()&quot; name&#x3D;&quot;arrow-back&quot;&gt;&lt;/ion-icon&gt;
+    &lt;ion-title&gt;My Allergies&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+  &lt;div class&#x3D;&quot;box&quot;&gt;
+    &lt;ion-chip *ngFor&#x3D;&quot;let a of userAllergies&quot; (click)&#x3D;deleteAllergy(a) [hidden]&#x3D;false&gt;
+      &lt;ion-label&gt;{{a.ing_name}}&lt;/ion-label&gt;
+      &lt;ion-icon name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+    &lt;/ion-chip&gt;
+
+    &lt;p *ngIf&#x3D;&quot;!hasAllergies&quot;&gt;You didn&#x27;t add any allergies to your profile&lt;/p&gt;
+
+    &lt;form class&#x3D;&quot;allergyForm&quot; FormGroup&#x3D;&quot;allergyForm&quot; (ngSubmit)&#x3D;&quot;postAllergy()&quot;&gt;
+      &lt;ion-item&gt;
+        &lt;ion-label class&#x3D;&quot;thin&quot; position&#x3D;&quot;floating&quot;&gt;Add an allergy here&lt;/ion-label&gt;
+        &lt;ion-input list&#x3D;&quot;allergyList&quot; FormControlName&#x3D;&quot;all_name&quot; name&#x3D;&quot;all_name&quot;
+          (input)&#x3D;&quot;showInputValues($event.target.value)&quot;&gt;
+        &lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+      &lt;ul class&#x3D;&quot;inputList&quot;&gt;
+        &lt;li *ngFor&#x3D;&quot;let value of inputValues&quot; (click)&#x3D;&quot;addAllergy(value)&quot; value&#x3D;&quot;{{value.ing_id}}&quot;&gt;{{value.ing_name}}
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p class&#x3D;&quot;thin&quot;&gt;Please add ingredients that you are allergic to so we can check it with the ingredients of the meal.&lt;/p&gt;
+    &lt;/form&gt;
+
+  &lt;/div&gt;
+
+&lt;/ion-content&gt;
+
+&lt;ion-footer class&#x3D;&quot;box showOff&quot;&gt;
+  &lt;p&gt;Important!&lt;/p&gt;
+  &lt;p&gt;We don&#x27;t take any responsibility for the incompleteness of the ingredients list of the served meal. Take notice
+    that the served meals are cooked in a private kitchen and there might always be a fraction of any ingredient in your
+    meal although it is not used for this meal. We discourage people with serious allergic reaction to use this app. The
+    user always stays responsible for his own health.&lt;/p&gt;
+&lt;/ion-footer&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./allergies.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../style/variables.scss&quot;;
+
+ion-chip {
+    background: $baseColor_red;
+    color: $baseColor_white;
+
+    ion-icon {
+        color: $baseColor_white;
+    }
+}
+
+.allergyform {
+    position: fixed;
+
+    .inputList {
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        overflow: scroll;
+        margin-bottom: 1rem;
+
+        li {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+
+            a {
+                width: 90%;
+                // text-align: center;
+                text-decoration: none;
+                color: #333;
+                padding: 1rem;
+                border-bottom: 1px solid #ccc;
+                display: flex;
+                align-items: flex-end;
+
+            }
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>    <ion-title>My Allergies</ion-title>  </ion-toolbar></ion-header><ion-content>  <div class="box">    <ion-chip *ngFor="let a of userAllergies" (click)=deleteAllergy(a) [hidden]=false>      <ion-label>{{a.ing_name}}</ion-label>      <ion-icon name="close"></ion-icon>    </ion-chip>    <p *ngIf="!hasAllergies">You didn\'t add any allergies to your profile</p>    <form class="allergyForm" FormGroup="allergyForm" (ngSubmit)="postAllergy()">      <ion-item>        <ion-label class="thin" position="floating">Add an allergy here</ion-label>        <ion-input list="allergyList" FormControlName="all_name" name="all_name"          (input)="showInputValues($event.target.value)">        </ion-input>      </ion-item>      <ul class="inputList">        <li *ngFor="let value of inputValues" (click)="addAllergy(value)" value="{{value.ing_id}}">{{value.ing_name}}        </li>      </ul>      <p class="thin">Please add ingredients that you are allergic to so we can check it with the ingredients of the meal.</p>    </form>  </div></ion-content><ion-footer class="box showOff">  <p>Important!</p>  <p>We don\'t take any responsibility for the incompleteness of the ingredients list of the served meal. Take notice    that the served meals are cooked in a private kitchen and there might always be a fraction of any ingredient in your    meal although it is not used for this meal. We discourage people with serious allergic reaction to use this app. The    user always stays responsible for his own health.</p></ion-footer></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AllergiesPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AllergiesPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

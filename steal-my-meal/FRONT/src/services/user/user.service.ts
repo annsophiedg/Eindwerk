@@ -32,8 +32,10 @@ export class UserService {
   private orders;
 
   constructor(private http:HttpClient) {
-    //get id from login
+  }
 
+  public setUserId(id){
+    this.userId = id;
     // get user information
     this.userURL = APIEndpoint + 'users/' + this.userId;
     // get current orders of user
@@ -44,21 +46,13 @@ export class UserService {
     this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
     // get favorite chefs
     this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
-
-  }
-
-  public setUserId(id){
-    this.userId = id;
-    this.userURL = APIEndpoint + 'users/' + this.userId;
-    this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
-    this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
   }
 
   public getUserId() {
     return this.userId;
   }
 
-  public getUserObservable():Observable<User> {
+  public getUserObservable():Observable<any> {
     return this.http.get<User>(`${this.userURL}`)
   }
   
@@ -100,6 +94,11 @@ export class UserService {
 
   public getCurrentOrders() {
     return this.orders;
+  }
+
+  // finish order (set is_delivered on true (1) in DB)
+  public finishOrderObservable(mls_id) {
+    return this.http.post(this.orderURL, mls_id, httpOptions)
   }
 
   // USER ALLERGIES

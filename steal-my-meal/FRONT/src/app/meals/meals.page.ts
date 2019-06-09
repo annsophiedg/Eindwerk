@@ -1,7 +1,5 @@
 import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MealService } from '../../services/meal/meal.service';
-import { Meal } from '../../models/meal';
-import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';

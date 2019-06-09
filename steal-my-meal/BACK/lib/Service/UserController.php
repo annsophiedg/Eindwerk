@@ -183,34 +183,7 @@ class UserController {
         return json_encode($favChefIds);
     }
 
-    // USER ORDERS --------------------------------------------
-    /**
-     * mls_id
-     * mls_name
-     * mls_description
-     * mls_price
-     * mls_take_start
-     * mls_take_end
-     * mls_date
-     * fk_typ_id
-     * ord_amount
-     *
-     * @return string|null
-     */
-    function getUserOrders($id){
-        $sqlUserOrders = "SELECT m.*, COUNT(*) as ord_amount FROM orders o INNER JOIN meals m ON o.fk_mls_id = m.mls_id WHERE mls_date>now() AND fk_usr_cons_id = ".$id." GROUP BY mls_id ORDER BY mls_date";
 
-        //fetch data from db
-        $result = $this->dbm->sqlExecute($sqlUserOrders, null, PDO::FETCH_OBJ);
-
-        $userOrders = Array();
-
-        foreach ($result as $i) {
-            array_push($userOrders,$i);
-        }
-
-        return json_encode($userOrders);
-    }
 
   //UNDERNEATH STILL TO FIX SQL!! ----------------
 
