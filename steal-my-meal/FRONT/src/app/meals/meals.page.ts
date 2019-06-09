@@ -29,6 +29,7 @@ export class MealsPage implements OnInit {
   public chefIds:string[] = [];
   public distances= [];
   private user;
+  public myFavChefs = [];
   
 
   @ViewChild('slider') slider;
@@ -46,16 +47,17 @@ export class MealsPage implements OnInit {
     spaceBetween: -300
   };
 
-  constructor(private mealService:MealService,
-              private chefService:ChefService, 
-              private fbService:FacebookService, 
-              private ms:ModalService,
-              public modal: ModalController, 
-              private route:ActivatedRoute,
-              private storage:Storage,
-              private userService: UserService) {
-
-   }
+  constructor(
+    private mealService:MealService,
+    private chefService:ChefService, 
+    private fbService:FacebookService, 
+    private ms:ModalService,
+    public modal: ModalController, 
+    private route:ActivatedRoute,
+    private storage:Storage,
+    private userService: UserService
+  ) {
+  }
 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');

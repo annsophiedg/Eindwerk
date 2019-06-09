@@ -113,9 +113,10 @@ class UserController {
 
   // USER ALLERGIES --------------------------------------------
 
-  //get a users allergies
   /**
+   * get all user allergies
    * ing_id, ing_name
+   *
    * @return string|null
    */
   function getUserAllergies($id){
@@ -132,10 +133,8 @@ class UserController {
     return json_encode($allergies);
   }
 
-  //add an allergy to a user
   /**
-   * all_id, all_name
-   * @return array|null
+   * add an allergy to a user
    */
   function addUserAllergy($usr_id, $input) {
     $decoded = json_decode($input, true);
@@ -148,9 +147,10 @@ class UserController {
     $result = $this->dbm->sqlExecute($sqlInsertUserAllergy, null, PDO::FETCH_OBJ);
   }
 
-  //delete allergy from a user
   /**
+   * delete allergy from a user
    * all_id, all_name
+   *
    * @return array|null
    */
   function deleteUserAllergy($usr_id, $all_id) {
@@ -164,12 +164,12 @@ class UserController {
 
     // USER Favorite Chefs --------------------------------------------
     /**
-     * ing_id
+     * chef_id
      *
      * @return string|null
      */
     function getFavoriteChefs($id){
-        $sqlFavoriteChefIDs = "select usr_id as chef_id from users u inner join followers f on u.usr_id = f.fk_usr_chef_id where f.fk_usr_id = ".$id;
+        $sqlFavoriteChefIDs = "SELECT fk_usr_chef_id as chef_id FROM followers f WHERE fk_usr_id =".$id;
 
         //fetch data from db
         $result = $this->dbm->sqlExecute($sqlFavoriteChefIDs, null, PDO::FETCH_OBJ);
@@ -181,6 +181,30 @@ class UserController {
         }
 
         return json_encode($favChefIds);
+    }
+
+    /**
+     * add row in followers
+     */
+    function addFavoriteChef($usr_id,$chef_id){
+        $sqlAddFavChef = "INSERT INTO followers (fk_usr_id, fk_usr_chef_id) VALUES  (".$usr_id.",".$chef_id.")";
+
+        //fetch data from db
+        $result = $this->dbm->sqlExecute($sqlAddFavChef, null, PDO::FETCH_OBJ);
+
+        return json_encode($result);
+    }
+
+    /**
+     * delete row in followers
+     */
+    function deleteFavoriteChef($usr_id,$chef_id){
+        $sqlDeleteFavChef = "DELETE from followers WHERE fk_usr_id = ".$usr_id." AND fk_usr_chef_id = ".$chef_id;
+
+        //fetch data from db
+        $result = $this->dbm->sqlExecute($sqlDeleteFavChef, null, PDO::FETCH_OBJ);
+
+        return json_encode($result);
     }
 
 

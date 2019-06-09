@@ -27,7 +27,6 @@ export class UserService {
   private experienceURL;
   private allergyURL;
   private favChefsURL;
-  private deleteAllergyURL;
   private user;
   private orders;
 
@@ -83,6 +82,15 @@ export class UserService {
     return this.http.get(`${this.favChefsURL}`)
   }
 
+  public addUserFavChef(chef_id) {
+    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions).subscribe();
+  }
+
+  public deleteUserFavChef(chef_id) {
+    let deleteFavChefURL = this.favChefsURL + ',' + chef_id;
+    return this.http.delete(`${deleteFavChefURL}`).subscribe();
+  }
+
   // ORDERED MEALS
   public getCurrentOrdersObservable():Observable<any> {
     return this.http.get(`${this.orderURL}`)
@@ -115,8 +123,8 @@ export class UserService {
   }
 
   public deleteUserAllergy(allergy) {
-    this.deleteAllergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId + ',' + allergy["ing_id"];
-    this.http.delete(this.deleteAllergyURL, allergy).subscribe()
+    let deleteAllergyURL = this.allergyURL + ',' + allergy["ing_id"];
+    this.http.delete(deleteAllergyURL, allergy).subscribe()
   }
   
 }

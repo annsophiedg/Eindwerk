@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChefService } from '../../../services/chef/chef.service'
+import { ChefService } from '../../../services/chef/chef.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -23,7 +23,6 @@ export class MealItemComponent implements OnInit {
   };
 
   constructor( private chefService:ChefService ) {
-    // this.isFavChef = this.chefService.checkFavChef(chefId)
 
   }
 
