@@ -194,6 +194,7 @@ if ( $subject == "users" )
 {
     
     $userController = new UserController($dbManager);
+    $dashboardController = new DashboardController($dbManager);
     
     if ($method == "GET") {
         if (!$id) {
@@ -213,7 +214,7 @@ if ( $subject == "users" )
         $userController->deleteUser($id);
     }else if ($method == "POST") {
         //add user via dashboard
-        $userController->addUser($_POST);
+        $dashboardController->addUser($_POST);
     }
 }
 
@@ -249,16 +250,26 @@ if ( $subject == "types" )
 
 if ( $subject == "admin" )
 {
-    $admincontroller = new AdminController($dbManager);
+    $dashboardController = new DashboardController($dbManager);
 
     if ($method == "GET"){
         if (!$id) {
             //GET overview admin
-            $admin = $admincontroller->getAdminOverview();
+            $admin = $dashboardController->getAdminOverview();
             echo $admin;
         }
-    }else if ( $method == "POST" ) {
+    }else if ( $method == "POST" ){
         // add admin via dashboard
-        $admincontroller->addAdmin($_POST);
+        $dashboardController->addAdmin($_POST);
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
+    }else if ( $method == "DELETE" ){
+        $dashboardController->deleteAdmin($id);
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
+    }else if( $method == "PUT"){
+        $dashboardController->updateAdmin($id, json_decode($input) );
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
     }
 }
