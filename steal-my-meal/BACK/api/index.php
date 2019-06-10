@@ -212,9 +212,6 @@ if ( $subject == "users" )
     } else if ($method == "DELETE") {
         //delete user
         $userController->deleteUser($id);
-    }else if ($method == "POST") {
-        //add user via dashboard
-        $dashboardController->addUser($_POST);
     }
 }
 
@@ -245,7 +242,6 @@ if ( $subject == "types" )
         } 
     } else if ($method == "POST") {//post new Type (for dashboard maybe)}
         }
-
 }
 
 if ( $subject == "admin" )
@@ -271,5 +267,16 @@ if ( $subject == "admin" )
         $dashboardController->updateAdmin($id, json_decode($input) );
         $admin = $dashboardController->getAdminOverview();
         echo $admin;
+    }
+}
+
+if ( $subject == "statistics" )
+{
+    $dashboardController = new DashboardController($dbManager);
+    $mealcontroller = new MealController($dbManager);
+
+    if ( $method == "GET" ) {
+        $statistics = $dashboardController->getStatistics();
+        echo $statistics;
     }
 }

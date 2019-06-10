@@ -54,6 +54,7 @@ class DashboardController {
 
   }
 
+  // Delete admin
   function deleteAdmin($id){
 
     $sql = "DELETE from admin where adm_id=".$id.";";
@@ -62,6 +63,7 @@ class DashboardController {
 
   }
 
+  // Update admin
   function updateAdmin($id, $admin){
 
     $name_values = Array();
@@ -76,26 +78,24 @@ class DashboardController {
 
   }
 
-   //----USERS TABLE
+   //----STATISTICS TABLE
 
+  // Get statistics
+  function getStatistics(){
 
-  // Add User for dashboard
+    $sql = "SELECT 
+               (select count(adm_id) from admin) as NumberOfAdmin,
+               (select count(usr_id) from users) as NumberOfUsers,
+               (select count(mls_id) from meals) as NumberOfMeals,
+               (select count(ing_id) from ingredients) as NumberOfIngredients,
+               (select count(fk_mls_id) from orders ) as TotalPortions,
+               (select count(*) from (select count(fk_usr_id) from followers GROUP BY fk_usr_id) as followers) as NumberOfFollowers,
+               (select count(*) from (select count(fk_usr_chef_id) from followers GROUP BY fk_usr_chef_id) as followers) as NumberOfFollowedChefs,
+               (select count(fk_mls_id) from orders WHERE (fk_usr_cons_id is null or fk_usr_cons_id = '')) as AvailablePortions,
+               (select count(fk_mls_id) from orders WHERE (fk_usr_cons_id is not null or fk_usr_cons_id != '')) as OrderedPortions;";
+               
+    $statsResult = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-  function addUser($user){
-
-    $name_values = Array();
-
-    foreach($user as $field => $value){
-      $name_values[] = "$field = '" . $value . "'" ;
-    }
-
-    // $sql = "insert into users SET usr_id='".$user["usr_id"]."'";
-    $sql = "insert into users SET " . implode(", ", $name_values).";";
-    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
-
+    return json_encode($statsResult);
   }
-
-
-}
-
-?>
+};
