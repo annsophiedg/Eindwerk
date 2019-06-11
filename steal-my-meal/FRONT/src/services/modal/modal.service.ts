@@ -16,12 +16,13 @@ import { myLeaveAnimation } from '../../app/animations/leave';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ModalService {
 
   constructor(private modal: ModalController) { }
 
   public openProfile() {
-    this.openModal(ProfilePage);
+    this.openModal(ProfilePage, this);
   }
 
   public openAddMeal() {

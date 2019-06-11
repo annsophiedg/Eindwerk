@@ -27,7 +27,7 @@ class ChefController {
   {
     $activeChefs = Array();
     //sql statement to get active chefs
-    $sqlActiveChefs = "CALL getActiveChefs(".$id.")";
+    $sqlActiveChefs = "CALL getActiveChefs('".$id."')";
 
     $result = $this->dbm->sqlExecute($sqlActiveChefs, null, PDO::FETCH_OBJ);
 

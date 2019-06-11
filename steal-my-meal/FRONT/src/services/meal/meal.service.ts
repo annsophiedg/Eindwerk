@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Meal } from'../../models/meal';
 import { Observable } from 'rxjs';
+import { AllergiesPage } from 'src/app/profile/allergies/allergies.page';
+import { environment } from '../../environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,8 +18,8 @@ const httpOptions = {
 })
 export class MealService {
 
-  mealsUrl:string = 'http://localhost:3000/BACK/api/meals';
-  ingredientURL:string = 'http://localhost:3000/BACK/api/ingredients';
+  mealsUrl:string = APIEndpoint + 'meals';
+  ingredientURL:string = APIEndpoint + 'ingredients';
   public ing_id;
 
   constructor(private http:HttpClient) { }

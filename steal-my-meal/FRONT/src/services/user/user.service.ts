@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 // import { url } from 'inspector';
 
 // enkel nodig bij post
@@ -11,12 +12,15 @@ const httpOptions = {
   })
 }
 
+const APIEndpoint = environment.APIEndpoint;
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
+  
   private userId = "10217728406738088";
   private userURL; 
   private orderURL;
@@ -31,23 +35,23 @@ export class UserService {
     //get id from login
 
     // get user information
-    this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
+    this.userURL = APIEndpoint + 'users/' + this.userId;
     // get current orders of user
-    this.orderURL = 'http://localhost:3000/BACK/api/orders/' + this.userId;
+    this.orderURL = APIEndpoint + 'orders/' + this.userId;
     //get user experience (when chef)
-    this.experienceURL = 'http://localhost:3000/BACK/api/experience/' + this.userId;
+    this.experienceURL = APIEndpoint + 'experience/' + this.userId;
     // get user allergies
-    this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
+    this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
     // get favorite chefs
-    this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
+    this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
 
   }
 
   public setUserId(id){
     this.userId = id;
-    this.userURL = 'http://localhost:3000/BACK/api/users/' + this.userId;
-    this.allergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId;
-    this.favChefsURL = 'http://localhost:3000/BACK/api/favChefs/' + this.userId;
+    this.userURL = APIEndpoint + 'users/' + this.userId;
+    this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
+    this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
   }
 
   public getUserId() {
@@ -55,12 +59,10 @@ export class UserService {
   }
 
   public getUserObservable():Observable<User> {
-    console.log(this.userURL);
     return this.http.get<User>(`${this.userURL}`)
   }
   
   public setUserObservable(user:User):Observable<User> {
-    console.log('change user details: ',user)
     return this.http.put<User>(this.userURL,user,httpOptions)
   }
 
@@ -71,7 +73,6 @@ export class UserService {
 
   public setUser(u) {
     this.user = u;
-    console.log("user set: ",this.user)
   }
 
   public getUser() {

@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 
 @Injectable({
   providedIn: 'root'
 })
 
+
+
 export class GeneralService {
 
-  private allergiesURL = 'http://localhost:3000/BACK/api/allergies/';
-  private ingredientsURL = 'http://localhost:3000/BACK/api/ingredients/';
+  private allergiesURL = APIEndpoint + 'allergies/';
+  private ingredientsURL = APIEndpoint + 'ingredients/';
 
   constructor(private http:HttpClient) {
   }

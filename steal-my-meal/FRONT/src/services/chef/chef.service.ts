@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chef } from '../../models/chef';
 import { Observable } from 'rxjs';
 import { UserService } from '../user/user.service';
+import { environment } from '../../environments/environment';
+
+
+const APIEndpoint = environment.APIEndpoint;
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +23,7 @@ export class ChefService {
   private chefMeals:Array<any>;
   public isChef:boolean = false;
   
-  chefsURL:string = 'http://localhost:3000/BACK/api/chefs';
+  chefsURL:string = APIEndpoint + 'chefs';
   chefMealsURL:string;
   chefDetailsURL:string;
 
@@ -28,13 +32,13 @@ export class ChefService {
     private userService:UserService
   ) {
     this.userId = this.userService.getUserId();
-    this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
+    this.chefMealsURL = APIEndpoint + 'chefMeals/' + this.userId;
     this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
   setUserId(id){
     this.userId = id;
-    this.chefMealsURL = 'http://localhost:3000/BACK/api/chefMeals/' + this.userId;
+    this.chefMealsURL = APIEndpoint + 'chefMeals/' + this.userId;
     this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
@@ -59,7 +63,6 @@ export class ChefService {
   //Get chefs
   getChefs(userID = this.userId):Observable<any>{
       //Get chefs in the same zipcode as the user
-      console.log(userID);
       return this.http.get<any>(`${this.chefsURL}`+ '/' + userID);
 
   }

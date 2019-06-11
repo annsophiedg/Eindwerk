@@ -22,6 +22,9 @@ import { ExperiencePage } from '../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { IonicStorageModule } from '@ionic/storage';
 import { LogInPage } from './log-in/log-in.page';
+import { registerLocaleData } from '@angular/common';
+import localeBe from '@angular/common/locales/be';
+registerLocaleData(localeBe);
 
 
 @NgModule({

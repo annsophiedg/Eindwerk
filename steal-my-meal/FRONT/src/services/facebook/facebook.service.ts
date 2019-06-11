@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 // import {Promise} from '@angular/core';
+import { environment } from '../../environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +18,7 @@ const httpOptions = {
 })
 export class FacebookService {
 
-  todosUrl:string = 'http://localhost:3000/BACK/api/facebook';
+  todosUrl:string = APIEndpoint + 'facebook';
   userID = "";
 
   constructor(private http:HttpClient, private storage: Storage) {   

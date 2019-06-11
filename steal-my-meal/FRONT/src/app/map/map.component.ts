@@ -37,10 +37,15 @@ export class MapComponent implements OnInit, AfterContentInit {
     if(id){
       this._userID = id;
       this.userService.getUserInfo(id).subscribe(res =>{
-        this.userAdress = new Adress(res.usr_street, res.usr_housenumber,res.zip_zipcode);
-        if(this.userAdress)
-          if(this.userAdress.zip)
-            this.setMarker(this.userAdress, 'home', undefined , null);
+        if(res){
+          this.userAdress = new Adress(res.usr_street, res.usr_housenumber,res.zip_zipcode);
+          if(this.userAdress)
+            if(this.userAdress.zip){
+              this.setMarker(this.userAdress, 'home', undefined , null);
+              this.calcDistance();
+            }
+        }
+
       });
     }
   };
@@ -57,8 +62,7 @@ export class MapComponent implements OnInit, AfterContentInit {
               this.setMarker(adress, 'food', this.meals[id], id);
         }
     });
-    if(this.userAdress)
-      this.calcDistance();
+    this.userID = this._userID;
   };
      
 
@@ -85,7 +89,8 @@ export class MapComponent implements OnInit, AfterContentInit {
         {
           center: {lat: 51.0292103, lng: 4.4849014},
           zoom: 15,
-          disableDefaultUI: true
+          disableDefaultUI: true,
+          styles:this.getStyle(),
         });
     var scope = this;
     google.maps.event.addDomListener(window, 'click', function(){scope.clicked(event)});
@@ -184,12 +189,144 @@ export class MapComponent implements OnInit, AfterContentInit {
     if(status == 'OK'){
       let dist = [];
       response.rows[0].elements.forEach(el => {
-        dist.push(el.distance.text);
+        if(el.distance)
+          dist.push(el.distance.text);
       });
       this.distances = dist;
       this.distanceChange.emit(this.distances);
   }
   }
 
+
+  getStyle(){
+    return [
+      {
+          "featureType": "administrative",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#FFBB00"
+              },
+              {
+                  "saturation": 43.400000000000006
+              },
+              {
+                  "lightness": 37.599999999999994
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#00FF6A"
+              },
+              {
+                  "saturation": -1.0989010989011234
+              },
+              {
+                  "lightness": 11.200000000000017
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#FFC200"
+              },
+              {
+                  "saturation": -61.8
+              },
+              {
+                  "lightness": 45.599999999999994
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#FF0300"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 51.19999999999999
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#FF0300"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 52
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#0078FF"
+              },
+              {
+                  "saturation": -13.200000000000003
+              },
+              {
+                  "lightness": 2.4000000000000057
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      }
+  ];
+  }
 
 }

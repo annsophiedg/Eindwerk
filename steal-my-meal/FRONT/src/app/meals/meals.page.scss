@@ -1,4 +1,4 @@
-// @import "../../style/variables";
+@import "../../style/variables";
 
 ion-fab-button{
     height: 3em;
@@ -30,7 +30,7 @@ ion-slides{
         }
 
         &.mealComponents{
-            background: #EEE;
+            background: $baseColor_white;
             margin-top: 3.5em;
             pointer-events: initial; 
         }
