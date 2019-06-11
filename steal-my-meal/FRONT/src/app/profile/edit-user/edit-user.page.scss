@@ -1,1 +1,41 @@
-// @import "../../../style/variables.scss";
+@import "../../../style/variables.scss";
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    fieldset {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        legend {
+            height: 0;
+            visibility: hidden;
+        }
+
+        ion-item {
+            width: 100%;
+            position: relative;
+        }
+
+        ion-label {
+            position: absolute;
+            color: $baseColor_red;
+        }
+
+        ion-input {
+            width: 100%;
+            // background: $baseColor_red;
+            // border-radius: 1rem;
+            // color: $baseColor_white;
+            text-align: center;
+
+            input {
+                padding-top: 0;
+            }
+        }
+    }
+}

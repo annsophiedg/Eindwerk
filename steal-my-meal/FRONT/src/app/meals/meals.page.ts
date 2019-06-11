@@ -1,7 +1,5 @@
 import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MealService } from '../../services/meal/meal.service';
-import { Meal } from '../../models/meal';
-import { Chef } from '../../models/chef';
 import {ChefService} from '../../services/chef/chef.service';
 import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';
@@ -31,6 +29,7 @@ export class MealsPage implements OnInit {
   public chefIds:string[] = [];
   public distances= [];
   private user;
+  public myFavChefs = [];
   
 
   @ViewChild('slider') slider;
@@ -48,16 +47,18 @@ export class MealsPage implements OnInit {
     spaceBetween: -300
   };
 
-  constructor(private mealService:MealService,
-              private chefService:ChefService, 
-              private fbService:FacebookService, 
-              private ms:ModalService,
-              public modal: ModalController, 
-              private route:ActivatedRoute,
-              private storage:Storage,
-              private userService: UserService) {
-
-   }
+  constructor(
+    private mealService:MealService,
+    private chefService:ChefService, 
+    private fbService:FacebookService, 
+    private ms:ModalService,
+    public modal: ModalController, 
+    private route:ActivatedRoute,
+    private storage:Storage,
+    private userService: UserService
+  ) {
+    
+  }
 
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');

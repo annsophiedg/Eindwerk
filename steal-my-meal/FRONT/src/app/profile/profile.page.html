@@ -57,8 +57,11 @@
     </ion-list>
   </ion-nav>
 </ion-content>
-<ion-footer class="box showOff" (click)=ms.openOrders()>
-  <ion-icon class="icon" name="basket"></ion-icon>
-   {{ord_amount}}
-   Your Order Coupon(s)
+
+<ion-footer class="box showOff f-voucher" *ngIf="ord_amount" (click)=ms.openOrders()>
+  <div>
+    <span class="text">{{ord_amount}} </span>
+    <ion-icon class="icon" name="basket"></ion-icon>
+    <ion-label class="text f-voucher-label"> Your Order Voucher(s)</ion-label>
+  </div>
 </ion-footer>

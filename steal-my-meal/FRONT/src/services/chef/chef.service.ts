@@ -32,8 +32,8 @@ export class ChefService {
     private userService:UserService
   ) {
     this.userId = this.userService.getUserId();
-    this.chefMealsURL = APIEndpoint + 'chefMeals/' + this.userId;
-    this.chefDetailsURL = this.chefsURL + '/' + this.userId;
+    // this.chefMealsURL = APIEndpoint + 'chefMeals/' + this.userId;
+    // this.chefDetailsURL = this.chefsURL + '/' + this.userId;
   }
 
   setUserId(id){
@@ -51,7 +51,6 @@ export class ChefService {
   setChefMeals(meals){
     //save chef meals
     this.chefMeals = meals
-    console.log("CHEF MEALS SAVED: ",this.chefMeals)
   }
 
   

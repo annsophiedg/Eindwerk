@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Meal } from '../../../models/meal';
-import { Chef } from  'src/models/chef';
-import { testUserAgent } from '@ionic/core';
+import { ChefService } from '../../../services/chef/chef.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-meal-item',
@@ -16,12 +15,14 @@ export class MealItemComponent implements OnInit {
   @Input() chef;
   @Input() distance;
 
+  isFavChef:boolean = false;
+
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
 
-  constructor( ) {
+  constructor( private chefService:ChefService ) {
 
   }
 

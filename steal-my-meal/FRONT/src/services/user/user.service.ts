@@ -27,13 +27,14 @@ export class UserService {
   private experienceURL;
   private allergyURL;
   private favChefsURL;
-  private deleteAllergyURL;
   private user;
   private orders;
 
   constructor(private http:HttpClient) {
-    //get id from login
+  }
 
+  public setUserId(id){
+    this.userId = id;
     // get user information
     this.userURL = APIEndpoint + 'users/' + this.userId;
     // get current orders of user
@@ -44,21 +45,13 @@ export class UserService {
     this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
     // get favorite chefs
     this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
-
-  }
-
-  public setUserId(id){
-    this.userId = id;
-    this.userURL = APIEndpoint + 'users/' + this.userId;
-    this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
-    this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
   }
 
   public getUserId() {
     return this.userId;
   }
 
-  public getUserObservable():Observable<User> {
+  public getUserObservable():Observable<any> {
     return this.http.get<User>(`${this.userURL}`)
   }
   
@@ -89,6 +82,15 @@ export class UserService {
     return this.http.get(`${this.favChefsURL}`)
   }
 
+  public addUserFavChef(chef_id) {
+    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions).subscribe();
+  }
+
+  public deleteUserFavChef(chef_id) {
+    let deleteFavChefURL = this.favChefsURL + ',' + chef_id;
+    return this.http.delete(`${deleteFavChefURL}`).subscribe();
+  }
+
   // ORDERED MEALS
   public getCurrentOrdersObservable():Observable<any> {
     return this.http.get(`${this.orderURL}`)
@@ -100,6 +102,11 @@ export class UserService {
 
   public getCurrentOrders() {
     return this.orders;
+  }
+
+  // finish order (set is_delivered on true (1) in DB)
+  public finishOrderObservable(mls_id) {
+    return this.http.post(this.orderURL, mls_id, httpOptions)
   }
 
   // USER ALLERGIES
@@ -116,8 +123,8 @@ export class UserService {
   }
 
   public deleteUserAllergy(allergy) {
-    this.deleteAllergyURL = 'http://localhost:3000/BACK/api/allergies/' + this.userId + ',' + allergy["ing_id"];
-    this.http.delete(this.deleteAllergyURL, allergy).subscribe()
+    let deleteAllergyURL = this.allergyURL + ',' + allergy["ing_id"];
+    this.http.delete(deleteAllergyURL, allergy).subscribe()
   }
   
 }

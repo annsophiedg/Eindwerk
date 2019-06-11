@@ -88,36 +88,54 @@ if ( $subject == "chefMeals" )
 //use Service UserController if $subject == "orders"
 if ( $subject == "orders" )
 {
-    $userController = new UserController($dbManager);
+    $orderController = new OrderController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
             //GET all meals of one chef
-            $userOrders = $userController->getUserOrders($id);
+            $userOrders = $orderController->getUserOrders($id);
             echo $userOrders;
+        }
+    } elseif ($method == "POST") {
+        if ($id) {
+            //GET all meals of one chef
+            $finishOrder = $orderController->finishOrder($input,$id);
+            echo $finishOrder;
         }
     }
 }
 
 //use Service UserController if $subject == "favChefs"
-if ( $subject == "favChefs" )
-{
+if ( $subject == "favChefs" ) {
     $userController = new UserController($dbManager);
     $chefController = new ChefController($dbManager);
 
-    if ($method == "GET") {
-        if ($id) {
+    if ($id) {
+        if ($method == "GET") {
+
             //GET your favorite chefs (chefs you follow)
             $favChefIds = $userController->getFavoriteChefs($id);
-            $favChefDetails = Array();
 
-            foreach (json_decode($favChefIds) as $id) {
-                //echo gettype($id) .", ". $id."<br>";
-                $chefDetails = json_decode($chefController->getChefDetails($id));
-                array_push($favChefDetails,$chefDetails);
-            }
+            //$favChefDetails = Array();
 
-            echo json_encode($favChefDetails);
+            //foreach (json_decode($favChefIds) as $id) {
+            //echo gettype($id) .", ". $id."<br>";
+            //    $chefDetails = json_decode($chefController->getChefDetails($id));
+            //    array_push($favChefDetails,$chefDetails);
+            //}
+
+            echo $favChefIds;
+        } elseif ($method == "POST") {
+            // add chef in followers
+            $addFavChef = $userController->addFavoriteChef($id,$input);
+            echo $addFavChef;
+        } elseif ($method == "DELETE") {
+            $ids = explode(",", $id);
+            $usr_id = $ids[0];
+            $chef_id = $ids[1];
+            // add chef in followers
+            $deleteFavChef = $userController->deleteFavoriteChef($usr_id,$chef_id);
+            echo $input, $deleteFavChef;
         }
     }
 }
@@ -136,10 +154,6 @@ if ( $subject == "experience" )
         }
     }
 }
-
-
-
-
 
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )

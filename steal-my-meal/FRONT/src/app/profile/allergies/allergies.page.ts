@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
 import { MealService } from '../../../services/meal/meal.service';
-import { GeneralService } from '../../../services/general/general.service';
 // import { ModalService } from '../../../services/modal/modal.service';
 import { ModalController } from '@ionic/angular';
 
@@ -29,7 +28,6 @@ export class AllergiesPage implements OnInit {
     private formBuilder:FormBuilder, 
     private userService:UserService, 
     private mealService:MealService, 
-    private generalService:GeneralService,
     // public ms:ModalService,
     private modal: ModalController
     ) { 
@@ -47,7 +45,7 @@ export class AllergiesPage implements OnInit {
         this.userHasAllergies(this.userAllergies)
       ));
 
-      this.generalService.getIngredients().subscribe((result)=>(
+      this.mealService.getIngredients().subscribe((result)=>(
         //save DB ingredients in array
         this.dbIngredients = result,
         console.log("All Ingredients from DB: ",this.dbIngredients)
