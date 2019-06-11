@@ -13,6 +13,7 @@ import { MealDetailPage } from './meal-detail/meal-detail.page';
 import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -55,7 +56,8 @@ export class MealsPage implements OnInit {
     public modal: ModalController, 
     private route:ActivatedRoute,
     private storage:Storage,
-    private userService: UserService
+    private userService: UserService,
+    private toastController:ToastController
   ) {
     
   }
