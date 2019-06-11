@@ -7,7 +7,7 @@
 
 <ion-card class="userDetails">
   <ion-avatar (click)="ms.openEditUser()">
-    <img [src]=user?.usr_profile_url alt="profilepicture">
+    <img *ngIf='user' [src]=user?.usr_profile_url alt="profilepicture">
     <a class="editUser">
       <ion-icon name="create"></ion-icon>
     </a>

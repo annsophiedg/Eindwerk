@@ -8,6 +8,7 @@ import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';
 import { ChefService } from 'src/services/chef/chef.service';
 import { testUserAgent } from '@ionic/core';
+import { DebugContext } from '@angular/core/src/view';
 
 declare var google;
 
@@ -31,6 +32,8 @@ export class MapComponent implements OnInit, AfterContentInit {
   public distances = [];
   @Input() private meals;
   @Input() private chefs;
+  private markers = {};
+  
 
   @Input()
   set userID(id){
@@ -52,25 +55,33 @@ export class MapComponent implements OnInit, AfterContentInit {
 
   @Input()
   set chefIds(chefIds:string[]){
+    this.markers = {};
+    this.mealAdresses = [];
     this._chefIds = chefIds;
     chefIds.forEach(id => {
+      
         if (id!=this._userID){
-          let adress = new Adress(this.meals[id].usr_street, this.meals[id].usr_housenumber,this.meals[id].zip_zipcode);
-          this.mealAdresses.push(adress);
+          let adress = new Adress(this.meals[id].usr_street, this.meals[id].usr_housenumber,this.meals[id].zip_zipcode);          
+          
           if(adress)
-            if(adress.zip)
-              this.setMarker(adress, 'food', this.meals[id], id);
+            if(adress.zip){
+              
+              this.mealAdresses.push(adress);
+              if(!this.markers[adress.adress]){
+                this.markers[adress.adress] = {'meals' : [], 'ids' : []};
+              }
+              this.markers[adress.adress]['meals'].push(this.meals[id]);
+              this.markers[adress.adress]['ids'].push(id);
+            }
         }
     });
+
+    this.mealAdresses.forEach(a => {
+        this.setMarker(a, 'food', this.markers[a.adress]['meals'], this.markers[a.adress]['ids']);
+    });
+
     this.userID = this._userID;
   };
-     
-
-      
-
-      // meals.forEach(meal => {
-      
-      // });
 
   @ViewChild('mapElement') mapElement;
 
@@ -87,7 +98,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.map = new google.maps.Map(
         this.mapElement.nativeElement,
         {
-          center: {lat: 51.0292103, lng: 4.4849014},
+          center: {lat:0,lng:0},
           zoom: 15,
           disableDefaultUI: true,
           styles:this.getStyle(),
@@ -96,14 +107,14 @@ export class MapComponent implements OnInit, AfterContentInit {
     google.maps.event.addDomListener(window, 'click', function(){scope.clicked(event)});
   }
 
-  setMarker(adress:Adress, icon_url, meal, chefId){
+  setMarker(adress:Adress, icon_url, meals, chefIds){
     var icon = {
       url: this.iconbase + icon_url + '.svg', // url
       scaledSize: new google.maps.Size(50, 50)
     };
 
     
-    var contentString = this.getContentString(meal, chefId);
+    var contentString = this.getContentString(meals, chefIds);
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -111,8 +122,11 @@ export class MapComponent implements OnInit, AfterContentInit {
 
     this.infoWindows.push(infowindow);
 
+    console.log(adress);
     this.mapsService.getLocation(adress).subscribe(res =>{
       adress.location = res['results'][0]['geometry']['location'];
+      if(!meals)
+        this.map.setCenter(adress.location);
       var marker = new google.maps.Marker({position: adress.location, map: this.map, icon:icon});
       marker.addListener('click', function() {
         infowindow.open(this.map, marker);
@@ -122,18 +136,20 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
 
-  getContentString(meal, chefId){
+  getContentString(meals, chefIds){
     var string = "";
     
-    if(meal != undefined){
-        string = `<div class="mapsInfo">
+    if(meals != undefined){
+      for(var x=0;x<chefIds.length;x++){
+        string += `<div class="mapsInfo">
         <div class="text"">
-          <h2 class="info">` + meal.mls_name + `</h2>
-          <h3 class="info">` + meal.mls_description + `</h3>
+          <h2 class="info">` + meals[x].mls_name + `</h2>
+          <h3 class="info">` + meals[x].mls_description + `</h3>
         </div>
-        <fab-button class='button'><ion-icon class="chefId `+ chefId + `" name="arrow-dropright-circle"></ion-icon></fab-button>
+        <fab-button class='button'><ion-icon class="chefId `+ chefIds[x] + `" name="arrow-dropright-circle"></ion-icon></fab-button>
         </div>
         `;
+      };
     }
     else
       string = "You are here";
