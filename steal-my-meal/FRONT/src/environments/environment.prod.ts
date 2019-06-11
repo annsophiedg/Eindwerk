@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  APIEndpoint: 'https://wdev.be/bartvdb/BACK/api/'
+  APIEndpoint: 'http://192.168.1.12:3000/BACK/api/'
 };
