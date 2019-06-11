@@ -11,7 +11,7 @@ export class ProfilePage implements OnInit {
   public user:any;
   public isChef:boolean = false;
   public ord_amount = 0;
-  private ms;
+  public ms;
 
   @Input() 
   set params(params){
@@ -30,8 +30,8 @@ export class ProfilePage implements OnInit {
     // get user information and save data
     this.userService.getUserObservable().subscribe((result)=>{
       //save user
-      this.user = result,
-      console.log("PROFIEL GEGEVENS: ",this.user);
+      this.user = result;
+      //check if user is chef
       if (this.user["fk_usr_chef_id"]) {
         this.isChef = true;
         //if user is chef, get user meals
@@ -60,7 +60,6 @@ export class ProfilePage implements OnInit {
       //save chef meals in service
       this.chefService.setChefMeals(result);
       console.log('profile isChef',this.isChef);
-      console.log('USER MEALS:',result)
     });
   }
 

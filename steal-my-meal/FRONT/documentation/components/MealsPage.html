@@ -1,0 +1,1649 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>steal-my-meal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">steal-my-meal documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>MealsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/meals/meals.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-meals</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./meals.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./meals.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#chefIds">chefIds</a>
+                            </li>
+                            <li>
+                                <a href="#chefs">chefs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#distances">distances</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isContentLoaded">isContentLoaded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loggedIn">loggedIn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#map">map</a>
+                            </li>
+                            <li>
+                                <a href="#meals">meals</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modal">modal</a>
+                            </li>
+                            <li>
+                                <a href="#slideOpts">slideOpts</a>
+                            </li>
+                            <li>
+                                <a href="#slider">slider</a>
+                            </li>
+                            <li>
+                                <a href="#upBtn">upBtn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#userID">userID</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#distanceChange">distanceChange</a>
+                            </li>
+                            <li>
+                                <a href="#dragDown">dragDown</a>
+                            </li>
+                            <li>
+                                <a href="#dragUp">dragUp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#goToAddMeal">goToAddMeal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#goToMealDetail">goToMealDetail</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#goToProfile">goToProfile</a>
+                            </li>
+                            <li>
+                                <a href="#hideUp">hideUp</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#showUp">showUp</a>
+                            </li>
+                            <li>
+                                <a href="#upClicked">upClicked</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(mealService: <a href="../injectables/MealService.html">MealService</a>, chefService: <a href="../injectables/ChefService.html">ChefService</a>, fbService: <a href="../injectables/FacebookService.html">FacebookService</a>, ms: <a href="../injectables/ModalService.html">ModalService</a>, modal: ModalController, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, storage: Storage, userService: <a href="../injectables/UserService.html">UserService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/meals/meals.page.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>mealService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MealService.html" target="_self" >MealService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>chefService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ChefService.html" target="_self" >ChefService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fbService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FacebookService.html" target="_self" >FacebookService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ms</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModalService.html" target="_self" >ModalService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modal</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storage</td>
+                                                  
+                                                        <td>
+                                                                    <code>Storage</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="distanceChange"></a>
+                    <span class="name">
+                        <b>
+                            distanceChange
+                        </b>
+                        <a href="#distanceChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>distanceChange(e)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">src/app/meals/meals.page.ts:166</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dragDown"></a>
+                    <span class="name">
+                        <b>
+                            dragDown
+                        </b>
+                        <a href="#dragDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dragDown()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/meals/meals.page.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dragUp"></a>
+                    <span class="name">
+                        <b>
+                            dragUp
+                        </b>
+                        <a href="#dragUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dragUp()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/meals/meals.page.ts:123</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToAddMeal"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            goToAddMeal
+                        </b>
+                        <a href="#goToAddMeal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToAddMeal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/meals/meals.page.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToMealDetail"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            goToMealDetail
+                        </b>
+                        <a href="#goToMealDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToMealDetail(meal, chef)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/app/meals/meals.page.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>chef</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToProfile"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            goToProfile
+                        </b>
+                        <a href="#goToProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToProfile()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">src/app/meals/meals.page.ts:146</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideUp"></a>
+                    <span class="name">
+                        <b>
+                            hideUp
+                        </b>
+                        <a href="#hideUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hideUp(e)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/meals/meals.page.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/meals/meals.page.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUp"></a>
+                    <span class="name">
+                        <b>
+                            showUp
+                        </b>
+                        <a href="#showUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showUp(e)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/meals/meals.page.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="upClicked"></a>
+                    <span class="name">
+                        <b>
+                            upClicked
+                        </b>
+                        <a href="#upClicked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>upClicked()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/meals/meals.page.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="chefIds"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            chefIds</b>
+                            <a href="#chefIds"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/meals/meals.page.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="chefs"></a>
+                        <span class="name">
+                            <b>
+                            chefs</b>
+                            <a href="#chefs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/meals/meals.page.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="distances"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            distances</b>
+                            <a href="#distances"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/meals/meals.page.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isContentLoaded"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            isContentLoaded</b>
+                            <a href="#isContentLoaded"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/meals/meals.page.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loggedIn"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            loggedIn</b>
+                            <a href="#loggedIn"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/meals/meals.page.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="map"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            map</b>
+                            <a href="#map"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/meals/meals.page.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="meals"></a>
+                        <span class="name">
+                            <b>
+                            meals</b>
+                            <a href="#meals"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/meals/meals.page.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modal</b>
+                            <a href="#modal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModalController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/meals/meals.page.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="slideOpts"></a>
+                        <span class="name">
+                            <b>
+                            slideOpts</b>
+                            <a href="#slideOpts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    initialSlide: 1,
+    speed: 400,
+    clickable: false,
+    direction: &#x27;vertical&#x27;,
+    spaceBetween: -300
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/meals/meals.page.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="slider"></a>
+                        <span class="name">
+                            <b>
+                            slider</b>
+                            <a href="#slider"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;slider&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/meals/meals.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="upBtn"></a>
+                        <span class="name">
+                            <b>
+                            upBtn</b>
+                            <a href="#upBtn"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;up&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/meals/meals.page.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userID"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            userID</b>
+                            <a href="#userID"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&quot;&quot;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/meals/meals.page.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterContentInit, Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { MealService } from &#x27;../../services/meal/meal.service&#x27;;
+import { Meal } from &#x27;../../models/meal&#x27;;
+import { Chef } from &#x27;../../models/chef&#x27;;
+import {ChefService} from &#x27;../../services/chef/chef.service&#x27;;
+import { myEnterAnimation } from &#x27;../animations/enter&#x27;;
+import { myLeaveAnimation } from &#x27;../animations/leave&#x27;;
+import {ModalService} from &#x27;../../services/modal/modal.service&#x27;;
+
+import { ModalController, IonSlides } from &#x27;@ionic/angular&#x27;;
+import { AddMealPage } from &#x27;../meals/add-meal/add-meal.page&#x27;;
+import { FacebookService } from &#x27;src/services/facebook/facebook.service&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { MealDetailPage } from &#x27;./meal-detail/meal-detail.page&#x27;;
+import { ProfilePage } from &#x27;../profile/profile.page&#x27;;
+import {Storage} from &#x27;@ionic/storage&#x27;;
+import { UserService } from &#x27;src/services/user/user.service&#x27;;
+
+
+@Component({
+  selector: &#x27;app-meals&#x27;,
+  templateUrl: &#x27;./meals.page.html&#x27;,
+  styleUrls: [&#x27;./meals.page.scss&#x27;],
+})
+
+export class MealsPage implements OnInit {
+  private map;
+  private userID &#x3D; &quot;&quot;;
+  private loggedIn:boolean &#x3D; false;
+  private isContentLoaded:boolean &#x3D; false;
+  public chefIds:string[] &#x3D; [];
+  public distances&#x3D; [];
+  
+
+  @ViewChild(&#x27;slider&#x27;) slider;
+  @ViewChild(&#x27;up&#x27;) upBtn;
+
+
+  meals &#x3D; {};
+  chefs &#x3D; [];
+
+  slideOpts &#x3D; {
+    initialSlide: 1,
+    speed: 400,
+    clickable: false,
+    direction: &#x27;vertical&#x27;,
+    spaceBetween: -300
+  };
+
+  constructor(private mealService:MealService,
+              private chefService:ChefService, 
+              private fbService:FacebookService, 
+              private ms:ModalService,
+              public modal: ModalController, 
+              private route:ActivatedRoute,
+              private storage:Storage,
+              private userService: UserService) {
+
+   }
+
+  ngOnInit() {
+    let code &#x3D; this.route.snapshot.queryParamMap.get(&#x27;code&#x27;);
+
+    if(!this.userID || this.userID &#x3D;&#x3D; &quot;&quot;){
+      this.storage.get(&#x27;id&#x27;).then(val &#x3D;&gt; {
+        this.userID &#x3D; val;
+        if(!val){
+          if(code !&#x3D; null){
+            this.fbService.getToken(code).subscribe(res &#x3D;&gt; {
+              this.storage.set(&#x27;id&#x27;, res);
+              this.userID &#x3D; res;
+          });
+          }else
+            this.ms.openLogIn(); 
+        }
+        this.chefService.setUserId(this.userID);
+        this.userService.setUserId(this.userID);
+        this.chefService.getChefs(this.userID).subscribe(chefs&#x3D;&gt;{
+          if (chefs &#x3D;&#x3D; null)
+            chefs &#x3D; [];
+          //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+          this.mealService.getMeals().subscribe(meals&#x3D;&gt;{
+            meals.forEach(meal &#x3D;&gt;{
+              this.meals[meal.usr_id] &#x3D; meal;
+            });
+            chefs.forEach(chef &#x3D;&gt; {
+              chef &#x3D; JSON.parse(chef);
+              chef.distance &#x3D; &quot;&quot;;
+              this.chefs &#x3D; [...this.chefs,chef];
+              this.chefIds &#x3D; [...this.chefIds,chef.chef_id];
+              this.distances &#x3D; [...this.distances,&quot;&quot;];
+            });
+          })  
+        });
+      });
+    }
+    //load chefs into a dictionary with their id as key
+    
+  }
+
+  showUp(e){
+    if(e &#x3D;&#x3D; &#x27;hide&#x27; || e.target.classList.contains(&quot;swiper-container-vertical&quot;)){
+      this.upBtn.el.style.display &#x3D; &quot;block&quot;;
+      this.slider.el.style.zIndex &#x3D; &quot;-1&quot;;
+    }
+  }
+  // this.upBtn.style.display &#x3D; &quot;none&quot;;
+  hideUp(e){
+    // console.log(e.target)
+    if(e &#x3D;&#x3D; &#x27;hide&#x27; || e.target.classList.contains(&quot;swiper-container-vertical&quot;)){
+      if(this.upBtn.el.style.display &#x3D;&#x3D; &quot;block&quot;){
+          this.upBtn.el.style.display &#x3D; &quot;none&quot;;
+          this.slider.el.style.zIndex &#x3D; &quot;5&quot;;
+      }
+    }
+  }
+
+  upClicked(){
+    this.hideUp(&#x27;hide&#x27;);
+    this.slider.slideTo(2,400);
+  }
+
+  dragUp(){
+    console.log(&#x27;not dragging&#x27;);
+    this.slider.el.style.pointerEvents &#x3D; &#x27;none&#x27;;
+  }
+
+  dragDown(){
+    console.log(&#x27;dragging&#x27;);
+    this.slider.el.style.pointerEvents &#x3D; &#x27;auto&#x27;;
+  }
+  // Modals to create
+
+  async goToAddMeal() {
+    const modal &#x3D; await this.modal.create({
+      component: AddMealPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        &#x27;usrId&#x27;: this.userID
+      }
+    });
+    return await modal.present();
+  }
+
+  async goToProfile() {
+    const modal &#x3D; await this.modal.create({
+      component: ProfilePage
+    });
+    return await modal.present();
+  }
+
+  async goToMealDetail(meal, chef){
+    const modal &#x3D; await this.modal.create({
+      component: MealDetailPage,
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      componentProps: {
+        &#x27;meal&#x27;: meal,
+        &#x27;chef&#x27;: chef
+      }
+    });
+    return await modal.present();
+  }
+
+  distanceChange(e){   
+    for(var i &#x3D; 0; i &lt; e.length; i++){
+      this.chefs[i].distance &#x3D; e[i];
+    }
+    console.log(this.chefs);
+    this.distances &#x3D; e.sort();
+    this.chefs &#x3D; this.chefs.sort((a, b) &#x3D;&gt; {
+      return parseFloat(a.distance.replace(&quot;,&quot;,&quot;.&quot;))-parseFloat(b.distance.replace(&quot;,&quot;,&quot;.&quot;));});
+      console.log(this.chefs);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-fab vertical&#x3D;&quot;bottom&quot; horizontal&#x3D;&quot;center&quot;&gt;
+  &lt;ion-fab-button #up id&#x3D;&quot;up&quot; (click)&#x3D;&quot;upClicked()&quot;&gt;
+    &lt;ion-icon name&#x3D;&quot;arrow-up&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-fab-button&gt;
+&lt;/ion-fab&gt;
+
+&lt;app-map [userID] &#x3D; &#x27;userID&#x27; [meals] &#x3D; &#x27;meals&#x27; [chefIds] &#x3D; &#x27;chefIds&#x27; [chefs] &#x3D; &#x27;chefs&#x27; (distanceChange)&#x3D;&quot;distanceChange($event)&quot;&gt;&lt;/app-map&gt;
+
+&lt;ion-fab vertical&#x3D;&quot;top&quot; horizontal&#x3D;&quot;end&quot;&gt;
+  &lt;ion-fab-button class&#x3D;&quot;menu&quot;&gt;
+    &lt;ion-icon name&#x3D;&quot;menu&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-fab-button&gt;
+  &lt;ion-fab-list side&#x3D;&quot;start&quot;&gt;
+
+    &lt;ion-fab-button (click)&#x3D;&quot;ms.openAddMeal()&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;add&quot;&gt;&lt;/ion-icon&gt;
+    &lt;/ion-fab-button&gt;
+
+    &lt;ion-fab-button (click)&#x3D;&quot;ms.openProfile()&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;person&quot;&gt;&lt;/ion-icon&gt;
+    &lt;/ion-fab-button&gt;
+
+    &lt;ion-fab-button&gt;
+      &lt;ion-icon name&#x3D;&quot;funnel&quot;&gt;&lt;/ion-icon&gt;
+    &lt;/ion-fab-button&gt;
+  &lt;/ion-fab-list&gt;
+&lt;/ion-fab&gt;
+
+&lt;ion-slides id&#x3D;&quot;outerSlider&quot; [options]&#x3D;&quot;slideOpts&quot; #slider (ionSlideNextEnd)&#x3D;&quot;hideUp($event)&quot;
+  (ionSlideReachStart)&#x3D;&quot;showUp($event)&quot; (mouseup) &#x3D; dragUp()&gt;
+  &lt;ion-slide class&#x3D;&quot;slide firstSlider&quot;&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide class&#x3D;&quot;slide transparant&quot;&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide class&#x3D;&quot;slide mealComponents&quot; (mousedown) &#x3D; dragDown() (mouseup) &#x3D; dragUp()&gt;
+    &lt;content&gt;
+      &lt;p *ngFor&#x3D;&quot;let chef of chefs; let i &#x3D; index&quot;&gt;
+        &lt;app-meal-item [meal]&#x3D;meals[chef.chef_id] [chef]&#x3D;chef [distance]&#x3D;&quot;distances[i]&quot;
+          (click)&#x3D;&quot;goToMealDetail(meals[chef.chef_id], chef)&quot;&gt;&lt;/app-meal-item&gt;
+      &lt;/p&gt;
+    &lt;/content&gt;
+  &lt;/ion-slide&gt;
+&lt;/ion-slides&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./meals.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">// @import &quot;../../style/variables&quot;;
+
+ion-fab-button{
+    height: 3em;
+    width: 3em;
+    margin: .5em .5em;
+
+    &amp;#up{
+        display: none;
+    }
+}
+ion-slides{
+    pointer-events: none; 
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    ion-slide{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: flex-start;
+
+        content{
+            width: 100vw;
+
+            p{
+                width: 100vw;
+            }
+        }
+
+        &amp;.mealComponents{
+            background: #EEE;
+            margin-top: 3.5em;
+            pointer-events: initial; 
+        }
+
+    }
+}
+
+app-map{
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-fab vertical="bottom" horizontal="center">  <ion-fab-button #up id="up" (click)="upClicked()">    <ion-icon name="arrow-up"></ion-icon>  </ion-fab-button></ion-fab><app-map [userID] = \'userID\' [meals] = \'meals\' [chefIds] = \'chefIds\' [chefs] = \'chefs\' (distanceChange)="distanceChange($event)"></app-map><ion-fab vertical="top" horizontal="end">  <ion-fab-button class="menu">    <ion-icon name="menu"></ion-icon>  </ion-fab-button>  <ion-fab-list side="start">    <ion-fab-button (click)="ms.openAddMeal()">      <ion-icon name="add"></ion-icon>    </ion-fab-button>    <ion-fab-button (click)="ms.openProfile()">      <ion-icon name="person"></ion-icon>    </ion-fab-button>    <ion-fab-button>      <ion-icon name="funnel"></ion-icon>    </ion-fab-button>  </ion-fab-list></ion-fab><ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd)="hideUp($event)"  (ionSlideReachStart)="showUp($event)" (mouseup) = dragUp()>  <ion-slide class="slide firstSlider">  </ion-slide>  <ion-slide class="slide transparant">  </ion-slide>  <ion-slide class="slide mealComponents" (mousedown) = dragDown() (mouseup) = dragUp()>    <content>      <p *ngFor="let chef of chefs; let i = index">        <app-meal-item [meal]=meals[chef.chef_id] [chef]=chef [distance]="distances[i]"          (click)="goToMealDetail(meals[chef.chef_id], chef)"></app-meal-item>      </p>    </content>  </ion-slide></ion-slides></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MealsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MealsPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

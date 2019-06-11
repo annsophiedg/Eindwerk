@@ -24,7 +24,7 @@
       </ion-row>
     </ion-grid>
     <ion-grid class="grid-data" *ngFor="let m of myMeals">
-      <ion-row *ngIf="m.mls_date>now">
+      <ion-row *ngIf="m.mls_date>=now">
         <ion-col size="4">
           {{m.mls_datum}}
         </ion-col>
@@ -32,7 +32,7 @@
           {{m.mls_name}}
         </ion-col>
         <ion-col>
-          {{m.mls_amount}}
+          {{m.mls_ordered}}/{{m.mls_amount}}
         </ion-col>
       </ion-row>
     </ion-grid>

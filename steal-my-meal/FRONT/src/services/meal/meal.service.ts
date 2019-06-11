@@ -51,5 +51,10 @@ export class MealService {
     return this.http.post(this.ingredientURL, ingredient, httpOptions);
   }
 
+  //get all ingredients
+  public getIngredients() {
+    return this.http.get(`${this.ingredientURL}`)
+  }
+
 
 }

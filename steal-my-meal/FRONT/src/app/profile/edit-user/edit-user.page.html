@@ -8,7 +8,7 @@
 <ion-content>
 
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <fieldset formGroupName="fullName">
+    <fieldset class="box" formGroupName="fullName">
       <legend>Full Name</legend>
       <!-- Change profile pic -->
       <ion-item>
@@ -23,7 +23,7 @@
       </ion-item>
     </fieldset>
 
-    <fieldset formGroupName="address">
+    <fieldset class="box" formGroupName="address">
       <legend>Address</legend>
       <ion-item>
         <!-- Street -->
@@ -48,7 +48,7 @@
       </ion-item>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="box">
       <legend>Email Address</legend>
       <ion-item>
         <!-- Email -->
@@ -57,7 +57,7 @@
       </ion-item>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="box">
       <legend>Telephone Number</legend>
       <ion-item>
         <!-- Telephone -->
