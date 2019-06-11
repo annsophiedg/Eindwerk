@@ -1,0 +1,128 @@
+@import "reset.css";
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+
+/* LOGIN */
+
+.loginContent{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/bgn.jpg");
+    background-size: cover;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.loginContent h1{
+    margin-bottom: 2rem;
+}
+
+.loginContent input{
+    border: none;
+    box-shadow: 3px 3px 10px grey;
+    margin: 10px 0 20px 0;
+}
+
+.loginContent label{
+    margin-left: 10px;
+}
+
+.loginForm{
+    margin-left: 8rem;
+}
+
+.logTitle{
+    font-family: Arial;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    text-align: center;
+}
+
+.logTitle h3{
+    border-bottom: 1px solid darkgrey;
+    padding-bottom: .5rem;
+}
+
+/* DASHBOARD */
+
+/*--- Sidebar ---*/
+.sidebar{
+    height: 100vh;
+    width: 15%;
+    color: whitesmoke;
+    background-color: slategray;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 2px 3px 10px grey;
+}
+
+.dashboard-title{
+    width: 89%;
+    border-bottom: 1px solid whitesmoke;
+    text-align: center;
+    margin-bottom: 5rem;
+    padding-bottom: 1rem;
+}
+
+.unlist li,a {
+    margin-bottom: 3rem;
+    font-size: 1.3rem;
+    color: whitesmoke;
+}
+
+.unlist li:last-of-type {
+    position: absolute;
+    bottom: 1rem;
+}
+
+a:hover{
+    text-decoration: none;
+    color: whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+}
+
+/*--- Content ---*/
+
+.usersContent, .statsContent{
+    display: flex;
+}
+
+.users, .stats{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats{
+    text-align: center;
+}
+
+.greeting{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+/*--- Admin Content ---*/
+
+#tbl{
+    box-shadow: 8px 3px 10px grey;
+}
+
+.table-header{
+    font-size: 1.2rem;
+}
+
+.btn-action{
+    margin-left: 5px;
+}
