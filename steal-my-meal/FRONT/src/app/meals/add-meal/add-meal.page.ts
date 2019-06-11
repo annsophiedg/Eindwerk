@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
 import { TypeService } from '../../../services/type/type.service';
+import { UserService } from '../../../services/user/user.service';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -42,8 +43,7 @@ export class AddMealPage {
   };
   // end of datepicker modal
 
-  @Input() usrId;
-  
+  usrID: string ="";
   types = [];
   mealFormObj;
   setMeal;
@@ -54,13 +54,16 @@ export class AddMealPage {
               private mealService:MealService,
               private typeService:TypeService,
               public  loadingController: LoadingController,
-              public  toastController: ToastController) {
+              public  toastController: ToastController,
+              public  userController: UserService) {
 
     this.typeService.getTypes().subscribe(types => {
       this.types = types});
   }
 
   ngOnInit() {
+    this.usrID = this.userController.getUserId();
+    console.log(this.usrID);
     this.meal = this.formBuilder.group({
       type: ['', Validators.required,],
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
@@ -76,7 +79,7 @@ export class AddMealPage {
   logForm(){
 
     this.mealFormObj = this.meal.value;
-    this.mealFormObj.usrId = this.usrId;
+    this.mealFormObj.usrId = this.usrID;
     this.setMeal = JSON.stringify(this.mealFormObj);
     console.log(this.setMeal);
     this.mealService.addMeal(this.mealFormObj);

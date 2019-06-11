@@ -117,28 +117,27 @@ class MealController {
     $startTime = substr($decoded["startTime"], 11, -10);
     $endTime = substr($decoded["startTime"], 11, -10);
 
+    //get number from string portions
+    $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
+
     //Function to create multiple rows in order table for each portion
     function createOrders($portions, $usrId){
-      $values;
+      $string;
       for($x=1; $x<=$portions; $x++){
         if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
         else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
       };
-      return $values;
+      return $string;
     };
-
-    //get number from string portions
-    $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
 
     //Use MySql transaction for inserting new meal and orders at same time. The quantity of orders is the same as the number of portions.
     $orderSqlCommand = "BEGIN;
                         INSERT INTO meals (mls_id, mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
-                        VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$decoded["startTime"]."', '".$decoded["endTime"]."', '".$decoded["date"]."', '".$decoded["type"]."');
-                        INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES".createOrders($portions, $decoded["usrId"]).
+                        VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$startTime."', '".$endTime."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES ".createOrders($portions, $decoded["usrId"]).
                         "COMMIT;";
-
+                        
     $orderMealResult = $this->dbm->sqlExecute($orderSqlCommand, null, PDO::FETCH_OBJ);
-
   }
 
   // Add an ingredient to DB & return the ing_id

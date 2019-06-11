@@ -155,7 +155,6 @@ export class MealsPage implements OnInit {
       enterAnimation: myEnterAnimation,
       leaveAnimation: myLeaveAnimation,
       componentProps: {
-        'usrId': this.userID
       }
     });
     return await modal.present();
