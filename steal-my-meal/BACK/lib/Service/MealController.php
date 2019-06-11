@@ -120,7 +120,7 @@ class MealController {
     //Function to create multiple rows in order table for each portion
     function createOrders($portions, $usrId){
       $values;
-      for($x=1; $x<=$portions; $x++){
+      for($x=0; $x<$portions; $x++){
         if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
         else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
       };
