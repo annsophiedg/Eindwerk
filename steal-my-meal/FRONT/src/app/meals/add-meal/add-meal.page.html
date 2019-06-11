@@ -29,15 +29,19 @@
 
       <li>
         <ion-item>
-              <ion-label position="floating">Price</ion-label>
-              <ion-input type="text" formControlName="price"></ion-input>
+              <ion-label>Price</ion-label>
+              <ion-select type="text" formControlName="price">
+                <ion-select-option *ngFor="let price of prices" value="{{ price }}">{{price|currency:"EUR"}}</ion-select-option>
+              </ion-select>
         </ion-item>
       </li>
 
       <li>
           <ion-item>
                 <ion-label position="floating">Portions</ion-label>
-                <ion-input type="text" formControlName="portions"></ion-input>
+                <ion-select type="text" formControlName="portions">
+                  <ion-select-option *ngFor="let portion of portions" value="{{ portion }}">{{ portion }}</ion-select-option>
+                </ion-select>
           </ion-item>
         </li>
 

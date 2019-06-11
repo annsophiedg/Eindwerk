@@ -10,7 +10,7 @@
 <ion-content>
   <div class="time">
     <div class="left">
-        <p>Pick-up date:  <span class='bold'>{{date}}</span></p>
+        <p>Pick-up date:  <span class='bold'>{{meal.mls_date}}</span></p>
         <p>Pick-up time: <span class='bold'>{{meal.mls_take_start | slice:0:-3}}</span> - <span class='bold'>{{meal.mls_take_end| slice:0:-3}}</span></p>
     </div>
     <div class="right price bold">
@@ -18,25 +18,17 @@
     </div>
   </div>
 
-
-  <ion-item>
+  <div>
+  <ion-item class="mealData">
       <ion-label>Description: {{meal.mls_description}}</ion-label>
   </ion-item>
-  <ion-item>
-      <ion-label>portions: {{meal.mls_portions }}</ion-label>
+  <ion-item class="mealData">
+      <ion-label>portions: {{meal.available_portions }} available</ion-label>
   </ion-item>
-
-  <div class="subtitle">
-    <label>About Chef</label>
-  </div>  
-  <ion-card>
-      <ion-item>
-          <ion-label>Adress: {{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>  </ion-label>
-      </ion-item>
-  </ion-card>
+<ion-item class="mealData">
+    <ion-label>Adress: {{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</ion-label>
+</ion-item>
+</div>
 
   <div class="btns">
       <ion-button (click)="hideModal()">Close</ion-button>
