@@ -149,6 +149,7 @@ export class MealsPage implements OnInit {
   // Modals to create
 
   async goToAddMeal() {
+
     const modal = await this.modal.create({
       component: AddMealPage,
       enterAnimation: myEnterAnimation,
@@ -167,7 +168,8 @@ export class MealsPage implements OnInit {
     return await modal.present();
   }
 
-  async goToMealDetail(meal, chef){
+  async goToMealDetail(meal, chef, event){
+    if(!event.target.className.includes('star')){
     const modal = await this.modal.create({
       component: MealDetailPage,
       enterAnimation: myEnterAnimation,
@@ -179,6 +181,7 @@ export class MealsPage implements OnInit {
       }
     });
     return await modal.present();
+  }
   }
 
   distanceChange(e){   
