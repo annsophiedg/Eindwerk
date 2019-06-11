@@ -57,6 +57,7 @@ export class MealsPage implements OnInit {
     private storage:Storage,
     private userService: UserService
   ) {
+    
   }
 
   ngOnInit() {
