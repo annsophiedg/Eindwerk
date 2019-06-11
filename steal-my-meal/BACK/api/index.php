@@ -253,9 +253,8 @@ if ( $subject == "types" )
             //GET overview types
             $types = $typeController->getTypes();
             echo $types;
-        } 
-    } else if ($method == "POST") {//post new Type (for dashboard maybe)}
         }
+    }
 }
 
 if ( $subject == "admin" )

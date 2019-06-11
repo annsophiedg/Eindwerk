@@ -36,7 +36,7 @@ export class MealService {
 
   //Add meal
   addMeal(meal){
-    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe();
+    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe(outcome =>(console.log(outcome=meal) ));
   }
 
   //Subscribe to meal(update order)
