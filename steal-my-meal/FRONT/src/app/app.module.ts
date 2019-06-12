@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +33,7 @@ import { LogInPage } from './log-in/log-in.page';
 @NgModule({
   //all modal components in declarations & entrycomponents
   declarations: [
-    AppComponent, 
+    AppComponent,
     AddMealPage,
     MealDetailPage,
     ProfilePage,
