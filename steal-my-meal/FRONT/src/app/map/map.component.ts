@@ -58,6 +58,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.markers = {};
     this.mealAdresses = [];
     this._chefIds = chefIds;
+    
     chefIds.forEach(id => {
       
         if (id!=this._userID){
@@ -113,7 +114,7 @@ export class MapComponent implements OnInit, AfterContentInit {
       scaledSize: new google.maps.Size(50, 50)
     };
 
-    
+    console.log('CHEFS = ' + chefIds)
     var contentString = this.getContentString(meals, chefIds);
 
     var infowindow = new google.maps.InfoWindow({

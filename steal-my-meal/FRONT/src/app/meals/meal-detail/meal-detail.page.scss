@@ -4,32 +4,50 @@ ion-grid{
     text-align: center;
 }
 
+ion-icon.arrow-back{
+    color: $baseColor_white;
+    position: fixed;
+    top: 7px;
+    left: 7px;
+    width: 30px;
+    height: 30px;
+}
+
 .userDetails {
     width: 100vw;
     margin: 0;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 0;
     background: $baseColor_red;
     border-radius: 0;
     display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
+    justify-content: center;
+    // align-items: center;
+    flex-wrap: wrap;
 
     ion-avatar {
         position: relative;
-        height: 120px;
-        width: 120px;
+        height: 100px;
+        width: 100px;
         margin-bottom: 1rem;
-
         img {
             border: 5px solid $baseColor_white;
         }
     }
+    ion-card-title.title{
+        width: 50%;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
 
+        h2{
+            font-size: 1.9rem;
+        }
+    }
     .meal{
         width: 100%;
-        padding: 1rem;
+        padding: .7rem;
         text-align: center;
         font-size: 2rem;
         background: $baseColor_white;
@@ -43,21 +61,14 @@ ion-content{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    --background: #FBF7F6;
 
     .time{
-        width: 100%;
         display: flex;
         flex-wrap: wrap;
         font-size: 1.3rem;
         padding: 1rem;
-        .bold{
-            font-weight: 700;
-            border-radius: 5px;
-            background-color: $baseColor_red;
-            color:$baseColor_white;
-            margin: 0 .2rem;
-            padding: .3rem;
-        }
 
         p{
             margin-bottom: 1rem;
@@ -93,12 +104,55 @@ ion-content{
     }
 
     .btns{
-        margin-left: 10px;
-        position: absolute;
-        bottom: 10px;
+        width: 100%;
+        margin: auto 0;
+        position: fixed;
+        bottom: 0;
+        // justify-self: center;
+        
+        ion-button{
+            font-size: 1.8rem;
+            padding: 1rem;
+            padding-left: .7rem; 
+            width: 100%;
+            --background: #FD665D;
+            height: 100%;
+            --color: #FBF7F6;
+
+            p{
+                padding: 0.7rem;
+            }
+        }
     }
+    // $baseColor_red : #FD665D;
+    // $baseColor_yellow : #FECB46;
 
     .mealData{
-        font-size: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.3rem;
+        padding: 1rem;
+        border-bottom: #CCC;
+    }
+
+    .bold{
+        font-weight: 700;
+        border-radius: 5px;
+        background-color: $baseColor_red;
+        color:$baseColor_white;
+        margin: 0 .2rem;
+        padding: .3rem;
+    }
+
+    .title{
+        width: 100%;
+        padding: .2rem;
+        padding-top: .3rem;
+        margin-bottom: .5rem;
+        font-size: 1.5rem;
+        text-align: center;
+        background: $baseColor_white;
+        color: $baseColor_red;
+        border-bottom: solid 2px $baseColor_red;
     }
 }
