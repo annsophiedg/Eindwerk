@@ -6,8 +6,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { FavoriteChefsPage } from './favorite-chefs.page';
+
+import { ChefCardComponent } from '../../chefs/chef-card/chef-card.component';
 import { ChefTitleComponent } from '../../chefs/chef-title/chef-title.component';
-// import { ChefCardComponent } from '../../chefs/chef-card/chef-card.component';
+import { ChefRateComponent } from '../../chefs/chef-rate/chef-rate.component';
+import { FollowComponent } from '../../chefs/follow/follow.component';
 
 const routes: Routes = [
   {
@@ -25,8 +28,13 @@ const routes: Routes = [
   ],
   declarations: [
     FavoriteChefsPage,
-    ChefTitleComponent
-    // ChefCardComponent
+    ChefCardComponent,
+    ChefTitleComponent,
+    ChefRateComponent,
+    FollowComponent
+  ],
+  schemas: [
+    // NO_ERRORS_SCHEMA,
   ]
 })
 export class FavoriteChefsPageModule {}

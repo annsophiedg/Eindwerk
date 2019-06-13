@@ -89,12 +89,12 @@ export class UserService {
   }
 
   public addUserFavChef(chef_id) {
-    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions).subscribe();
+    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions);
   }
 
   public deleteUserFavChef(chef_id) {
     let deleteFavChefURL = this.favChefsURL + ',' + chef_id;
-    return this.http.delete(`${deleteFavChefURL}`).subscribe();
+    return this.http.delete(`${deleteFavChefURL}`);
   }
 
   // ORDERED MEALS

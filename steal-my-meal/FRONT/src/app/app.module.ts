@@ -29,7 +29,7 @@ import { OrdersPage } from './profile/orders/orders.page';
 import { LogInPage } from './log-in/log-in.page';
 
 //components
-import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
+// import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
 // import { ChefTitleComponent } from './chefs/chef-title/chef-title.component';
 // import { FollowComponent } from './chefs/follow/follow.component';
 
@@ -38,7 +38,7 @@ import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
   declarations: [
     //components
     AppComponent, 
-    ChefCardComponent,
+    // ChefCardComponent,
     // ChefTitleComponent,
     // FollowComponent,
     //pages

@@ -23,7 +23,6 @@ export class FavoriteChefsPage implements OnInit {
         console.log(chef)
       });
     })
-
   }
 
   ngOnInit() {
