@@ -8,6 +8,7 @@ registerLocaleData(localeBe);
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { IonicSelectableModule } from 'ionic-selectable';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
@@ -43,7 +44,7 @@ import { LogInPage } from './log-in/log-in.page';
     FavoriteChefsPage,
     LogInPage,
     ExperiencePage,
-    MealHistoryPage
+    MealHistoryPage,
   ],
   entryComponents: [
     AddMealPage, 
@@ -65,7 +66,8 @@ import { LogInPage } from './log-in/log-in.page';
     ReactiveFormsModule, 
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
-    Ionic4DatepickerModule], 
+    Ionic4DatepickerModule,
+    IonicSelectableModule],
   providers: [
     StatusBar,
     SplashScreen,

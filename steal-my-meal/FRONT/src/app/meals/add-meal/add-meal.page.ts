@@ -47,6 +47,7 @@ export class AddMealPage {
   portions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   usrID: string ="";
   types = [];
+  ingredients;
   mealFormObj;
   setMeal;
   meal: FormGroup;
@@ -61,18 +62,22 @@ export class AddMealPage {
 
     this.typeService.getTypes().subscribe(types => {
       this.types = types});
+
+    this.mealService.getIngredients().subscribe(ingredients => {
+      this.ingredients = ingredients});
   }
 
   ngOnInit() {
     this.usrID = this.userController.getUserId();
     this.meal = this.formBuilder.group({
-      type: ['', Validators.required,],
+      type: ['', Validators.required],
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      price: ['', [Validators.required, Validators.maxLength(2), Validators.pattern("^[0-9]*$")]],
+      price: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      portions: ['', [Validators.required, Validators.maxLength(2), Validators.pattern("^[0-9]*$")]],
+      portions: ['', Validators.required],
+      ingredients: ['', Validators.required],
       description: ['', Validators.required]
     });
   }
@@ -81,8 +86,7 @@ export class AddMealPage {
 
     this.mealFormObj = this.meal.value;
     this.mealFormObj.usrId = this.usrID;
-    this.setMeal = JSON.stringify(this.mealFormObj);
-    console.log(this.setMeal);
+    console.log(this.mealFormObj);
     this.mealService.addMeal(this.mealFormObj);
   }
 

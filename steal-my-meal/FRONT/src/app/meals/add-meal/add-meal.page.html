@@ -77,6 +77,20 @@
 
       <li>
         <ion-item>
+          <ion-label>Ingredient</ion-label>
+          <ionic-selectable
+            formControlName="ingredients"
+            itemValueField="ing_id"
+            itemTextField="ing_name"
+            [items]="ingredients"
+            [canSearch]="true"
+            [isMultiple]="true">
+          </ionic-selectable>
+        </ion-item>
+      </li>
+
+      <li>
+        <ion-item>
             <ion-label position="floating">Meal Description</ion-label>
             <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>
         </ion-item>
