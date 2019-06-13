@@ -104,18 +104,20 @@ export class MealsPage implements OnInit {
         chefs = [];
       //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
       this.mealService.getMeals().subscribe(meals=>{
-        meals.forEach(meal =>{
-          this.meals[meal.mls_id] = meal;
-        });
-        this.meals = this.meals;
-        chefs.forEach(chef => {
-          chef = JSON.parse(chef);
-          chef.distance = "";
-          this.chefs = [...this.chefs,chef];
-          this.chefIds = [...this.chefIds,chef.mls_id];
-          this.distances = [...this.distances,""];
-        });
-      })
+          if(meals){
+            meals.forEach(meal =>{
+              this.meals[meal.mls_id] = meal;
+            });
+            this.meals = this.meals;
+            chefs.forEach(chef => {
+              chef = JSON.parse(chef);
+              chef.distance = "";
+              this.chefs = [...this.chefs,chef];
+              this.chefIds = [...this.chefIds,chef.mls_id];
+              this.distances = [...this.distances,""];
+            });
+        }
+        })
     });
   }
 
