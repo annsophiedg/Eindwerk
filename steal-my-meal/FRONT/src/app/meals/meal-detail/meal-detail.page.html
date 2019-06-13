@@ -1,10 +1,10 @@
 <ion-card class="userDetails">
+    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
     <ion-avatar>
         <img [src]=chef.chef_picture>
     </ion-avatar>
-    <ion-card-title class="title">{{chef.chef_firstname}} {{chef.chef_lastname}}</ion-card-title>
-    <ion-card-title class="title meal">{{meal.mls_name}}</ion-card-title>
-    
+    <ion-card-title class="title"><h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2></ion-card-title>
+    <ion-card-title class="meal">{{meal.mls_name}}</ion-card-title>
 </ion-card>
 
 <ion-content>
@@ -19,19 +19,21 @@
   </div>
 
   <div>
-  <ion-item class="mealData">
-      <ion-label>Description: {{meal.mls_description}}</ion-label>
-  </ion-item>
-  <ion-item class="mealData">
-      <ion-label>portions: {{meal.available_portions }} available</ion-label>
-  </ion-item>
-<ion-item class="mealData">
-    <ion-label>Adress: {{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</ion-label>
-</ion-item>
-</div>
+    <div class="mealData ">
+        <h4 class='title'>Description</h4>
+        <p>{{meal.mls_description}}</p>
+    </div>
+    <div class="mealData">
+            <h4 class='title'>portions</h4>
+            <p>{{meal.available_portions }} portions available</p>
+        </div>
+    <div class="mealData">
+        <h4 class='title'>Adress</h4>
+        <p>{{chef.chef_street}} {{chef.chef_nr}}, {{chef.chef_zip}} {{chef.chef_city}}</p>
+    </div>
+  </div>
 
   <div class="btns">
-      <ion-button (click)="hideModal()">Close</ion-button>
-      <ion-button (click)="presentLoading()" (click)="getMeal()">Get this meal!</ion-button>
+      <ion-button (click)="presentLoading()" (click)="getMeal()"><p>Get this meal!</p></ion-button>
   </div>
 </ion-content>

@@ -187,8 +187,9 @@ export class MealsPage implements OnInit {
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    this.distances = e.sort();
-    this.chefs = this.chefs.sort((a, b) => {
-      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+    this.distances = e;
+    // this.distances = e.sort();
+    // this.chefs = this.chefs.sort((a, b) => {
+    //   return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
   }
 }
