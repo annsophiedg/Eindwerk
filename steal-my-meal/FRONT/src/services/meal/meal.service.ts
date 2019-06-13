@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Meal } from'../../models/meal';
 import { Observable } from 'rxjs';
-import { AllergiesPage } from 'src/app/profile/allergies/allergies.page';
 import { environment } from '../../environments/environment';
 
 const APIEndpoint = environment.APIEndpoint;

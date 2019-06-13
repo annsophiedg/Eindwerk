@@ -66,3 +66,17 @@ ion-button .button-native {
     background: $baseColor_red;
     color: $baseColor_white;
 }
+
+ion-button.red{
+    font-size: 1.8rem;
+    padding: 1rem;
+    padding-left: .7rem; 
+    width: 100%;
+    --background: #FD665D;
+    height: 100%;
+    --color: #FBF7F6;
+
+    p{
+        padding: 0.7rem;
+    }
+}
