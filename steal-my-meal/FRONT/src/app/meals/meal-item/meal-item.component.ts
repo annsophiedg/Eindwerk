@@ -27,7 +27,6 @@ export class MealItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.chef);
   }
 
 
