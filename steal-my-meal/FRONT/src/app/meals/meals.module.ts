@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MapComponent} from '../map/map.component';
 import { MealItemComponent } from './meal-item/meal-item.component';
 import { FollowComponent } from '../chefs/follow/follow.component';
-
+import { ChefTitleComponent } from '../chefs/chef-title/chef-title.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -29,7 +29,8 @@ const routes: Routes = [
     MapComponent,
     MealsPage, 
     MealItemComponent,
-    FollowComponent
+    FollowComponent,
+    ChefTitleComponent
   ],
   providers:[Storage]
 })

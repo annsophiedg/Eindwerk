@@ -21,8 +21,8 @@ export class FollowComponent implements OnInit {
     // console.log('follow chef_id: ', this.chef)
     this.userService.getUserFavChefs().subscribe((result)=>{
       this.myFavChefs = result;
-      console.log(this.myFavChefs);
-      console.log('follow chef_id: ', this.chef.chef_id)
+      // console.log(this.myFavChefs);
+      // console.log('follow chef_id: ', this.chef.chef_id)
 
       //check if this chef is myFavChef
       for (let i=0; i<this.myFavChefs.length; i++) {

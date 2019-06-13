@@ -39,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>TypeService</li>
+  <li>GeneralService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -57,7 +57,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/services/type/type.service.ts</code>
+            <code>src/services/general/general.service.ts</code>
         </p>
 
 
@@ -76,7 +76,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#typesUrl">typesUrl</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#allergiesURL">allergiesURL</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#ingredientsURL">ingredientsURL</a>
                             </li>
                         </ul>
                     </td>
@@ -91,7 +96,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getTypes">getTypes</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#getAllergies">getAllergies</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getIngredients">getIngredients</a>
                             </li>
                         </ul>
                     </td>
@@ -116,7 +126,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/services/type/type.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/services/general/general.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -163,26 +173,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTypes"></a>
+                    <a name="getAllergies"></a>
                     <span class="name">
                         <b>
-                            getTypes
+                            <span class="modifier">Public</span>
+                            getAllergies
                         </b>
-                        <a href="#getTypes"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getAllergies"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTypes()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllergies()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/services/type/type.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/services/general/general.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -191,7 +203,48 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Type.html" target="_self" >Observable&lt;Type[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIngredients"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getIngredients
+                        </b>
+                        <a href="#getIngredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getIngredients()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/services/general/general.service.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                 </td>
@@ -208,28 +261,50 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="typesUrl"></a>
+                        <a name="allergiesURL"></a>
                         <span class="name">
                             <b>
-                            typesUrl</b>
-                            <a href="#typesUrl"><span class="icon ion-ios-link"></span></a>
+                                <span class="modifier">Private</span>
+                            allergiesURL</b>
+                            <a href="#allergiesURL"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>APIEndpoint + &#x27;types&#x27;</code>
+                            <i>Default value : </i><code>APIEndpoint + &#x27;allergies/&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/services/type/type.service.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/services/general/general.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingredientsURL"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            ingredientsURL</b>
+                            <a href="#ingredientsURL"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>APIEndpoint + &#x27;ingredients/&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/services/general/general.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -243,9 +318,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Type } from &#x27;../../models/type&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { HttpClient} from &#x27;@angular/common/http&#x27;;
 import { environment } from &#x27;../../environments/environment&#x27;;
 
 const APIEndpoint &#x3D; environment.APIEndpoint;
@@ -253,16 +327,26 @@ const APIEndpoint &#x3D; environment.APIEndpoint;
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class TypeService {
 
-  typesUrl:string &#x3D; APIEndpoint + &#x27;types&#x27;;
 
-  constructor(private http:HttpClient ) { }
 
-  //Get types
-  getTypes():Observable&lt;Type[]&gt;{
-    return this.http.get&lt;Type[]&gt;(&#x60;${this.typesUrl}&#x60;);
+export class GeneralService {
+
+  private allergiesURL &#x3D; APIEndpoint + &#x27;allergies/&#x27;;
+  private ingredientsURL &#x3D; APIEndpoint + &#x27;ingredients/&#x27;;
+
+  constructor(private http:HttpClient) {
   }
+
+  public getIngredients() {
+    return this.http.get(&#x60;${this.ingredientsURL}&#x60;)
+  }
+  
+  public getAllergies() {
+    return this.http.get(&#x60;${this.allergiesURL}&#x60;)
+  }
+
+
 }
 </code></pre>
     </div>
@@ -296,7 +380,7 @@ export class TypeService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'TypeService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'GeneralService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -6,30 +6,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="chef" *ngFor="let chef of favChefs">
+
+  <ion-card class="chef" *ngFor="let c of favChefs">
+    <!-- <app-chef-card [chef]=chef></app-chef-card> -->
     <ion-avatar class="profilepic">
-      <img [src]=chef[0].usr_profile_url alt="profilepicture">
+      <img [src]=c.usr_profile_url alt="profilepicture">
     </ion-avatar>
     <div class="top">
       <div class="info">
-        <h3 *ngIf="chef[0].avg_rating<8">Sous-chef</h3>
-        <h3 *ngIf="chef[0].avg_rating>8">Chef de cuisine</h3>
-        <h2>{{chef[0].usr_firstname}} {{chef[0].usr_lastname}}</h2>
+        <h3 class="rating1" *ngIf="4>c.avg_rating || 2>c.mls_cooked">Commis de cuisine</h3>
+        <h3 class="rating2" *ngIf="c.avg_rating>4 && c.mls_cooked>=2">Aide de cuisine</h3>
+        <h3 class="rating3" *ngIf="c.avg_rating>7 && c.mls_cooked>=3">Sous-chef</h3>
+        <h3 class="rating4" *ngIf="c.avg_rating>10 && c.mls_cooked>=5">Chef de cuisine</h3>
+        <h2>{{c.usr_firstname}} {{c.usr_lastname}}</h2>
       </div>
     </div>
     <div class="bottom">
       <div class="info">
-        <h2>2.4 KM</h2>
         <h2>
-          <ion-icon name="restaurant"></ion-icon>
-          <span *ngIf="chef[0].mls_cooked"> {{chef[0].mls_cooked}}</span>
-          <span *ngIf="!chef[0].mls_cooked"> -</span>
+          <ion-icon class="icon" name="restaurant"></ion-icon>
+          <span class="text" *ngIf="c.mls_cooked"> {{c.mls_cooked}}</span>
+          <span class="text" *ngIf="!c.mls_cooked"> -</span>
         </h2>
         <h2>
-          <ion-icon name="basket"></ion-icon> <span *ngIf="chef[0].ord_finished"> {{chef[0].ord_finished}}</span> <span
-            *ngIf="!chef[0].ord_finished"> -</span>
+          <ion-icon class="icon" name="basket"></ion-icon>
+          <span class="text" *ngIf="c.ord_finished"> {{c.ord_finished}}</span>
+          <span class="text" *ngIf="!c.ord_finished"> -</span>
         </h2>
-        <!-- <h2 *ngIf="chef[0].avg_rating">{{chef[0].avg_rating}} SCORE</h2> -->
+        <h2 class="h2-icon">
+          <ion-icon class="icon" class="rating rating-laugh" *ngIf="12<=c.avg_rating"
+            src='../../../assets/icon/laugh-beam-solid.svg'></ion-icon>
+          <ion-icon class="icon" class="rating rating-smile" *ngIf="8<=c.avg_rating && c.avg_rating<12"
+            src='../../../assets/icon/laugh-solid.svg'></ion-icon>
+          <ion-icon class="icon" class="rating rating-like" *ngIf="4<=c.avg_rating && c.avg_rating<8"
+            src='../../../assets/icon/smile-beam-solid.svg'></ion-icon>
+          <ion-icon class="icon" class="rating rating-neutral" *ngIf="-1<=c.avg_rating && c.avg_rating<4"
+            src='../../../assets/icon/meh-solid.svg'></ion-icon>
+          <ion-icon class="icon" class="rating rating-sad" *ngIf="c.avg_rating<-1"
+            src='../../../assets/icon/frown-solid.svg'></ion-icon>
+        </h2>
       </div>
     </div>
   </ion-card>

@@ -131,7 +131,23 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pageName">pageName</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#parent">parent</a>
+                            </li>
+                            <li>
                                 <a href="#slideOpts">slideOpts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#user">user</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userForm">userForm</a>
                             </li>
                         </ul>
                     </td>
@@ -146,7 +162,34 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hideModal">hideModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initUser">initUser</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onSubmit">onSubmit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#params">params</a>
                             </li>
                         </ul>
                     </td>
@@ -155,7 +198,20 @@
 
 
 
-
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#params">params</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -166,20 +222,91 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(userService: <a href="../injectables/UserService.html">UserService</a>, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, modal: ModalController)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/log-in/log-in.page.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/log-in/log-in.page.ts:25</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modal</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
 
-
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="params"></a>
+                        <b>params</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/log-in/log-in.page.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -188,6 +315,88 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideModal"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            hideModal
+                        </b>
+                        <a href="#hideModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hideModal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/log-in/log-in.page.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            initUser
+                        </b>
+                        <a href="#initUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/log-in/log-in.page.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -210,8 +419,49 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/log-in/log-in.page.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/log-in/log-in.page.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            onSubmit
+                        </b>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/log-in/log-in.page.ts:66</a></div>
                 </td>
             </tr>
 
@@ -233,6 +483,50 @@
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageName"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            pageName</b>
+                            <a href="#pageName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/log-in/log-in.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            parent</b>
+                            <a href="#parent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/log-in/log-in.page.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -263,7 +557,57 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/log-in/log-in.page.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/log-in/log-in.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/log-in/log-in.page.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userForm"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            userForm</b>
+                            <a href="#userForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/log-in/log-in.page.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -272,11 +616,76 @@
         </table>
 </section>
 
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="params"></a>
+                        <span class="name"><b>params</b><a href="#params"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>params(params)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/log-in/log-in.page.ts:17</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>params</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { UserService } from &#x27;src/services/user/user.service&#x27;;
+import { FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
+import { ModalController } from &#x27;@ionic/angular&#x27;;
+import { constructor } from &#x27;assert&#x27;;
+import {MealsPage} from &#x27;src/app/meals/meals.page&#x27;;
 
 @Component({
   selector: &#x27;app-log-in&#x27;,
@@ -284,8 +693,26 @@
   styleUrls: [&#x27;./log-in.page.scss&#x27;],
 })
 export class LogInPage implements OnInit {
+  public pageName;
+  public parent;
+  @Input() 
+  set params(params){
+    this.pageName &#x3D; params[&#x27;pageName&#x27;];
+    this.parent &#x3D; params[&#x27;parent&#x27;];
+    if(this.pageName &#x3D;&#x3D; &#x27;Adress&#x27;)
+      this.initUser();
+  };
 
-  constructor() { }
+  public userForm;
+  public user:any;
+
+  constructor(
+    private userService:UserService,
+    private formBuilder: FormBuilder,
+    private modal: ModalController
+  ) { 
+    
+  }
 
   slideOpts &#x3D; {
     initialSlide: 0,
@@ -295,20 +722,50 @@ export class LogInPage implements OnInit {
   };
 
   ngOnInit() {
+
   }
 
+  private initUser(){
+    this.user &#x3D; this.userService.getUser();
+
+    this.userForm &#x3D; this.formBuilder.group({
+      fullName: this.formBuilder.group({
+        usr_firstname: [this.user[&#x27;usr_firstname&#x27;]],
+        usr_lastname: [this.user[&#x27;usr_lastname&#x27;]]
+      }),
+      address: this.formBuilder.group({
+        usr_street: [this.user[&#x27;usr_street&#x27;]],
+        usr_housenumber: [this.user[&#x27;usr_housenumber&#x27;]],
+        zip_zipcode: [this.user[&#x27;zip_zipcode&#x27;], Validators.required],
+        zip_city: [this.user[&#x27;zip_city&#x27;],Validators.required]
+      }),
+      usr_email: [this.user[&#x27;usr_email&#x27;]],
+      usr_telephone: [this.user[&#x27;usr_telephone&#x27;]]
+      
+    });
+  }
+
+  public onSubmit() {
+    this.userService.setUserObservable(this.userForm.value).subscribe(res &#x3D;&gt; this.parent.getChefs(&#x27;test&#x27;));
+    this.hideModal();
+  }
+
+  public hideModal(){
+    this.modal.dismiss()
+  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+        <pre class="line-numbers"><code class="language-html">
+&lt;ion-header&gt;
   &lt;ion-toolbar&gt;
     &lt;ion-title&gt;Log In&lt;/ion-title&gt;
   &lt;/ion-toolbar&gt;
 &lt;/ion-header&gt;
 
-&lt;ion-content&gt;
+&lt;ion-content *ngIf&#x3D;&quot;pageName &#x3D;&#x3D; &#x27;Facebook&#x27;&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
   &lt;ion-slides [options]&#x3D;slideOpts&gt;
     &lt;ion-slide&gt;
@@ -372,6 +829,38 @@ export class LogInPage implements OnInit {
   &lt;/a&gt;
 &lt;/div&gt;
 &lt;/ion-content&gt;
+
+&lt;ion-content *ngIf&#x3D;&quot;pageName &#x3D;&#x3D; &#x27;Adress&#x27;&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;userForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+    &lt;fieldset formGroupName&#x3D;&quot;address&quot;&gt;
+      &lt;legend&gt;Address&lt;/legend&gt;
+      &lt;ion-item&gt;
+        &lt;!-- Street --&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt;Street&lt;/ion-label&gt;
+        &lt;ion-input type&#x3D;&quot;text&quot; id&#x3D;&quot;street&quot; formControlName&#x3D;&quot;usr_street&quot;&gt;&lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+      &lt;ion-item&gt;
+        &lt;!-- Nr --&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt;Housenumber&lt;/ion-label&gt;
+        &lt;ion-input type&#x3D;&quot;text&quot; id&#x3D;&quot;housenumber&quot; formControlName&#x3D;&quot;usr_housenumber&quot;&gt;&lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+      &lt;ion-item&gt;
+        &lt;!-- Zipcode --&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt;Zipcode&lt;/ion-label&gt;
+        &lt;ion-input type&#x3D;&quot;text&quot; id&#x3D;&quot;zipcode&quot; formControlName&#x3D;&quot;zip_zipcode&quot;&gt;&lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+      &lt;ion-item&gt;
+        &lt;!-- City --&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt;City&lt;/ion-label&gt;
+        &lt;ion-input type&#x3D;&quot;text&quot; id&#x3D;&quot;city&quot; formControlName&#x3D;&quot;zip_city&quot;&gt;
+        &lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+    &lt;/fieldset&gt;
+    &lt;ion-button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;!userForm.valid&quot;&gt;Update&lt;/ion-button&gt;
+  &lt;/form&gt;
+&lt;/ion-content&gt;
+
+
 </code></pre>
     </div>
 
@@ -481,8 +970,8 @@ ion-card-subtitle{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title>Log In</ion-title>  </ion-toolbar></ion-header><ion-content>  <div class="container">  <ion-slides [options]=slideOpts>    <ion-slide>        <ion-card>          <img src="../../assets/img/fresh_food.jpg">            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Welkom!</ion-card-title>            </ion-card-header>                      <ion-card-content>              Welkom bij <span class="bold">Steal My Meal</span>!<br>              Met hulp van deze app kan je makkelijk maaltijden delen en/of bestellen! Log in met je facebook account om er meteen aan te beginnen.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>  </ion-slides>  <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=281257842778510&redirect_uri=http://localhost:8100/tabs/meals&state={}">    <button class="facebookButton">      Continue with facebook    </button>  </a></div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title>Log In</ion-title>  </ion-toolbar></ion-header><ion-content *ngIf="pageName == \'Facebook\'">  <div class="container">  <ion-slides [options]=slideOpts>    <ion-slide>        <ion-card>          <img src="../../assets/img/fresh_food.jpg">            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Welkom!</ion-card-title>            </ion-card-header>                      <ion-card-content>              Welkom bij <span class="bold">Steal My Meal</span>!<br>              Met hulp van deze app kan je makkelijk maaltijden delen en/of bestellen! Log in met je facebook account om er meteen aan te beginnen.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>    <ion-slide>        <ion-card>            <ion-card-header>              <ion-card-subtitle>Steal my meal</ion-card-subtitle>              <ion-card-title>Card Title</ion-card-title>            </ion-card-header>                      <ion-card-content>              Keep close to Nature\'s heart... and break clear away, once in awhile,              and climb a mountain or spend a week in the woods. Wash your spirit clean.            </ion-card-content>          </ion-card>    </ion-slide>  </ion-slides>  <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=281257842778510&redirect_uri=http://localhost:8100/tabs/meals&state={}">    <button class="facebookButton">      Continue with facebook    </button>  </a></div></ion-content><ion-content *ngIf="pageName == \'Adress\'">    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">    <fieldset formGroupName="address">      <legend>Address</legend>      <ion-item>        <!-- Street -->        <ion-label position="floating">Street</ion-label>        <ion-input type="text" id="street" formControlName="usr_street"></ion-input>      </ion-item>      <ion-item>        <!-- Nr -->        <ion-label position="floating">Housenumber</ion-label>        <ion-input type="text" id="housenumber" formControlName="usr_housenumber"></ion-input>      </ion-item>      <ion-item>        <!-- Zipcode -->        <ion-label position="floating">Zipcode</ion-label>        <ion-input type="text" id="zipcode" formControlName="zip_zipcode"></ion-input>      </ion-item>      <ion-item>        <!-- City -->        <ion-label position="floating">City</ion-label>        <ion-input type="text" id="city" formControlName="zip_city">        </ion-input>      </ion-item>    </fieldset>    <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>  </form></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LogInPage'};
 </script>

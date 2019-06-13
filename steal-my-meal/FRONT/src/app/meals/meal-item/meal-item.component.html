@@ -5,7 +5,8 @@
     </ion-avatar>
     <div class="top">
       <div class="info">
-        <h3>Sous-chef</h3>
+        <app-chef-title [chef]=chef></app-chef-title>
+        <!-- <h3>Sous-chef</h3> -->
         <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>
       </div>
       <app-follow class="follow" [chef]=chef></app-follow>

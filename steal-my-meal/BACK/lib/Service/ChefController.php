@@ -21,7 +21,7 @@ class ChefController {
    * chef_city
    * chef_telephone
    * 
-   * @return array|null
+   * @return string|null
    */
   function getActiveChefs($id)
   {
@@ -32,11 +32,10 @@ class ChefController {
     $result = $this->dbm->sqlExecute($sqlActiveChefs, null, PDO::FETCH_OBJ);
 
     foreach ($result as $row) {
-      array_push($activeChefs,json_encode($row));
+      array_push($activeChefs,$row);
     }
     
-    $jsonChefs = json_encode($activeChefs);
-    return $jsonChefs;
+    return json_encode($activeChefs);
   }
 
 
@@ -58,7 +57,7 @@ class ChefController {
    * ord_finished: orders that were picked up
    * avg_rating: average of all order ratings
    * 
-   * @return array|null
+   * @return string|null
    */
   function getChefDetails(string $id)
   {
@@ -68,7 +67,7 @@ class ChefController {
     $result = $this->dbm->sqlExecute($sqlChefDetails, null, PDO::FETCH_OBJ);
     
     //if chefDetails = null, user is not a chef!
-    $chefDetails = $result;
+    $chefDetails = $result[0];
     
     return json_encode($chefDetails);
   }
@@ -84,7 +83,7 @@ class ChefController {
    * mls_take_end
    * mls_amount
    * 
-   * @return array|null
+   * @return string|null
    */
   function getChefMeals(string $id)
   {

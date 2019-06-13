@@ -28,11 +28,20 @@ import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { OrdersPage } from './profile/orders/orders.page';
 import { LogInPage } from './log-in/log-in.page';
 
+//components
+import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
+// import { ChefTitleComponent } from './chefs/chef-title/chef-title.component';
+// import { FollowComponent } from './chefs/follow/follow.component';
 
 @NgModule({
   //all modal components in declarations & entrycomponents
   declarations: [
+    //components
     AppComponent, 
+    ChefCardComponent,
+    // ChefTitleComponent,
+    // FollowComponent,
+    //pages
     AddMealPage,
     MealDetailPage,
     ProfilePage,
@@ -64,7 +73,8 @@ import { LogInPage } from './log-in/log-in.page';
     ReactiveFormsModule, 
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
-    Ionic4DatepickerModule], 
+    Ionic4DatepickerModule,
+  ], 
   providers: [
     StatusBar,
     SplashScreen,

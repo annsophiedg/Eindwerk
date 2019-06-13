@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
 import { ProfilePage } from './profile.page';
+
+import { FollowComponent } from '../chefs/follow/follow.component';import { ChefTitleComponent } from '../chefs/chef-title/chef-title.component';
 import { ModalService } from 'src/services/modal/modal.service';
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [ModalService],
-  declarations: [ProfilePage]
+  declarations: [
+    ProfilePage,
+    FollowComponent,
+    ChefTitleComponent
+  ]
 })
 export class ProfilePagePageModule {}

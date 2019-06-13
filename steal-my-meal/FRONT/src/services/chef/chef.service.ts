@@ -52,8 +52,6 @@ export class ChefService {
     //save chef meals
     this.chefMeals = meals
   }
-
-  
   
   getChefMeals() {
     return this.chefMeals

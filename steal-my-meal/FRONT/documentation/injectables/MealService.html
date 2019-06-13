@@ -80,11 +80,9 @@
                                 <a href="#ing_id">ing_id</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#ingredientsURL">ingredientsURL</a>
+                                <a href="#ingredientURL">ingredientURL</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
                                 <a href="#mealsUrl">mealsUrl</a>
                             </li>
                         </ul>
@@ -106,17 +104,17 @@
                                 <a href="#addMeal">addMeal</a>
                             </li>
                             <li>
-                                <a href="#deleteMeal">deleteMeal</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#getIngredients">getIngredients</a>
+                            </li>
+                            <li>
+                                <a href="#getMealIngredients">getMealIngredients</a>
                             </li>
                             <li>
                                 <a href="#getMeals">getMeals</a>
                             </li>
                             <li>
-                                <a href="#updateMeal">updateMeal</a>
+                                <a href="#subscribeToMeal">subscribeToMeal</a>
                             </li>
                         </ul>
                     </td>
@@ -141,7 +139,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/services/meal/meal.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/services/meal/meal.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -206,8 +204,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/services/meal/meal.service.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/services/meal/meal.service.ts:60</a></div>
                 </td>
             </tr>
 
@@ -272,8 +270,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/services/meal/meal.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/services/meal/meal.service.ts:38</a></div>
                 </td>
             </tr>
 
@@ -307,76 +305,6 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="deleteMeal"></a>
-                    <span class="name">
-                        <b>
-                            deleteMeal
-                        </b>
-                        <a href="#deleteMeal"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>deleteMeal(meal: <a href="../classes/Meal.html">Meal</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/services/meal/meal.service.ts:35</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>meal</td>
-                                    <td>
-                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Meal.html" target="_self" >Observable&lt;Meal&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -410,8 +338,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/services/meal/meal.service.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/services/meal/meal.service.ts:65</a></div>
                 </td>
             </tr>
 
@@ -422,6 +350,72 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMealIngredients"></a>
+                    <span class="name">
+                        <b>
+                            getMealIngredients
+                        </b>
+                        <a href="#getMealIngredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMealIngredients($mealId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/services/meal/meal.service.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$mealId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -449,8 +443,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/services/meal/meal.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/services/meal/meal.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -470,26 +464,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="updateMeal"></a>
+                    <a name="subscribeToMeal"></a>
                     <span class="name">
                         <b>
-                            updateMeal
+                            subscribeToMeal
                         </b>
-                        <a href="#updateMeal"><span class="icon ion-ios-link"></span></a>
+                        <a href="#subscribeToMeal"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateMeal(meal: <a href="../classes/Meal.html">Meal</a>)</code>
+<code>subscribeToMeal(subscribtion)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/services/meal/meal.service.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/services/meal/meal.service.ts:43</a></div>
                 </td>
             </tr>
 
@@ -503,16 +497,12 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
-                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>meal</td>
-                                    <td>
-                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
-                                    </td>
+                                    <td>subscribtion</td>
 
                                     <td>
                                         No
@@ -526,7 +516,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Meal.html" target="_self" >Observable&lt;Meal&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -557,7 +547,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/services/meal/meal.service.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/services/meal/meal.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -568,12 +558,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="ingredientsURL"></a>
+                        <a name="ingredientURL"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
-                            ingredientsURL</b>
-                            <a href="#ingredientsURL"><span class="icon ion-ios-link"></span></a>
+                            ingredientURL</b>
+                            <a href="#ingredientURL"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -585,12 +574,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:3000/BACK/api/ingredients/&#x27;</code>
+                            <i>Default value : </i><code>APIEndpoint + &#x27;ingredients&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/services/meal/meal.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/services/meal/meal.service.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -604,7 +593,6 @@
                         <a name="mealsUrl"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
                             mealsUrl</b>
                             <a href="#mealsUrl"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -618,12 +606,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:3000/BACK/api/meals&#x27;</code>
+                            <i>Default value : </i><code>APIEndpoint + &#x27;meals&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/services/meal/meal.service.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/services/meal/meal.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -641,6 +629,9 @@ import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { Meal } from&#x27;../../models/meal&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { AllergiesPage } from &#x27;src/app/profile/allergies/allergies.page&#x27;;
+import { environment } from &#x27;../../environments/environment&#x27;;
+
+const APIEndpoint &#x3D; environment.APIEndpoint;
 
 const httpOptions &#x3D; {
   headers: new HttpHeaders({
@@ -653,8 +644,8 @@ const httpOptions &#x3D; {
 })
 export class MealService {
 
-  private mealsUrl:string &#x3D; &#x27;http://localhost:3000/BACK/api/meals&#x27;;
-  private ingredientsURL &#x3D; &#x27;http://localhost:3000/BACK/api/ingredients/&#x27;;
+  mealsUrl:string &#x3D; APIEndpoint + &#x27;meals&#x27;;
+  ingredientURL:string &#x3D; APIEndpoint + &#x27;ingredients&#x27;;
   public ing_id;
 
   constructor(private http:HttpClient) { }
@@ -664,31 +655,41 @@ export class MealService {
     return this.http.get&lt;any&gt;(&#x60;${this.mealsUrl}&#x60;);
   }
 
+  //Get ingredients from one meal
+  getMealIngredients($mealId){
+    return this.http.get(&#x60;${this.ingredientURL}/${$mealId}&#x60;);
+  }
+
   //Add meal
   addMeal(meal){
-    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe();
+    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe(outcome &#x3D;&gt;(console.log(outcome&#x3D;meal) ));
+  }
+
+  //Subscribe to meal(update order)
+  subscribeToMeal(subscribtion){
+    return this.http.put(this.mealsUrl, subscribtion, httpOptions).subscribe();
   }
 
   //Delete meal
-  deleteMeal(meal:Meal):Observable&lt;Meal&gt;{
-    const url &#x3D; &#x60;${this.mealsUrl}/${meal.id}&#x60;;
-    return this.http.delete&lt;Meal&gt;(url, httpOptions);
-  }
+  // deleteMeal(meal:Meal):Observable&lt;Meal&gt;{
+  //   const url &#x3D; &#x60;${this.mealsUrl}/${meal.id}&#x60;;
+  //   return this.http.delete&lt;Meal&gt;(url, httpOptions);
+  // }
 
   //Update meal
-  updateMeal(meal:Meal):Observable&lt;Meal&gt;{
-    const url &#x3D; &#x60;${this.mealsUrl}/${meal.id}&#x60;;
-    return this.http.put&lt;Meal&gt;(url, httpOptions);
-  }
+  // updateMeal(meal:Meal):Observable&lt;Meal&gt;{
+  //   const url &#x3D; &#x60;${this.mealsUrl}/${meal.id}&#x60;;
+  //   return this.http.put&lt;Meal&gt;(url, httpOptions);
+  // }
 
   //Add ingredient
   addIngredient(ingredient){
-    return this.http.post(this.ingredientsURL, ingredient, httpOptions);
+    return this.http.post(this.ingredientURL, ingredient, httpOptions);
   }
 
   //get all ingredients
   public getIngredients() {
-    return this.http.get(&#x60;${this.ingredientsURL}&#x60;)
+    return this.http.get(&#x60;${this.ingredientURL}&#x60;)
   }
 
 

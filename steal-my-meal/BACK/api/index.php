@@ -106,7 +106,7 @@ if ( $subject == "orders" )
 }
 
 //use Service UserController if $subject == "favChefs"
-if ( $subject == "favChefs" ) {
+if ( $subject == "pageFavChefs" ) {
     $userController = new UserController($dbManager);
     $chefController = new ChefController($dbManager);
 
@@ -116,13 +116,31 @@ if ( $subject == "favChefs" ) {
             //GET your favorite chefs (chefs you follow)
             $favChefIds = $userController->getFavoriteChefs($id);
 
-            //$favChefDetails = Array();
+            $favChefDetails = Array();
+            //echo gettype($favChefIds) .", ". $favChefIds."<br>";
 
-            //foreach (json_decode($favChefIds) as $id) {
-            //echo gettype($id) .", ". $id."<br>";
-            //    $chefDetails = json_decode($chefController->getChefDetails($id));
-            //    array_push($favChefDetails,$chefDetails);
-            //}
+            foreach (json_decode($favChefIds) as $id) {
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                //echo gettype($chefDetails) .", ". $chefDetails."<br>";
+                array_push($favChefDetails,$chefDetails);
+            }
+
+            echo json_encode($favChefDetails);
+        }
+    }
+}
+
+
+
+//use Service UserController if $subject == "favChefs"
+if ( $subject == "favChefs" ) {
+    $userController = new UserController($dbManager);
+
+    if ($id) {
+        if ($method == "GET") {
+
+            //GET your favorite chefs (chefs you follow)
+            $favChefIds = $userController->getFavoriteChefs($id);
 
             echo $favChefIds;
         } elseif ($method == "POST") {
@@ -172,7 +190,7 @@ if ( $subject == "ingredients" )
         }
 
     } else if ($method == "POST") {
-        $mealController->addIngredient($_POST);
+        $mealController->addIngredient($input);
     }
 }
 

@@ -58,6 +58,7 @@ export class MealService {
 
   //Add ingredient
   addIngredient(ingredient){
+    // console.log(ingredient.ing_name)
     return this.http.post(this.ingredientURL, ingredient, httpOptions);
   }
 

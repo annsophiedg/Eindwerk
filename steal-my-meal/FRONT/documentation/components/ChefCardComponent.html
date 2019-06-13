@@ -36,7 +36,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>TabsPage</li>
+  <li>ChefCardComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,11 +62,17 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/tabs/tabs.page.ts</code>
+    <code>src/app/chefs/chef-card/chef-card.component.ts</code>
 </p>
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -86,19 +92,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-tabs</code></td>
+                <td class="col-md-9"><code>app-chef-card</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>tabs.page.scss</code></td>
+                <td class="col-md-9"><code>./chef-card.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>tabs.page.html</code></td>
+                <td class="col-md-9"><code>./chef-card.component.html</code></td>
             </tr>
 
 
@@ -112,51 +118,184 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#chef">chef</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
 
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/chefs/chef-card/chef-card.component.ts:11</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="chef"></a>
+                        <b>chef</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/chefs/chef-card/chef-card.component.ts:11</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/chefs/chef-card/chef-card.component.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { Chef } from &#x27;src/models/chef&#x27;;
 
 @Component({
-  selector: &#x27;app-tabs&#x27;,
-  templateUrl: &#x27;tabs.page.html&#x27;,
-  styleUrls: [&#x27;tabs.page.scss&#x27;]
+  selector: &#x27;app-chef-card&#x27;,
+  templateUrl: &#x27;./chef-card.component.html&#x27;,
+  styleUrls: [&#x27;./chef-card.component.scss&#x27;],
 })
-export class TabsPage {}
+export class ChefCardComponent implements OnInit {
+
+  @Input() chef;
+
+  constructor() { }
+
+  ngOnInit() {}
+
+}
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ion-tabs&gt;
-
-  &lt;ion-tab-bar slot&#x3D;&quot;bottom&quot;&gt;
-    &lt;ion-tab-button tab&#x3D;&quot;meals&quot;&gt;
-      &lt;ion-icon name&#x3D;&quot;restaurant&quot;&gt;&lt;/ion-icon&gt;
-      &lt;ion-label&gt;Meals&lt;/ion-label&gt;
-    &lt;/ion-tab-button&gt;
-    &lt;/ion-tab-bar&gt;
-
-&lt;/ion-tabs&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;ion-avatar class&#x3D;&quot;profilepic&quot;&gt;
+  &lt;img [src]&#x3D;chef.chef_picture alt&#x3D;&quot;profilepicture&quot;&gt;
+&lt;/ion-avatar&gt;
+&lt;div class&#x3D;&quot;top&quot;&gt;
+  &lt;div class&#x3D;&quot;info&quot;&gt;
+    &lt;!-- &lt;app-chef-title [chef]&#x3D;chef&gt;&lt;/app-chef-title&gt; --&gt;
+    &lt;!-- &lt;h3&gt;Sous-chef&lt;/h3&gt; --&gt;
+    &lt;h2&gt;{{chef.chef_firstname}} {{chef.chef_lastname}}&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;!-- &lt;app-follow class&#x3D;&quot;follow&quot; [chef]&#x3D;chef&gt;&lt;/app-follow&gt; --&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;bottom&quot;&gt;
+  &lt;div class&#x3D;&quot;info&quot;&gt;
+    &lt;h2&gt;{{distance}}&lt;/h2&gt;
+    &lt;h2&gt;{{chef.mls_cooked}} meals&lt;/h2&gt;
+    &lt;h2&gt;&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>tabs.page.scss</code>
+                    <code>./chef-card.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">ion-tab-bar{
-    display: none;
-}
-</code></pre>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -184,10 +323,10 @@ export class TabsPage {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-tabs>  <ion-tab-bar slot="bottom">    <ion-tab-button tab="meals">      <ion-icon name="restaurant"></ion-icon>      <ion-label>Meals</ion-label>    </ion-tab-button>    </ion-tab-bar></ion-tabs></div>'
+        var COMPONENT_TEMPLATE = '<div><ion-avatar class="profilepic">  <img [src]=chef.chef_picture alt="profilepicture"></ion-avatar><div class="top">  <div class="info">    <!-- <app-chef-title [chef]=chef></app-chef-title> -->    <!-- <h3>Sous-chef</h3> -->    <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>  </div>  <!-- <app-follow class="follow" [chef]=chef></app-follow> --></div><div class="bottom">  <div class="info">    <h2>{{distance}}</h2>    <h2>{{chef.mls_cooked}} meals</h2>    <h2></h2>  </div></div></div>'
     var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'TabsPage'};
+    var ACTUAL_COMPONENT = {'name': 'ChefCardComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -221,7 +360,7 @@ export class TabsPage {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'TabsPage.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ChefCardComponent.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

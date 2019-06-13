@@ -27,6 +27,7 @@ export class UserService {
   private experienceURL;
   private allergyURL;
   private favChefsURL;
+  private pageFavChefsURL;
   private user;
   private orders;
 
@@ -45,6 +46,7 @@ export class UserService {
     this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
     // get favorite chefs
     this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
+    this.pageFavChefsURL = APIEndpoint + 'pageFavChefs/' + this.userId;
   }
 
   public getUserId() {
@@ -78,6 +80,10 @@ export class UserService {
   }
 
   // FAVORITE CHEFS
+  public getUserpageFavChefs():Observable<any> {
+    return this.http.get(`${this.pageFavChefsURL}`)
+  }
+
   public getUserFavChefs():Observable<any> {
     return this.http.get(`${this.favChefsURL}`)
   }
@@ -115,7 +121,7 @@ export class UserService {
   }
 
   public addAllergy(allergy) {
-    return this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
+    return this.http.post(this.allergyURL, allergy, httpOptions)
   }
 
   public setAllergyOfUser(allergy) {
@@ -124,7 +130,7 @@ export class UserService {
 
   public deleteUserAllergy(allergy) {
     let deleteAllergyURL = this.allergyURL + ',' + allergy["ing_id"];
-    this.http.delete(deleteAllergyURL, allergy).subscribe()
+    return this.http.delete(deleteAllergyURL, allergy)
   }
   
 }
