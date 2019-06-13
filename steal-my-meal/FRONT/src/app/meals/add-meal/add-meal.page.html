@@ -28,21 +28,27 @@
       </li>
 
       <li>
-        <ion-item>
-              <ion-label>Price</ion-label>
-              <ion-select type="text" formControlName="price">
-                <ion-select-option *ngFor="let price of prices" value="{{ price }}">{{price|currency:"EUR"}}</ion-select-option>
-              </ion-select>
-        </ion-item>
-      </li>
+          <ion-grid>
+              <ion-row>
+                  <ion-col size="7">
+                    <ion-item>
+                          <ion-label>Price</ion-label>
+                          <ion-select type="text" formControlName="price">
+                            <ion-select-option *ngFor="let price of prices" value="{{ price }}">{{price|currency:"EUR"}}</ion-select-option>
+                          </ion-select>
+                    </ion-item>
+                  </ion-col>
 
-      <li>
-          <ion-item>
-                <ion-label position="floating">Portions</ion-label>
-                <ion-select type="text" formControlName="portions">
-                  <ion-select-option *ngFor="let portion of portions" value="{{ portion }}">{{ portion }}</ion-select-option>
-                </ion-select>
-          </ion-item>
+                  <ion-col size="5">
+                    <ion-item>
+                          <ion-label>Portions</ion-label>
+                          <ion-select type="text" formControlName="portions">
+                            <ion-select-option *ngFor="let portion of portions" value="{{ portion }}">{{ portion }}</ion-select-option>
+                          </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
         </li>
 
       <li>
@@ -77,7 +83,7 @@
 
       <li>
         <ion-item>
-          <ion-label>Ingredient</ion-label>
+          <ion-label>Add ingredients</ion-label>
           <ionic-selectable
             formControlName="ingredients"
             itemValueField="ing_id"
@@ -85,6 +91,9 @@
             [items]="ingredients"
             [canSearch]="true"
             [isMultiple]="true">
+              <ng-template ionicSelectableCloseButtonTemplate>
+                <ion-icon name="close" style="font-size: 24px;"></ion-icon>
+              </ng-template>
           </ionic-selectable>
         </ion-item>
       </li>
@@ -95,10 +104,7 @@
             <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>
         </ion-item>
       </li>
-
-  
-        <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Add Your Meal</ion-button>
-
+        <ion-button class="red" type="submit" [disabled]="!meal.valid" (click)="presentLoading()"><p>Add Your Meal</p></ion-button>
     </ul>
   </form>
 </ion-content>

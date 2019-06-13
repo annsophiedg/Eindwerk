@@ -1,2 +1,15 @@
-// @import "../../../style/variables";
+@import "../../../style/variables";
 
+ion-content{
+    form{
+        height: 100vh;
+
+        li{
+            margin-top: 3%;
+
+            ion-item{
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
