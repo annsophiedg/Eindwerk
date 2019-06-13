@@ -6,11 +6,9 @@ import { myLeaveAnimation } from '../animations/leave';
 import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
-import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
-import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
 
@@ -146,26 +144,9 @@ export class MealsPage implements OnInit {
   dragDown(){
     this.slider.el.style.pointerEvents = 'auto';
   }
+
+
   // Modals to create
-
-  async goToAddMeal() {
-
-    const modal = await this.modal.create({
-      component: AddMealPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-      }
-    });
-    return await modal.present();
-  }
-
-  async goToProfile() {
-    const modal = await this.modal.create({
-      component: ProfilePage
-    });
-    return await modal.present();
-  }
 
   async goToMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){

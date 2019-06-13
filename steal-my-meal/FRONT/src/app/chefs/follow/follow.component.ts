@@ -31,6 +31,8 @@ export class FollowComponent implements OnInit {
         if (this.chef.chef_id == this.myFavChefs[i]){
           this.isFavChef = true;
           break;
+        } else {
+          this.isFavChef = false;
         }
       }
     })

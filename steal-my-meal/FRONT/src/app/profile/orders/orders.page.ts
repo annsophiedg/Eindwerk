@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
+import { ModalService } from '../../../services/modal/modal.service';
 import { ModalController } from '@ionic/angular';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe, formatDate } from '@angular/common';
@@ -23,7 +24,8 @@ export class OrdersPage implements OnInit {
 
   constructor(
     private userService:UserService,
-    private modal:ModalController
+    private modal:ModalController,
+    public ms:ModalService
   ) { 
     this.orders = this.userService.getCurrentOrders();
     console.log('today:', this.today)
