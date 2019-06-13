@@ -13,7 +13,7 @@
     <div class="bottom">
       <div class="info">
         <h2>{{distance}}</h2>
-        <h2>{{chef.mls_cooked}} meals</h2>
+        <h2 *ngIf="chef.mls_cooked">{{chef.mls_cooked}} meals</h2>
         <h2></h2>
       </div>
     </div>

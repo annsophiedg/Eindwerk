@@ -30,6 +30,7 @@ export class MealsPage implements OnInit {
   public distances= [];
   private user;
   public myFavChefs = [];
+  public orderedChefs;
   
 
   @ViewChild('slider') slider;
@@ -76,15 +77,16 @@ export class MealsPage implements OnInit {
               this.userService.getUserObservable().subscribe(res =>{
                   this.user = res;
                   this.userService.setUser(res);
-                  if (!res.zip_zipcode){
-                    this.ms.openLogIn({'pageName':'Adress','parent':this});
-                  }
+                  if(res)
+                    if (!res.zip_zipcode){
+                      this.ms.openLogIn({'pageName':'Adress','parent':this, 'modalService': this.ms});
+                    }
               });
             this.getChefs();  
 
           });
           }else
-            this.ms.openLogIn({'pageName':'Facebook','parent':this}); 
+            this.ms.openLogIn({'pageName':'Facebook','parent':this,'modalService': this.ms}); 
         }
         
         this.getChefs();
@@ -187,9 +189,15 @@ export class MealsPage implements OnInit {
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    this.distances = e;
-    // this.distances = e.sort();
-    // this.chefs = this.chefs.sort((a, b) => {
-    //   return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+    // this.distances = e;
+    this.distances = e.sort();
+    let temp = [...this.chefs];
+    temp.sort((a, b) => {
+      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+
+    this.orderedChefs = temp;
+    
+    
   }
+  
 }
