@@ -108,7 +108,7 @@ export class MealsPage implements OnInit {
             });
             this.meals = this.meals;
             chefs.forEach(chef => {
-              chef = JSON.parse(chef);
+              // chef = JSON.parse(chef);
               chef.distance = "";
               this.chefs = [...this.chefs,chef];
               this.chefIds = [...this.chefIds,chef.mls_id];
