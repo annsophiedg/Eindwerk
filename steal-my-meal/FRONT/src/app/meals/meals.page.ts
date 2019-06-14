@@ -152,7 +152,6 @@ export class MealsPage implements OnInit {
 
 
   // Modals to create
-
   async goToMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
     const modal = await this.modal.create({

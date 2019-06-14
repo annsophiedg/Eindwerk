@@ -50,7 +50,7 @@ export class AllergiesPage implements OnInit {
     this.userService.getUserAllergies().subscribe((result)=>(
       //save user allergies in array
       this.userAllergies = result,
-      console.log("User Allergies: ",this.userAllergies),
+      // console.log("User Allergies: ",this.userAllergies),
       // check if user has allergies
       this.userHasAllergies(this.userAllergies)
     ));
@@ -94,13 +94,13 @@ export class AllergiesPage implements OnInit {
     }
   }
 
+  //newAllergy: string (input/target value)
   private sendAllergy(newAllergy) {
-    console.log('sss',newAllergy);
+    // console.log('sss',newAllergy);
+    //returns id of added ingredient
     this.mealService.addIngredient({"ing_name":newAllergy}).subscribe(res => {
-      console.log(res);
       //get id of added ingredient
       this.all_id = JSON.parse(JSON.stringify(res))[0]['id'];
-      console.log("allergyID:",this.all_id);
 
       //add id as FK in user/allergies
       this.userService.addAllergy({"all_id":this.all_id}).subscribe((res)=>{
@@ -108,9 +108,7 @@ export class AllergiesPage implements OnInit {
       });
 
       //show new allergy as label on page
-      // this.showAllergy(
-      //   {"ing_id":this.all_id,"ing_name":newAllergy}
-      //   );
+      // this.showAllergy({"ing_id":this.all_id,"ing_name":newAllergy});
     })
   }
 
@@ -129,8 +127,8 @@ export class AllergiesPage implements OnInit {
     this.sendAllergy(this.newAllergy);
   }
 
+  //allergy: {'ing_id':'','ing_name':''}
   public deleteAllergy(allergy) {
-    console.log("to delete:",allergy);
     //delete in back
     this.userService.deleteUserAllergy(allergy).subscribe((res)=>{
       this.setUserAllergies();

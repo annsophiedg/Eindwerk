@@ -59,8 +59,7 @@
   <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>
 
   <!-- FULL OVERVIEW OF ALL CURRENT ORDERS -->
-  <div class="highlight" *ngIf="1<orders.length" (click)="ms.OpenOrderList()">
-    <h1>Show all my ordered meals</h1>
-  </div>
-
+<ion-footer *ngIf="1<orders.length" (click)="ms.OpenOrderList()">
+    <h2 class="box">Show all my ordered meals</h2>
+</ion-footer>
 </ion-content>
