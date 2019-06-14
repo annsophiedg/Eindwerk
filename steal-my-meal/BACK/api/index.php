@@ -100,13 +100,13 @@ if ( $subject == "chefMeals" )
 //use Service UserController if $subject == "orders"
 if ( $subject == "orders" )
 {
-    $userController = new UserController($dbManager);
+    $orderController = new OrderController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
             //GET all meals of one chef
-            $userOrders = $userController->getUserOrders($id);
-            echo $userOrders;
+            $orders = $orderController->getUserOrders($id);
+            echo $orders;
         }
     }
 }
