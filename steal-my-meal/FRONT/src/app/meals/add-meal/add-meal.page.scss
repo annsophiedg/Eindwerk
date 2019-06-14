@@ -40,6 +40,10 @@ ion-content{
                 font-size: 1.2rem;
                 color: #222;
 
+                ion-label{
+                    color: #222;
+                }
+
                 ion-label.serveDate{
                     display: flex;
                     div:first-of-type{
@@ -48,7 +52,7 @@ ion-content{
                 }
 
                 ion-input, ion-select, ionic-selectable, ion-datetime, ion-textarea{
-                    color: #FD665D;
+                    color: #777;
                 }
             }
         }
