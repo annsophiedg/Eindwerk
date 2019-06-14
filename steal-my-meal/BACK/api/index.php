@@ -100,13 +100,13 @@ if ( $subject == "chefMeals" )
 //use Service UserController if $subject == "orders"
 if ( $subject == "orders" )
 {
-    $userController = new UserController($dbManager);
+    $orderController = new OrderController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
             //GET all meals of one chef
-            $userOrders = $userController->getUserOrders($id);
-            echo $userOrders;
+            $orders = $orderController->getUserOrders($id);
+            echo $orders;
         }
     }
 }
@@ -184,10 +184,6 @@ if ( $subject == "experience" )
         }
     }
 }
-
-
-
-
 
 //use Service MealController if $subject == "ingredients"
 if ( $subject == "ingredients" )
@@ -287,4 +283,38 @@ if ( $subject == "types" )
     } else if ($method == "POST") {//post new Type (for dashboard maybe)}
         }
 
+}
+
+if ( $subject == "admin" )
+{
+    $dashboardController = new DashboardController($dbManager);
+    if ($method == "GET"){
+        if (!$id) {
+            //GET overview admin
+            $admin = $dashboardController->getAdminOverview();
+            echo $admin;
+        }
+    }else if ( $method == "POST" ){
+        // add admin via dashboard
+        $dashboardController->addAdmin($_POST);
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
+    }else if ( $method == "DELETE" ){
+        $dashboardController->deleteAdmin($id);
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
+    }else if( $method == "PUT"){
+        $dashboardController->updateAdmin($id, json_decode($input) );
+        $admin = $dashboardController->getAdminOverview();
+        echo $admin;
+    }
+}
+
+if ( $subject == "statistics" )
+{
+    $dashboardController = new DashboardController($dbManager);
+    if ( $method == "GET" ) {
+        $statistics = $dashboardController->getStatistics();
+        echo $statistics;
+    }
 }

@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -79,7 +80,8 @@ import { LogInPage } from './log-in/log-in.page';
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
     Ionic4DatepickerModule,
-    IonicSelectableModule],
+    IonicSelectableModule
+  ], 
   providers: [
     StatusBar,
     SplashScreen,
