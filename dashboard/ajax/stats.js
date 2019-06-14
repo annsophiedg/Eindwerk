@@ -6,7 +6,6 @@ $( function() {
         type: "GET",
         dataType: "json",
         success: function (data) {
-            console.log(data[0] );
             var newrows;
                 newrows += '<tr><td>'+ data[0].NumberOfAdmin +' </td>';
                 newrows += '<td>'+ data[0].NumberOfUsers +' </td>';
