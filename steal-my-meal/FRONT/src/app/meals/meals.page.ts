@@ -97,7 +97,6 @@ export class MealsPage implements OnInit {
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
-<<<<<<< HEAD
     this.chefService.getChefs(this.userID).subscribe(chefs=>{
       if (chefs == null)
         chefs = [];
@@ -117,24 +116,6 @@ export class MealsPage implements OnInit {
             });
         }
         })
-=======
-    this.chefService.getChefs(this.userID).subscribe(
-      chefs=>{
-        if (chefs == null) chefs = [];
-        //load meals after chefs, this prevent creating a meal-item before chefs is initialized.
-        this.mealService.getMeals().subscribe( meals=>{
-          meals.forEach(meal =>{
-            this.meals[meal.mls_id] = meal;
-          });
-          this.meals = this.meals;
-          chefs.forEach(chef => {
-            chef.distance = "";
-            this.chefs = [...this.chefs,chef];
-            this.chefIds = [...this.chefIds,chef.mls_id];
-            this.distances = [...this.distances,""];
-          });
-      })
->>>>>>> e2f3d192c11da6746ab4ddeb50bfeb18340d8fde
     });
 
   }
