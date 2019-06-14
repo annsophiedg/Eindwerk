@@ -1,13 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-icon (click)="hideModal()" class="close" name="arrow-back" color="primary"></ion-icon>
-    <ion-title>add new meal</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-card class="userDetails">
+    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-card-title class="title"><h2>Add new meal</h2></ion-card-title>
+</ion-card>
 
 <ion-content>
 
-  <form [formGroup]="meal" (ngSubmit)="logForm()">
+  <form class="scroll" [formGroup]="meal" (ngSubmit)="logForm()">
 
     <ul>
 
@@ -52,8 +50,8 @@
         </li>
 
       <li>
-        <ion-item>
-            <ion-label position="floating" class="dateLabel"><ion-icon name="calendar"></ion-icon>Day to serve</ion-label>
+        <ion-item >
+            <ion-label position="floating" class="dateLabel serveDate"><div><ion-icon name="calendar"></ion-icon></div><div>Day to serve</div></ion-label>
             <ion-input readonly
                       [liIonic4Datepicker]="datePickerObj"
                       formControlName="date">
@@ -101,7 +99,7 @@
       <li>
         <ion-item>
             <ion-label position="floating">Meal Description</ion-label>
-            <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>
+            <ion-textarea rows="2" cols="20" type="text" formControlName="description"></ion-textarea>
         </ion-item>
       </li>
         <ion-button class="red" type="submit" [disabled]="!meal.valid" (click)="presentLoading()"><p>Add Your Meal</p></ion-button>

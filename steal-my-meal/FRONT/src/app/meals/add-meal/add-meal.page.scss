@@ -1,15 +1,61 @@
 @import "../../../style/variables";
 
+ion-icon.arrow-back{
+    color: $baseColor_white;
+    position: fixed;
+    top: 7px;
+    left: 7px;
+    width: 30px;
+    height: 30px;
+}
+
+.userDetails {
+    width: 100vw;
+    margin: 0;
+    padding-top: 1rem;
+    background: $baseColor_red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    ion-card-title.title{
+        width: 50%;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+
+        h2{
+            font-size: 1.9rem;
+        }
+    }
+}
+
 ion-content{
     form{
-        height: 100vh;
-
         li{
-            margin-top: 3%;
+            margin-top: 2%;
 
             ion-item{
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+                color: #222;
+
+                ion-label.serveDate{
+                    display: flex;
+                    div:first-of-type{
+                        margin-right: 5px;
+                    }
+                }
+
+                ion-input, ion-select, ionic-selectable, ion-datetime, ion-textarea{
+                    color: #FD665D;
+                }
             }
         }
     }
+}
+
+.scroll{
+    height: 100%;
+    overflow: scroll;
 }

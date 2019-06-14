@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // APIEndpoint: 'http://localhost:3000/BACK/api/'
-  APIEndpoint: 'https://wdev.be/bartvdb/BACK/api/'
+  APIEndpoint: 'http://localhost:3000/BACK/api/'
+  // APIEndpoint: 'https://wdev.be/bartvdb/BACK/api/'
 };
 
 /*
