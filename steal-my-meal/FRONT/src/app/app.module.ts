@@ -40,13 +40,7 @@ import { LogInPage } from './log-in/log-in.page';
 @NgModule({
   //all modal components in declarations & entrycomponents
   declarations: [
-    //components
-    AppComponent, 
-    // ChefCardComponent,
-    // ChefTitleComponent,
-    // FollowComponent,
-    // ChefRateComponent,
-    //pages
+    AppComponent,
     AddMealPage,
     MealDetailPage,
     ProfilePage,
@@ -85,7 +79,7 @@ import { LogInPage } from './log-in/log-in.page';
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
     Ionic4DatepickerModule,
-  ], 
+    IonicSelectableModule],
   providers: [
     StatusBar,
     SplashScreen,
