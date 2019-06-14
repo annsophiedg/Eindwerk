@@ -2,7 +2,7 @@ $( function() {
 
     //-----GET USERS
     $.ajax({
-        url: "http://localhost:3000/BACK/api/users",
+        url: "https://wdev.be/bartvdb/BACK/api/users",
         type: "GET",
         dataType: "json",
         success: function (data) {

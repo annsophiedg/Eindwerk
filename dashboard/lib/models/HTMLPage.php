@@ -24,10 +24,10 @@ class HTMLPage
                         <h3>Dashboard</h3>
                         </div>
                         <ul class="unlist">
-                        <li><a href="http://localhost/dashboard/index.php">Admin</a></li>
-                        <li><a href="http://localhost/dashboard/lib/pages/users.php">Users</a>
-                        <li><a href="http://localhost/dashboard/lib/pages/statistics.php">Statistics</a>
-                        <li><a href="http://localhost/dashboard/lib/authentication/logout.php">Log-out</a>
+                        <li><a href="https://wdev.be/bartvdb/admin/index.php">Admin</a></li>
+                        <li><a href="https://wdev.be/bartvdb/admin/lib/pages/users.php">Users</a>
+                        <li><a href="https://wdev.be/bartvdb/admin/lib/pages/statistics.php">Statistics</a>
+                        <li><a href="https://wdev.be/bartvdb/admin/lib/authentication/logout.php">Log-out</a>
                         </li>
                         </ul>
                         </div>';
