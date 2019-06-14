@@ -28,18 +28,31 @@ import { FavoriteChefsPage } from './profile/favorite-chefs/favorite-chefs.page'
 import { ExperiencePage } from '../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { OrdersPage } from './profile/orders/orders.page';
+import { OrderListPage } from './profile/orders/order-list/order-list.page';
 import { LogInPage } from './log-in/log-in.page';
 
+// components
+// import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
+// import { ChefTitleComponent } from './chefs/chef-title/chef-title.component';
+// import { FollowComponent } from './chefs/follow/follow.component';
+// import { ChefRateComponent } from './chefs/chef-rate/chef-rate.component';
 
 @NgModule({
   //all modal components in declarations & entrycomponents
   declarations: [
-    AppComponent,
+    //components
+    AppComponent, 
+    // ChefCardComponent,
+    // ChefTitleComponent,
+    // FollowComponent,
+    // ChefRateComponent,
+    //pages
     AddMealPage,
     MealDetailPage,
     ProfilePage,
     EditUserPage,
     OrdersPage,
+    OrderListPage,
     AllergiesPage,
     FavoriteChefsPage,
     LogInPage,
@@ -52,11 +65,16 @@ import { LogInPage } from './log-in/log-in.page';
     ProfilePage,
     EditUserPage,
     OrdersPage,
+    OrderListPage,
     AllergiesPage,
     FavoriteChefsPage,
     LogInPage,
     ExperiencePage,
-    MealHistoryPage
+    MealHistoryPage,
+    // ChefCardComponent,
+    // ChefTitleComponent,
+    // FollowComponent,
+    // ChefRateComponent
   ],
   imports: [
     BrowserModule, 
@@ -67,7 +85,7 @@ import { LogInPage } from './log-in/log-in.page';
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
     Ionic4DatepickerModule,
-    IonicSelectableModule],
+  ], 
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,5 +1,41 @@
 @import "../../../style/variables.scss";
 
+.rating {
+  color: $baseColor_yellow;
+}
+
+.h2-icon {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  width: 10vw;
+  margin-left: .3rem;
+}
+
+// .rating-laugh {
+//   color: $baseColor_yellow;
+// }
+
+// .rating-smile {
+//   color: $baseColor_green;
+// }
+
+// .rating-like {
+//   color: $baseColor_blue;
+// }
+
+// .rating-neutral {
+//   color: $baseColor_white;
+// }
+
+// .rating-sad {
+//   background: $baseColor_white;
+//   border-radius: 50%;
+//   color: $baseColor_red;
+// }
+
 .chef {
   margin-top: .7rem;
 

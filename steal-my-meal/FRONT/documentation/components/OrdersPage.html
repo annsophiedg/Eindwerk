@@ -306,8 +306,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/app/profile/orders/orders.page.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/profile/orders/orders.page.ts:49</a></div>
                 </td>
             </tr>
 
@@ -338,7 +338,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>voucherIsSwiped()</code>
+<code>voucherIsSwiped(meal_id)</code>
                 </td>
             </tr>
 
@@ -355,8 +355,35 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal_id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -481,9 +508,9 @@ export class OrdersPage implements OnInit {
 
   constructor(
     private userService:UserService,
-    private modal:ModalController) { 
+    private modal:ModalController
+  ) { 
     this.orders &#x3D; this.userService.getCurrentOrders();
-    console.log(&quot;orders: &quot;,this.orders)
     console.log(&#x27;today:&#x27;, this.today)
   }
 
@@ -491,11 +518,17 @@ export class OrdersPage implements OnInit {
     this.modal.dismiss()
   }
 
-  voucherIsSwiped() {
+  voucherIsSwiped(meal_id) {
     console.log(&#x27;swiped&#x27;);
-    console.log(this.orderPickedUp);
-    this.orderPickedUp &#x3D; true;
-    console.log(this.orderPickedUp);
+    //set ord_is_delivered &#x3D; 1 in db for mls_id &amp; cons_id
+    //and return new ord_is_delivered
+    this.userService.finishOrderObservable(meal_id).subscribe( (res) &#x3D;&gt; {
+      console.log(&#x27;finish order&#x27;,res[0].ord_is_delivered)
+      //set result ord_is_delivered
+      this.orders[0].ord_is_delivered &#x3D; res[0].ord_is_delivered
+      console.log(&#x27;orders after picked up: &#x27;, this.orders);
+    });
+    
   }
 
   ngOnInit() {
@@ -516,18 +549,18 @@ export class OrdersPage implements OnInit {
 &lt;ion-content class&#x3D;&quot;box&quot;&gt;
   &lt;h1&gt;Next order to pick up:&lt;/h1&gt;
   &lt;ion-card class&#x3D;&quot;meal&quot;&gt;
+
     &lt;div class&#x3D;&quot;box top&quot;&gt;
       &lt;h2 class&#x3D;&quot;title&quot;&gt;{{orders[0].mls_name}}&lt;/h2&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;box center info&quot;&gt;
-      &lt;div class&#x3D;&quot;info-important&quot;&gt;
 
+    &lt;div class&#x3D;&quot;box center info info-voucher&quot;&gt;
+      &lt;div class&#x3D;&quot;info-important&quot;&gt;
         &lt;p class&#x3D;&quot;address&quot;&gt;
           &lt;span&gt;Pick up place:&lt;/span&gt;
           &lt;span class&#x3D;&quot;date&quot;&gt;{{orders[0].usr_street}} {{orders[0].usr_housenumber}}, {{orders[0].zip_zipcode}}
             {{orders[0].zip_city}}&lt;/span&gt;
         &lt;/p&gt;
-
         &lt;p&gt;
           &lt;span&gt;Pick up time:&lt;/span&gt;&lt;br&gt;
           &lt;span class&#x3D;&quot;date&quot;&gt;{{orders[0].mls_date | date:&quot;dd/MM/yy&quot;}}&lt;/span&gt;
@@ -535,45 +568,45 @@ export class OrdersPage implements OnInit {
           &lt;span&gt;{{orders[0].mls_take_start}} -
             {{orders[0].mls_take_end}}&lt;/span&gt;
         &lt;/p&gt;
-
-        &lt;h2 class&#x3D;&quot;highlight&quot;&gt;
+        &lt;h2&gt;
           &lt;span class&#x3D;&quot;text&quot;&gt;{{orders[0].ord_amount}} &lt;/span&gt;
           &lt;ion-icon class&#x3D;&quot;icon&quot; name&#x3D;&quot;basket&quot;&gt;&lt;/ion-icon&gt;
         &lt;/h2&gt;
         &lt;h2&gt;€ {{orders[0].mls_price}}&lt;/h2&gt;
-
       &lt;/div&gt;
       &lt;p class&#x3D;&quot;description&quot;&gt;{{orders[0].mls_description}}&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;box bottom&quot;&gt;
 
-      &lt;ion-item-sliding (ionSwipe)&#x3D;&quot;voucherIsSwiped()&quot; class&#x3D;&quot;swiper&quot;&gt;
-        &lt;ion-item *ngIf&#x3D;&quot;!orderPickedUp&quot; class&#x3D;&quot;swipe-start&quot; href&#x3D;&quot;#&quot;&gt;
-          &lt;ion-label class&#x3D;&quot;swipe-item&quot;&gt;
-          &lt;/ion-label&gt;
-          &lt;h2 id&#x3D;&quot;swipe-title&quot;&gt;Swap Voucher&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;box bottom bottom-swipe&quot;&gt;
+
+      &lt;h2 class&#x3D;&quot;voucher-validated&quot; *ngIf&#x3D;&quot;orders[0].ord_is_delivered!&#x3D;0&quot;&gt;Enjoy!&lt;/h2&gt;
+
+      &lt;!-- only visable when not picked up/swiped --&gt;
+      &lt;ion-item-sliding class&#x3D;&quot;swiper&quot; *ngIf&#x3D;&quot;orders[0].ord_is_delivered&#x3D;&#x3D;0&quot;
+      (ionSwipe)&#x3D;&quot;voucherIsSwiped(orders[0].mls_id)&quot;&gt;
+        &lt;ion-item class&#x3D;&quot;swipe-start&quot; href&#x3D;&quot;#&quot;&gt;
+          &lt;div class&#x3D;&quot;swipe-icon&quot;&gt;
+          &lt;/div&gt;
+          &lt;h2 id&#x3D;&quot;swipe-start-label&quot;&gt;Swap Voucher&lt;/h2&gt;
         &lt;/ion-item&gt;
 
-        &lt;!-- ionSwipe	EVENT --&gt;
-        &lt;ion-item-options *ngIf&#x3D;&quot;orders[0].mls_date&#x3D;&#x3D;today&quot; class&#x3D;&quot;swiper-finish&quot; side&#x3D;&quot;start&quot;&gt;
-          &lt;ion-item-option expandable class&#x3D;&quot;voucher-validated&quot;&gt;
-            &lt;h2&gt;Enjoy!&lt;/h2&gt;
-          &lt;/ion-item-option&gt;
+        &lt;!-- can only be swiped on the day of serving --&gt;
+        &lt;ion-item-options class&#x3D;&quot;swiper-option&quot; side&#x3D;&quot;start&quot; *ngIf&#x3D;&quot;orders[0].mls_date&#x3D;&#x3D;today&quot;&gt;
         &lt;/ion-item-options&gt;
       &lt;/ion-item-sliding&gt;
 
     &lt;/div&gt;
   &lt;/ion-card&gt;
   &lt;p class&#x3D;&quot;voucher-note&quot;&gt;Show this voucher when you pick up your meal.&lt;br&gt;Let the chef swipe and enjoy!&lt;/p&gt;
-  &lt;p&gt;{{today}}&lt;/p&gt;
 
 
+  &lt;!-- FULL OVERVIEW OF ALL CURRENT ORDERS --&gt;
   &lt;h1&gt;Full overview of your orders:&lt;/h1&gt;
   &lt;ion-card class&#x3D;&quot;meal&quot; *ngFor&#x3D;&quot;let o of orders&quot;&gt;
     &lt;div class&#x3D;&quot;box top&quot;&gt;
       &lt;h2 class&#x3D;&quot;title&quot;&gt;{{o.mls_name}}&lt;/h2&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;box bottom info&quot;&gt;
+    &lt;div class&#x3D;&quot;box bottom info info-orders&quot;&gt;
       &lt;div class&#x3D;&quot;info-important&quot;&gt;
         &lt;p&gt;
           &lt;span&gt;Pick up time:&lt;/span&gt;&lt;br&gt;
@@ -582,7 +615,7 @@ export class OrdersPage implements OnInit {
           &lt;span&gt;{{o.mls_take_start}} -
             {{o.mls_take_end}}&lt;/span&gt;
         &lt;/p&gt;
-        &lt;h2 class&#x3D;&quot;highlight&quot;&gt;
+        &lt;h2&gt;
           &lt;span class&#x3D;&quot;text&quot;&gt;{{o.ord_amount}} &lt;/span&gt;
           &lt;ion-icon class&#x3D;&quot;icon&quot; name&#x3D;&quot;basket&quot;&gt;&lt;/ion-icon&gt;
         &lt;/h2&gt;
@@ -636,6 +669,15 @@ h1 {
         }
     }
 
+    .info-voucher p,
+    .info-voucher h2 {
+        color: #333;
+    }
+
+    .info-orders p {
+        color: $baseColor_white;
+    }
+
     .info {
         width: 100%;
 
@@ -654,12 +696,9 @@ h1 {
             margin-bottom: 1rem;
         }
 
-        p,
-        h2 {
-            color: #333;
+        .description {
+            margin: 1rem 0;
         }
-
-        .description { margin: 1rem 0; }
 
         .date {
             font-weight: bold;
@@ -671,63 +710,72 @@ h1 {
     .bottom {
         width: 100%;
         height: 35%;
-
         display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
         background-color: $baseColor_yellow;
 
-        h2, p {
-            color: $baseColor_white;
+        h2 {
+            font-size: 2rem;
+            text-align: center;
         }
-
-        .swiper {
-            height: 2rem;
-            margin: .5rem 0;
-
-            border-radius: 1rem;
-
-            .swipe-start {
-                height: 2rem;
-                display: flex;
-                align-items: center;
-
-                border-radius: 1rem;
-
-                color: $baseColor_yellow;
-
-                .swipe-item {
-                    width: 1.7rem;
-                    height: 1.7rem;
-
-                    background: $baseColor_yellow;
-                    border-radius: 1rem;
-
-                    font-size: .2rem;
-                }
-
-                #swipe-title {
-                    color: $baseColor_yellow;
-                    font-size: 2rem;
-                }
-
-
-            }
-
-            .swiper-finish {
-                width: 100%;
-
-                .voucher-validated {
-                    width: 100%;
-                    background: $baseColor_yellow;
-                }
-            }
-
-
-        }
-
-
-
     }
+}
+
+//SLIDING STYLE
+$bg_swipe-start: white;
+
+.bottom-swipe {
+    .voucher-validated {
+        min-height: 48px;
+        width: 100%;
+    }
+}
+
+.swipe-start {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    // BACKGROUND, BORDERRADIUS NOT CHANGING FOR ION-ITEM
+
+    #swipe-start-label {
+        margin: 0;
+        color: $baseColor_yellow;
+        font-size: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.swiper {
+    background: $bg_swipe-start;
+    // border-radius: 1rem;
+    border-radius: 24px;
+
+    .swipe-icon {
+        width: 44px;
+        height: 40px;
+        // margin: 2px 5px;
+
+        background: $baseColor_yellow;
+        // border-radius: 1rem;
+        border-radius: 24px;
+
+        font-size: .2rem;
+        // z-index: 5;
+    }
+
+    .swiper-option {
+        width: 70%;
+        background: $bg_swipe-start;
+
+        
+    }
+
+
 }</code></pre>
     </div>
 
@@ -756,8 +804,8 @@ h1 {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>    <ion-title>My Order(s)</ion-title>  </ion-toolbar></ion-header><ion-content class="box">  <h1>Next order to pick up:</h1>  <ion-card class="meal">    <div class="box top">      <h2 class="title">{{orders[0].mls_name}}</h2>    </div>    <div class="box center info">      <div class="info-important">        <p class="address">          <span>Pick up place:</span>          <span class="date">{{orders[0].usr_street}} {{orders[0].usr_housenumber}}, {{orders[0].zip_zipcode}}            {{orders[0].zip_city}}</span>        </p>        <p>          <span>Pick up time:</span><br>          <span class="date">{{orders[0].mls_date | date:"dd/MM/yy"}}</span>          <br>          <span>{{orders[0].mls_take_start}} -            {{orders[0].mls_take_end}}</span>        </p>        <h2 class="highlight">          <span class="text">{{orders[0].ord_amount}} </span>          <ion-icon class="icon" name="basket"></ion-icon>        </h2>        <h2>€ {{orders[0].mls_price}}</h2>      </div>      <p class="description">{{orders[0].mls_description}}</p>    </div>    <div class="box bottom">      <ion-item-sliding (ionSwipe)="voucherIsSwiped()" class="swiper">        <ion-item *ngIf="!orderPickedUp" class="swipe-start" href="#">          <ion-label class="swipe-item">          </ion-label>          <h2 id="swipe-title">Swap Voucher</h2>        </ion-item>        <!-- ionSwipe	EVENT -->        <ion-item-options *ngIf="orders[0].mls_date==today" class="swiper-finish" side="start">          <ion-item-option expandable class="voucher-validated">            <h2>Enjoy!</h2>          </ion-item-option>        </ion-item-options>      </ion-item-sliding>    </div>  </ion-card>  <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>  <p>{{today}}</p>  <h1>Full overview of your orders:</h1>  <ion-card class="meal" *ngFor="let o of orders">    <div class="box top">      <h2 class="title">{{o.mls_name}}</h2>    </div>    <div class="box bottom info">      <div class="info-important">        <p>          <span>Pick up time:</span><br>          <span class="date">{{o.mls_date | date:"dd/MM/yy"}}</span>          <br>          <span>{{o.mls_take_start}} -            {{o.mls_take_end}}</span>        </p>        <h2 class="highlight">          <span class="text">{{o.ord_amount}} </span>          <ion-icon class="icon" name="basket"></ion-icon>        </h2>        <h2>€ {{o.mls_price}}</h2>      </div>    </div>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>    <ion-title>My Order(s)</ion-title>  </ion-toolbar></ion-header><ion-content class="box">  <h1>Next order to pick up:</h1>  <ion-card class="meal">    <div class="box top">      <h2 class="title">{{orders[0].mls_name}}</h2>    </div>    <div class="box center info info-voucher">      <div class="info-important">        <p class="address">          <span>Pick up place:</span>          <span class="date">{{orders[0].usr_street}} {{orders[0].usr_housenumber}}, {{orders[0].zip_zipcode}}            {{orders[0].zip_city}}</span>        </p>        <p>          <span>Pick up time:</span><br>          <span class="date">{{orders[0].mls_date | date:"dd/MM/yy"}}</span>          <br>          <span>{{orders[0].mls_take_start}} -            {{orders[0].mls_take_end}}</span>        </p>        <h2>          <span class="text">{{orders[0].ord_amount}} </span>          <ion-icon class="icon" name="basket"></ion-icon>        </h2>        <h2>€ {{orders[0].mls_price}}</h2>      </div>      <p class="description">{{orders[0].mls_description}}</p>    </div>    <div class="box bottom bottom-swipe">      <h2 class="voucher-validated" *ngIf="orders[0].ord_is_delivered!=0">Enjoy!</h2>      <!-- only visable when not picked up/swiped -->      <ion-item-sliding class="swiper" *ngIf="orders[0].ord_is_delivered==0"      (ionSwipe)="voucherIsSwiped(orders[0].mls_id)">        <ion-item class="swipe-start" href="#">          <div class="swipe-icon">          </div>          <h2 id="swipe-start-label">Swap Voucher</h2>        </ion-item>        <!-- can only be swiped on the day of serving -->        <ion-item-options class="swiper-option" side="start" *ngIf="orders[0].mls_date==today">        </ion-item-options>      </ion-item-sliding>    </div>  </ion-card>  <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>  <!-- FULL OVERVIEW OF ALL CURRENT ORDERS -->  <h1>Full overview of your orders:</h1>  <ion-card class="meal" *ngFor="let o of orders">    <div class="box top">      <h2 class="title">{{o.mls_name}}</h2>    </div>    <div class="box bottom info info-orders">      <div class="info-important">        <p>          <span>Pick up time:</span><br>          <span class="date">{{o.mls_date | date:"dd/MM/yy"}}</span>          <br>          <span>{{o.mls_take_start}} -            {{o.mls_take_end}}</span>        </p>        <h2>          <span class="text">{{o.ord_amount}} </span>          <ion-icon class="icon" name="basket"></ion-icon>        </h2>        <h2>€ {{o.mls_price}}</h2>      </div>    </div>  </ion-card></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OrdersPage'};
 </script>

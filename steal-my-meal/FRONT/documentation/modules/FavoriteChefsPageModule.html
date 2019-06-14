@@ -64,29 +64,41 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_FavoriteChefsPageModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="157,-70 157,-195 339,-195 339,-70 157,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="94,-70 94,-195 402,-195 402,-70 94,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_FavoriteChefsPageModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="179,-78 179,-130 317,-130 317,-78 179,-78"/>
+<polygon fill="none" stroke="#000000" points="102,-78 102,-130 394,-130 394,-78 102,-78"/>
 </g>
-<!-- FavoriteChefsPage -->
+<!-- ChefCardComponent -->
 <g id="node1" class="node">
-<title>FavoriteChefsPage</title>
-<polygon fill="#ffffb3" stroke="#000000" points="309.0227,-122 186.9773,-122 186.9773,-86 309.0227,-86 309.0227,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FavoriteChefsPage</text>
+<title>ChefCardComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="385.7562,-122 250.2438,-122 250.2438,-86 385.7562,-86 385.7562,-122"/>
+<text text-anchor="middle" x="318" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ChefCardComponent</text>
 </g>
 <!-- FavoriteChefsPageModule -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>FavoriteChefsPageModule</title>
 <polygon fill="#8dd3c7" stroke="#000000" points="331.0716,-187 328.0716,-191 307.0716,-191 304.0716,-187 164.9284,-187 164.9284,-151 331.0716,-151 331.0716,-187"/>
 <text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">FavoriteChefsPageModule</text>
 </g>
-<!-- FavoriteChefsPage&#45;&gt;FavoriteChefsPageModule -->
+<!-- ChefCardComponent&#45;&gt;FavoriteChefsPageModule -->
 <g id="edge1" class="edge">
+<title>ChefCardComponent&#45;&gt;FavoriteChefsPageModule</title>
+<path fill="none" stroke="#000000" d="M290.5789,-122.1061C290.5789,-122.1061 290.5789,-140.991 290.5789,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="287.079,-140.9909 290.5789,-150.991 294.079,-140.991 287.079,-140.9909"/>
+</g>
+<!-- FavoriteChefsPage -->
+<g id="node2" class="node">
+<title>FavoriteChefsPage</title>
+<polygon fill="#ffffb3" stroke="#000000" points="232.0227,-122 109.9773,-122 109.9773,-86 232.0227,-86 232.0227,-122"/>
+<text text-anchor="middle" x="171" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FavoriteChefsPage</text>
+</g>
+<!-- FavoriteChefsPage&#45;&gt;FavoriteChefsPageModule -->
+<g id="edge2" class="edge">
 <title>FavoriteChefsPage&#45;&gt;FavoriteChefsPageModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M198.6126,-122.1061C198.6126,-122.1061 198.6126,-140.991 198.6126,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="195.1126,-140.9909 198.6126,-150.991 202.1126,-140.991 195.1126,-140.9909"/>
 </g>
 </g>
 </svg>
@@ -131,6 +143,9 @@
                             title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
+                            <a href="../components/ChefCardComponent.html">ChefCardComponent</a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="../components/FavoriteChefsPage.html">FavoriteChefsPage</a>
                         </li>
                     </ul>
@@ -147,6 +162,8 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+// import { ChefTitleComponent } from &#x27;../../chefs/chef-title/chef-title.component&#x27;;
+import { ChefCardComponent } from &#x27;../../chefs/chef-card/chef-card.component&#x27;;
 
 import { IonicModule } from &#x27;@ionic/angular&#x27;;
 
@@ -166,7 +183,10 @@ const routes: Routes &#x3D; [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FavoriteChefsPage]
+  declarations: [FavoriteChefsPage,
+    // ChefTitleComponent,
+    ChefCardComponent
+  ]
 })
 export class FavoriteChefsPageModule {}
 </code></pre>

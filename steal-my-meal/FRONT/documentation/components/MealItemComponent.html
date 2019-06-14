@@ -310,8 +310,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/app/meals/meal-item/meal-item.component.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/meals/meal-item/meal-item.component.ts:29</a></div>
                 </td>
             </tr>
 
@@ -407,7 +407,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
-import { ChefService } from &#x27;../../../services/chef/chef.service&#x27;
+import { ChefService } from &#x27;../../../services/chef/chef.service&#x27;;
 import { from } from &#x27;rxjs&#x27;;
 
 @Component({
@@ -431,12 +431,10 @@ export class MealItemComponent implements OnInit {
   };
 
   constructor( private chefService:ChefService ) {
-    // this.isFavChef &#x3D; this.chefService.checkFavChef(chefId)
 
   }
 
   ngOnInit() {
-
   }
 
 
@@ -453,16 +451,16 @@ export class MealItemComponent implements OnInit {
     &lt;/ion-avatar&gt;
     &lt;div class&#x3D;&quot;top&quot;&gt;
       &lt;div class&#x3D;&quot;info&quot;&gt;
-        &lt;h3&gt;Sous-chef&lt;/h3&gt;
+        &lt;app-chef-title [chef]&#x3D;chef&gt;&lt;/app-chef-title&gt;
+        &lt;!-- &lt;h3&gt;Sous-chef&lt;/h3&gt; --&gt;
         &lt;h2&gt;{{chef.chef_firstname}} {{chef.chef_lastname}}&lt;/h2&gt;
       &lt;/div&gt;
-      &lt;ion-icon *ngIf&#x3D;&quot;!isFavChef&quot; class&#x3D;&quot;follow&quot; name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
-      &lt;ion-icon *ngIf&#x3D;&quot;isFavChef&quot; class&#x3D;&quot;follow&quot; name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+      &lt;app-follow class&#x3D;&quot;follow&quot; [chef]&#x3D;chef&gt;&lt;/app-follow&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;bottom&quot;&gt;
       &lt;div class&#x3D;&quot;info&quot;&gt;
         &lt;h2&gt;{{distance}}&lt;/h2&gt;
-        &lt;h2&gt;120 MEALS&lt;/h2&gt;
+        &lt;h2&gt;{{chef.mls_cooked}} meals&lt;/h2&gt;
         &lt;h2&gt;&lt;/h2&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -640,8 +638,8 @@ ion-slide.meal{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-slides [options]="slideOpts">  <ion-slide class="chef">    <ion-avatar class="profilepic">      <img [src]=chef.chef_picture alt="profilepicture">    </ion-avatar>    <div class="top">      <div class="info">        <h3>Sous-chef</h3>        <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>      </div>      <ion-icon *ngIf="!isFavChef" class="follow" name="star-outline"></ion-icon>      <ion-icon *ngIf="isFavChef" class="follow" name="star"></ion-icon>    </div>    <div class="bottom">      <div class="info">        <h2>{{distance}}</h2>        <h2>120 MEALS</h2>        <h2></h2>      </div>    </div>  </ion-slide>  <ion-slide class="meal">    <div class="top">      <div class="info">        <h2>{{meal.mls_name}}</h2>        <h3>{{meal.mls_description}}</h3>      </div>    </div>    <div class="bottom">      <div class="info">        <h2>{{meal.mls_price}} EUR</h2>      </div>    </div>  </ion-slide></ion-slides></div>'
-    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ion-slides [options]="slideOpts">  <ion-slide class="chef">    <ion-avatar class="profilepic">      <img [src]=chef.chef_picture alt="profilepicture">    </ion-avatar>    <div class="top">      <div class="info">        <app-chef-title [chef]=chef></app-chef-title>        <!-- <h3>Sous-chef</h3> -->        <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>      </div>      <app-follow class="follow" [chef]=chef></app-follow>    </div>    <div class="bottom">      <div class="info">        <h2>{{distance}}</h2>        <h2>{{chef.mls_cooked}} meals</h2>        <h2></h2>      </div>    </div>  </ion-slide>  <ion-slide class="meal">    <div class="top">      <div class="info">        <h2>{{meal.mls_name}}</h2>        <h3>{{meal.mls_description}}</h3>      </div>    </div>    <div class="bottom">      <div class="info">        <h2>{{meal.mls_price}} EUR</h2>      </div>    </div>  </ion-slide></ion-slides></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MealItemComponent'};
 </script>

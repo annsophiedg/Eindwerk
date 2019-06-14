@@ -116,7 +116,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/services/type/type.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/services/type/type.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -181,8 +181,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/services/type/type.service.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/services/type/type.service.ts:19</a></div>
                 </td>
             </tr>
 
@@ -224,12 +224,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:3000/BACK/api/types&#x27;</code>
+                            <i>Default value : </i><code>APIEndpoint + &#x27;types&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/services/type/type.service.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/services/type/type.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -246,13 +246,16 @@
 import { Type } from &#x27;../../models/type&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { HttpClient} from &#x27;@angular/common/http&#x27;;
+import { environment } from &#x27;../../environments/environment&#x27;;
+
+const APIEndpoint &#x3D; environment.APIEndpoint;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class TypeService {
 
-  typesUrl:string &#x3D; &#x27;http://localhost:3000/BACK/api/types&#x27;;
+  typesUrl:string &#x3D; APIEndpoint + &#x27;types&#x27;;
 
   constructor(private http:HttpClient ) { }
 

@@ -259,8 +259,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/profile/favorite-chefs/favorite-chefs.page.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/profile/favorite-chefs/favorite-chefs.page.ts:34</a></div>
                 </td>
             </tr>
 
@@ -298,8 +298,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/profile/favorite-chefs/favorite-chefs.page.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/profile/favorite-chefs/favorite-chefs.page.ts:30</a></div>
                 </td>
             </tr>
 
@@ -367,13 +367,19 @@ export class FavoriteChefsPage implements OnInit {
     private modal: ModalController,
     private userService:UserService
   ) {
-    this.userService.getUserFavChefs().subscribe((result)&#x3D;&gt;{
+    this.userService.getUserpageFavChefs().subscribe((result)&#x3D;&gt;{
       this.favChefs &#x3D; result;
       console.log(result)
+
+      this.favChefs.forEach(chef &#x3D;&gt; {
+        console.log(chef)
+      });
     })
+
   }
 
   ngOnInit() {
+    
   }
 
   public hideModal(){
@@ -394,15 +400,18 @@ export class FavoriteChefsPage implements OnInit {
 &lt;/ion-header&gt;
 
 &lt;ion-content&gt;
-  &lt;ion-card class&#x3D;&quot;chef&quot; *ngFor&#x3D;&quot;let chef of favChefs&quot;&gt;
+  
+  &lt;ion-card class&#x3D;&quot;chef&quot; *ngFor&#x3D;&quot;let c of favChefs&quot;&gt;
+    &lt;!-- &lt;app-chef-card [chef]&#x3D;chef&gt;&lt;/app-chef-card&gt; --&gt;
     &lt;ion-avatar class&#x3D;&quot;profilepic&quot;&gt;
-      &lt;img [src]&#x3D;chef[0].usr_profile_url alt&#x3D;&quot;profilepicture&quot;&gt;
+      &lt;img [src]&#x3D;c.usr_profile_url alt&#x3D;&quot;profilepicture&quot;&gt;
     &lt;/ion-avatar&gt;
     &lt;div class&#x3D;&quot;top&quot;&gt;
       &lt;div class&#x3D;&quot;info&quot;&gt;
-        &lt;h3 *ngIf&#x3D;&quot;chef[0].avg_rating&lt;8&quot;&gt;Sous-chef&lt;/h3&gt;
-        &lt;h3 *ngIf&#x3D;&quot;chef[0].avg_rating&gt;8&quot;&gt;Chef de cuisine&lt;/h3&gt;
-        &lt;h2&gt;{{chef[0].usr_firstname}} {{chef[0].usr_lastname}}&lt;/h2&gt;
+        &lt;!-- &lt;app-chef-title [chef]&#x3D;&#x27;c&#x27;&gt;&lt;/app-chef-title&gt; --&gt;
+        &lt;!-- &lt;h3 *ngIf&#x3D;&quot;chef.avg_rating&lt;8&quot;&gt;Sous-chef&lt;/h3&gt;
+        &lt;h3 *ngIf&#x3D;&quot;c.avg_rating&gt;8&quot;&gt;Chef de cuisine&lt;/h3&gt; --&gt;
+        &lt;h2&gt;{{c.usr_firstname}} {{c.usr_lastname}}&lt;/h2&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;bottom&quot;&gt;
@@ -410,14 +419,14 @@ export class FavoriteChefsPage implements OnInit {
         &lt;h2&gt;2.4 KM&lt;/h2&gt;
         &lt;h2&gt;
           &lt;ion-icon name&#x3D;&quot;restaurant&quot;&gt;&lt;/ion-icon&gt;
-          &lt;span *ngIf&#x3D;&quot;chef[0].mls_cooked&quot;&gt; {{chef[0].mls_cooked}}&lt;/span&gt;
-          &lt;span *ngIf&#x3D;&quot;!chef[0].mls_cooked&quot;&gt; -&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;c.mls_cooked&quot;&gt; {{c.mls_cooked}}&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;!c.mls_cooked&quot;&gt; -&lt;/span&gt;
         &lt;/h2&gt;
         &lt;h2&gt;
-          &lt;ion-icon name&#x3D;&quot;basket&quot;&gt;&lt;/ion-icon&gt; &lt;span *ngIf&#x3D;&quot;chef[0].ord_finished&quot;&gt; {{chef[0].ord_finished}}&lt;/span&gt; &lt;span
-            *ngIf&#x3D;&quot;!chef[0].ord_finished&quot;&gt; -&lt;/span&gt;
+          &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt; &lt;span *ngIf&#x3D;&quot;c.ord_finished&quot;&gt; {{c.avg_rating}}&lt;/span&gt; &lt;span
+            *ngIf&#x3D;&quot;!c.ord_finished&quot;&gt; -&lt;/span&gt;
         &lt;/h2&gt;
-        &lt;!-- &lt;h2 *ngIf&#x3D;&quot;chef[0].avg_rating&quot;&gt;{{chef[0].avg_rating}} SCORE&lt;/h2&gt; --&gt;
+        &lt;!-- &lt;h2 *ngIf&#x3D;&quot;c.avg_rating&quot;&gt;{{c.avg_rating}} SCORE&lt;/h2&gt; --&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/ion-card&gt;
@@ -537,8 +546,8 @@ export class FavoriteChefsPage implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>    <ion-title>My Favorite Chefs</ion-title>  </ion-toolbar></ion-header><ion-content>  <ion-card class="chef" *ngFor="let chef of favChefs">    <ion-avatar class="profilepic">      <img [src]=chef[0].usr_profile_url alt="profilepicture">    </ion-avatar>    <div class="top">      <div class="info">        <h3 *ngIf="chef[0].avg_rating<8">Sous-chef</h3>        <h3 *ngIf="chef[0].avg_rating>8">Chef de cuisine</h3>        <h2>{{chef[0].usr_firstname}} {{chef[0].usr_lastname}}</h2>      </div>    </div>    <div class="bottom">      <div class="info">        <h2>2.4 KM</h2>        <h2>          <ion-icon name="restaurant"></ion-icon>          <span *ngIf="chef[0].mls_cooked"> {{chef[0].mls_cooked}}</span>          <span *ngIf="!chef[0].mls_cooked"> -</span>        </h2>        <h2>          <ion-icon name="basket"></ion-icon> <span *ngIf="chef[0].ord_finished"> {{chef[0].ord_finished}}</span> <span            *ngIf="!chef[0].ord_finished"> -</span>        </h2>        <!-- <h2 *ngIf="chef[0].avg_rating">{{chef[0].avg_rating}} SCORE</h2> -->      </div>    </div>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>    <ion-title>My Favorite Chefs</ion-title>  </ion-toolbar></ion-header><ion-content>    <ion-card class="chef" *ngFor="let c of favChefs">    <!-- <app-chef-card [chef]=chef></app-chef-card> -->    <ion-avatar class="profilepic">      <img [src]=c.usr_profile_url alt="profilepicture">    </ion-avatar>    <div class="top">      <div class="info">        <!-- <app-chef-title [chef]=\'c\'></app-chef-title> -->        <!-- <h3 *ngIf="chef.avg_rating<8">Sous-chef</h3>        <h3 *ngIf="c.avg_rating>8">Chef de cuisine</h3> -->        <h2>{{c.usr_firstname}} {{c.usr_lastname}}</h2>      </div>    </div>    <div class="bottom">      <div class="info">        <h2>2.4 KM</h2>        <h2>          <ion-icon name="restaurant"></ion-icon>          <span *ngIf="c.mls_cooked"> {{c.mls_cooked}}</span>          <span *ngIf="!c.mls_cooked"> -</span>        </h2>        <h2>          <ion-icon name="star"></ion-icon> <span *ngIf="c.ord_finished"> {{c.avg_rating}}</span> <span            *ngIf="!c.ord_finished"> -</span>        </h2>        <!-- <h2 *ngIf="c.avg_rating">{{c.avg_rating}} SCORE</h2> -->      </div>    </div>  </ion-card></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FavoriteChefsPage'};
 </script>

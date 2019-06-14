@@ -1,0 +1,23 @@
+@import "../../../style/variables.scss";
+
+h3 {
+    font-weight: 400;
+    margin-bottom: -.5rem;
+    margin-left: .6rem;
+}
+
+.rating1 {
+    color: $baseColor_red;
+}
+
+.rating2 {
+    color: $baseColor_blue;
+}
+
+.rating3 {
+    color: $baseColor_green;
+}
+
+.rating4 {
+    color: $baseColor_yellow;
+}

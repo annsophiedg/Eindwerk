@@ -6,11 +6,9 @@ import { myLeaveAnimation } from '../animations/leave';
 import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
-import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
-import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
 
@@ -99,6 +97,7 @@ export class MealsPage implements OnInit {
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
+<<<<<<< HEAD
     this.chefService.getChefs(this.userID).subscribe(chefs=>{
       if (chefs == null)
         chefs = [];
@@ -118,7 +117,26 @@ export class MealsPage implements OnInit {
             });
         }
         })
+=======
+    this.chefService.getChefs(this.userID).subscribe(
+      chefs=>{
+        if (chefs == null) chefs = [];
+        //load meals after chefs, this prevent creating a meal-item before chefs is initialized.
+        this.mealService.getMeals().subscribe( meals=>{
+          meals.forEach(meal =>{
+            this.meals[meal.mls_id] = meal;
+          });
+          this.meals = this.meals;
+          chefs.forEach(chef => {
+            chef.distance = "";
+            this.chefs = [...this.chefs,chef];
+            this.chefIds = [...this.chefIds,chef.mls_id];
+            this.distances = [...this.distances,""];
+          });
+      })
+>>>>>>> e2f3d192c11da6746ab4ddeb50bfeb18340d8fde
     });
+
   }
 
   showUp(e){
@@ -150,26 +168,9 @@ export class MealsPage implements OnInit {
   dragDown(){
     this.slider.el.style.pointerEvents = 'auto';
   }
+
+
   // Modals to create
-
-  async goToAddMeal() {
-
-    const modal = await this.modal.create({
-      component: AddMealPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-      }
-    });
-    return await modal.present();
-  }
-
-  async goToProfile() {
-    const modal = await this.modal.create({
-      component: ProfilePage
-    });
-    return await modal.present();
-  }
 
   async goToMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
