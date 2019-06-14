@@ -15,6 +15,7 @@ import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
 
 
+
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.page.html',
