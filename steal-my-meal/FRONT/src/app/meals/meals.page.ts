@@ -64,33 +64,46 @@ export class MealsPage implements OnInit {
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
 
-    if(!this.userID || this.userID == ""){
-      this.storage.get('id').then(val => {
-        this.userID = val;
-        if(!val){
-          if(code != null){
-            this.fbService.getToken(code).subscribe(res => {
-              this.storage.set('id', res);
-              this.userID = res;
-              this.userService.setUserId(this.userID);
-              this.chefService.setUserId(this.userID);
-              this.userService.getUserObservable().subscribe(res =>{
-                  this.user = res;
-                  this.userService.setUser(res);
-                  if (!res.zip_zipcode){
-                    this.ms.openLogIn({'pageName':'Adress','parent':this});
-                  }
-              });
-            this.getChefs();  
-
-          });
-          }else
-            this.ms.openLogIn({'pageName':'Facebook','parent':this}); 
-        }
-        
-        this.getChefs();
-      });
+    this.userID = '10216612410160139';
+    this.userService.setUserId(this.userID);
+    this.chefService.setUserId(this.userID);
+    this.userService.getUserObservable().subscribe(res =>{
+    this.user = res;
+    this.userService.setUser(res);
+    if (!res.zip_zipcode){
+      this.ms.openLogIn({'pageName':'Adress','parent':this});
     }
+    });
+    this.getChefs();  
+
+
+    // if(!this.userID || this.userID == ""){
+    //   this.storage.get('id').then(val => {
+    //     this.userID = val;
+    //     if(!val){
+    //       if(code != null){
+    //         this.fbService.getToken(code).subscribe(res => {
+    //           this.storage.set('id', res);
+    //           this.userID = res;
+    //           this.userService.setUserId(this.userID);
+    //           this.chefService.setUserId(this.userID);
+    //           this.userService.getUserObservable().subscribe(res =>{
+    //               this.user = res;
+    //               this.userService.setUser(res);
+    //               if (!res.zip_zipcode){
+    //                 this.ms.openLogIn({'pageName':'Adress','parent':this});
+    //               }
+    //           });
+    //         this.getChefs();  
+
+    //       });
+    //       }else
+    //         this.ms.openLogIn({'pageName':'Facebook','parent':this}); 
+    //     }
+        
+    //     this.getChefs();
+    //   });
+    // }
     
   }
 
