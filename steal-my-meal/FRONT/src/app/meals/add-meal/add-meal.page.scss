@@ -63,3 +63,20 @@ ion-content{
     height: 100%;
     overflow: scroll;
 }
+
+.fixed[scrollx=true], div[scrolly=true] {
+    position: relative;
+    overflow: hidden;
+  
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .fixed[scrollx=true] {
+    overflow-x: auto;
+  }
+  
+  .fixed[scrolly=true] {
+    overflow-y: auto;
+  }
