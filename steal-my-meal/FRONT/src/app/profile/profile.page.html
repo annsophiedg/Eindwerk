@@ -5,20 +5,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-card class="userDetails">
-  <ion-avatar (click)="ms.openEditUser()">
-    <img *ngIf='user' [src]=user?.usr_profile_url alt="profilepicture">
-    <a class="editUser">
-      <ion-icon name="create"></ion-icon>
-    </a>
-  </ion-avatar>
-  <ion-card-title class="title">{{user?.usr_firstname}} {{user?.usr_lastname}}</ion-card-title>
-  <ion-card-subtitle class="subtitle">{{user?.usr_street}} {{user?.usr_housenumber}}</ion-card-subtitle>
-  <ion-card-subtitle class="subtitle">{{user?.zip_zipcode}} {{user?.zip_city}}
-  </ion-card-subtitle>
-</ion-card>
 
 <ion-content>
+
+<ion-card class="userDetails">
+    <ion-avatar (click)="ms.openEditUser()">
+      <img *ngIf='user' [src]=user?.usr_profile_url alt="profilepicture">
+      <a class="editUser">
+        <ion-icon name="create"></ion-icon>
+      </a>
+    </ion-avatar>
+    <ion-card-title class="title">{{user?.usr_firstname}} {{user?.usr_lastname}}</ion-card-title>
+    <ion-card-subtitle class="subtitle">{{user?.usr_street}} {{user?.usr_housenumber}}</ion-card-subtitle>
+    <ion-card-subtitle class="subtitle">{{user?.zip_zipcode}} {{user?.zip_city}}
+    </ion-card-subtitle>
+  </ion-card>
+
+  <!-- <ion-card class="rate-this-meal">
+    <h1 class="rate-title">Hoe vond je ...?</h1>
+    <ion-icon class="icon rating rating-sad" src='../../../assets/icon/frown-solid.svg'>
+    </ion-icon>
+    <ion-icon class="icon rating rating-neutral"
+      src='../../../assets/icon/meh-solid.svg'></ion-icon>
+    <ion-icon class="icon rating rating-like"
+      src='../../../assets/icon/smile-beam-solid.svg'></ion-icon>
+      <ion-icon class="icon rating rating-smile"
+        src='../../../assets/icon/laugh-solid.svg'></ion-icon>
+    <ion-icon class="icon rating rating-laugh" src='../../../assets/icon/laugh-beam-solid.svg'>
+    </ion-icon>
+  </ion-card> -->
 
   <ion-nav class="nav-vertical">
     <ion-list class="list-vertical">

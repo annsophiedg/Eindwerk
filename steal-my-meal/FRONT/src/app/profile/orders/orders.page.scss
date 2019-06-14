@@ -144,3 +144,21 @@ $bg_swipe-start: white;
 
 
 }
+
+ion-footer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    background: $baseColor_yellow;
+    color: $baseColor_white;
+    box-sizing: border-box;
+
+    h2 {
+        width: 80%;
+        margin: 0;
+        font-size: 1.4rem;
+        text-align: center;
+        // box-sizing: border-box;
+    }
+}
