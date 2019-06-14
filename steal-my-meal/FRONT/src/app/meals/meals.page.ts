@@ -6,11 +6,9 @@ import { myLeaveAnimation } from '../animations/leave';
 import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
-import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
-import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
 
@@ -31,6 +29,7 @@ export class MealsPage implements OnInit {
   public distances= [];
   private user;
   public myFavChefs = [];
+  public orderedChefs;
   
 
   @ViewChild('slider') slider;
@@ -64,7 +63,7 @@ export class MealsPage implements OnInit {
   ngOnInit() {
     let code = this.route.snapshot.queryParamMap.get('code');
 
-    this.userID = '10216612410160139';
+    this.userID = '10217728406738088';
     this.userService.setUserId(this.userID);
     this.chefService.setUserId(this.userID);
     this.userService.getUserObservable().subscribe(res =>{
@@ -111,24 +110,24 @@ export class MealsPage implements OnInit {
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
-    this.chefService.getChefs(this.userID).subscribe(chefs=>{
-      if (chefs == null)
-        chefs = [];
-      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
-      this.mealService.getMeals().subscribe(meals=>{
-        meals.forEach(meal =>{
-          this.meals[meal.mls_id] = meal;
-        });
-        this.meals = this.meals;
-        chefs.forEach(chef => {
-          chef = JSON.parse(chef);
-          chef.distance = "";
-          this.chefs = [...this.chefs,chef];
-          this.chefIds = [...this.chefIds,chef.mls_id];
-          this.distances = [...this.distances,""];
-        });
+    this.chefService.getChefs(this.userID).subscribe(
+      chefs=>{
+        if (chefs == null) chefs = [];
+        //load meals after chefs, this prevent creating a meal-item before chefs is initialized.
+        this.mealService.getMeals().subscribe( meals=>{
+          meals.forEach(meal =>{
+            this.meals[meal.mls_id] = meal;
+          });
+          this.meals = this.meals;
+          chefs.forEach(chef => {
+            chef.distance = "";
+            this.chefs = [...this.chefs,chef];
+            this.chefIds = [...this.chefIds,chef.mls_id];
+            this.distances = [...this.distances,""];
+          });
       })
     });
+
   }
 
   showUp(e){
@@ -160,26 +159,9 @@ export class MealsPage implements OnInit {
   dragDown(){
     this.slider.el.style.pointerEvents = 'auto';
   }
+
+
   // Modals to create
-
-  async goToAddMeal() {
-
-    const modal = await this.modal.create({
-      component: AddMealPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-      }
-    });
-    return await modal.present();
-  }
-
-  async goToProfile() {
-    const modal = await this.modal.create({
-      component: ProfilePage
-    });
-    return await modal.present();
-  }
 
   async goToMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
@@ -201,9 +183,15 @@ export class MealsPage implements OnInit {
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    this.distances = e;
-    // this.distances = e.sort();
-    // this.chefs = this.chefs.sort((a, b) => {
-    //   return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+    // this.distances = e;
+    this.distances = e.sort();
+    let temp = [...this.chefs];
+    temp.sort((a, b) => {
+      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+
+    this.orderedChefs = temp;
+    
+    
   }
+  
 }

@@ -1,0 +1,27 @@
+<ion-avatar class="profilepic">
+  <img [src]=chef.chef_picture alt="profilepicture">
+</ion-avatar>
+<div class="top">
+  <div class="info">
+    <app-chef-title [chef]=chef></app-chef-title>
+    <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>
+  </div>
+  <app-follow class="follow" [chef]=chef></app-follow>
+</div>
+<div class="bottom">
+  <div class="info">
+    <h2>
+      <ion-icon class="icon" name="restaurant"></ion-icon>
+      <span class="text" *ngIf="chef.mls_cooked"> {{chef.mls_cooked}}</span>
+      <span class="text" *ngIf="!chef.mls_cooked"> -</span>
+    </h2>
+    <h2>
+      <ion-icon class="icon" name="basket"></ion-icon>
+      <span class="text" *ngIf="chef.ord_finished"> {{chef.ord_finished}}</span>
+      <span class="text" *ngIf="!chef.ord_finished"> -</span>
+    </h2>
+    <h2 class="h2-icon">
+      <app-chef-rate [rating]="chef.avg_rating"></app-chef-rate>
+    </h2>
+  </div>
+</div>

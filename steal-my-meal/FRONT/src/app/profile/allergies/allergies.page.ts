@@ -37,19 +37,23 @@ export class AllergiesPage implements OnInit {
 
       this.all_name = this.allergyForm.controls['all_name'];
 
-      this.userService.getUserAllergies().subscribe((result)=>(
-        //save user allergies in array
-        this.userAllergies = result,
-        console.log("User Allergies: ",this.userAllergies),
-        // check if user has allergies
-        this.userHasAllergies(this.userAllergies)
-      ));
+      this.setUserAllergies();
 
       this.mealService.getIngredients().subscribe((result)=>(
         //save DB ingredients in array
         this.dbIngredients = result,
         console.log("All Ingredients from DB: ",this.dbIngredients)
       ));
+  }
+
+  private setUserAllergies() {
+    this.userService.getUserAllergies().subscribe((result)=>(
+      //save user allergies in array
+      this.userAllergies = result,
+      console.log("User Allergies: ",this.userAllergies),
+      // check if user has allergies
+      this.userHasAllergies(this.userAllergies)
+    ));
   }
 
   //check if user has any allergies (return true/false)
@@ -93,15 +97,20 @@ export class AllergiesPage implements OnInit {
   private sendAllergy(newAllergy) {
     console.log('sss',newAllergy);
     this.mealService.addIngredient({"ing_name":newAllergy}).subscribe(res => {
+      console.log(res);
       //get id of added ingredient
       this.all_id = JSON.parse(JSON.stringify(res))[0]['id'];
       console.log("allergyID:",this.all_id);
-      //add id as a foreign key (userAllergy)
-      this.userService.addAllergy({"all_id":this.all_id});
+
+      //add id as FK in user/allergies
+      this.userService.addAllergy({"all_id":this.all_id}).subscribe((res)=>{
+        this.setUserAllergies();
+      });
+
       //show new allergy as label on page
-      this.showAllergy(
-        {"ing_id":this.all_id,"ing_name":newAllergy}
-        );
+      // this.showAllergy(
+      //   {"ing_id":this.all_id,"ing_name":newAllergy}
+      //   );
     })
   }
 
@@ -115,6 +124,7 @@ export class AllergiesPage implements OnInit {
   public postAllergy() {
     //get value of new allergy
     this.newAllergy = event.target[0].value;
+
     //send new allergy to service
     this.sendAllergy(this.newAllergy);
   }
@@ -122,9 +132,11 @@ export class AllergiesPage implements OnInit {
   public deleteAllergy(allergy) {
     console.log("to delete:",allergy);
     //delete in back
-    this.userService.deleteUserAllergy(allergy);
+    this.userService.deleteUserAllergy(allergy).subscribe((res)=>{
+      this.setUserAllergies();
+    });
     //delete in front
-    this.hideAllergy(allergy);
+    // this.hideAllergy(allergy);
   }
 
   public hideModal(){

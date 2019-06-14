@@ -22,45 +22,69 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_ProfilePagePageModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="164,-70 164,-268 332,-268 332,-70 164,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="45.5,-70 45.5,-268 450.5,-268 450.5,-70 45.5,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_ProfilePagePageModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="199,-78 199,-130 297,-130 297,-78 199,-78"/>
+<polygon fill="none" stroke="#000000" points="53.5,-78 53.5,-130 442.5,-130 442.5,-78 53.5,-78"/>
 </g>
-<g id="clust5" class="cluster">
+<g id="clust7" class="cluster">
 <title>cluster_ProfilePagePageModule_exports</title>
-<polygon fill="none" stroke="#000000" points="191,-208 191,-260 305,-260 305,-208 191,-208"/>
+<polygon fill="none" stroke="#000000" points="164.5,-208 164.5,-260 278.5,-260 278.5,-208 164.5,-208"/>
 </g>
-<!-- ProfilePage -->
+<!-- ChefTitleComponent -->
 <g id="node1" class="node">
-<title>ProfilePage</title>
-<polygon fill="#ffffb3" stroke="#000000" points="288.812,-122 207.188,-122 207.188,-86 288.812,-86 288.812,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfilePage</text>
+<title>ChefTitleComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="434.9832,-122 300.0168,-122 300.0168,-86 434.9832,-86 434.9832,-122"/>
+<text text-anchor="middle" x="367.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ChefTitleComponent</text>
 </g>
 <!-- ProfilePagePageModule -->
-<g id="node2" class="node">
+<g id="node4" class="node">
 <title>ProfilePagePageModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="324.073,-187 321.073,-191 300.073,-191 297.073,-187 171.927,-187 171.927,-151 324.073,-151 324.073,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfilePagePageModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="297.573,-187 294.573,-191 273.573,-191 270.573,-187 145.427,-187 145.427,-151 297.573,-151 297.573,-187"/>
+<text text-anchor="middle" x="221.5" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfilePagePageModule</text>
+</g>
+<!-- ChefTitleComponent&#45;&gt;ProfilePagePageModule -->
+<g id="edge1" class="edge">
+<title>ChefTitleComponent&#45;&gt;ProfilePagePageModule</title>
+<path fill="none" stroke="#000000" d="M299.9309,-104C293.7589,-104 289.769,-104 289.769,-104 289.769,-104 289.769,-140.8939 289.769,-140.8939"/>
+<polygon fill="#000000" stroke="#000000" points="286.269,-140.8938 289.769,-150.8939 293.269,-140.8939 286.269,-140.8938"/>
+</g>
+<!-- FollowComponent -->
+<g id="node2" class="node">
+<title>FollowComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="282.0028,-122 160.9972,-122 160.9972,-86 282.0028,-86 282.0028,-122"/>
+<text text-anchor="middle" x="221.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FollowComponent</text>
+</g>
+<!-- FollowComponent&#45;&gt;ProfilePagePageModule -->
+<g id="edge2" class="edge">
+<title>FollowComponent&#45;&gt;ProfilePagePageModule</title>
+<path fill="none" stroke="#000000" d="M221.5,-122.1061C221.5,-122.1061 221.5,-140.991 221.5,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="218.0001,-140.9909 221.5,-150.991 225.0001,-140.991 218.0001,-140.9909"/>
+</g>
+<!-- ProfilePage -->
+<g id="node3" class="node">
+<title>ProfilePage</title>
+<polygon fill="#ffffb3" stroke="#000000" points="143.312,-122 61.688,-122 61.688,-86 143.312,-86 143.312,-122"/>
+<text text-anchor="middle" x="102.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfilePage</text>
 </g>
 <!-- ProfilePage&#45;&gt;ProfilePagePageModule -->
-<g id="edge1" class="edge">
+<g id="edge3" class="edge">
 <title>ProfilePage&#45;&gt;ProfilePagePageModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M143.4496,-104C149.2181,-104 153.2311,-104 153.2311,-104 153.2311,-104 153.2311,-140.8939 153.2311,-140.8939"/>
+<polygon fill="#000000" stroke="#000000" points="149.7311,-140.8938 153.2311,-150.8939 156.7311,-140.8939 149.7311,-140.8938"/>
 </g>
 <!-- ModalService  -->
-<g id="node3" class="node">
+<g id="node5" class="node">
 <title>ModalService </title>
-<polygon fill="#fb8072" stroke="#000000" points="297.0274,-252 198.9726,-252 198.9726,-216 297.0274,-216 297.0274,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">ModalService </text>
+<polygon fill="#fb8072" stroke="#000000" points="270.5274,-252 172.4726,-252 172.4726,-216 270.5274,-216 270.5274,-252"/>
+<text text-anchor="middle" x="221.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">ModalService </text>
 </g>
 <!-- ProfilePagePageModule&#45;&gt;ModalService  -->
-<g id="edge2" class="edge">
+<g id="edge4" class="edge">
 <title>ProfilePagePageModule&#45;&gt;ModalService </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M221.5,-187.1061C221.5,-187.1061 221.5,-205.991 221.5,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="218.0001,-205.9909 221.5,-215.991 225.0001,-205.991 218.0001,-205.9909"/>
 </g>
 </g>
 </svg>

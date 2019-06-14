@@ -52,8 +52,6 @@ export class ChefService {
     //save chef meals
     this.chefMeals = meals
   }
-
-  
   
   getChefMeals() {
     return this.chefMeals
@@ -63,8 +61,8 @@ export class ChefService {
   getChefs(userID = this.userId):Observable<any>{
       //Get chefs in the same zipcode as the user
       return this.http.get<any>(`${this.chefsURL}`+ '/' + userID);
-
   }
+  
   //Add chef
   addChef(chef:Chef):Observable<Chef>{
     return this.http.post<Chef>(this.chefsURL, chef, httpOptions);

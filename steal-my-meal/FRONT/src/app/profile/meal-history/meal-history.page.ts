@@ -17,9 +17,11 @@ export class MealHistoryPage implements OnInit {
     private modal: ModalController,
     private chefService:ChefService
   ) { 
-    this.myMeals = this.chefService.getChefMeals();
-    console.log('now:',this.now)
-    console.log('meals:',this.myMeals)
+    this.chefService.getChefMealsObservable().subscribe(result=>{
+      this.myMeals = result
+      console.log('meals:',this.myMeals)
+    });
+    // console.log('now:',this.now)
   }
 
   ngOnInit() {

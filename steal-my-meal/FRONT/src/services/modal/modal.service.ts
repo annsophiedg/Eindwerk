@@ -4,6 +4,7 @@ import { ProfilePage } from '../../app/profile/profile.page';
 import { AddMealPage } from '../../app/meals/add-meal/add-meal.page';
 import { EditUserPage } from '../../app/profile/edit-user/edit-user.page';
 import { OrdersPage } from '../../app/profile/orders/orders.page';
+import { OrderListPage } from '../../app/profile/orders/order-list/order-list.page';
 import { AllergiesPage } from '../../app/profile/allergies/allergies.page';
 import { FavoriteChefsPage } from '../../app/profile/favorite-chefs/favorite-chefs.page';
 import { ExperiencePage } from '../../app/profile/experience/experience.page';
@@ -35,6 +36,10 @@ export class ModalService {
 
   public openOrders() {
     this.openModal(OrdersPage);
+  }
+
+  public OpenOrderList() {
+    this.openModal(OrderListPage);
   }
 
   public openAllergies() {

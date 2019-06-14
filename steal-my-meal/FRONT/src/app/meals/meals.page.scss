@@ -1,5 +1,10 @@
 @import "../../style/variables";
 
+div.navBtn{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 ion-fab-button{
     height: 3em;
     width: 3em;
@@ -44,7 +49,7 @@ app-map{
     width: 100vw;
 }
 
-.mealItems{
-    overflow: scroll;
+.scroll{
     height: 100%;
+    overflow: scroll;
 }

@@ -10,16 +10,17 @@ class MealController {
   }
 
   /**
+   * Get overview of available meals
+   *
    * @return array
    */
-  // Get overview of available meals
   function getMealOverview()
   {
     $meals = Array();
 
     //sql statement to get available meals
     // $sqlAvailableMeals = "select * from meals";
-    $sqlAvailableMeals = "select *, zip_zipcode, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id inner join zipcodes z on z.zip_id = u.fk_zip_id where (fk_usr_cons_id is null or fk_usr_cons_id = '') group by fk_mls_id";
+    $sqlAvailableMeals = "select *, count(fk_mls_id) as available_portions from meals m inner join orders o ON o.fk_mls_id = m.mls_id inner join users u on o.fk_usr_chef_id = u.usr_id inner join zipcodes z on z.zip_id = u.fk_zip_id WHERE (fk_usr_cons_id is null) GROUP BY fk_mls_id";
 
     $result = $this->dbm->sqlExecute($sqlAvailableMeals, null, PDO::FETCH_OBJ);
     foreach ($result as $row) {
@@ -124,8 +125,21 @@ class MealController {
     function createOrders($portions, $usrId){
       $string;
       for($x=1; $x<=$portions; $x++){
-        if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
-        else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
+        if($portions == $x){ $string .="( '".$usrId."', @mls_id );";}
+        else{ $string .="( '".$usrId."', @mls_id ),";}
+      };
+      return $string;
+    };
+
+    //Function to set ingredients for one meal
+    function setIngredients($ingredients){
+      $string;
+      $numbIngredients = count($ingredients);
+      $y = 0;
+      for($x=1; $x<=$numbIngredients; $x++){
+        if($numbIngredients == $x){ $string .="( '".$ingredients[$y]["ing_id"]."', @mls_id);";}
+        else{ $string .="( '".$ingredients[$y]["ing_id"]."', @mls_id ),";}
+        $y++;
       };
       return $string;
     };
@@ -133,7 +147,10 @@ class MealController {
     //Use MySql transaction for inserting new meal and orders at same time. The quantity of orders is the same as the number of portions.
     $orderSqlCommand = "BEGIN;
                         INSERT INTO meals (mls_id, mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
-                        VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$startTime."', '".$endTime."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        VALUES(NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$startTime."', '".$endTime."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        set @mls_id = LAST_INSERT_ID();
+                        INSERT INTO `meals/ingredients` (fk_ing_id, fk_mls_id)
+                        VALUES".setIngredients($decoded["ingredients"])."
                         INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES ".createOrders($portions, $decoded["usrId"]).
                         "COMMIT;";
                         
@@ -149,7 +166,6 @@ class MealController {
 
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
-    //var_dump($result);
     echo json_encode($result);
   }
 
