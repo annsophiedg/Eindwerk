@@ -6,11 +6,11 @@
 
 <app-map [userID] = 'userID' [meals] = 'meals' [chefIds] = 'chefIds' [chefs] = 'chefs' (distanceChange)="distanceChange($event)"></app-map>
 
-<ion-fab vertical="top" horizontal="end">
-  <ion-fab-button class="menu">
+<ion-fab vertical="top" horizontal="end" >
+  <!-- <ion-fab-button class="menu">
     <ion-icon name="menu"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="start">
+  </ion-fab-button> -->
+  <!-- <ion-fab-list side="start"> -->
 
     <ion-fab-button (click)="ms.openAddMeal()">
       <ion-icon name="add"></ion-icon>
@@ -20,10 +20,7 @@
       <ion-icon name="person"></ion-icon>
     </ion-fab-button>
 
-    <ion-fab-button>
-      <ion-icon name="funnel"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
+  <!-- </ion-fab-list> -->
 </ion-fab>
 
 <ion-slides id="outerSlider" [options]="slideOpts" #slider (ionSlideNextEnd)="hideUp($event)"
