@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
 import { TypeService } from '../../../services/type/type.service';
 import { UserService } from '../../../services/user/user.service';
@@ -13,6 +12,13 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./add-meal.page.scss'],
 })
 export class AddMealPage {
+
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
 
   //datepicker modal
   today = Date.now();
@@ -51,14 +57,12 @@ export class AddMealPage {
   setMeal;
   meal: FormGroup;
 
-  constructor(public  modal: ModalController,
-              private formBuilder: FormBuilder,
-              private mealService:MealService,
-              private typeService:TypeService,
-              public  loadingController: LoadingController,
-              public  toastController: ToastController,
-              public  userController: UserService) {
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private mealService:MealService,    private typeService:TypeService,
+    public  loadingController: LoadingController,
+    public  toastController: ToastController,public  userController: UserService
+    ) {
     this.typeService.getTypes().subscribe(types => {
       this.types = types});
   }
@@ -78,42 +82,40 @@ export class AddMealPage {
   }
 
   logForm(){
-
     this.mealFormObj = this.meal.value;
     this.mealFormObj.usrId = this.usrID;
     this.setMeal = JSON.stringify(this.mealFormObj);
     console.log(this.setMeal);
-    this.mealService.addMeal(this.mealFormObj);
+    // this.mealService.addMeal(this.mealFormObj);
   }
 
-  async presentLoading(){
-    const loading = await this.loadingController.create({
-      message: 'Loading...',
-      duration: 2000,
-      spinner: "dots"
-    });
-    const toast = await this.toastController.create({
-      position: 'top',
-      duration: 2000,
-      buttons: [
-        {
-          side: 'start',
-          icon: 'restaurant',
-          text: 'New meal was created succefully!',
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        }
-      ]
-    });
-    await loading.present();
-    await loading.onDidDismiss();
-    this.modal.dismiss();
-    toast.present();
-  }
+  presentLoading(){
+    let message = 'Your meal was created succefully!';
+    this.ms.presentLoading(message);
 
-  hideModal(){
-    this.modal.dismiss()
+    // const loading = await this.loadingController.create({
+    //   message: 'Loading...',
+    //   duration: 2000,
+    //   spinner: "dots"
+    // });
+    // const toast = await this.toastController.create({
+    //   position: 'top',
+    //   duration: 2000,
+    //   buttons: [
+    //     {
+    //       side: 'start',
+    //       icon: 'restaurant',
+    //       text: 'New meal was created succefully!',
+    //       handler: () => {
+    //         console.log('Favorite clicked');
+    //       }
+    //     }
+    //   ]
+    // });
+    // await loading.present();
+    // await loading.onDidDismiss();
+    // this.ms.dismiss();
+    // toast.present();
   }
 
 }

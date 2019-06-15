@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { UserService } from '../../../../services/user/user.service';
 
 @Component({
@@ -10,15 +9,16 @@ import { UserService } from '../../../../services/user/user.service';
 export class OrderListPage implements OnInit {
 
   public orders;
+  public ms;
 
-  constructor(
-    private modal:ModalController,
-    private userService:UserService) { 
-    this.orders = this.userService.getCurrentOrders();
+  @Input() 
+  set service(params){
+    this.ms = params
   }
 
-  public hideModal(){
-    this.modal.dismiss()
+  constructor(
+    private userService:UserService) { 
+    this.orders = this.userService.getCurrentOrders();
   }
 
   ngOnInit() {

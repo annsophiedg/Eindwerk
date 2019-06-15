@@ -85,22 +85,47 @@ if ( $subject == "chefMeals" )
     }
 }
 
-//use Service UserController if $subject == "orders"
+//use Service OrderController if $subject == "orders"
 if ( $subject == "orders" )
 {
     $orderController = new OrderController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
-            //GET all meals of one chef
+            //GET all orders of one chef
             $userOrders = $orderController->getUserOrders($id);
             echo $userOrders;
         }
     } elseif ($method == "POST") {
         if ($id) {
-            //GET all meals of one chef
+            //set ord_is_delivered = 1
             $finishOrder = $orderController->finishOrder($input,$id);
             echo $finishOrder;
+        }
+    }
+}
+
+//use Service OrderController if $subject == "ratings"
+if ( $subject == "ratings" )
+{
+    $orderController = new OrderController($dbManager);
+
+    if ($method == "GET") {
+        // id is cons_id
+        if ($id) {
+            //GET all picked up orders that don't have a rating yet
+            $orderRatings = $orderController->getOrdersToRate($id);
+            echo $orderRatings;
+        }
+    } elseif ($method == "POST") {
+        if ($id) {
+            $decoded = json_decode($input,true);
+            $ord_id=$decoded['ord_id'];
+            $rat_id=$decoded['rat_id'];
+
+            //POST rating of this order
+            $rateOrder = $orderController->rateOrder($ord_id,$rat_id);
+            echo $rateOrder;
         }
     }
 }

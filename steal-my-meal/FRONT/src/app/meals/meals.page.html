@@ -37,7 +37,7 @@
     <content>
       <div *ngFor="let chef of chefs; let i = index">
         <app-meal-item [meal]=meals[chef.mls_id] [chef]=chef [distance]="distances[i]"
-          (click)="goToMealDetail(meals[chef.mls_id], chef, $event)"></app-meal-item>
+          (click)="openMealDetail(meals[chef.mls_id], chef, $event)"></app-meal-item>
       </div>
     </content>
   </ion-slide>

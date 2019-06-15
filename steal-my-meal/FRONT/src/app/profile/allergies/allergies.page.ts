@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
 import { MealService } from '../../../services/meal/meal.service';
-// import { ModalService } from '../../../services/modal/modal.service';
-import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-allergies',
@@ -17,19 +15,20 @@ export class AllergiesPage implements OnInit {
   public inputValues = [];
   public userAllergies = [];
   public hasAllergies;
+  public ms;
 
-  newAllergy:string;
-  all_id;
-  allergyForm:FormGroup;
-  all_name:AbstractControl;
-  hidden;
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
+
+  public allergyForm:FormGroup;
+  public all_name:AbstractControl;
 
   constructor(
     private formBuilder:FormBuilder, 
     private userService:UserService, 
-    private mealService:MealService, 
-    // public ms:ModalService,
-    private modal: ModalController
+    private mealService:MealService
     ) { 
       this.allergyForm = this.formBuilder.group({
         all_name: ['', Validators.required]
@@ -96,35 +95,38 @@ export class AllergiesPage implements OnInit {
 
   //newAllergy: string (input/target value)
   private sendAllergy(newAllergy) {
-    // console.log('sss',newAllergy);
-    //returns id of added ingredient
+    //returns id of added ingredient to synchronise page
     this.mealService.addIngredient({"ing_name":newAllergy}).subscribe(res => {
       //get id of added ingredient
-      this.all_id = JSON.parse(JSON.stringify(res))[0]['id'];
+      let all_id = JSON.parse(JSON.stringify(res))[0]['id'];
 
       //add id as FK in user/allergies
-      this.userService.addAllergy({"all_id":this.all_id}).subscribe((res)=>{
+      this.userService.addAllergy({"all_id":all_id}).subscribe((res)=>{
         this.setUserAllergies();
       });
 
       //show new allergy as label on page
       // this.showAllergy({"ing_id":this.all_id,"ing_name":newAllergy});
     })
+
+    //modal animation
+    let message = "Your allergy is succesfully added";
+    this.ms.presentLoading(message,false);
   }
 
   //when clicked on list item
   public addAllergy(newAllergyObject) {
-    this.newAllergy = newAllergyObject["ing_name"];
-    this.sendAllergy(this.newAllergy);
+    let newAllergy = newAllergyObject["ing_name"];
+    this.sendAllergy(newAllergy);
   }
 
   //when entered in input
   public postAllergy() {
     //get value of new allergy
-    this.newAllergy = event.target[0].value;
+    let newAllergy = event.target[0].value;
 
     //send new allergy to service
-    this.sendAllergy(this.newAllergy);
+    this.sendAllergy(newAllergy);
   }
 
   //allergy: {'ing_id':'','ing_name':''}
@@ -133,12 +135,13 @@ export class AllergiesPage implements OnInit {
     this.userService.deleteUserAllergy(allergy).subscribe((res)=>{
       this.setUserAllergies();
     });
+    
     //delete in front
     // this.hideAllergy(allergy);
-  }
 
-  public hideModal(){
-    this.modal.dismiss()
+    //modal animation
+    let message = "Your allergy is succesfully deleted";
+    this.ms.presentLoading(message,false);
   }
 
   ngOnInit() {

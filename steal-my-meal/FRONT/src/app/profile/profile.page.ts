@@ -11,12 +11,13 @@ export class ProfilePage implements OnInit {
   public user:any;
   public isChef:boolean = false;
   public ord_amount = 0;
+  public ordersToRate:any[] = [];
   public ms;
 
   @Input() 
-  set params(params){
-    this.ms = params;
-  };
+  set service(params){
+    this.ms = params
+  }
 
   constructor(
     private userService:UserService,
@@ -24,6 +25,7 @@ export class ProfilePage implements OnInit {
   ) {
     this.getUserData();
     this.getCurrentOrders();
+    this.getOrdersToRate();
   }
 
   getUserData() {
@@ -60,6 +62,24 @@ export class ProfilePage implements OnInit {
       //save chef meals in service
       this.chefService.setChefMeals(result);
       console.log('profile isChef',this.isChef);
+    });
+  }
+
+  getOrdersToRate() {
+    this.userService.getOrdersToRate().subscribe(result=>{
+      this.ordersToRate = JSON.parse(JSON.stringify(result));
+      console.log('orders to rate',this.ordersToRate)
+    })
+  }
+
+  rateOrder(rate_id) {
+    //color this emoji :)
+    
+    let ord_id = this.ordersToRate[0].ord_id;
+    console.log('ord_id:',ord_id,', rate_id:',rate_id);
+    //set order rate
+    this.userService.rateOrder({'ord_id':ord_id,'rat_id':rate_id}).subscribe(res=>{
+      this.getOrdersToRate()
     });
   }
 

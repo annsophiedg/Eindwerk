@@ -34,8 +34,7 @@ export class MapComponent implements OnInit, AfterContentInit {
   @Input() private chefs;
   private markers = {};
   
-
-  @Input()
+  @Input() 
   set userID(id){
     if(id){
       this._userID = id;

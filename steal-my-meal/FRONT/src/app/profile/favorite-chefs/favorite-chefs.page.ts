@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 
 @Component({
@@ -10,9 +9,14 @@ import { UserService } from '../../../services/user/user.service';
 export class FavoriteChefsPage implements OnInit {
 
   public favChefs;
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
 
   constructor(
-    private modal: ModalController,
     private userService:UserService
   ) {
     this.userService.getUserpageFavChefs().subscribe((result)=>{
@@ -27,11 +31,6 @@ export class FavoriteChefsPage implements OnInit {
 
   ngOnInit() {
     
-  }
-
-  public hideModal(){
-    console.log(this);
-    this.modal.dismiss()
   }
 
 }

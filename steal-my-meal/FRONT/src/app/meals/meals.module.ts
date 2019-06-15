@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MealsPage } from './meals.page';
+//import necessary Modal Modules
+// import { AddMealPage } from '../meals/add-meal/add-meal.page';
+// import { MealDetailPage } from '../meals/meal-detail/meal-detail.page';
+// import { ProfilePage } from '../profile/profile.page';
 
 import { MapComponent} from '../map/map.component';
 import { MealItemComponent } from './meal-item/meal-item.component';
@@ -26,16 +30,27 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)    
+    RouterModule.forChild(routes), 
   ],
   declarations: [
     MapComponent,
     MealsPage, 
+    //modal pages
+    // AddMealPage,
+    // MealDetailPage,
+    // ProfilePage,   
+    //components
     MealItemComponent,
     ChefCardComponent,
     ChefTitleComponent,
     ChefRateComponent,
     FollowComponent
+  ],
+  entryComponents: [
+    //modal pages
+    // AddMealPage,
+    // MealDetailPage,
+    // ProfilePage,  
   ],
   providers:[Storage]
 })

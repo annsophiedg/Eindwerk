@@ -1,5 +1,5 @@
 <ion-card class="userDetails">
-    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
     <ion-avatar>
         <img [src]=chef.chef_picture>
     </ion-avatar>
@@ -34,6 +34,6 @@
   </div>
 
   <div class="btns">
-      <ion-button (click)="presentLoading()" (click)="getMeal()"><p>Get this meal!</p></ion-button>
+      <ion-button (click)="presentLoading();getMeal()"><p>Get this meal!</p></ion-button>
   </div>
 </ion-content>

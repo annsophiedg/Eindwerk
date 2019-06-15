@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 import { from } from 'rxjs';
 
@@ -10,12 +9,17 @@ import { from } from 'rxjs';
 })
 
 export class ExperiencePage implements OnInit {
-  cookedMeals:number;
-  finishedOrders:number;
-  avgRating:number;
+  public cookedMeals:number;
+  public finishedOrders:number;
+  public avgRating:number;
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
 
   constructor(
-    private modal:ModalController,
     public userService:UserService
   ) { 
     this.userService.getExperienceObservable().subscribe(result=>{
@@ -29,10 +33,6 @@ export class ExperiencePage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  public hideModal(){
-    this.modal.dismiss()
   }
 
 }

@@ -29,10 +29,8 @@ export class MealsPage implements OnInit {
   private user;
   public myFavChefs = [];
   
-
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
-
 
   meals = {};
   chefs = [];
@@ -145,21 +143,10 @@ export class MealsPage implements OnInit {
     this.slider.el.style.pointerEvents = 'auto';
   }
 
-
   // Modals to create
-  async goToMealDetail(meal, chef, event){
+  async openMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
-    const modal = await this.modal.create({
-      component: MealDetailPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-        'meal': meal,
-        'chef': chef,
-        'usrId': this.userID
-      }
-    });
-    return await modal.present();
+    this.ms.mealDetailModal(meal,chef)
   }
   }
 

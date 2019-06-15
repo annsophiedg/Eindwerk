@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
     <ion-title>My Experience</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -40,7 +40,7 @@
           <ion-icon class="icon" class="rating rating-smile" *ngIf="8<=avgRating && avgRating<12"
             src='../../../assets/icon/laugh-solid.svg'></ion-icon>
           <ion-icon class="icon" class="rating rating-like" *ngIf="4<=avgRating && avgRating<8"
-            src='../../../assets/icon/smile-beam-solid.svg'></ion-icon>
+            src='../../../assets/icon/smile-solid.svg'></ion-icon>
           <ion-icon class="icon" class="rating rating-neutral" *ngIf="-1<=avgRating && avgRating<4"
             src='../../../assets/icon/meh-solid.svg'></ion-icon>
           <ion-icon class="icon" class="rating rating-sad" *ngIf="avgRating<-1" src='../../../assets/icon/frown-solid.svg'>

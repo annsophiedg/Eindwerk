@@ -8,7 +8,7 @@
 
 <ion-content>
 
-<ion-card class="userDetails">
+  <ion-card class="userDetails">
     <ion-avatar (click)="ms.openEditUser()">
       <img *ngIf='user' [src]=user?.usr_profile_url alt="profilepicture">
       <a class="editUser">
@@ -21,19 +21,18 @@
     </ion-card-subtitle>
   </ion-card>
 
-  <!-- <ion-card class="rate-this-meal">
-    <h1 class="rate-title">Hoe vond je ...?</h1>
-    <ion-icon class="icon rating rating-sad" src='../../../assets/icon/frown-solid.svg'>
-    </ion-icon>
-    <ion-icon class="icon rating rating-neutral"
-      src='../../../assets/icon/meh-solid.svg'></ion-icon>
-    <ion-icon class="icon rating rating-like"
-      src='../../../assets/icon/smile-beam-solid.svg'></ion-icon>
-      <ion-icon class="icon rating rating-smile"
-        src='../../../assets/icon/laugh-solid.svg'></ion-icon>
-    <ion-icon class="icon rating rating-laugh" src='../../../assets/icon/laugh-beam-solid.svg'>
-    </ion-icon>
-  </ion-card> -->
+  <ion-card class="rate-this-meal" *ngIf="ordersToRate.length!=0">
+    <h1 class="rate-title">Hoe vond je de {{ordersToRate[0]?.mls_name}} van {{ordersToRate[0]?.usr_firstname}} op {{ordersToRate[0]?.mls_date | date:"dd-MM-yyyy"}}?</h1>
+    <div class="rate-container">
+      <ion-icon class="icon rating rating-sad" src='../../../assets/icon/frown-solid.svg' (click)="rateOrder(1)">
+      </ion-icon>
+      <ion-icon class="icon rating rating-neutral" src='../../../assets/icon/meh-solid.svg' (click)="rateOrder(2)"></ion-icon>
+      <ion-icon class="icon rating rating-like" src='../../../assets/icon/smile-solid.svg' (click)="rateOrder(3)"></ion-icon>
+      <ion-icon class="icon rating rating-smile" src='../../../assets/icon/laugh-solid.svg' (click)="rateOrder(4)"></ion-icon>
+      <ion-icon class="icon rating rating-laugh" src='../../../assets/icon/laugh-beam-solid.svg' (click)="rateOrder(5)">
+      </ion-icon>
+    </div>
+  </ion-card>
 
   <ion-nav class="nav-vertical">
     <ion-list class="list-vertical">

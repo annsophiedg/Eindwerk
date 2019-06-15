@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
@@ -17,11 +16,18 @@ export class MealDetailPage implements OnInit {
   subscriber;
   ingredients;
   private profilePath = "../../../assets/img/profile_pic.jpg";
+  public ms;
 
-  constructor(public  modal: ModalController,
-              public  loadingController: LoadingController,
-              public  toastController: ToastController,
-              public  mealservice: MealService){ }
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
+
+  constructor(
+    public  loadingController: LoadingController,
+    public  toastController: ToastController,
+    public  mealservice: MealService
+    ){ }
 
   ngOnInit() {
     console.log(this.chef);
@@ -30,40 +36,40 @@ export class MealDetailPage implements OnInit {
       this.ingredients = ingredients; });
   }
 
-  hideModal(){
-    this.modal.dismiss()
-  }
-
+  //send data over subscribe-url
   getMeal(){
     this.subscriber = JSON.stringify({mealId:this.meal["mls_id"], usrId:this.usrId});
     console.log(this.subscriber);
     this.mealservice.subscribeToMeal(this.subscriber);
   }
 
-  async presentLoading(){
-    const loading = await this.loadingController.create({
-      message: 'Loading...',
-      duration: 2000,
-      spinner: "dots"
-    });
-    const toast = await this.toastController.create({
-      position: 'top',
-      duration: 2000,
-      buttons: [
-        {
-          side: 'start',
-          icon: 'restaurant',
-          text: 'Have a great meal!',
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        }
-      ]
-    });
-    await loading.present();
-    await loading.onDidDismiss();
-    this.modal.dismiss();
-    toast.present();
+  presentLoading(){
+    let message = 'Have a great meal!';
+    this.ms.presentLoading(message);
+    
+    // const loading = await this.loadingController.create({
+    //   message: 'Loading...',
+    //   duration: 2000,
+    //   spinner: "dots"
+    // });
+    // const toast = await this.toastController.create({
+    //   position: 'top',
+    //   duration: 2000,
+    //   buttons: [
+    //     {
+    //       side: 'start',
+    //       icon: 'restaurant',
+    //       text: 'Have a great meal!',
+    //       handler: () => {
+    //         console.log('Favorite clicked');
+    //       }
+    //     }
+    //   ]
+    // });
+    // await loading.present();
+    // await loading.onDidDismiss();
+    // this.ms.hideModal();
+    // toast.present();
   }
 
 }

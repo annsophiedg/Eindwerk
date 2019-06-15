@@ -24,6 +24,7 @@ export class UserService {
   private userId = "10217728406738088";
   private userURL; 
   private orderURL;
+  private ratingURL;
   private experienceURL;
   private allergyURL;
   private favChefsURL;
@@ -40,6 +41,8 @@ export class UserService {
     this.userURL = APIEndpoint + 'users/' + this.userId;
     // get current orders of user
     this.orderURL = APIEndpoint + 'orders/' + this.userId;
+    // get picked up, not rated orders of user
+    this.ratingURL = APIEndpoint + 'ratings/' + this.userId;
     //get user experience (when chef)
     this.experienceURL = APIEndpoint + 'experience/' + this.userId;
     // get user allergies
@@ -113,6 +116,16 @@ export class UserService {
   // finish order (set is_delivered on true (1) in DB)
   public finishOrderObservable(mls_id) {
     return this.http.post(this.orderURL, mls_id, httpOptions)
+  }
+
+  //get user orders to rate
+  public getOrdersToRate(){
+    return this.http.get(`${this.ratingURL}`)
+  }
+
+  //set fk_rat_id in orders
+  public rateOrder(ord_rat){
+    return this.http.post(`${this.ratingURL}`, JSON.stringify(ord_rat), httpOptions);
   }
 
   // USER ALLERGIES

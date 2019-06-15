@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/services/user/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
 import { constructor } from 'assert';
 import {MealsPage} from 'src/app/meals/meals.page';
 
@@ -13,7 +12,12 @@ import {MealsPage} from 'src/app/meals/meals.page';
 export class LogInPage implements OnInit {
   public pageName;
   public parent;
+  public ms;
+
   @Input() 
+  set service(params){
+    this.ms = params
+  }
   set params(params){
     this.pageName = params['pageName'];
     this.parent = params['parent'];
@@ -26,8 +30,7 @@ export class LogInPage implements OnInit {
 
   constructor(
     private userService:UserService,
-    private formBuilder: FormBuilder,
-    private modal: ModalController
+    private formBuilder: FormBuilder
   ) { 
     
   }
@@ -65,10 +68,6 @@ export class LogInPage implements OnInit {
 
   public onSubmit() {
     this.userService.setUserObservable(this.userForm.value).subscribe(res => this.parent.getChefs('test'));
-    this.hideModal();
-  }
-
-  public hideModal(){
-    this.modal.dismiss()
+    this.ms.hideModal();
   }
 }
