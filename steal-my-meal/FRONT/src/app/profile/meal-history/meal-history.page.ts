@@ -20,13 +20,7 @@ export class MealHistoryPage implements OnInit {
   }
 
   constructor(
-<<<<<<< HEAD
-    private modal: ModalController,
-    private chefService:ChefService,
-    private ms:ModalService
-=======
     private chefService:ChefService
->>>>>>> db0acebb5644fcd292b5ac82f15ccfacb371c4f6
   ) { 
     this.chefService.getChefMealsObservable().subscribe(result=>{
       this.myMeals = result

@@ -148,15 +148,12 @@ export class MealsPage implements OnInit {
     this.slider.el.style.pointerEvents = 'auto';
   }
 
-<<<<<<< HEAD
-=======
   // Modals to create
   async openMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
     this.ms.mealDetailModal(meal,chef)
   }
   }
->>>>>>> db0acebb5644fcd292b5ac82f15ccfacb371c4f6
 
   distanceChange(e){   
     for(var i = 0; i < e.length; i++){
