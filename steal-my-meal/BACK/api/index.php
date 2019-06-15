@@ -58,14 +58,11 @@ if ( $subject == "meals" )
             //GET meal details from meals + type
             $mealDetails = $mealController->getMealDetails($id);
             echo $mealDetails;
-            print '<br>';
-            //GET meal ingredients
-            $ingredients = $mealController->getMealIngredients($id);
-            echo $ingredients;
-            print '<br>';
         }
     } else if ($method == "POST") {
         $mealController->addMeal($input);
+    }else if ($method == "PUT") {
+        $mealController->updateMeal($input);
     }
 }
 
@@ -101,6 +98,7 @@ if ( $subject == "chefMeals" )
 if ( $subject == "orders" )
 {
     $userController = new UserController($dbManager);
+    $mealController = new MealController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
@@ -108,6 +106,8 @@ if ( $subject == "orders" )
             $userOrders = $userController->getUserOrders($id);
             echo $userOrders;
         }
+    }else if ($method == "PUT") {
+        $subscription = $mealController->subscibe($input);
     }
 }
 
@@ -159,7 +159,11 @@ if ( $subject == "ingredients" )
             //GET all ingredients from DB
             $allIngredients = $mealController->getDBIngredients();
             echo $allIngredients;
-        } 
+        }else if ($id) {
+            //GET meal ingredients
+            $ingredients = $mealController->getMealIngredients($id);
+            echo $ingredients;
+        }
 
     } else if ($method == "POST") {
         $mealController->addIngredient($input);

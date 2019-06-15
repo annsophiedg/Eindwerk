@@ -12,6 +12,7 @@ import { LogInPage } from '../../app/log-in/log-in.page';
 import { MealDetailPage } from '../../app/meals/meal-detail/meal-detail.page';
 import { myEnterAnimation } from '../../app/animations/enter';
 import { myLeaveAnimation } from '../../app/animations/leave';
+import { EditMealPage } from '../../app/meals/edit-meal/edit-meal.page';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,10 @@ export class ModalService {
 
   public openMealHistory() {
     this.openModal(MealHistoryPage);
+  }
+
+  public openEditMeal(meal){
+    this.openModal(EditMealPage, meal);
   }
 
   // public openInvite() {

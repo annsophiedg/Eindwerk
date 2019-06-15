@@ -18,19 +18,17 @@ const httpOptions = {
 export class MealService {
 
   mealsUrl:string = APIEndpoint + 'meals';
+  orderUrl:string = APIEndpoint + 'orders';
   ingredientURL:string = APIEndpoint + 'ingredients';
   public ing_id;
 
   constructor(private http:HttpClient) { }
 
+  //--MEALS
+
   //Get meals
   getMeals():Observable<any>{
     return this.http.get<any>(`${this.mealsUrl}`);
-  }
-
-  //Get ingredients from one meal
-  getMealIngredients($mealId){
-    return this.http.get(`${this.ingredientURL}/${$mealId}`);
   }
 
   //Add meal
@@ -38,19 +36,30 @@ export class MealService {
     return this.http.post(this.mealsUrl, meal, httpOptions).subscribe(outcome =>(console.log(outcome=meal) ));
   }
 
+  updateMeal(meal){
+    return this.http.put(this.mealsUrl, meal, httpOptions).subscribe(outcome =>(console.log(outcome=meal) ));
+  }
+
   //Subscribe to meal(update order)
   subscribeToMeal(subscribtion){
-    return this.http.put(this.mealsUrl, subscribtion, httpOptions).subscribe();
+    return this.http.put(this.orderUrl, subscribtion, httpOptions).subscribe();
+  }
+
+  //--INGREDIENTS
+
+  //get all ingredients
+  getIngredients() {
+    return this.http.get(`${this.ingredientURL}`)
+  }
+
+  //Get ingredients from one meal
+  getMealIngredients($mealId){
+    return this.http.get(`${this.ingredientURL}/${$mealId}`);
   }
 
   //Add ingredient
   addIngredient(ingredient){
     return this.http.post(this.ingredientURL, ingredient, httpOptions);
-  }
-
-  //get all ingredients
-  public getIngredients() {
-    return this.http.get(`${this.ingredientURL}`)
   }
 
 

@@ -13,12 +13,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Pages
 import { AddMealPage } from './meals/add-meal/add-meal.page';
 import { MealDetailPage } from './meals/meal-detail/meal-detail.page';
 import { ProfilePage } from './profile/profile.page';
@@ -29,7 +29,7 @@ import { ExperiencePage } from '../app/profile/experience/experience.page';
 import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { OrdersPage } from './profile/orders/orders.page';
 import { LogInPage } from './log-in/log-in.page';
-
+import { EditMealPage } from '../app/meals/edit-meal/edit-meal.page';
 
 @NgModule({
   //all modal components in declarations & entrycomponents
@@ -45,6 +45,7 @@ import { LogInPage } from './log-in/log-in.page';
     LogInPage,
     ExperiencePage,
     MealHistoryPage,
+    EditMealPage
   ],
   entryComponents: [
     AddMealPage, 
@@ -56,7 +57,8 @@ import { LogInPage } from './log-in/log-in.page';
     FavoriteChefsPage,
     LogInPage,
     ExperiencePage,
-    MealHistoryPage
+    MealHistoryPage,
+    EditMealPage
   ],
   imports: [
     BrowserModule, 

@@ -152,40 +152,6 @@ export class MealsPage implements OnInit {
   }
   // Modals to create
 
-  async goToAddMeal() {
-
-    const modal = await this.modal.create({
-      component: AddMealPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-      }
-    });
-    return await modal.present();
-  }
-
-  async goToProfile() {
-    const modal = await this.modal.create({
-      component: ProfilePage
-    });
-    return await modal.present();
-  }
-
-  async goToMealDetail(meal, chef, event){
-    if(!event.target.className.includes('star')){
-    const modal = await this.modal.create({
-      component: MealDetailPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-        'meal': meal,
-        'chef': chef,
-        'usrId': this.userID
-      }
-    });
-    return await modal.present();
-  }
-  }
 
   distanceChange(e){   
     for(var i = 0; i < e.length; i++){
@@ -198,8 +164,6 @@ export class MealsPage implements OnInit {
       return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
 
     this.orderedChefs = temp;
-    
-    
   }
   
 }

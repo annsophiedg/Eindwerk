@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ChefService } from '../../../services/chef/chef.service';
+import { ModalService } from '../../../services/modal/modal.service';
 import * as moment from 'moment';
 
 @Component({
@@ -15,7 +16,8 @@ export class MealHistoryPage implements OnInit {
 
   constructor(
     private modal: ModalController,
-    private chefService:ChefService
+    private chefService:ChefService,
+    private ms:ModalService
   ) { 
     this.myMeals = this.chefService.getChefMeals();
     console.log('now:',this.now)
