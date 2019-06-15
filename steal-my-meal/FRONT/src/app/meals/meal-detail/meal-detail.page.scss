@@ -72,6 +72,7 @@ ion-content{
 
         p{
             margin-bottom: 1rem;
+
         }
 
         .price{
@@ -109,20 +110,7 @@ ion-content{
         position: fixed;
         bottom: 0;
         // justify-self: center;
-        
-        ion-button{
-            font-size: 1.8rem;
-            padding: 1rem;
-            padding-left: .7rem; 
-            width: 100%;
-            --background: #FD665D;
-            height: 100%;
-            --color: #FBF7F6;
-
-            p{
-                padding: 0.7rem;
-            }
-        }
+    
     }
     // $baseColor_red : #FD665D;
     // $baseColor_yellow : #FECB46;
@@ -132,7 +120,11 @@ ion-content{
         flex-wrap: wrap;
         font-size: 1.3rem;
         padding: 1rem;
-        border-bottom: #CCC;
+
+        p{
+            text-align: center;
+            width: 100%;
+        }
     }
 
     .bold{

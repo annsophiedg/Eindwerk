@@ -2,7 +2,7 @@ $( function() {
 
     //-----GET ADMIN
     $.ajax({
-        url: "http://localhost:3000/BACK/api/admin",
+        url: "https://wdev.be/bartvdb/BACK/api/admin",
         type: "GET",
         dataType: "json",
         success: function ( data) {
@@ -39,7 +39,7 @@ $( function() {
             });
 
             $.ajax({
-                url: "http://localhost:3000/BACK/api/admin",
+                url: "https://wdev.be/bartvdb/BACK/api/admin",
                 type: "POST",
                 data: form,
                 success: function( data ) {
@@ -64,7 +64,7 @@ $( function() {
         var id = $(this).attr("data-id");
 
         $.ajax({
-            url: "http://localhost:3000/BACK/api/admin/" + id,
+            url: "https://wdev.be/bartvdb/BACK/api/admin" + id,
             type: "DELETE",
             dataType: "json",
             success: function( data  ) {
@@ -121,7 +121,7 @@ $( function() {
         });
 
         $.ajax({
-            url: "http://localhost:3000/BACK/api/admin/"+currentId.id,
+            url: "https://wdev.be/bartvdb/BACK/api/admin"+currentId.id,
             type: "PUT",
             dataType: "json",
             data: JSON.stringify(form),

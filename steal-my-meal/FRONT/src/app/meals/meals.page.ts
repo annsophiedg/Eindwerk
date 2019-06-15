@@ -28,6 +28,7 @@ export class MealsPage implements OnInit {
   public distances= [];
   private user;
   public myFavChefs = [];
+  public orderedChefs;
   
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
@@ -72,15 +73,16 @@ export class MealsPage implements OnInit {
               this.userService.getUserObservable().subscribe(res =>{
                   this.user = res;
                   this.userService.setUser(res);
-                  if (!res.zip_zipcode){
-                    this.ms.openLogIn({'pageName':'Adress','parent':this});
-                  }
+                  if(res)
+                    if (!res.zip_zipcode){
+                      this.ms.openLogIn({'pageName':'Adress','parent':this, 'modalService': this.ms});
+                    }
               });
             this.getChefs();  
 
           });
           }else
-            this.ms.openLogIn({'pageName':'Facebook','parent':this}); 
+            this.ms.openLogIn({'pageName':'Facebook','parent':this,'modalService': this.ms}); 
         }
         
         this.getChefs();
@@ -93,22 +95,25 @@ export class MealsPage implements OnInit {
     this.chefService.setUserId(this.userID);
     this.userService.setUserId(this.userID);
     this.userService.setUser(this.user);
-    this.chefService.getChefs(this.userID).subscribe(
-      chefs=>{
-        if (chefs == null) chefs = [];
-        //load meals after chefs, this prevent creating a meal-item before chefs is initialized.
-        this.mealService.getMeals().subscribe( meals=>{
-          meals.forEach(meal =>{
-            this.meals[meal.mls_id] = meal;
-          });
-          this.meals = this.meals;
-          chefs.forEach(chef => {
-            chef.distance = "";
-            this.chefs = [...this.chefs,chef];
-            this.chefIds = [...this.chefIds,chef.mls_id];
-            this.distances = [...this.distances,""];
-          });
-      })
+    this.chefService.getChefs(this.userID).subscribe(chefs=>{
+      if (chefs == null)
+        chefs = [];
+      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+      this.mealService.getMeals().subscribe(meals=>{
+          if(meals){
+            meals.forEach(meal =>{
+              this.meals[meal.mls_id] = meal;
+            });
+            this.meals = this.meals;
+            chefs.forEach(chef => {
+              // chef = JSON.parse(chef);
+              chef.distance = "";
+              this.chefs = [...this.chefs,chef];
+              this.chefIds = [...this.chefIds,chef.mls_id];
+              this.distances = [...this.distances,""];
+            });
+        }
+        })
     });
 
   }
@@ -154,9 +159,15 @@ export class MealsPage implements OnInit {
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    this.distances = e;
-    // this.distances = e.sort();
-    // this.chefs = this.chefs.sort((a, b) => {
-    //   return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+    // this.distances = e;
+    this.distances = e.sort();
+    let temp = [...this.chefs];
+    temp.sort((a, b) => {
+      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+
+    this.orderedChefs = temp;
+    
+    
   }
+  
 }

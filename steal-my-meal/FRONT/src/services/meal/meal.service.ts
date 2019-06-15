@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Meal } from'../../models/meal';
 import { Observable } from 'rxjs';
-import { AllergiesPage } from 'src/app/profile/allergies/allergies.page';
 import { environment } from '../../environments/environment';
 
 const APIEndpoint = environment.APIEndpoint;
@@ -43,18 +42,6 @@ export class MealService {
   subscribeToMeal(subscribtion){
     return this.http.put(this.mealsUrl, subscribtion, httpOptions).subscribe();
   }
-
-  //Delete meal
-  // deleteMeal(meal:Meal):Observable<Meal>{
-  //   const url = `${this.mealsUrl}/${meal.id}`;
-  //   return this.http.delete<Meal>(url, httpOptions);
-  // }
-
-  //Update meal
-  // updateMeal(meal:Meal):Observable<Meal>{
-  //   const url = `${this.mealsUrl}/${meal.id}`;
-  //   return this.http.put<Meal>(url, httpOptions);
-  // }
 
   //Add ingredient
   addIngredient(ingredient){

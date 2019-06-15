@@ -11,6 +11,15 @@
 // api/users/id
 
 require __DIR__ . '/bootstrap.php';
+/*
+var_dump($_SERVER["REQUEST_URI"]);
+var_dump($_SERVER["REQUEST_METHOD"]);
+*/
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+header("Content-Type: application/json; charset=UTF-8");
 
 $container = new Container($configuration);
 $dbManager = $container->getDBManager();
@@ -32,6 +41,7 @@ if ( count($parts) > 2 ) $api = $parts[2];
 if ( count($parts) > 3 ) $subject = $parts[3];
 if ( count($parts) > 4 ) $id = $parts[4];
 
+
 // print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
 
 //use Service MealController if $subject == "meals"
@@ -49,11 +59,13 @@ if ( $subject == "meals" )
             $mealDetails = $mealController->getMealDetails($id);
             echo $mealDetails;
             print '<br>';
+            //GET meal ingredients
+            $ingredients = $mealController->getMealIngredients($id);
+            echo $ingredients;
+            print '<br>';
         }
     } else if ($method == "POST") {
         $mealController->addMeal($input);
-    } else if($method =="PUT"){
-        $mealController->subscribe($input);
     }
 }
 
@@ -135,11 +147,17 @@ if ( $subject == "pageFavChefs" ) {
     $userController = new UserController($dbManager);
     $chefController = new ChefController($dbManager);
 
-    if ($id) {
-        if ($method == "GET") {
-
+    if ($method == "GET") {
+        if ($id) {
             //GET your favorite chefs (chefs you follow)
             $favChefIds = $userController->getFavoriteChefs($id);
+            $favChefDetails = Array();
+
+            foreach (json_decode($favChefIds) as $id) {
+                //echo gettype($id) .", ". $id."<br>";
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                array_push($favChefDetails,$chefDetails);
+            }
 
             $favChefDetails = Array();
             //echo gettype($favChefIds) .", ". $favChefIds."<br>";
@@ -208,11 +226,7 @@ if ( $subject == "ingredients" )
             //GET all ingredients from DB
             $allIngredients = $mealController->getDBIngredients();
             echo $allIngredients;
-        }else{
-            //GET meal ingredients
-            $ingredients = $mealController->getMealIngredients($id);
-            echo $ingredients;
-        }
+        } 
 
     } else if ($method == "POST") {
         $mealController->addIngredient($input);
@@ -251,7 +265,6 @@ if ( $subject == "users" )
 {
     
     $userController = new UserController($dbManager);
-    $dashboardController = new DashboardController($dbManager);
     
     if ($method == "GET") {
         if (!$id) {
@@ -267,9 +280,10 @@ if ( $subject == "users" )
         //update user information
         $userController->updateUser($id,$input);
     } else if ($method == "DELETE") {
-        //delete user
         $userController->deleteUser($id);
     }
+    
+    
 }
 
 //use Service FbController if $subject == "facebook"
@@ -296,14 +310,15 @@ if ( $subject == "types" )
             //GET overview types
             $types = $typeController->getTypes();
             echo $types;
+        } 
+    } else if ($method == "POST") {//post new Type (for dashboard maybe)}
         }
-    }
+
 }
 
 if ( $subject == "admin" )
 {
     $dashboardController = new DashboardController($dbManager);
-
     if ($method == "GET"){
         if (!$id) {
             //GET overview admin
@@ -329,8 +344,6 @@ if ( $subject == "admin" )
 if ( $subject == "statistics" )
 {
     $dashboardController = new DashboardController($dbManager);
-    $mealcontroller = new MealController($dbManager);
-
     if ( $method == "GET" ) {
         $statistics = $dashboardController->getStatistics();
         echo $statistics;

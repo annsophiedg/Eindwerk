@@ -125,8 +125,21 @@ class MealController {
     function createOrders($portions, $usrId){
       $string;
       for($x=1; $x<=$portions; $x++){
-        if($portions == $x){ $string .="( '".$usrId."', LAST_INSERT_ID() );";}
-        else{ $string .="( '".$usrId."', LAST_INSERT_ID() ),";}
+        if($portions == $x){ $string .="( '".$usrId."', @mls_id );";}
+        else{ $string .="( '".$usrId."', @mls_id ),";}
+      };
+      return $string;
+    };
+
+    //Function to set ingredients for one meal
+    function setIngredients($ingredients){
+      $string;
+      $numbIngredients = count($ingredients);
+      $y = 0;
+      for($x=1; $x<=$numbIngredients; $x++){
+        if($numbIngredients == $x){ $string .="( '".$ingredients[$y]["ing_id"]."', @mls_id);";}
+        else{ $string .="( '".$ingredients[$y]["ing_id"]."', @mls_id ),";}
+        $y++;
       };
       return $string;
     };
@@ -134,7 +147,10 @@ class MealController {
     //Use MySql transaction for inserting new meal and orders at same time. The quantity of orders is the same as the number of portions.
     $orderSqlCommand = "BEGIN;
                         INSERT INTO meals (mls_id, mls_name, mls_description, mls_price, mls_take_start, mls_take_end, mls_date, fk_typ_id)
-                        VALUES( NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$startTime."', '".$endTime."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        VALUES(NULL,'".$decoded["name"]."', '".$decoded["description"]."', '".$decoded["price"]."', '".$startTime."', '".$endTime."', '".$decoded["date"]."', '".$decoded["type"]."');
+                        set @mls_id = LAST_INSERT_ID();
+                        INSERT INTO `meals/ingredients` (fk_ing_id, fk_mls_id)
+                        VALUES".setIngredients($decoded["ingredients"])."
                         INSERT INTO orders (fk_usr_chef_id, fk_mls_id) VALUES ".createOrders($portions, $decoded["usrId"]).
                         "COMMIT;";
                         
