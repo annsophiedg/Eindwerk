@@ -140,8 +140,7 @@ class UserController {
     $decoded = json_decode($input, true);
     $all_id = $decoded['all_id'];
 
-    $sqlInsertUserAllergy = "INSERT INTO `users/allergies` (fk_usr_id, fk_ing_all_id)
-    VALUES (".$usr_id.",".$all_id.")";
+    $sqlInsertUserAllergy = "select addUserAllergy(".$usr_id.",".$all_id.")";
 
     //insert data in db
     $result = $this->dbm->sqlExecute($sqlInsertUserAllergy, null, PDO::FETCH_OBJ);

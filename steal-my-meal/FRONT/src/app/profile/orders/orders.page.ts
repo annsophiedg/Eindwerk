@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
-import { ModalController } from '@ionic/angular';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe, formatDate } from '@angular/common';
 import { now } from 'moment';
@@ -20,17 +19,18 @@ export class OrdersPage implements OnInit {
   public orders;
   public today = formatDate( new Date(), "yyyy-MM-dd", "en_US");
   public orderPickedUp:boolean = false;
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
 
   constructor(
-    private userService:UserService,
-    private modal:ModalController
+    private userService:UserService
   ) { 
     this.orders = this.userService.getCurrentOrders();
     console.log('today:', this.today)
-  }
-
-  hideModal(){
-    this.modal.dismiss()
   }
 
   voucherIsSwiped(meal_id) {

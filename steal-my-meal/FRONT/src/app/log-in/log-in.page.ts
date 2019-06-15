@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/services/user/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.page.html',
@@ -12,7 +11,11 @@ export class LogInPage implements OnInit {
   public pageName;
   public parent;
   public ms;
+
   @Input() 
+  set service(params){
+    this.ms = params
+  }
   set params(params){
     this.pageName = params['pageName'];
     this.parent = params['parent'];

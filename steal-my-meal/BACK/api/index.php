@@ -94,26 +94,57 @@ if ( $subject == "chefMeals" )
     }
 }
 
-//use Service UserController if $subject == "orders"
+//use Service OrderController if $subject == "orders"
 if ( $subject == "orders" )
 {
     $userController = new UserController($dbManager);
     $mealController = new MealController($dbManager);
+    $orderController = new OrderController($dbManager);
 
     if ($method == "GET") {
         if ($id) {
-            //GET all meals of one chef
-            $userOrders = $userController->getUserOrders($id);
+            //GET all orders of one chef
+            $userOrders = $orderController->getUserOrders($id);
             echo $userOrders;
         }
     }else if ($method == "PUT") {
         $subscription = $mealController->subscibe($input);
+    } elseif ($method == "POST") {
+        if ($id) {
+            //set ord_is_delivered = 1
+            $finishOrder = $orderController->finishOrder($input,$id);
+            echo $finishOrder;
+        }
+    }
+}
+
+//use Service OrderController if $subject == "ratings"
+if ( $subject == "ratings" )
+{
+    $orderController = new OrderController($dbManager);
+
+    if ($method == "GET") {
+        // id is cons_id
+        if ($id) {
+            //GET all picked up orders that don't have a rating yet
+            $orderRatings = $orderController->getOrdersToRate($id);
+            echo $orderRatings;
+        }
+    } elseif ($method == "POST") {
+        if ($id) {
+            $decoded = json_decode($input,true);
+            $ord_id=$decoded['ord_id'];
+            $rat_id=$decoded['rat_id'];
+
+            //POST rating of this order
+            $rateOrder = $orderController->rateOrder($ord_id,$rat_id);
+            echo $rateOrder;
+        }
     }
 }
 
 //use Service UserController if $subject == "favChefs"
-if ( $subject == "favChefs" )
-{
+if ( $subject == "pageFavChefs" ) {
     $userController = new UserController($dbManager);
     $chefController = new ChefController($dbManager);
 
@@ -129,7 +160,44 @@ if ( $subject == "favChefs" )
                 array_push($favChefDetails,$chefDetails);
             }
 
+            $favChefDetails = Array();
+            //echo gettype($favChefIds) .", ". $favChefIds."<br>";
+
+            foreach (json_decode($favChefIds) as $id) {
+                $chefDetails = json_decode($chefController->getChefDetails($id));
+                //echo gettype($chefDetails) .", ". $chefDetails."<br>";
+                array_push($favChefDetails,$chefDetails);
+            }
+
             echo json_encode($favChefDetails);
+        }
+    }
+}
+
+
+
+//use Service UserController if $subject == "favChefs"
+if ( $subject == "favChefs" ) {
+    $userController = new UserController($dbManager);
+
+    if ($id) {
+        if ($method == "GET") {
+
+            //GET your favorite chefs (chefs you follow)
+            $favChefIds = $userController->getFavoriteChefs($id);
+
+            echo $favChefIds;
+        } elseif ($method == "POST") {
+            // add chef in followers
+            $addFavChef = $userController->addFavoriteChef($id,$input);
+            echo $addFavChef;
+        } elseif ($method == "DELETE") {
+            $ids = explode(",", $id);
+            $usr_id = $ids[0];
+            $chef_id = $ids[1];
+            // add chef in followers
+            $deleteFavChef = $userController->deleteFavoriteChef($usr_id,$chef_id);
+            echo $input, $deleteFavChef;
         }
     }
 }

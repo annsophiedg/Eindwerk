@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChefService } from '../../../services/chef/chef.service';
 import { ModalService } from '../../../services/modal/modal.service';
 import * as moment from 'moment';
@@ -13,23 +12,30 @@ export class MealHistoryPage implements OnInit {
 
   public myMeals:Array<any>;
   public now = moment(new Date()).format('YYYY-MM-DD');
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
 
   constructor(
+<<<<<<< HEAD
     private modal: ModalController,
     private chefService:ChefService,
     private ms:ModalService
+=======
+    private chefService:ChefService
+>>>>>>> db0acebb5644fcd292b5ac82f15ccfacb371c4f6
   ) { 
-    this.myMeals = this.chefService.getChefMeals();
-    console.log('now:',this.now)
-    console.log('meals:',this.myMeals)
+    this.chefService.getChefMealsObservable().subscribe(result=>{
+      this.myMeals = result
+      console.log('meals:',this.myMeals)
+    });
+    // console.log('now:',this.now)
   }
 
   ngOnInit() {
-  }
-
-  public hideModal(){
-    console.log("hide modal in meal history :(")
-    this.modal.dismiss()
   }
 
 }

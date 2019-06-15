@@ -34,8 +34,7 @@ export class MapComponent implements OnInit, AfterContentInit {
   @Input() private chefs;
   private markers = {};
   
-
-  @Input()
+  @Input() 
   set userID(id){
     if(id){
       this._userID = id;
@@ -114,7 +113,7 @@ export class MapComponent implements OnInit, AfterContentInit {
       scaledSize: new google.maps.Size(50, 50)
     };
 
-    console.log('CHEFS = ' + chefIds)
+    // console.log('CHEFS = ' + chefIds)
     var contentString = this.getContentString(meals, chefIds);
 
     var infowindow = new google.maps.InfoWindow({
@@ -123,7 +122,7 @@ export class MapComponent implements OnInit, AfterContentInit {
 
     this.infoWindows.push(infowindow);
 
-    console.log(adress);
+    // console.log(adress);
     this.mapsService.getLocation(adress).subscribe(res =>{
       adress.location = res['results'][0]['geometry']['location'];
       if(!meals)

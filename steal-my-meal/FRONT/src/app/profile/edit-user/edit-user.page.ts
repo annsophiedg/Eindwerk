@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
-// import { ModalService } from '../../../services/modal/modal.service';
-import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-user',
@@ -13,12 +11,16 @@ export class EditUserPage implements OnInit {
   
   public userForm;
   public user:any;
+  public ms;
+
+  @Input() 
+  set service(params){
+    this.ms = params
+  }
   
   constructor(
     private userService:UserService,
-    private formBuilder: FormBuilder,
-    private modal: ModalController,
-    // public ms:ModalService
+    private formBuilder: FormBuilder
     ) {
     this.user = this.userService.getUser();
     console.log("get user:", this.user);
@@ -43,14 +45,14 @@ export class EditUserPage implements OnInit {
   public onSubmit() {
     console.log(this.userForm.value)
     this.userService.setUserObservable(this.userForm.value).subscribe();
+    this.ms.hideModal();
+
+    let message = 'Your information was updated succesfully!';
+    //modal animation, close modal after submit = false
+    this.ms.presentLoading(message,false);
   }
 
   ngOnInit() {
-  }
-
-  public hideModal(){
-    console.log('hideModel in EditUser :(');
-    this.modal.dismiss()
   }
 
 }

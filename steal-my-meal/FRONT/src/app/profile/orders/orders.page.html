@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
-    <ion-title>My Order(s)</ion-title>
+    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
+    <ion-title>My Next Order</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -42,7 +42,7 @@
 
       <!-- only visable when not picked up/swiped -->
       <ion-item-sliding class="swiper" *ngIf="orders[0].ord_is_delivered==0"
-      (ionSwipe)="voucherIsSwiped(orders[0].mls_id)">
+        (ionSwipe)="voucherIsSwiped(orders[0].mls_id)">
         <ion-item class="swipe-start" href="#">
           <div class="swipe-icon">
           </div>
@@ -58,29 +58,8 @@
   </ion-card>
   <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>
 
-
   <!-- FULL OVERVIEW OF ALL CURRENT ORDERS -->
-  <h1>Full overview of your orders:</h1>
-  <ion-card class="meal" *ngFor="let o of orders">
-    <div class="box top">
-      <h2 class="title">{{o.mls_name}}</h2>
-    </div>
-    <div class="box bottom info info-orders">
-      <div class="info-important">
-        <p>
-          <span>Pick up time:</span><br>
-          <span class="date">{{o.mls_date | date:"dd/MM/yy"}}</span>
-          <br>
-          <span>{{o.mls_take_start}} -
-            {{o.mls_take_end}}</span>
-        </p>
-        <h2>
-          <span class="text">{{o.ord_amount}} </span>
-          <ion-icon class="icon" name="basket"></ion-icon>
-        </h2>
-        <h2>€ {{o.mls_price}}</h2>
-      </div>
-    </div>
-  </ion-card>
-
+<ion-footer *ngIf="1<orders.length" (click)="ms.OpenOrderList()">
+    <h2 class="box">Show all my ordered meals</h2>
+</ion-footer>
 </ion-content>

@@ -33,7 +33,49 @@
     }
 }
 
+//RATING DIV
+.rate-this-meal {
+    width: 80vw;
+    height: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 40%;
+    bottom: 0;
+
+    padding: 1rem;
+    margin: 10vw;
+
+    background: white;
+    color: $baseColor_red;
+
+    box-sizing: border-box;
+    z-index: 5;
+
+    .rate-title {
+        width: 100%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .rate-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        .rating {
+            margin: .2rem;
+            background: #222;
+            border: 1px solid #222;
+            border-radius: 50%;
+            color: $baseColor_white;
+            font-size: 2.5rem;
+        }
+    }
+}
+
 .nav-vertical {
+    position: relative;
     width: 100%;
     overflow: scroll;
 }

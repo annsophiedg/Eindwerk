@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
     <ion-title>My Cooked Meals</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -26,7 +26,7 @@
     <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="m.mls_date>=now" (click)="ms.openEditMeal(m)">
         <ion-col size="4">
-          {{m.mls_datum}}
+          {{m.mls_date | date: "dd-MM-yyyy"}}
         </ion-col>
         <ion-col size="6">
           {{m.mls_name}}
@@ -52,20 +52,30 @@
           Meal
         </ion-col>
         <ion-col>
-          <ion-icon name="basket"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid class="grid-data" *ngFor="let m of myMeals">
       <ion-row *ngIf="now>m.mls_date">
         <ion-col size="4">
-          {{m.mls_datum}}
+          {{m.mls_date | date: "dd-MM-yyyy"}}
         </ion-col>
         <ion-col size="6">
           {{m.mls_name}}
         </ion-col>
         <ion-col>
-          {{m.mls_amount}}
+          <ion-icon class="icon rating rating-laugh" *ngIf="12<=m.avg_meal_rate"
+            src='../../../assets/icon/laugh-beam-solid.svg'></ion-icon>
+          <ion-icon class="icon rating rating-smile" *ngIf="8<=m.avg_meal_rate && m.avg_meal_rate<12"
+            src='../../../assets/icon/laugh-solid.svg'></ion-icon>
+          <ion-icon class="icon rating rating-like" *ngIf="4<=m.avg_meal_rate && m.avg_meal_rate<8"
+            src='../../../assets/icon/smile-solid.svg'></ion-icon>
+          <ion-icon class="icon rating rating-neutral" *ngIf="-1<=m.avg_meal_rate && m.avg_meal_rate<4"
+            src='../../../assets/icon/meh-solid.svg'></ion-icon>
+          <ion-icon class="icon rating rating-sad" *ngIf="m.avg_meal_rate<-1"
+            src='../../../assets/icon/frown-solid.svg'>
+          </ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

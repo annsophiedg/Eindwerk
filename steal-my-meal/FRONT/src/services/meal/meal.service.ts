@@ -45,7 +45,15 @@ export class MealService {
     return this.http.put(this.orderUrl, subscribtion, httpOptions).subscribe();
   }
 
+<<<<<<< HEAD
   //--INGREDIENTS
+=======
+  //Add ingredient
+  addIngredient(ingredient){
+    // console.log(ingredient.ing_name)
+    return this.http.post(this.ingredientURL, ingredient, httpOptions);
+  }
+>>>>>>> db0acebb5644fcd292b5ac82f15ccfacb371c4f6
 
   //get all ingredients
   getIngredients() {

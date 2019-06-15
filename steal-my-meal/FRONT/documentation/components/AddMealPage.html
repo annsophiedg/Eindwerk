@@ -145,6 +145,12 @@
                                 <a href="#modal">modal</a>
                             </li>
                             <li>
+                                <a href="#portions">portions</a>
+                            </li>
+                            <li>
+                                <a href="#prices">prices</a>
+                            </li>
+                            <li>
                                 <a href="#setMeal">setMeal</a>
                             </li>
                             <li>
@@ -156,6 +162,13 @@
                             </li>
                             <li>
                                 <a href="#types">types</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userController">userController</a>
+                            </li>
+                            <li>
+                                <a href="#usrID">usrID</a>
                             </li>
                         </ul>
                     </td>
@@ -186,20 +199,6 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#usrId">usrId</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -214,12 +213,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(modal: ModalController, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, mealService: <a href="../injectables/MealService.html">MealService</a>, typeService: <a href="../injectables/TypeService.html">TypeService</a>, loadingController: LoadingController, toastController: ToastController)</code>
+<code>constructor(modal: ModalController, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, mealService: <a href="../injectables/MealService.html">MealService</a>, typeService: <a href="../injectables/TypeService.html">TypeService</a>, loadingController: LoadingController, toastController: ToastController, userController: <a href="../injectables/UserService.html">UserService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -308,6 +307,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>userController</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -317,24 +328,7 @@
         </table>
 </section>
 
-    <section>
-    <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="usrId"></a>
-                        <b>usrId</b>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:45</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-</section>
+
 
 
 
@@ -365,8 +359,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:115</a></div>
                 </td>
             </tr>
 
@@ -404,8 +398,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:80</a></div>
                 </td>
             </tr>
 
@@ -443,8 +437,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:66</a></div>
                 </td>
             </tr>
 
@@ -484,8 +478,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:89</a></div>
                 </td>
             </tr>
 
@@ -555,7 +549,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -583,7 +577,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -610,7 +604,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -642,7 +636,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -663,7 +657,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -691,7 +685,71 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="portions"></a>
+                        <span class="name">
+                            <b>
+                            portions</b>
+                            <a href="#portions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="prices"></a>
+                        <span class="name">
+                            <b>
+                            prices</b>
+                            <a href="#prices"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[0.5,1,2,3,4,5,6,7,8,9,10]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -712,7 +770,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -740,7 +798,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:59</a></div>
                             </td>
                         </tr>
 
@@ -766,7 +824,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -798,7 +856,67 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userController"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            userController</b>
+                            <a href="#userController"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usrID"></a>
+                        <span class="name">
+                            <b>
+                            usrID</b>
+                            <a href="#usrID"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&quot;&quot;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/meals/add-meal/add-meal.page.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -815,6 +933,7 @@
 import { ModalController } from &#x27;@ionic/angular&#x27;;
 import { MealService } from &#x27;../../../services/meal/meal.service&#x27;;
 import { TypeService } from &#x27;../../../services/type/type.service&#x27;;
+import { UserService } from &#x27;../../../services/user/user.service&#x27;;
 import {Validators, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
 import { LoadingController } from &#x27;@ionic/angular&#x27;;
 import { ToastController } from &#x27;@ionic/angular&#x27;;
@@ -855,8 +974,9 @@ export class AddMealPage {
   };
   // end of datepicker modal
 
-  @Input() usrId;
-  
+  prices &#x3D; [0.5,1,2,3,4,5,6,7,8,9,10];
+  portions &#x3D; [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+  usrID: string &#x3D;&quot;&quot;;
   types &#x3D; [];
   mealFormObj;
   setMeal;
@@ -867,13 +987,15 @@ export class AddMealPage {
               private mealService:MealService,
               private typeService:TypeService,
               public  loadingController: LoadingController,
-              public  toastController: ToastController) {
+              public  toastController: ToastController,
+              public  userController: UserService) {
 
     this.typeService.getTypes().subscribe(types &#x3D;&gt; {
       this.types &#x3D; types});
   }
 
   ngOnInit() {
+    this.usrID &#x3D; this.userController.getUserId();
     this.meal &#x3D; this.formBuilder.group({
       type: [&#x27;&#x27;, Validators.required,],
       name: [&#x27;&#x27;, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
@@ -889,7 +1011,7 @@ export class AddMealPage {
   logForm(){
 
     this.mealFormObj &#x3D; this.meal.value;
-    this.mealFormObj.usrId &#x3D; this.usrId;
+    this.mealFormObj.usrId &#x3D; this.usrID;
     this.setMeal &#x3D; JSON.stringify(this.mealFormObj);
     console.log(this.setMeal);
     this.mealService.addMeal(this.mealFormObj);
@@ -960,15 +1082,19 @@ export class AddMealPage {
 
       &lt;li&gt;
         &lt;ion-item&gt;
-              &lt;ion-label position&#x3D;&quot;floating&quot;&gt;Price&lt;/ion-label&gt;
-              &lt;ion-input type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;price&quot;&gt;&lt;/ion-input&gt;
+              &lt;ion-label&gt;Price&lt;/ion-label&gt;
+              &lt;ion-select type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;price&quot;&gt;
+                &lt;ion-select-option *ngFor&#x3D;&quot;let price of prices&quot; value&#x3D;&quot;{{ price }}&quot;&gt;{{price|currency:&quot;EUR&quot;}}&lt;/ion-select-option&gt;
+              &lt;/ion-select&gt;
         &lt;/ion-item&gt;
       &lt;/li&gt;
 
       &lt;li&gt;
           &lt;ion-item&gt;
                 &lt;ion-label position&#x3D;&quot;floating&quot;&gt;Portions&lt;/ion-label&gt;
-                &lt;ion-input type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;portions&quot;&gt;&lt;/ion-input&gt;
+                &lt;ion-select type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;portions&quot;&gt;
+                  &lt;ion-select-option *ngFor&#x3D;&quot;let portion of portions&quot; value&#x3D;&quot;{{ portion }}&quot;&gt;{{ portion }}&lt;/ion-select-option&gt;
+                &lt;/ion-select&gt;
           &lt;/ion-item&gt;
         &lt;/li&gt;
 
@@ -1050,8 +1176,8 @@ export class AddMealPage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon (click)="hideModal()" class="close" name="arrow-back" color="primary"></ion-icon>    <ion-title>add new meal</ion-title>  </ion-toolbar></ion-header><ion-content>  <form [formGroup]="meal" (ngSubmit)="logForm()">    <ul>      <li>          <ion-item>              <ion-label>Food type</ion-label>              <ion-select formControlName="type" cancelText="cancel" okText="Okay!">                <ion-select-option *ngFor="let type of types" value="{{ type.typ_id }}">{{ type.typ_name }}</ion-select-option>              </ion-select>            </ion-item>      </li>      <li>        <ion-item>            <ion-label position="floating">Meal Name</ion-label>            <ion-input type="text" formControlName="name"></ion-input>        </ion-item>      </li>      <li>        <ion-item>              <ion-label position="floating">Price</ion-label>              <ion-input type="text" formControlName="price"></ion-input>        </ion-item>      </li>      <li>          <ion-item>                <ion-label position="floating">Portions</ion-label>                <ion-input type="text" formControlName="portions"></ion-input>          </ion-item>        </li>      <li>        <ion-item>            <ion-label position="floating" class="dateLabel"><ion-icon name="calendar"></ion-icon>Day to serve</ion-label>            <ion-input readonly                      [liIonic4Datepicker]="datePickerObj"                      formControlName="date">            </ion-input>        </ion-item>      </li>      <li>        <ion-grid>          <ion-row>            <ion-col size="6">              <ion-item>                <ion-label>Start</ion-label>                <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="startTime"></ion-datetime>              </ion-item>          </ion-col>            <ion-col size="6">              <ion-item>                  <ion-label>End</ion-label>                  <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="endTime"></ion-datetime>              </ion-item>          </ion-col>        </ion-row>      </ion-grid>      </li>      <li>        <ion-item>            <ion-label position="floating">Meal Description</ion-label>            <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>        </ion-item>      </li>            <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Add Your Meal</ion-button>    </ul>  </form></ion-content></div>'
-    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-icon (click)="hideModal()" class="close" name="arrow-back" color="primary"></ion-icon>    <ion-title>add new meal</ion-title>  </ion-toolbar></ion-header><ion-content>  <form [formGroup]="meal" (ngSubmit)="logForm()">    <ul>      <li>          <ion-item>              <ion-label>Food type</ion-label>              <ion-select formControlName="type" cancelText="cancel" okText="Okay!">                <ion-select-option *ngFor="let type of types" value="{{ type.typ_id }}">{{ type.typ_name }}</ion-select-option>              </ion-select>            </ion-item>      </li>      <li>        <ion-item>            <ion-label position="floating">Meal Name</ion-label>            <ion-input type="text" formControlName="name"></ion-input>        </ion-item>      </li>      <li>        <ion-item>              <ion-label>Price</ion-label>              <ion-select type="text" formControlName="price">                <ion-select-option *ngFor="let price of prices" value="{{ price }}">{{price|currency:"EUR"}}</ion-select-option>              </ion-select>        </ion-item>      </li>      <li>          <ion-item>                <ion-label position="floating">Portions</ion-label>                <ion-select type="text" formControlName="portions">                  <ion-select-option *ngFor="let portion of portions" value="{{ portion }}">{{ portion }}</ion-select-option>                </ion-select>          </ion-item>        </li>      <li>        <ion-item>            <ion-label position="floating" class="dateLabel"><ion-icon name="calendar"></ion-icon>Day to serve</ion-label>            <ion-input readonly                      [liIonic4Datepicker]="datePickerObj"                      formControlName="date">            </ion-input>        </ion-item>      </li>      <li>        <ion-grid>          <ion-row>            <ion-col size="6">              <ion-item>                <ion-label>Start</ion-label>                <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="startTime"></ion-datetime>              </ion-item>          </ion-col>            <ion-col size="6">              <ion-item>                  <ion-label>End</ion-label>                  <ion-datetime type="time" displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="endTime"></ion-datetime>              </ion-item>          </ion-col>        </ion-row>      </ion-grid>      </li>      <li>        <ion-item>            <ion-label position="floating">Meal Description</ion-label>            <ion-textarea rows="3" cols="20" type="text" formControlName="description"></ion-textarea>        </ion-item>      </li>            <ion-button type="submit" [disabled]="!meal.valid" (click)="presentLoading()">Add Your Meal</ion-button>    </ul>  </form></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddMealPage', 'selector': 'app-add-meal'},{'name': 'AllergiesPage', 'selector': 'app-allergies'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChefCardComponent', 'selector': 'app-chef-card'},{'name': 'ChefTitleComponent', 'selector': 'app-chef-title'},{'name': 'EditUserPage', 'selector': 'app-edit-user'},{'name': 'ExperiencePage', 'selector': 'app-experience'},{'name': 'FavoriteChefsPage', 'selector': 'app-favorite-chefs'},{'name': 'FollowComponent', 'selector': 'app-follow'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MealDetailPage', 'selector': 'app-meal-detail'},{'name': 'MealHistoryPage', 'selector': 'app-meal-history'},{'name': 'MealItemComponent', 'selector': 'app-meal-item'},{'name': 'MealsPage', 'selector': 'app-meals'},{'name': 'OrdersPage', 'selector': 'app-orders'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AddMealPage'};
 </script>

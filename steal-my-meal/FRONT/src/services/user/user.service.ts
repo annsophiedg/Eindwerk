@@ -24,9 +24,11 @@ export class UserService {
   private userId = "10217728406738088";
   private userURL; 
   private orderURL;
+  private ratingURL;
   private experienceURL;
   private allergyURL;
   private favChefsURL;
+  private pageFavChefsURL;
   private user;
   private orders;
 
@@ -39,12 +41,15 @@ export class UserService {
     this.userURL = APIEndpoint + 'users/' + this.userId;
     // get current orders of user
     this.orderURL = APIEndpoint + 'orders/' + this.userId;
+    // get picked up, not rated orders of user
+    this.ratingURL = APIEndpoint + 'ratings/' + this.userId;
     //get user experience (when chef)
     this.experienceURL = APIEndpoint + 'experience/' + this.userId;
     // get user allergies
     this.allergyURL = APIEndpoint + 'allergies/' + this.userId;
     // get favorite chefs
     this.favChefsURL = APIEndpoint + 'favChefs/' + this.userId;
+    this.pageFavChefsURL = APIEndpoint + 'pageFavChefs/' + this.userId;
   }
 
   public getUserId() {
@@ -78,17 +83,21 @@ export class UserService {
   }
 
   // FAVORITE CHEFS
+  public getUserpageFavChefs():Observable<any> {
+    return this.http.get(`${this.pageFavChefsURL}`)
+  }
+
   public getUserFavChefs():Observable<any> {
     return this.http.get(`${this.favChefsURL}`)
   }
 
   public addUserFavChef(chef_id) {
-    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions).subscribe();
+    return this.http.post(`${this.favChefsURL}`, chef_id, httpOptions);
   }
 
   public deleteUserFavChef(chef_id) {
     let deleteFavChefURL = this.favChefsURL + ',' + chef_id;
-    return this.http.delete(`${deleteFavChefURL}`).subscribe();
+    return this.http.delete(`${deleteFavChefURL}`);
   }
 
   // ORDERED MEALS
@@ -109,13 +118,23 @@ export class UserService {
     return this.http.post(this.orderURL, mls_id, httpOptions)
   }
 
+  //get user orders to rate
+  public getOrdersToRate(){
+    return this.http.get(`${this.ratingURL}`)
+  }
+
+  //set fk_rat_id in orders
+  public rateOrder(ord_rat){
+    return this.http.post(`${this.ratingURL}`, JSON.stringify(ord_rat), httpOptions);
+  }
+
   // USER ALLERGIES
   public getUserAllergies():Observable<any> {
     return this.http.get(`${this.allergyURL}`)
   }
 
   public addAllergy(allergy) {
-    return this.http.post(this.allergyURL, allergy, httpOptions).subscribe()
+    return this.http.post(this.allergyURL, allergy, httpOptions)
   }
 
   public setAllergyOfUser(allergy) {
@@ -124,7 +143,7 @@ export class UserService {
 
   public deleteUserAllergy(allergy) {
     let deleteAllergyURL = this.allergyURL + ',' + allergy["ing_id"];
-    this.http.delete(deleteAllergyURL, allergy).subscribe()
+    return this.http.delete(deleteAllergyURL, allergy)
   }
   
 }

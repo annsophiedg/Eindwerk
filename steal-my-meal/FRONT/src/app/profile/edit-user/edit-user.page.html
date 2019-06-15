@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="arrow-back" (click)="hideModal()" name="arrow-back"></ion-icon>
+    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
     <ion-title>Edit Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,6 @@
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <fieldset class="box" formGroupName="fullName">
       <legend>Full Name</legend>
-      <!-- Change profile pic -->
       <ion-item>
         <!-- Firstname -->
         <ion-label position="floating">First Name</ion-label>
@@ -68,23 +67,5 @@
 
     <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
   </form>
-
-  <!-- <ion-button>Change your password</ion-button>
-  <fieldset>
-      <legend>Change Password</legend>
-      <ion-item>
-        <ion-label position="floating">Current Password</ion-label>
-        <ion-input type="password" id="password" name="password" [value]=""></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">New Password</ion-label>
-        <ion-input type="password" id="password" name="password" [value]=""></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">New Password</ion-label>
-        <ion-input type="password" id="password" name="password" [value]=""
-          (input)="savePassword($event.target.value)"></ion-input>
-      </ion-item>
-    </fieldset> -->
 
 </ion-content>

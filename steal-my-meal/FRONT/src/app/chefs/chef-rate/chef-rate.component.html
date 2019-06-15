@@ -1,0 +1,10 @@
+<ion-icon class="icon rating rating-laugh" *ngIf="12<=rating"
+  src='../../../assets/icon/laugh-beam-solid.svg'></ion-icon>
+<ion-icon class="icon rating rating-smile" *ngIf="8<=rating && rating<12"
+  src='../../../assets/icon/laugh-solid.svg'></ion-icon>
+<ion-icon class="icon rating rating-like" *ngIf="4<=rating && rating<8"
+  src='../../../assets/icon/smile-solid.svg'></ion-icon>
+<ion-icon class="icon rating rating-neutral" *ngIf="-1<=rating && rating<4"
+  src='../../../assets/icon/meh-solid.svg'></ion-icon>
+<ion-icon class="icon rating rating-sad" *ngIf="rating<-1" src='../../../assets/icon/frown-solid.svg'>
+</ion-icon>

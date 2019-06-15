@@ -6,11 +6,9 @@ import { myLeaveAnimation } from '../animations/leave';
 import {ModalService} from '../../services/modal/modal.service';
 
 import { ModalController, IonSlides } from '@ionic/angular';
-import { AddMealPage } from '../meals/add-meal/add-meal.page';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
-import { ProfilePage } from '../profile/profile.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
 
@@ -32,10 +30,8 @@ export class MealsPage implements OnInit {
   public myFavChefs = [];
   public orderedChefs;
   
-
   @ViewChild('slider') slider;
   @ViewChild('up') upBtn;
-
 
   meals = {};
   chefs = [];
@@ -110,7 +106,7 @@ export class MealsPage implements OnInit {
             });
             this.meals = this.meals;
             chefs.forEach(chef => {
-              chef = JSON.parse(chef);
+              // chef = JSON.parse(chef);
               chef.distance = "";
               this.chefs = [...this.chefs,chef];
               this.chefIds = [...this.chefIds,chef.mls_id];
@@ -119,6 +115,7 @@ export class MealsPage implements OnInit {
         }
         })
     });
+
   }
 
   showUp(e){
@@ -150,8 +147,16 @@ export class MealsPage implements OnInit {
   dragDown(){
     this.slider.el.style.pointerEvents = 'auto';
   }
-  // Modals to create
 
+<<<<<<< HEAD
+=======
+  // Modals to create
+  async openMealDetail(meal, chef, event){
+    if(!event.target.className.includes('star')){
+    this.ms.mealDetailModal(meal,chef)
+  }
+  }
+>>>>>>> db0acebb5644fcd292b5ac82f15ccfacb371c4f6
 
   distanceChange(e){   
     for(var i = 0; i < e.length; i++){
