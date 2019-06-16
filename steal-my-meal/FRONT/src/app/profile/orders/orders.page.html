@@ -6,7 +6,6 @@
 </ion-header>
 
 <ion-content class="box">
-  <h1>Next order to pick up:</h1>
   <ion-card class="meal">
 
     <div class="box top">
@@ -14,26 +13,25 @@
     </div>
 
     <div class="box center info info-voucher">
-      <div class="info-important">
-        <p class="address">
-          <span>Pick up place:</span>
-          <span class="date">{{orders[0].usr_street}} {{orders[0].usr_housenumber}}, {{orders[0].zip_zipcode}}
-            {{orders[0].zip_city}}</span>
-        </p>
-        <p>
-          <span>Pick up time:</span><br>
-          <span class="date">{{orders[0].mls_date | date:"dd/MM/yy"}}</span>
-          <br>
-          <span>{{orders[0].mls_take_start}} -
-            {{orders[0].mls_take_end}}</span>
-        </p>
-        <h2>
+      <div class="info-order">
+        <h4 class='title'>Pick up time & Place</h4>
+        <p class="time">{{orders[0].mls_date | date:"dd/MM/yy"}}: {{orders[0].mls_take_start | slice:0:-3}} -
+          {{orders[0].mls_take_end | slice:0:-3}}</p>
+        <p>{{orders[0].usr_street}} {{orders[0].usr_housenumber}}, {{orders[0].zip_zipcode}}
+          {{orders[0].zip_city}}</p>
+      </div>
+      <div class="info-order">
+        <h4 class='title'>Order information</h4>
+        <p class="amount">
           <span class="text">{{orders[0].ord_amount}} </span>
           <ion-icon class="icon" name="basket"></ion-icon>
-        </h2>
-        <h2>€ {{orders[0].mls_price}}</h2>
+        </p>
+        <p class="price">€ {{orders[0].mls_price}}</p>
       </div>
-      <p class="description">{{orders[0].mls_description}}</p>
+      <div class="info-order">
+        <h4 class='title'>Description</h4>
+        <p>{{orders[0].mls_description}}</p>
+      </div>
     </div>
 
     <div class="box bottom bottom-swipe">
@@ -59,7 +57,7 @@
   <p class="voucher-note">Show this voucher when you pick up your meal.<br>Let the chef swipe and enjoy!</p>
 
   <!-- FULL OVERVIEW OF ALL CURRENT ORDERS -->
-<ion-footer *ngIf="1<orders.length" (click)="ms.OpenOrderList()">
+  <ion-footer *ngIf="1<orders.length" (click)="ms.OpenOrderList()">
     <h2 class="box">Show all my ordered meals</h2>
-</ion-footer>
+  </ion-footer>
 </ion-content>

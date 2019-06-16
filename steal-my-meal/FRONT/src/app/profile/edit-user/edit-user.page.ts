@@ -35,9 +35,7 @@ export class EditUserPage implements OnInit {
         usr_housenumber: [this.user['usr_housenumber'], Validators.required],
         zip_zipcode: [this.user['zip_zipcode'], Validators.required],
         zip_city: [this.user['zip_city'], Validators.required]
-      }),
-      usr_email: [this.user['usr_email'], Validators.required],
-      usr_telephone: [this.user['usr_telephone']]
+      })
     });
 
   }
