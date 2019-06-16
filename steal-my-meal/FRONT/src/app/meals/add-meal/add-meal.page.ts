@@ -88,10 +88,10 @@ export class AddMealPage {
 
   logForm(){
     this.mealFormObj = this.meal.value;
-    this.mealFormObj.usrId = this.usrID;    
+    this.mealFormObj.usrId = this.usrID;
     let message = 'Your meal was created succefully!';
     this.ms.presentLoading(message,true,this.mealService.addMeal(this.mealFormObj));
   }
 
-
+  
 }
