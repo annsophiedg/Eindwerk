@@ -229,6 +229,29 @@ class MealController {
 
     $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
   }
+
+  /**
+   * Get allergies of a single meal crosscheck with the user
+   * ing_name
+   * @return array
+   */
+  function getUserAllergy($userId,$mealId)
+  {
+    $allergies = [];
+
+    //sql statement to get requested meal details
+    $sql = "call getUserMealAllergy($userId,$mealId)";
+
+    //fetch data from db
+    $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
+
+    foreach ($result as $row) {
+      array_push($allergies,$row);
+    }
+
+    
+    return json_encode($allergies);
+  }
 }
 
 ?>

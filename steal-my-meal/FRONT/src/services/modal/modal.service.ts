@@ -106,11 +106,17 @@ export class ModalService {
     return await modal.present();
   }
 
-  async presentLoading(m,closeModal = true, obs:Observable<any>){
+  async presentLoading(m,closeModal = true, obs:Observable<any> = null){
     let message = m;
+    let dur = 10000
+    if (!obs){
+      dur = 1000;
+      if (closeModal == true) this.hideModal();
+    }
 
     const loading = await this.loadingController.create({
       message: 'Loading...',
+      duration: dur,
       spinner: "dots"
     });
 
@@ -129,13 +135,14 @@ export class ModalService {
       ]
     });
     await loading.present();
-
-    await obs.subscribe((res) => {
-      this.mealsPage.refresh().then((x)=>{
-        if (x) loading.dismiss();
-        if (closeModal == true) this.hideModal();
-      });
-    })
+    if (obs){
+      await obs.subscribe((res) => {
+          this.mealsPage.refresh().then((x)=>{
+            if (x) loading.dismiss();
+            if (closeModal == true) this.hideModal();
+          });
+      })
+    }
     
     toast.present();
 

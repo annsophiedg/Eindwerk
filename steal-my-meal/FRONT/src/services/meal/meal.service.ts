@@ -62,5 +62,9 @@ export class MealService {
     return this.http.post(this.ingredientURL, ingredient, httpOptions);
   }
 
+  getUserAllergy(userID, mealID):Observable<any>{
+    return this.http.get(`${this.mealsUrl}/${userID}/${mealID}`);
+  }
+
 
 }

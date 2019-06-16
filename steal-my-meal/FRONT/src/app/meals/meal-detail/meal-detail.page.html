@@ -4,10 +4,15 @@
         <img [src]=chef.chef_picture>
     </ion-avatar>
     <ion-card-title class="title"><h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2></ion-card-title>
-    <ion-card-title class="meal">{{meal.mls_name}}</ion-card-title>
+    <ion-card-title class="meal">{{meal.mls_name}}<ion-icon #alert class="alert" *ngIf = "allergies.length > 0" name="alert" (click)=show()></ion-icon></ion-card-title>
+    <ul *ngIf = "allergies.length > 0" #popup class="popup">
+        <li><p>This meal contains:</p></li>
+        <li *ngFor="let item of allergies">{{item.allergies}}</li>
+    </ul>
 </ion-card>
 
 <ion-content>
+    
   <div class="time">
     <div class="left">
         <p>Pick-up date:  <span class='bold'>{{meal.mls_date}}</span></p>
