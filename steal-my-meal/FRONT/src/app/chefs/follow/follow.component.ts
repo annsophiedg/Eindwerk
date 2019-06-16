@@ -25,10 +25,11 @@ export class FollowComponent implements OnInit {
   checkFavChef() {
     this.userService.getUserFavChefs().subscribe((result)=>{
       this.myFavChefs = result;
+      console.log('chef',this.chef);
 
       //check if this chef is myFavChef
       for (let i=0; i<this.myFavChefs.length; i++) {
-        if (this.chef.chef_id == this.myFavChefs[i]){
+        if (this.chef.chef_id == this.myFavChefs[i]||this.chef.usr_id == this.myFavChefs[i]){
           this.isFavChef = true;
           break;
         } else {
@@ -39,16 +40,29 @@ export class FollowComponent implements OnInit {
   }
 
   addFavChef() {
-    // this.isFavChef = !this.isFavChef;
+    let id:string;
+    
+    if (this.chef.chef_id) {
+      id = this.chef.chef_id
+    } else if (this.chef.usr_id) {
+      id = this.chef.usr_id
+    }
 
-    this.userService.addUserFavChef(this.chef.chef_id).subscribe(res=>{
+    this.userService.addUserFavChef(id).subscribe(res=>{
       this.checkFavChef();
     });
   }
 
   deleteFavChef() {
-    // this.isFavChef = !this.isFavChef;
-    this.userService.deleteUserFavChef(this.chef.chef_id).subscribe(res=>{
+    let id:string;
+    
+    if (this.chef.chef_id) {
+      id = this.chef.chef_id
+    } else if (this.chef.usr_id) {
+      id = this.chef.usr_id
+    }
+    
+    this.userService.deleteUserFavChef(id).subscribe(res=>{
       this.checkFavChef();
     });
 
