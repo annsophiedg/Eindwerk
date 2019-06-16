@@ -36,12 +36,12 @@ export class MealService {
     return this.http.post(this.mealsUrl, meal, httpOptions);
   }
 
-  updateMeal(meal):Observable<any>{
+  updateMeal(meal){
     return this.http.put(this.mealsUrl, meal, httpOptions);
   }
 
   //Subscribe to meal(update order)
-  subscribeToMeal(subscribtion):Observable<any>{
+  subscribeToMeal(subscribtion){
     return this.http.put(this.orderUrl, subscribtion, httpOptions);
   }
 

@@ -20,4 +20,9 @@ ion-grid {
             border-bottom: 1px solid $baseColor_red;
         }
     }
+
+    ion-col.flex{
+        display: flex;
+        justify-content: space-around;
+    }
 }
