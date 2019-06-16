@@ -1,6 +1,6 @@
 $( function() {
 
-    //-----GET USERS
+    //-----GET STATISTICS
     $.ajax({
         url: "https://wdev.be/bartvdb/BACK/api/statistics",
         type: "GET",
@@ -23,5 +23,4 @@ $( function() {
             $('#errorResponse').html("Something went wrong: " + textStatus);
         }
     });
-
 });
