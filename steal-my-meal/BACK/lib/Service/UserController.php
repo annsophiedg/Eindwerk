@@ -35,10 +35,8 @@ class UserController {
    * usr_id
    * usr_firstname
    * usr_lastname
-   * usr_email
    * usr_street
    * usr_housenumber
-   * usr_telephone
    * usr_profile_url
    * zip_zipcode
    * zip_city
