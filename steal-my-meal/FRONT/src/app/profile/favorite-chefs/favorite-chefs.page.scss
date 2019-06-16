@@ -36,14 +36,25 @@
 //   color: $baseColor_red;
 // }
 
+app-chef-card{
+  width: 100%;
+}
+
 .chef {
-  margin-top: .7rem;
+  // margin-top: .7rem;
 
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+
+  // background-color: $baseColor_red;
+  margin: .7rem auto 0 auto;
   display: flex;
+  width: 95vw;
   flex-wrap: wrap;
+  background-color: $baseColor_white;
+  height: 6.3rem;
   justify-content: space-between;
-
-  background-color: $baseColor_red;
 
   .profilepic {
     width: 25%;

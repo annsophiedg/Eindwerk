@@ -31,22 +31,17 @@ import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { OrdersPage } from './profile/orders/orders.page';
 import { OrderListPage } from './profile/orders/order-list/order-list.page';
 import { LogInPage } from './log-in/log-in.page';
+import { ChefModule } from './chef.module';
 
 // components
-// import { ChefCardComponent } from './chefs/chef-card/chef-card.component';
-// import { ChefTitleComponent } from './chefs/chef-title/chef-title.component';
-// import { FollowComponent } from './chefs/follow/follow.component';
-// import { ChefRateComponent } from './chefs/chef-rate/chef-rate.component';
+
 
 @NgModule({
   //all modal components in declarations & entrycomponents
   declarations: [
     //components
     AppComponent, 
-    // ChefCardComponent,
-    // ChefTitleComponent,
-    // FollowComponent,
-    // ChefRateComponent,
+    
     //pages
     AddMealPage,
     MealDetailPage,
@@ -58,7 +53,7 @@ import { LogInPage } from './log-in/log-in.page';
     FavoriteChefsPage,
     LogInPage,
     ExperiencePage,
-    MealHistoryPage,
+    MealHistoryPage
   ],
   entryComponents: [
     AddMealPage, 
@@ -71,11 +66,7 @@ import { LogInPage } from './log-in/log-in.page';
     FavoriteChefsPage,
     LogInPage,
     ExperiencePage,
-    MealHistoryPage,
-    // ChefCardComponent,
-    // ChefTitleComponent,
-    // FollowComponent,
-    // ChefRateComponent
+    MealHistoryPage
   ],
   imports: [
     BrowserModule, 
@@ -86,17 +77,20 @@ import { LogInPage } from './log-in/log-in.page';
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
     Ionic4DatepickerModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    ChefModule
+
   ], 
   providers: [
     StatusBar,
     SplashScreen,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
   exports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 

@@ -14,11 +14,6 @@ import { ProfilePage } from './profile.page';
 // import { OrdersPage } from '../profile/orders/orders.page';
 // import { OrderListPage } from '../profile/orders/order-list/order-list.page';
 
-// import { ChefCardComponent } from './../chefs/chef-card/chef-card.component';
-// import { ChefTitleComponent } from './../chefs/chef-title/chef-title.component';
-// import { ChefRateComponent } from './../chefs/chef-rate/chef-rate.component';
-// import { FollowComponent } from './../chefs/follow/follow.component';
-
 import { ModalService } from 'src/services/modal/modal.service';
 
 const routes: Routes = [
@@ -30,36 +25,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  exports: [ModalService],
+  exports: [ModalService,],
   declarations: [
     ProfilePage,
-    //modal pages
-    // EditUserPage,
-    // AllergiesPage,
-    // FavoriteChefsPage,
-    // ExperiencePage,
-    // MealHistoryPage,
-    // OrdersPage,
-    // OrderListPage,
-    // ChefCardComponent,
-    // ChefTitleComponent,
-    // ChefRateComponent,
-    // FollowComponent
-  ],
-  entryComponents: [
-    //modal pages
-    // EditUserPage,
-    // AllergiesPage,
-    // FavoriteChefsPage,
-    // ExperiencePage,
-    // MealHistoryPage,
-    // OrdersPage,
-    // OrderListPage,
   ]
 })
-export class ProfilePagePageModule {}
+export class ProfilePageModule {}

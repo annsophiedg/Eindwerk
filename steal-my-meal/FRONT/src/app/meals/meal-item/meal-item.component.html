@@ -1,8 +1,10 @@
 <ion-slides [options]="slideOpts">
   <!-- CHEF SLIDE -->
   <ion-slide class="chef">
-    <app-chef-card class="chef-component" [chef]=chef></app-chef-card>
+    <app-chef-card class="chef-component" [chef]='chef' [firstname]='chef.chef_firstname' [lastname]='chef.chef_lastname' [picture]='chef.chef_picture'></app-chef-card>
   </ion-slide>
+
+  
   <!-- MEAL SLIDE -->
   <ion-slide class="meal">
     <div class="top">

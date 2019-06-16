@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChefService } from '../../../services/chef/chef.service';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-meal-item',

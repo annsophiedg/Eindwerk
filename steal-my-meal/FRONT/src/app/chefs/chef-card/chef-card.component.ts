@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Chef } from 'src/models/chef';
 
 @Component({
   selector: 'app-chef-card',
@@ -9,7 +8,10 @@ import { Chef } from 'src/models/chef';
 })
 export class ChefCardComponent implements OnInit {
 
-  // @Input() public chef;
+  @Input() public chef;
+  @Input() public firstname;
+  @Input() public lastname;
+  @Input() public picture;
 
   constructor() { }
 
