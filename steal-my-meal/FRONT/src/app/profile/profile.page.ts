@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { ChefService } from '../../services/chef/chef.service';
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +22,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private userService:UserService,
-    public chefService:ChefService
+    public chefService:ChefService,
+    private storage:Storage
   ) {
     this.getUserData();
     this.getCurrentOrders();
@@ -81,6 +83,11 @@ export class ProfilePage implements OnInit {
     this.userService.rateOrder({'ord_id':ord_id,'rat_id':rate_id}).subscribe(res=>{
       this.getOrdersToRate()
     });
+  }
+
+  logOut(){
+    this.storage.remove('id');
+    
   }
 
   ngOnInit() {
