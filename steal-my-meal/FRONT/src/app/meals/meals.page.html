@@ -34,10 +34,15 @@
   <ion-slide class="slide mealComponents" (mousedown)=dragDown() (mouseup)=dragUp()>
 
     <content>
-      <div *ngFor="let chef of chefs; let i = index">
+      <div *ngFor="let chef of chefs; let i = index" >
         <app-meal-item [meal]=meals[chef.mls_id] [chef]=chef [distance]="distances[i]"
           (click)="openMealDetail(meals[chef.mls_id], chef, $event)"></app-meal-item>
       </div>
     </content>
   </ion-slide>
+
+  <ion-slide class="slide white">
+  </ion-slide>
+  <ion-slide class="slide white">
+    </ion-slide>
 </ion-slides>

@@ -64,8 +64,9 @@ export class LogInPage implements OnInit {
   }
 
   public onSubmit() {
-    this.userService.setUserObservable(this.userForm.value).subscribe();
-    this.ms.hideModal();
+    let message = 'Your information was updated succesfully!';
+    //modal animation, close modal after submit = false
+    this.ms.presentLoading(message,true,this.userService.setUserObservable(this.userForm.value));
   }
 
 }

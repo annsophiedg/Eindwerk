@@ -38,6 +38,13 @@ ion-slides{
             background: $baseColor_white;
             margin-top: 3.5em;
             pointer-events: initial; 
+            z-index: 100;
+        }
+
+        &.white{
+            background: $baseColor_white;
+            margin-top: 3.5em;
+            height: 100vh;
         }
 
     }
@@ -52,4 +59,8 @@ app-map{
 .scroll{
     height: 100%;
     overflow: scroll;
+}
+
+content{
+    height: 150%;
 }
