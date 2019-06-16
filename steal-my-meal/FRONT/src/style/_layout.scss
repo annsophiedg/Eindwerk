@@ -9,7 +9,9 @@ ion-header {
         ion-icon {
             //ion-icon with class="arrow-back"
             &.arrow-back {
+                height: 100%;
                 position: absolute;
+                top: 0;
                 left: 1rem;
                 font-size: 20px;
                 z-index: 1;
@@ -51,6 +53,27 @@ ion-button .button-native {
 }
 
 //FORM LAYOUT
+.btns{
+    width: 100%;
+    margin: auto 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 5;
+}
+
+ion-button.red{
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    padding-left: .7rem; 
+    font-size: 1.8rem;
+    --background: #FD665D;
+    --color: #FBF7F6;
+
+    p{
+        padding: 0.7rem;
+    }
+}
 
 //FONT CLASSES
 .thin {
@@ -65,20 +88,6 @@ ion-button .button-native {
 .showOff {
     background: $baseColor_red;
     color: $baseColor_white;
-}
-
-ion-button.red{
-    font-size: 1.8rem;
-    padding: 1rem;
-    padding-left: .7rem; 
-    width: 100%;
-    --background: #FD665D;
-    height: 100%;
-    --color: #FBF7F6;
-
-    p{
-        padding: 0.7rem;
-    }
 }
 
 ion-content{

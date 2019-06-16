@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
+    <ion-icon class="icon arrow-back" (click)="ms.hideModal()" name="arrow-back"></ion-icon>
     <ion-title>Edit Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -47,25 +47,9 @@
       </ion-item>
     </fieldset>
 
-    <fieldset class="box">
-      <legend>Email Address</legend>
-      <ion-item>
-        <!-- Email -->
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" id="email" formControlName="usr_email"></ion-input>
-      </ion-item>
-    </fieldset>
-
-    <fieldset class="box">
-      <legend>Telephone Number</legend>
-      <ion-item>
-        <!-- Telephone -->
-        <ion-label position="floating">Telephone Number</ion-label>
-        <ion-input type="tel" id="telephone" formControlName="usr_telephone"></ion-input>
-      </ion-item>
-    </fieldset>
-
-    <ion-button type="submit" [disabled]="!userForm.valid">Update</ion-button>
+    <div class="btns">
+      <ion-button class="red" type="submit" [disabled]="!userForm.valid"><p>Update</p></ion-button>
+    </div>
   </form>
 
 </ion-content>
