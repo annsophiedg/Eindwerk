@@ -79,7 +79,7 @@ class MealController {
     $ingredients = [];
 
     //sql statement to get requested meal details
-    $sql = "select ing_name from `meals/ingredients` mi
+    $sql = "select ing_id, ing_name from `meals/ingredients` mi
     inner join ingredients i on mi.fk_ing_id = i.ing_id
     where fk_mls_id = ".$mealId;
 
@@ -90,6 +90,7 @@ class MealController {
       array_push($ingredients,$row);
     }
 
+    
     return json_encode($ingredients);
   }
 
@@ -155,6 +156,55 @@ class MealController {
                         "COMMIT;";
                         
     $orderMealResult = $this->dbm->sqlExecute($orderSqlCommand, null, PDO::FETCH_OBJ);
+  }
+
+  function updateMeal($content){
+
+    $decoded = json_decode($content, true);
+
+    //get number from string portions
+    // $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
+
+    // //Function to create multiple rows in order table for each portion
+    // function createOrders($portions, $usrId){
+    //   $string;
+    //   for($x=1; $x<=$portions; $x++){
+    //     if($portions == $x){ $string .="( '".$usrId."', @mls_id );";}
+    //     else{ $string .="( '".$usrId."', @mls_id ),";}
+    //   };
+    //   return $string;
+    // };
+
+    //Function to set ingredients for one meal
+    function setIngredients($ingredients, $mealId){
+      $string;
+      $numbIngredients = count($ingredients);
+      $y = 0;
+      for($x=1; $x<=$numbIngredients; $x++){
+        if($numbIngredients == $x){ $string .="( '".$ingredients[$y]["ing_id"]."', ".$mealId.");";}
+        else{ $string .="( '".$ingredients[$y]["ing_id"]."', ".$mealId." ),";}
+        $y++;
+      };
+      return $string;
+    };
+
+    //Use MySql transaction for inserting new meal and orders at same time. The quantity of orders is the same as the number of portions.
+    $updateSqlCommand = "BEGIN;
+                        UPDATE meals SET mls_name='".$decoded["name"].
+                        "',mls_description= '".$decoded["description"].
+                        "', mls_price= '".$decoded["price"].
+                        "', mls_take_start= '".$decoded["startTime"].
+                        "', mls_take_end= '".$decoded["endTime"].
+                        "', mls_date= '".$decoded["date"].
+                        "', fk_typ_id= '".$decoded["type"].
+                        "' WHERE mls_id= '".$decoded["mealId"]."';
+                        DELETE from `meals/ingredients` WHERE fk_mls_id=".$decoded["mealId"].";
+                        INSERT INTO `meals/ingredients` (fk_ing_id, fk_mls_id)
+                        VALUES".setIngredients($decoded["ingredients"], $decoded["mealId"]).
+                        "COMMIT;";
+                        
+    $updateMealResult = $this->dbm->sqlExecute($updateSqlCommand, null, PDO::FETCH_OBJ);
+
   }
 
   // Add an ingredient to DB & return the ing_id

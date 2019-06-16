@@ -19,6 +19,7 @@ import { MealHistoryPage } from '../../app/profile/meal-history/meal-history.pag
 import { OrdersPage } from '../../app/profile/orders/orders.page';
 import { OrderListPage } from '../../app/profile/orders/order-list/order-list.page';
 import { MealDetailPage } from '../../app/meals/meal-detail/meal-detail.page';
+import { EditMealPage } from '../../app/meals/edit-meal/edit-meal.page';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -66,6 +67,21 @@ export class ModalService {
     this.openModal(MealHistoryPage);
   }
 
+  public openEditMeal(meal){
+    this.openModal(EditMealPage, meal);
+  }
+
+  // public openInvite() {
+  //   this.openModal(MealHistoryPage);
+  // }
+
+  // public openSettings() {
+  //   this.openModal(MealHistoryPage);
+  // }
+
+  // public openInfo() {
+  //   this.openModal(MealHistoryPage);
+  // }
   public openOrders() {
     this.openModal(OrdersPage);
   }

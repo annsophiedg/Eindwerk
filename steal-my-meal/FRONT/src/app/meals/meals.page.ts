@@ -167,8 +167,6 @@ export class MealsPage implements OnInit {
       return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
 
     this.orderedChefs = temp;
-    
-    
   }
   
 }
