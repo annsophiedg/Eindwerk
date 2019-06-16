@@ -58,15 +58,13 @@ export class LogInPage implements OnInit {
         usr_housenumber: [this.user['usr_housenumber']],
         zip_zipcode: [this.user['zip_zipcode'], Validators.required],
         zip_city: [this.user['zip_city'],Validators.required]
-      }),
-      usr_email: [this.user['usr_email']],
-      usr_telephone: [this.user['usr_telephone']]
+      })
       
     });
   }
 
   public onSubmit() {
-    this.userService.setUserObservable(this.userForm.value).subscribe(res => this.parent.getChefs('test'));
+    this.userService.setUserObservable(this.userForm.value).subscribe();
     this.ms.hideModal();
   }
 

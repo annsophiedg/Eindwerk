@@ -95,10 +95,7 @@ class UserController {
       $new_zip = $this->getZipId($zipcode,$city);
       $new_zip_id = json_decode($new_zip)[0]->id;
 
-      $email = $decoded["usr_email"];
-      $telephone = $decoded["usr_telephone"];
-
-      $sql = "UPDATE users SET usr_firstname = '".$firstname."', usr_lastname = '".$lastname."', usr_street = '".$street."', usr_housenumber = '".$housenumber."', usr_email = '".$email."', usr_telephone = '".$telephone."', fk_zip_id = '".$new_zip_id."' WHERE usr_id = ".$id;
+      $sql = "UPDATE users SET usr_firstname = '".$firstname."', usr_lastname = '".$lastname."', usr_street = '".$street."', usr_housenumber = '".$housenumber."', fk_zip_id = '".$new_zip_id."' WHERE usr_id = ".$id;
 
       $result = $this->dbm->sqlExecute($sql, null, PDO::FETCH_OBJ);
 
