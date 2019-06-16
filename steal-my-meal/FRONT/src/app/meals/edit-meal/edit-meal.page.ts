@@ -6,6 +6,7 @@ import { UserService } from '../../../services/user/user.service';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ModalService } from 'src/services/modal/modal.service';
 
 @Component({
   selector: 'app-edit-meal',
@@ -77,7 +78,8 @@ export class EditMealPage implements OnInit {
              private typeService:TypeService,
              public  loadingController: LoadingController,
              public  toastController: ToastController,
-             public  userController: UserService,) {
+             public  userController: UserService,
+             private ms: ModalService) {
 
       // Get all types
       this.typeService.getTypes().subscribe(types => {
@@ -120,40 +122,19 @@ export class EditMealPage implements OnInit {
  }
 
  logForm(){
-   // Post meal to DB
-    // Create meal object from form values
-   this.mealFormObj = this.mealForm.value;
-    // Add user ID and meal ID to object
-   this.mealFormObj.usrId = this.usrID;
-   this.mealFormObj.mealId = this.mealID;
-   this.mealService.updateMeal(this.mealFormObj);
- }
+  // Post meal to DB
+   // Create meal object from form values
+  this.mealFormObj = this.mealForm.value;
+   // Add user ID and meal ID to object
+  this.mealFormObj.usrId = this.usrID;
+  this.mealFormObj.mealId = this.mealID;
+  this.mealFormObj;
+}
 // Present loading animation
- async presentLoading(){
-   const loading = await this.loadingController.create({
-     message: 'Loading...',
-     duration: 2000,
-     spinner: "dots"
-   });
-   const toast = await this.toastController.create({
-     position: 'top',
-     duration: 2000,
-     buttons: [
-       {
-         side: 'start',
-         icon: 'restaurant',
-         text: 'Your meal was changed succefully!',
-         handler: () => {
-           console.log('Favorite clicked');
-         }
-       }
-     ]
-   });
-   await loading.present();
-   await loading.onDidDismiss();
-   this.modal.dismiss();
-   toast.present();
- }
+async presentLoading(){
+  await this.logForm();
+  this.ms.presentLoading('Your meal was changed succefully!', true, this.mealService.updateMeal(this.mealFormObj));
+}
 
  // Hide this modal
  hideModal(){

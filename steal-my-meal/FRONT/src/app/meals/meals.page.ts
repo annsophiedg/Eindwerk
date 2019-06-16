@@ -5,12 +5,12 @@ import { myEnterAnimation } from '../animations/enter';
 import { myLeaveAnimation } from '../animations/leave';
 import {ModalService} from '../../services/modal/modal.service';
 
-import { ModalController, IonSlides } from '@ionic/angular';
 import { FacebookService } from 'src/services/facebook/facebook.service';
 import { ActivatedRoute } from '@angular/router';
 import { MealDetailPage } from './meal-detail/meal-detail.page';
 import {Storage} from '@ionic/storage';
 import { UserService } from 'src/services/user/user.service';
+
 
 
 @Component({
@@ -49,7 +49,6 @@ export class MealsPage implements OnInit {
     private chefService:ChefService, 
     private fbService:FacebookService, 
     private ms:ModalService,
-    public modal: ModalController, 
     private route:ActivatedRoute,
     private storage:Storage,
     private userService: UserService
@@ -84,38 +83,49 @@ export class MealsPage implements OnInit {
           }else
             this.ms.openLogIn({'pageName':'Facebook','parent':this,'modalService': this.ms}); 
         }
-        
         this.getChefs();
       });
     }
-    
+    this.ms.setMealsPage(this);
   }
 
-  public getChefs(){
-    this.chefService.setUserId(this.userID);
-    this.userService.setUserId(this.userID);
-    this.userService.setUser(this.user);
-    this.chefService.getChefs(this.userID).subscribe(chefs=>{
-      if (chefs == null)
-        chefs = [];
-      //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
-      this.mealService.getMeals().subscribe(meals=>{
-          if(meals){
-            meals.forEach(meal =>{
-              this.meals[meal.mls_id] = meal;
-            });
-            this.meals = this.meals;
-            chefs.forEach(chef => {
-              // chef = JSON.parse(chef);
-              chef.distance = "";
-              this.chefs = [...this.chefs,chef];
-              this.chefIds = [...this.chefIds,chef.mls_id];
-              this.distances = [...this.distances,""];
-            });
-        }
-        })
+  public refresh():Promise<any>{
+    this.chefs = [];
+    this.distances = [];
+    this.chefIds = [];
+    this.meals = {};
+    return this.getChefs()
+  }
+
+  public getChefs():Promise<any>{
+    var promise = new Promise((resolve) => {
+      this.chefService.setUserId(this.userID);
+      this.userService.setUserId(this.userID);
+      this.userService.setUser(this.user);
+      this.chefService.getChefs(this.userID).subscribe(chefs=>{
+        if (chefs == null)
+          chefs = [];
+        //load meals after chefs, this prevent creating a meal-item before chefs in initialized.
+        this.mealService.getMeals().subscribe(meals=>{
+            if(meals){
+              meals.forEach(meal =>{
+                this.meals[meal.mls_id] = meal;
+              });
+              this.meals = this.meals;
+              chefs.forEach(chef => {
+                // chef = JSON.parse(chef);
+                chef.distance = "";
+                this.chefs = [...this.chefs,chef];
+                this.chefIds = [...this.chefIds,chef.mls_id];
+                this.distances = [...this.distances,""];
+              });
+          }
+          resolve('done');
+          })
+      });
     });
 
+    return promise;
   }
 
   showUp(e){
@@ -151,19 +161,19 @@ export class MealsPage implements OnInit {
   // Modals to create
   async openMealDetail(meal, chef, event){
     if(!event.target.className.includes('star')){
-    this.ms.mealDetailModal(meal,chef)
-  }
+      this.ms.mealDetailModal(meal,chef)
+    }
   }
 
   distanceChange(e){   
     for(var i = 0; i < e.length; i++){
       this.chefs[i].distance = e[i];
     }
-    // this.distances = e;
-    this.distances = e.sort();
+    this.distances = e;
+    // this.distances = e.sort();
     let temp = [...this.chefs];
-    temp.sort((a, b) => {
-      return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
+    // temp.sort((a, b) => {
+    //   return parseFloat(a.distance.replace(",","."))-parseFloat(b.distance.replace(",","."));});
 
     this.orderedChefs = temp;
   }

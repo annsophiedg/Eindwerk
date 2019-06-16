@@ -36,10 +36,12 @@ $parts = explode("/", $request);
 
 $subject = null;
 $id = null;
+$param = null;
 
 if ( count($parts) > 2 ) $api = $parts[2];
 if ( count($parts) > 3 ) $subject = $parts[3];
 if ( count($parts) > 4 ) $id = $parts[4];
+if ( count($parts) > 5 ) $param = $parts[5];
 
 
 // print 'api: ' .$api.' subject: '.$subject.' id: ' .$id .'<br>';
@@ -50,7 +52,13 @@ if ( $subject == "meals" )
     $mealController = new MealController($dbManager);
     
     if ($method == "GET") {
-        if (!$id) {
+       
+        if($param){
+            //GET allergies of user for this meal
+            $allergies = $mealController->getUserAllergy($id,$param);
+            echo $allergies;
+        }
+        else if (!$id) {
             //GET overview meals: sort on location
             $availableMeals = $mealController->getMealOverview();
             echo $availableMeals;
@@ -108,7 +116,7 @@ if ( $subject == "orders" )
             echo $userOrders;
         }
     }else if ($method == "PUT") {
-        $subscription = $mealController->subscibe($input);
+        $subscription = $mealController->subscribe($input);
     } elseif ($method == "POST") {
         if ($id) {
             //set ord_is_delivered = 1

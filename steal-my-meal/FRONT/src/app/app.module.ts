@@ -30,6 +30,10 @@ import { MealHistoryPage } from '../app/profile/meal-history/meal-history.page';
 import { OrdersPage } from './profile/orders/orders.page';
 import { OrderListPage } from './profile/orders/order-list/order-list.page';
 import { LogInPage } from './log-in/log-in.page';
+import { ChefModule } from './chef.module';
+
+// components
+
 import { EditMealPage } from '../app/meals/edit-meal/edit-meal.page';
 
 @NgModule({
@@ -37,10 +41,7 @@ import { EditMealPage } from '../app/meals/edit-meal/edit-meal.page';
   declarations: [
     //components
     AppComponent, 
-    // ChefCardComponent,
-    // ChefTitleComponent,
-    // FollowComponent,
-    // ChefRateComponent,
+    
     //pages
     AddMealPage,
     MealDetailPage,
@@ -78,17 +79,20 @@ import { EditMealPage } from '../app/meals/edit-meal/edit-meal.page';
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
     Ionic4DatepickerModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    ChefModule
+
   ], 
   providers: [
     StatusBar,
     SplashScreen,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
   exports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 

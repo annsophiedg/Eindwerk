@@ -1,10 +1,10 @@
 <ion-avatar class="profilepic">
-  <img [src]=chef.chef_picture alt="profilepicture">
+  <img  [src]=picture alt="profilepicture">
 </ion-avatar>
 <div class="top">
   <div class="info">
     <app-chef-title [chef]=chef></app-chef-title>
-    <h2>{{chef.chef_firstname}} {{chef.chef_lastname}}</h2>
+    <h2>{{firstname}} {{lastname}}</h2>
   </div>
   <app-follow class="follow" [chef]=chef></app-follow>
 </div>

@@ -8,8 +8,10 @@
 <ion-content>
 
   <ion-card class="chef" *ngFor="let c of favChefs">
-    <!-- <app-chef-card [chef]=c></app-chef-card> -->
-    <ion-avatar class="profilepic">
+  
+    <app-chef-card [chef]='c' [firstname]='c.usr_firstname' [lastname]='c.usr_lastname' [picture]='c.usr_profile_url' ></app-chef-card>
+  
+    <!-- <ion-avatar class="profilepic">
       <img [src]=c.usr_profile_url alt="profilepicture">
     </ion-avatar>
     <div class="top">
@@ -46,7 +48,7 @@
             src='../../../assets/icon/frown-solid.svg'></ion-icon>
         </h2>
       </div>
-    </div>
+    </div> -->
   </ion-card>
 
 </ion-content>

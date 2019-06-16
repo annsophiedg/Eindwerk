@@ -78,6 +78,7 @@
     position: relative;
     width: 100%;
     overflow: scroll;
+    height: calc(100% - 250px);
 }
 
 .list-vertical {
@@ -85,10 +86,12 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
+    
 
     >ion-item {
         width: 80%;
         display: flex;
+        
 
         &:last-child {
             border-bottom: none;
@@ -114,3 +117,18 @@
         margin-left: 1rem;
     }
 }
+
+a{
+    text-decoration: none;
+}
+
+.logout{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+
+    ion-icon{
+        margin-left: .3rem;
+    }
+}
+

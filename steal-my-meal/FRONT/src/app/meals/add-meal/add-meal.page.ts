@@ -88,38 +88,10 @@ export class AddMealPage {
 
   logForm(){
     this.mealFormObj = this.meal.value;
-    this.mealFormObj.usrId = this.usrID;
-    console.log(this.mealFormObj);
-    this.mealService.addMeal(this.mealFormObj);
-  }
-
-  presentLoading(){
+    this.mealFormObj.usrId = this.usrID;    
     let message = 'Your meal was created succefully!';
-    this.ms.presentLoading(message);
-
-    // const loading = await this.loadingController.create({
-    //   message: 'Loading...',
-    //   duration: 2000,
-    //   spinner: "dots"
-    // });
-    // const toast = await this.toastController.create({
-    //   position: 'top',
-    //   duration: 2000,
-    //   buttons: [
-    //     {
-    //       side: 'start',
-    //       icon: 'restaurant',
-    //       text: 'New meal was created succefully!',
-    //       handler: () => {
-    //         console.log('Favorite clicked');
-    //       }
-    //     }
-    //   ]
-    // });
-    // await loading.present();
-    // await loading.onDidDismiss();
-    // this.ms.dismiss();
-    // toast.present();
+    this.ms.presentLoading(message,true,this.mealService.addMeal(this.mealFormObj));
   }
+
 
 }

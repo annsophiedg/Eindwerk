@@ -44,12 +44,12 @@ export class EditUserPage implements OnInit {
 
   public onSubmit() {
     console.log(this.userForm.value)
-    this.userService.setUserObservable(this.userForm.value).subscribe();
+    
     this.ms.hideModal();
 
     let message = 'Your information was updated succesfully!';
     //modal animation, close modal after submit = false
-    this.ms.presentLoading(message,false);
+    this.ms.presentLoading(message,false,this.userService.setUserObservable(this.userForm.value));
   }
 
   ngOnInit() {

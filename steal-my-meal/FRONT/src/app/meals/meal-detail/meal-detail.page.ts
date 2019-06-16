@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { MealService } from '../../../services/meal/meal.service';
@@ -13,10 +13,12 @@ export class MealDetailPage implements OnInit {
   @Input() meal;
   @Input() chef;
   @Input() usrId;
-  subscriber;
-  ingredients;
+  @ViewChild('popup') popup;
+  public subscriber;
+  public ingredients;
   private profilePath = "../../../assets/img/profile_pic.jpg";
   public ms;
+  public allergies = [];
 
   @Input() 
   set service(params){
@@ -30,46 +32,26 @@ export class MealDetailPage implements OnInit {
     ){ }
 
   ngOnInit() {
-    console.log(this.chef);
-    console.log(this.meal);
     this.mealservice.getMealIngredients(this.meal["mls_id"]).subscribe(ingredients =>{
       this.ingredients = ingredients; });
+    this.mealservice.getUserAllergy(this.usrId,this.meal.mls_id).subscribe(res => {
+      this.allergies = res;
+    });
   }
 
   //send data over subscribe-url
   getMeal(){
     this.subscriber = JSON.stringify({mealId:this.meal["mls_id"], usrId:this.usrId});
     console.log(this.subscriber);
-    this.mealservice.subscribeToMeal(this.subscriber);
-  }
-
-  presentLoading(){
     let message = 'Have a great meal!';
-    this.ms.presentLoading(message);
-    
-    // const loading = await this.loadingController.create({
-    //   message: 'Loading...',
-    //   duration: 2000,
-    //   spinner: "dots"
-    // });
-    // const toast = await this.toastController.create({
-    //   position: 'top',
-    //   duration: 2000,
-    //   buttons: [
-    //     {
-    //       side: 'start',
-    //       icon: 'restaurant',
-    //       text: 'Have a great meal!',
-    //       handler: () => {
-    //         console.log('Favorite clicked');
-    //       }
-    //     }
-    //   ]
-    // });
-    // await loading.present();
-    // await loading.onDidDismiss();
-    // this.ms.hideModal();
-    // toast.present();
+    this.ms.presentLoading(message,true,this.mealservice.subscribeToMeal(this.subscriber));
   }
 
+  show(){
+    // console.log(this.popup.nativeElement.style.height);
+    // if(this.popup.el.style.heigth == '0')
+      this.popup.nativeElement.style.heigth = '100%';
+    // else
+    //   this.popup.nativeElement.style.heigth = '0';
+  }
 }

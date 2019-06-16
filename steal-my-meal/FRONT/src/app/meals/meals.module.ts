@@ -12,11 +12,7 @@ import { MealsPage } from './meals.page';
 // import { ProfilePage } from '../profile/profile.page';
 
 import { MapComponent} from '../map/map.component';
-import { MealItemComponent } from './meal-item/meal-item.component';
-import { ChefCardComponent } from '../chefs/chef-card/chef-card.component';
-import { ChefTitleComponent } from '../chefs/chef-title/chef-title.component';
-import { ChefRateComponent } from '../chefs/chef-rate/chef-rate.component';
-import { FollowComponent } from '../chefs/follow/follow.component';
+import { ChefModule } from '../chef.module';
 
 const routes: Routes = [
   {
@@ -27,24 +23,15 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    ChefModule,
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes), 
+    RouterModule.forChild(routes) ,
   ],
   declarations: [
     MapComponent,
-    MealsPage, 
-    //modal pages
-    // AddMealPage,
-    // MealDetailPage,
-    // ProfilePage,   
-    //components
-    MealItemComponent,
-    ChefCardComponent,
-    ChefTitleComponent,
-    ChefRateComponent,
-    FollowComponent
+    MealsPage
   ],
   entryComponents: [
     //modal pages
