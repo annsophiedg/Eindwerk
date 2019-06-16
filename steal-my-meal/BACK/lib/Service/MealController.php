@@ -162,19 +162,6 @@ class MealController {
 
     $decoded = json_decode($content, true);
 
-    //get number from string portions
-    // $portions = (int) filter_var($decoded["portions"], FILTER_SANITIZE_NUMBER_INT);
-
-    // //Function to create multiple rows in order table for each portion
-    // function createOrders($portions, $usrId){
-    //   $string;
-    //   for($x=1; $x<=$portions; $x++){
-    //     if($portions == $x){ $string .="( '".$usrId."', @mls_id );";}
-    //     else{ $string .="( '".$usrId."', @mls_id ),";}
-    //   };
-    //   return $string;
-    // };
-
     //Function to set ingredients for one meal
     function setIngredients($ingredients, $mealId){
       $string;
