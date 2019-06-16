@@ -33,16 +33,16 @@ export class MealService {
 
   //Add meal
   addMeal(meal){
-    return this.http.post(this.mealsUrl, meal, httpOptions).subscribe(outcome =>(console.log(outcome=meal) ));
+    return this.http.post(this.mealsUrl, meal, httpOptions);
   }
 
-  updateMeal(meal){
-    return this.http.put(this.mealsUrl, meal, httpOptions).subscribe(outcome =>(console.log(outcome=meal) ));
+  updateMeal(meal):Observable<any>{
+    return this.http.put(this.mealsUrl, meal, httpOptions);
   }
 
   //Subscribe to meal(update order)
-  subscribeToMeal(subscribtion){
-    return this.http.put(this.orderUrl, subscribtion, httpOptions).subscribe();
+  subscribeToMeal(subscribtion):Observable<any>{
+    return this.http.put(this.orderUrl, subscribtion, httpOptions);
   }
 
   //--INGREDIENTS

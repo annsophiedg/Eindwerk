@@ -108,7 +108,7 @@ if ( $subject == "orders" )
             echo $userOrders;
         }
     }else if ($method == "PUT") {
-        $subscription = $mealController->subscibe($input);
+        $subscription = $mealController->subscribe($input);
     } elseif ($method == "POST") {
         if ($id) {
             //set ord_is_delivered = 1

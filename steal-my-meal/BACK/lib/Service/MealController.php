@@ -124,7 +124,7 @@ class MealController {
 
     //Function to create multiple rows in order table for each portion
     function createOrders($portions, $usrId){
-      $string;
+      $string = "";
       for($x=1; $x<=$portions; $x++){
         if($portions == $x){ $string .="( '".$usrId."', @mls_id );";}
         else{ $string .="( '".$usrId."', @mls_id ),";}
@@ -134,7 +134,7 @@ class MealController {
 
     //Function to set ingredients for one meal
     function setIngredients($ingredients){
-      $string;
+      $string = "";
       $numbIngredients = count($ingredients);
       $y = 0;
       for($x=1; $x<=$numbIngredients; $x++){
@@ -177,8 +177,11 @@ class MealController {
 
     //Function to set ingredients for one meal
     function setIngredients($ingredients, $mealId){
-      $string;
-      $numbIngredients = count($ingredients);
+      $string = "";
+      if ($ingredients)
+        $numbIngredients = count($ingredients);
+      else
+        $numbIngredients = 0;
       $y = 0;
       for($x=1; $x<=$numbIngredients; $x++){
         if($numbIngredients == $x){ $string .="( '".$ingredients[$y]["ing_id"]."', ".$mealId.");";}

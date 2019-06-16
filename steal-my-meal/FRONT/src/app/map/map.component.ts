@@ -2,13 +2,9 @@ import { Component, OnInit, ViewChild, AfterContentInit, Input, Output, EventEmi
 import { UserService } from 'src/services/user/user.service';
 import { Adress } from 'src/models/adress';
 import { MapService } from 'src/services/maps/map.service';
-import { ModalController } from '@ionic/angular';
-import { MealDetailPage } from '../meals/meal-detail/meal-detail.page';
-import { myEnterAnimation } from '../animations/enter';
-import { myLeaveAnimation } from '../animations/leave';
 import { ChefService } from 'src/services/chef/chef.service';
-import { testUserAgent } from '@ionic/core';
-import { DebugContext } from '@angular/core/src/view';
+import { ModalService } from 'src/services/modal/modal.service';
+
 
 declare var google;
 
@@ -33,10 +29,12 @@ export class MapComponent implements OnInit, AfterContentInit {
   @Input() private meals;
   @Input() private chefs;
   private markers = {};
+  private storedMarkers = [];
   
   @Input() 
   set userID(id){
     if(id){
+      this.deleteMarkers();
       this._userID = id;
       this.userService.getUserInfo(id).subscribe(res =>{
         if(res){
@@ -87,7 +85,7 @@ export class MapComponent implements OnInit, AfterContentInit {
 
   constructor(private userService:UserService,
               private mapsService:MapService,
-              public modal: ModalController,
+              public ms: ModalService,
               private chefService:ChefService ) {
     this.iconbase = '../../assets/img/';
   }
@@ -131,10 +129,16 @@ export class MapComponent implements OnInit, AfterContentInit {
       marker.addListener('click', function() {
         infowindow.open(this.map, marker);
       });
-      
+      this.storedMarkers.push(marker);
     });
   }
 
+  deleteMarkers(){
+    this.storedMarkers.forEach(marker => {
+      marker.setMap(null);
+    });
+    this.storedMarkers = [];
+  }
 
   getContentString(meals, chefIds){
     var string = "";
@@ -172,16 +176,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     var meal = this.meals[chefId];
     var chef = this.chefs[this._chefIds.indexOf(chefId)];
 
-    const modal = await this.modal.create({
-      component: MealDetailPage,
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      componentProps: {
-        'meal': meal,
-        'chef': chef
-      }
-    });
-    return await modal.present();
+    this.ms.mealDetailModal(meal,chef);
   }
 
   calcDistance(){

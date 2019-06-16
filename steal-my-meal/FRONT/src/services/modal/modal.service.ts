@@ -20,13 +20,16 @@ import { OrdersPage } from '../../app/profile/orders/orders.page';
 import { OrderListPage } from '../../app/profile/orders/order-list/order-list.page';
 import { MealDetailPage } from '../../app/meals/meal-detail/meal-detail.page';
 import { EditMealPage } from '../../app/meals/edit-meal/edit-meal.page';
-import { from } from 'rxjs';
+import { from, Subscribable, Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ModalService {
+  private mealsPage;
+
 
   constructor(
     private modal: ModalController,
@@ -103,36 +106,37 @@ export class ModalService {
     return await modal.present();
   }
 
-  async presentLoading(m,closeModal = true){
+  async presentLoading(m,closeModal = true, obs:Observable<any>){
     let message = m;
-
-    console.log(message);
 
     const loading = await this.loadingController.create({
       message: 'Loading...',
-      duration: 1000,
       spinner: "dots"
     });
 
     const toast = await this.toastController.create({
       position: 'top',
-      duration: 2000,
+      duration: 1000,
       buttons: [
         {
           side: 'start',
           icon: 'restaurant',
           text: message,
           handler: () => {
-            console.log('Favorite clicked');
+            
           }
         }
       ]
     });
     await loading.present();
-    await loading.onDidDismiss();
-    if (closeModal == true) {
-      this.hideModal();
-    }
+
+    await obs.subscribe((res) => {
+      this.mealsPage.refresh().then((x)=>{
+        if (x) loading.dismiss();
+        if (closeModal == true) this.hideModal();
+      });
+    })
+    
     toast.present();
 
     console.log('presentLoading in modal service')
@@ -154,8 +158,12 @@ export class ModalService {
   }
 
   public hideModal(){
-    console.log('hideModal in Service!');
-    this.modal.dismiss()
+    this.modal.dismiss();
   }
+
+  setMealsPage(page) {
+    this.mealsPage = page;
+  }
+
 
 }

@@ -13,8 +13,8 @@ export class MealDetailPage implements OnInit {
   @Input() meal;
   @Input() chef;
   @Input() usrId;
-  subscriber;
-  ingredients;
+  public subscriber;
+  public ingredients;
   private profilePath = "../../../assets/img/profile_pic.jpg";
   public ms;
 
@@ -40,13 +40,10 @@ export class MealDetailPage implements OnInit {
   getMeal(){
     this.subscriber = JSON.stringify({mealId:this.meal["mls_id"], usrId:this.usrId});
     console.log(this.subscriber);
-    this.mealservice.subscribeToMeal(this.subscriber);
+    let message = 'Have a great meal!';
+    this.ms.presentLoading(message,true,this.mealservice.subscribeToMeal(this.subscriber));
   }
 
-  presentLoading(){
-    let message = 'Have a great meal!';
-    this.ms.presentLoading(message);
-    
     // const loading = await this.loadingController.create({
     //   message: 'Loading...',
     //   duration: 2000,
@@ -70,6 +67,4 @@ export class MealDetailPage implements OnInit {
     // await loading.onDidDismiss();
     // this.ms.hideModal();
     // toast.present();
-  }
-
 }

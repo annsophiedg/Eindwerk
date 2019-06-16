@@ -5,7 +5,7 @@
 
 <ion-content>
 
-  <form class="scroll" [formGroup]="mealForm" (ngSubmit)="logForm()">
+  <form class="scroll" [formGroup]="mealForm" (ngSubmit)="presentLoading()">
 
     <ul>
       <li>
@@ -95,7 +95,7 @@
             <ion-textarea rows="2" cols="20" type="text" formControlName="description" [(ngModel)]="mlsDescription"></ion-textarea>
         </ion-item>
       </li>
-        <ion-button class="red" type="submit" (click)="presentLoading()"><p>Edit Your Meal</p></ion-button>
+        <ion-button class="red" type="submit" ><p>Edit Your Meal</p></ion-button>
     </ul>
   </form>
 </ion-content>
