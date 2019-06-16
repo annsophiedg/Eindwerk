@@ -24,8 +24,6 @@ header("Content-Type: application/json; charset=UTF-8");
 $container = new Container($configuration);
 $dbManager = $container->getDBManager();
 $pdo = $dbManager->getPDO();
-$subject = null;
-$id = null;
 
 $input = file_get_contents("php://input");
 
