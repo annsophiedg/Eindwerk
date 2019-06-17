@@ -43,7 +43,8 @@ $( function() {
                 type: "POST",
                 data: form,
                 success: function( data ) {
-                    data = JSON.parse(data)
+                    console.log(data);
+                    data = JSON.parse(data);
                     BuildAdminTable( data );
                     $('#addAdminModal').modal('hide');
                 },
