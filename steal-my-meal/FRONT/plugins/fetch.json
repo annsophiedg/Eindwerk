@@ -1,0 +1,22 @@
+{
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage@3.2.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic@5.3.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_ID": "abcd1234",
+      "CHANNEL_NAME": "Master",
+      "UPDATE_METHOD": "background"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../style/variables";
+
+div.navBtn{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+ion-fab-button{
+    height: 3em;
+    width: 3em;
+    margin: .5em .5em;
+
+    &#up{
+        display: none;
+    }
+}
+ion-slides{
+    pointer-events: none; 
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    ion-slide{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: flex-start;
+
+        content{
+            width: 100vw;
+
+            p{
+                width: 100vw;
+            }
+        }
+
+        &.mealComponents{
+            background: $baseColor_white;
+            margin-top: 3.5em;
+            pointer-events: initial; 
+            z-index: 100;
+        }
+
+        &.white{
+            background: $baseColor_white;
+            margin-top: 3.5em;
+            height: 100vh;
+        }
+
+    }
+}
+
+app-map{
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.scroll{
+    height: 100%;
+    overflow: scroll;
+}
+
+content{
+    height: 150%;
+}
